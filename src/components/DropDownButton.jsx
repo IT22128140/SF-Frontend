@@ -6,15 +6,15 @@ const DropDownButton = (props) => {
   return (
     <div className="group relative cursor-pointer">
       <div className="flex items-center justify-between space-x-5 px-4">
-        <a className=" text-base font-medium text-black lg:mx-4">
+        <a className=" text-base font-medium text-ternary lg:mx-4 font-BreeSerif">
           {props.title}
         </a>
         <LuChevronDown />
       </div>
-      <div className="invisible absolute z-50 flex w-full flex-col bg-gray-100 rounded-md text-gray-800 shadow-xl group-hover:visible">
+      <div className="invisible absolute z-50 flex w-full flex-col bg-bgc rounded-md text-ternary shadow-xl group-hover:visible">
 
       {props.options.map((opt) => (
-        <a key={opt.id} className=" rounded-md p-2 my-2 block border-b border-gray-100 font-semibold text-gray-500 hover:text-white hover:bg-gray-500" href={props.link}>
+        <a key={opt.id} className=" rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary" href={props.link}>
           {opt.option}
         </a>
       ))}
