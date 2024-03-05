@@ -5,12 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      Lavish: ["Lavish", "sans-serif"],
+      Philosopher: ["Philosopher", "sans-serif"],
+      BreeSerif: ["BreeSerif", "sans-serif"]
+    },
     extend: {
       colors: {
         //Maneth
-        'primary': '#E73D38',
-        'secondary': '#e73e38a6',
-        'footer': '#80808065',
+        'primary': '#da6e2e',
+        'secondary': '#c15026',
+        'ternary': '#6e2e2c',
+        'bgc': '#FCEADC'
 
 
 
