@@ -110,7 +110,7 @@ import { Routes, Route } from 'react-router-dom'
 
 
 /* Ridmi */
-import RMRequests from './pages/productionManager/RMRequests.jsx';
+import RawmRequests from './pages/productionManager/RawmRequests.jsx';
 import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
 import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
@@ -257,7 +257,7 @@ const App = () => {
 
 
       {/* Ridmi */}
-      <Route path= '/' element = {<RMRequests/>} />
+      <Route path= '/' element = {<RawmRequests/>} />
       <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
       <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
       <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
