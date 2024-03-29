@@ -28,6 +28,7 @@ const RepairTable = () => {
             <div className='flex justify-between items-center'>
                 <h1 className='text-3xl my-8'>Repairs List</h1>
             </div>
+            
             <SearchBar placeholder={"Enter Repair ID here"} />
             {loading ? (
                 <Spinner />
