@@ -23,6 +23,7 @@ import Login from './pages/Login.jsx';
 
 
 
+
 /*Sandithi */
 
 
@@ -47,7 +48,7 @@ import Login from './pages/Login.jsx';
 
 /* Isuru */
 
-
+import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 
@@ -211,7 +212,7 @@ const App = () => {
 
 
       {/* Isuru*/}
-
+      <Route path="/SupplierDetails" element={<SupplierDetails />} />
 
 
 
