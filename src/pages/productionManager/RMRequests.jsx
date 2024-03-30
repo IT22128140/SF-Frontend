@@ -32,33 +32,33 @@ const RMRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'w-full border-spacing-2'>
+        <table className = 'min-w-full'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
             <tr key={rmrequest._id} className='h-8'>
-              <td className='border border-slate-700 rounded-md text-center'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 {rmrequest.RequestID}
               </td>
-              <td className='border border-slate-700 rounded-md text-center'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 {rmrequest.Date}
               </td>
-              <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 {rmrequest.FabricType_Colour_Amount}
               </td>
-              <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 {rmrequest.ButtonType_Colour_Amount}
               </td>
-              <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 {rmrequest.ThreadType_Colour_Amount}
               </td>
-              <td className='border border-slate-700 rounded-md text-center max-md:hidden'> 
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'> 
                 {rmrequest.Other_Materials}
               </td>
-              <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 {rmrequest.Status}
               </td>
-              <td className='border border-slate-700 rounded-md text-center'>
+              <td className='border border-slate-700 px-6 py-3 text-center text-sm font-medium tracking-wider'>
                 <div className='flex justify-center gap-x-4'>
                   <Link to={ `/rmRequests/details/${rmrequest._id}`}>
                     <button className='bg-black hover:bg-black text-white px-4 py-1 rounded-lg'>View</button>
