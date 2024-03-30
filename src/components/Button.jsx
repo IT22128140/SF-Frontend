@@ -17,12 +17,12 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  type: PropTypes.string, // Allowing any string value for type
+  type: PropTypes.string, 
 };
 
 Button.defaultProps = {
   className: '',
-  type: 'button', // Default type is 'button'
+  type: 'button', 
 };
 
 export default Button;
