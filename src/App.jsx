@@ -23,6 +23,7 @@ import Login from './pages/Login.jsx';
 
 
 
+
 /*Sandithi */
 
 
@@ -47,7 +48,7 @@ import Login from './pages/Login.jsx';
 
 /* Isuru */
 
-
+import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 
@@ -110,6 +111,11 @@ import Login from './pages/Login.jsx';
 
 
 /* Ridmi */
+import RawmRequests from './pages/productionManager/RawmRequests.jsx';
+import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
+import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
+import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
+import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
 
 
 
@@ -206,7 +212,7 @@ const App = () => {
 
 
       {/* Isuru*/}
-
+      <Route path="/SupplierDetails" element={<SupplierDetails />} />
 
 
 
@@ -252,7 +258,11 @@ const App = () => {
 
 
       {/* Ridmi */}
-
+      <Route path= '/RawmRequests' element = {<RawmRequests/>} />
+      <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
+      <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
+      <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
+      <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
 
 
 
