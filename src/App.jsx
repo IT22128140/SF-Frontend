@@ -2,8 +2,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 /* Maneth */
-// import Home from './pages/Home.jsx';
-// import Login from './pages/Login.jsx';
+import Home from './pages/Home.jsx';
+import Login from './pages/Login.jsx';
 
 
 
@@ -164,8 +164,8 @@ const App = () => {
     <Routes>
       {/* Maneth */}
 
-      {/* <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} /> */}
+      <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login />} />
 
 
 
@@ -282,7 +282,7 @@ const App = () => {
 
       <Route path='./repairs' element={<MaintenanceHome/>} />
       <Route path='./repairs/create' element={<CreateRepairRequests/>} />
-      <Route path='/' element={<ViewRepairs/>} />
+      <Route path='/repairs/view' element={<ViewRepairs/>} />
       <Route path='./repairs/edit/:id' element={<EditReapairs/>} />
       <Route path='./repairs/delete/:id' element={<DeleteRepairs/>} />
 
