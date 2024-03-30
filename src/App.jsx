@@ -23,6 +23,7 @@ import { Routes, Route } from 'react-router-dom'
 
 
 
+
 /*Sandithi */
 
 
@@ -47,7 +48,7 @@ import { Routes, Route } from 'react-router-dom'
 
 /* Isuru */
 
-
+import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 
@@ -211,7 +212,7 @@ const App = () => {
 
 
       {/* Isuru*/}
-
+      <Route path="/SupplierDetails" element={<SupplierDetails />} />
 
 
 
