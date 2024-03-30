@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ onClick, children, className }) => {
+const Button = ({ onClick, children, className, type }) => {
   return (
     <button
       onClick={onClick}
-      type="delete"
+      type={type}
       className={`bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md ${className}`}
     >
       {children}
@@ -17,10 +17,12 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  type: PropTypes.string, // Allowing any string value for type
 };
 
 Button.defaultProps = {
   className: '',
+  type: 'button', // Default type is 'button'
 };
 
 export default Button;
