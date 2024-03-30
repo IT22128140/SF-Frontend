@@ -2,8 +2,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 /* Maneth */
-import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
+// import Home from './pages/Home.jsx';
+// import Login from './pages/Login.jsx';
 
 
 
@@ -111,6 +111,11 @@ import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 /* Ridmi */
+import RawmRequests from './pages/productionManager/RawmRequests.jsx';
+import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
+import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
+import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
+import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
 
 
 
@@ -161,8 +166,8 @@ const App = () => {
     <Routes>
       {/* Maneth */}
 
-      <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} />
+      {/* <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login />} /> */}
 
 
 
@@ -253,7 +258,11 @@ const App = () => {
 
 
       {/* Ridmi */}
-
+      <Route path= '/' element = {<RawmRequests/>} />
+      <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
+      <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
+      <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
+      <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
 
 
 
