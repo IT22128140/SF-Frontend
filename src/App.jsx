@@ -280,11 +280,11 @@ const App = () => {
 
       {/* Hiranya */}
 
-      <Route path='./repairs' element={<MaintenanceHome/>} />
-      <Route path='./repairs/create' element={<CreateRepairRequests/>} />
+      <Route path='/repairs' element={<MaintenanceHome/>} />
+      <Route path='/repairs/create' element={<CreateRepairRequests/>} />
       <Route path='/repairs/view' element={<ViewRepairs/>} />
-      <Route path='./repairs/edit/:id' element={<EditReapairs/>} />
-      <Route path='./repairs/delete/:id' element={<DeleteRepairs/>} />
+      <Route path='/repairs/edit/:id' element={<EditReapairs/>} />
+      <Route path='/repairs/delete/:id' element={<DeleteRepairs/>} />
 
 
 
