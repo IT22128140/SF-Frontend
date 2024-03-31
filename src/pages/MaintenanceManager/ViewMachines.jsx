@@ -9,18 +9,17 @@ import SearchBar from "../../components/SearchBar";
 import Button from "../../components/Button";
 import TableView from '../../components/table/TableView'
 
-
-const RepairTable = () => {
-    const [repairs, setRepairs] = useState([]);
+const MachineTable = () => {
+    const [machines, setMachines] = useState([]);
     const [loading, setLoading] = useState(false);
-    const headers = ['ID', 'Description', 'Requested Date', 'Requested Time', 'Urgency Level', 'Status', 'Completed Date', 'Operations']
+    const headers = ['Machine ID', 'Machine Name', 'Purchased Date', 'Condition', 'Cost', 'Quantity', 'Manufacture', 'Category', 'Operations']
     
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:5555/repairs')
+            .get('http://localhost:5555/machines')
             .then((response) => {
-                setRepairs(response.data.data);
+                setMachines(response.data.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -31,10 +30,10 @@ const RepairTable = () => {
     return (
         <div className='p-4'>
             <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Repairs List</h1>
+                <h1 className='text-3xl my-8'>Machines List</h1>
             </div>
             
-            <SearchBar placeholder={"Enter Repair ID here"} />
+            <SearchBar placeholder={"Enter Machine ID here"} />
             {loading ? (
                 <Spinner />
             ) : (
@@ -42,39 +41,42 @@ const RepairTable = () => {
                 <table className='min-w-full'>
                     <TableView headers={headers} />
                     <tbody>
-                        {repairs.map((repair, index) => (
-                            <tr key={repair._id} className='h-8'>
+                        {machines.map((machine, index) => (
+                            <tr key={machine._id} className='h-8'>
                                 
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.RepairID}
+                                    {machine.MachineID}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.RepairDescription}
+                                    {machine.MachineName}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.RequestedDate}
+                                    {machine.PurchasedDate}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.RequestedTime}
+                                    {machine.Condition}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.UrgencyLevel}
+                                    {machine.Cost}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.Status}
+                                    {machine.Quantity}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.CompletedDate}
+                                    {machine.Manufacturer}
+                                </td>
+                                <td className='border border-slate-700 rounded-md text-center'>
+                                    {machine.Category}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
-                                        <Link to={`/repairs/details/${repair._id}`}>
+                                        <Link to={`/machines/details/${machine._id}`}>
                                             <BsInfoCircle className='text-2xl text-green-800' />
                                         </Link>
-                                        <Link to={`/repairs/edit/${repair._id}`}>
+                                        <Link to={`/machines/edit/${machine._id}`}>
                                             <BsInfoCircle className='text-2xl text-yellow-600' />
                                         </Link>
-                                        <Link to={`/repairs/delete/${repair._id}`}>
+                                        <Link to={`/machines/delete/${machine._id}`}>
                                             <BsInfoCircle className='text-2xl text-red-800' />
                                         </Link>
                                     </div>
@@ -89,11 +91,11 @@ const RepairTable = () => {
                 
             )}
 
-                <Link to='/repairs/create'>
+                <Link to='/machines/create'>
                     <MdOutlineAddBox className='text-sky-800 text-4xl' />
                 </Link>
         </div>
     );
 };
 
-export default RepairTable
+export default MachineTable
