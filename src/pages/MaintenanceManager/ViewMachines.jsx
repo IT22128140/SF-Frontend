@@ -6,7 +6,6 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import SearchBar from "../../components/SearchBar";
-import Button from "../../components/Button";
 import TableView from '../../components/table/TableView'
 
 const MachineTable = () => {

@@ -23,7 +23,7 @@ const SearchBar = ({ placeholder, onSearch }) => {
           placeholder={placeholder}
           value={searchTerm}
           onChange={handleChange}
-          className="px-2 py-2 w-[300px] h-[45px] border-t border-r border-b border-black focus:outline-none focus:ring-0  flex-grow"
+          className="px-2 py-2 w-[300px] h-[45px] font-BreeSerif border-t border-r border-b border-black focus:outline-none focus:ring-0  flex-grow"
         />
 
         <div className="bg-ternary p-2 flex items-center h-[45px]">

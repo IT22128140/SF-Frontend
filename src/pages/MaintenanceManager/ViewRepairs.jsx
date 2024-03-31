@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/SearchBar";
-import Button from "../../components/Button";
-import TableView from '../../components/table/TableView'
+import SearchBar from "../../components/SearchBar.jsx";
+import TableView from '../../components/table/TableView.jsx';
 
 
 const RepairTable = () => {
