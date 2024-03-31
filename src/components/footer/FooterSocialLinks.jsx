@@ -9,11 +9,11 @@ import { FaInstagram } from "react-icons/fa";
 const FooterSocialLinks = () => {
   return (
     <div className="flex flex-col justify-evenly ml-[2%] w-[14%]">
-      <h1 className="mt-[40%] w-[100%] text-center text-[140%] border-t-black border-t-[1px] ">
-        Blood Transfution Service
+      <h1 className="mt-[40%] w-[100%] text-center text-[140%] border-t-primary pt-5 border-t-[3px] font-Lavish font-bold lg:text-5xl sm:text-2xl">
+        Serendib Fashion
       </h1>
 
-      <div className="flex flex-row justify-between mt-[25%] text-[200%] text-black">
+      <div className="flex flex-row justify-between lg:text-[200%] sm:text-[150%] text-black">
         <Link to="https://lk.linkedin.com/">
           <FaLinkedin />
         </Link>
