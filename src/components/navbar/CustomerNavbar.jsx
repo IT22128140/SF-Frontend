@@ -1,6 +1,6 @@
 //import React from 'react'
 import Logo from "./NavbarLogo.jsx";
-import DropDownButton from "../DropDownButton.jsx";
+import DropDownButton from "../button/DropDownButton.jsx";
 import { mens, womens, bags } from "../../utils/arrays.js";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -8,7 +8,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 const CustomerNavbar = () => {
   return (
-    <div className="flex h-[70px] flex-row justify-between bg-white w-full mt-3 pb-3 shadow-md">
+    <div className="flex h-[70px] flex-row justify-between bg-white w-[100%] mt-3 pb-3 shadow-md">
       <Logo />
       <div className="flex flex-row p-5">
         <DropDownButton title="Men's" options={mens} />
