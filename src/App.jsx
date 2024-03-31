@@ -2,7 +2,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 /* Maneth */
- import Home from './pages/Home.jsx';
+import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 
 
@@ -162,8 +162,8 @@ const App = () => {
     <Routes>
       {/* Maneth */}
 
-       <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} /> 
+      <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login />} />
 
 
 
@@ -254,7 +254,11 @@ const App = () => {
 
 
       {/* Ridmi */}
- 
+      <Route path= '/RawmRequests' element = {<RawmRequests/>} />
+      <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
+      <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
+      <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
+      <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
 
 
 

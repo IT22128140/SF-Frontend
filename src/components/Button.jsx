@@ -13,6 +13,7 @@ const Button = ({ onClick, children, className, type }) => {
   );
 };
 
+
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
