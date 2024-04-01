@@ -24,7 +24,7 @@ import Login from './pages/Login.jsx';
 
 
 /*Sandithi */
-
+import HrDashboard from './pages/employeemanagement/HrDashboard.jsx';
 
 
 
@@ -183,6 +183,8 @@ const App = () => {
 
 
       {/* Sandithi */}
+
+      <Route path="/HrDashboard" element={<HrDashboard />} />
    
 
 
