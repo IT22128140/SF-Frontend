@@ -1,6 +1,6 @@
 //import React from 'react'
 import Logo from "./NavbarLogo.jsx";
-import DropDownButton from "../DropDownButton.jsx";
+import DropDownButton from "../button/DropDownButton.jsx";
 import { mens, womens, bags } from "../../utils/arrays.js";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -8,7 +8,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 const CustomerNavbar = () => {
   return (
-    <div className="flex h-[70px] flex-row justify-between bg-white w-full mt-3 pb-3 shadow-md">
+    <div className="flex h-[70px] flex-row justify-between bg-white w-[100%] mt-3 pb-3 shadow-md">
       <Logo />
       <div className="flex flex-row p-5">
         <DropDownButton title="Men's" options={mens} />
@@ -31,8 +31,8 @@ const CustomerNavbar = () => {
               <IoPersonCircleOutline className="text-[50px] text-orange-600" />
             </a>
           </div>
-          <div className="invisible absolute z-50 flex w-full flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl rounded-xl group-hover:visible">
-            <a className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2 mr-5">
+          <div className="invisible absolute z-50 flex w-full flex-col bg-bgc rounded-md text-ternary shadow-xl group-hover:visible">
+            <a className="rounded-md p-2 my-2 block font-semibold text-ternary  hover:bg-primary">
                 Login
             </a>
           </div>

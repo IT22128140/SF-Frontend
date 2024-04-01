@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Lavish";
+    src: url("/fonts/Lavish.ttf");
+}
+@font-face {
+    font-family: "Philosopher";
+    src: url('/fonts/Philosopher.ttf');
+}
+@font-face {
+    font-family: 'BreeSerif';
+    src: url('/fonts/BreeSerif-Regular.ttf');
+}
