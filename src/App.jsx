@@ -145,8 +145,11 @@ import DeleteRepairs from './pages/MaintenanceManager/DeleteRepairs.jsx';
 import ViewRepairs from './pages/MaintenanceManager/ViewRepairs.jsx';
 import ViewMachines from './pages/MaintenanceManager/ViewMachines.jsx';
 import ViewMPshortages from './pages/MaintenanceManager/ViewMPshortages.jsx';
-
-
+import RepairByID from './pages/MaintenanceManager/RepairByID.jsx';
+import RequestMPshortages from './pages/MaintenanceManager/RequestMPshortages';
+import AddMachine from './pages/MaintenanceManager/AddMachine';
+import EditMachines from './pages/MaintenanceManager/EditMachines.jsx';
+import EditMPshortage from './pages/MaintenanceManager/EditMPshortage.jsx';
 
 
 
@@ -299,6 +302,13 @@ const App = () => {
       <Route path='/repairs/delete/:id' element={<DeleteRepairs/>} />
       <Route path='/machines/view' element={<ViewMachines/>} />
       <Route path='/mpshortages/view' element={<ViewMPshortages/>} />
+      <Route path='/repairs/view/id' element={<RepairByID/>} />
+      <Route path='/mpshortages/create' element={<RequestMPshortages/>} />
+      <Route path='/machines/create' element={<AddMachine/>} />
+      <Route path='/machines/edit/:id' element={<EditMachines/>} />
+      <Route path='/mpshortages/edit/:id' element={<EditMPshortage/>} />
+
+
 
 
 
