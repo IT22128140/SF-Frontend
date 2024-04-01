@@ -1,10 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-/* Maneth */
-import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
 
+
+
+/* Maneth */
+
+import Home from './pages/onlinestore/Home.jsx';
+import Login from './pages/onlinestore/Login.jsx';
 
 
 
@@ -70,12 +73,11 @@ import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 /* Gihan */
 
-
-
-
-
-
-
+import ChequeSubmit from './pages/salarymanager/ChequeSubmit.jsx';
+import SalaryHistory from './pages/salarymanager/SalaryHistory.jsx';
+import DeleteSalary from './pages/salarymanager/DeleteSalary.jsx';
+import GenerateSalary from './pages/salarymanager/GenerateSalary.jsx';
+import ViewSalary from './pages/salarymanager/ViewSalary.jsx';
 
 
 
@@ -139,7 +141,13 @@ import UpdatermDistributes from './pages/productionManager/UpdatermDistributes.j
 
 
 /* Hiranya */
-
+import MaintenanceHome from './pages/MaintenanceManager/MaintenanceHome.jsx';
+import CreateRepairRequests from './pages/MaintenanceManager/CreateRepairRequests.jsx';
+import EditReapairs from './pages/MaintenanceManager/EditRepairs.jsx';
+import DeleteRepairs from './pages/MaintenanceManager/DeleteRepairs.jsx';
+import ViewRepairs from './pages/MaintenanceManager/ViewRepairs.jsx';
+import ViewMachines from './pages/MaintenanceManager/ViewMachines.jsx';
+import ViewMPshortages from './pages/MaintenanceManager/ViewMPshortages.jsx';
 
 
 
@@ -168,7 +176,7 @@ const App = () => {
       {/* Maneth */}
 
       <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} />
+      <Route path="/Login" element={<Login />} /> 
 
 
 
@@ -291,6 +299,13 @@ const App = () => {
 
       {/* Hiranya */}
 
+      <Route path='/repairs' element={<MaintenanceHome/>} />
+      <Route path='/repairs/create' element={<CreateRepairRequests/>} />
+      <Route path='/repairs/view' element={<ViewRepairs/>} />
+      <Route path='/repairs/edit/:id' element={<EditReapairs/>} />
+      <Route path='/repairs/delete/:id' element={<DeleteRepairs/>} />
+      <Route path='/machines/view' element={<ViewMachines/>} />
+      <Route path='/mpshortages/view' element={<ViewMPshortages/>} />
 
 
 
@@ -314,6 +329,12 @@ const App = () => {
 
       {/* Gihan */}
 
+      <Route path="/ChequeSubmit" element={<ChequeSubmit />} />
+      <Route path="/SalaryHistory" element={<SalaryHistory />} />
+      <Route path="/DeleteSalary" element={<DeleteSalary />} />
+      <Route path="/GenerateSalary" element={<GenerateSalary />} />
+      <Route path="/ViewSalary" element={<ViewSalary />} />
+      
 
 
 

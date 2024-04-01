@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import NavbarLogo from "../components/navbar/NavbarLogo";
-import Footer from "../components/footer/Footer";
+import NavbarLogo from "../../components/navbar/NavbarLogo";
+import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
 
 const Login = () => {
