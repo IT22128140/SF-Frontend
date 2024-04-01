@@ -116,9 +116,10 @@ import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
 import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
-
-
-
+import RawmDistributions from './pages/productionManager/RawmDistributions.jsx';
+import CreatermDistributes from './pages/productionManager/CreatermDistributes.jsx';
+import ViewrmDistributes from './pages/productionManager/ViewrmDistributes.jsx';
+import UpdatermDistributes from './pages/productionManager/UpdatermDistributes.jsx';
 
 
 
@@ -263,6 +264,10 @@ const App = () => {
       <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
       <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
       <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
+      <Route path= '/RawmDistributes' element= {<RawmDistributions/>}/>
+      <Route path= '/rmDistributes/create' element = {<CreatermDistributes/>} />
+      <Route path= '/rmDistributes/details/:id' element = {<ViewrmDistributes/>} />
+      <Route path= '/rmDistributes/edit/:id' element = {<UpdatermDistributes/>} />
 
 
 
