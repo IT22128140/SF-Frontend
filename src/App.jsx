@@ -138,7 +138,13 @@ import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
 
 
 /* Hiranya */
-
+import MaintenanceHome from './pages/MaintenanceManager/MaintenanceHome.jsx';
+import CreateRepairRequests from './pages/MaintenanceManager/CreateRepairRequests.jsx';
+import EditReapairs from './pages/MaintenanceManager/EditRepairs.jsx';
+import DeleteRepairs from './pages/MaintenanceManager/DeleteRepairs.jsx';
+import ViewRepairs from './pages/MaintenanceManager/ViewRepairs.jsx';
+import ViewMachines from './pages/MaintenanceManager/ViewMachines.jsx';
+import ViewMPshortages from './pages/MaintenanceManager/ViewMPshortages.jsx';
 
 
 
@@ -285,6 +291,13 @@ const App = () => {
 
       {/* Hiranya */}
 
+      <Route path='/repairs' element={<MaintenanceHome/>} />
+      <Route path='/repairs/create' element={<CreateRepairRequests/>} />
+      <Route path='/repairs/view' element={<ViewRepairs/>} />
+      <Route path='/repairs/edit/:id' element={<EditReapairs/>} />
+      <Route path='/repairs/delete/:id' element={<DeleteRepairs/>} />
+      <Route path='/machines/view' element={<ViewMachines/>} />
+      <Route path='/mpshortages/view' element={<ViewMPshortages/>} />
 
 
 
