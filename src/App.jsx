@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom'
 
 
 /* Maneth */
-
 import Home from './pages/onlinestore/Home.jsx';
 import Login from './pages/onlinestore/Login.jsx';
 
@@ -28,7 +27,7 @@ import Login from './pages/onlinestore/Login.jsx';
 
 
 /*Sandithi */
-
+import HrDashboard from './pages/employeemanagement/HrDashboard.jsx';
 
 
 
@@ -72,7 +71,6 @@ import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 /* Gihan */
-
 import ChequeSubmit from './pages/salarymanager/ChequeSubmit.jsx';
 import SalaryHistory from './pages/salarymanager/SalaryHistory.jsx';
 import DeleteSalary from './pages/salarymanager/DeleteSalary.jsx';
@@ -183,7 +181,6 @@ const App = () => {
   return (
     <Routes>
       {/* Maneth */}
-
       <Route path="/" element={<Home />} />
       <Route path="/Login" element={<Login />} /> 
 
@@ -207,6 +204,8 @@ const App = () => {
 
 
       {/* Sandithi */}
+
+      <Route path="/HrDashboard" element={<HrDashboard />} />
    
 
 
@@ -344,7 +343,6 @@ const App = () => {
 
 
       {/* Gihan */}
-
       <Route path="/ChequeSubmit" element={<ChequeSubmit />} />
       <Route path="/SalaryHistory" element={<SalaryHistory />} />
       <Route path="/DeleteSalary" element={<DeleteSalary />} />
