@@ -26,6 +26,7 @@ import Login from "./pages/onlinestore/Login.jsx";
 
 
 
+
 /*Sandithi */
 import HrDashboard from "./pages/employeemanagement/HrDashboard.jsx";
 import CurrentEmployeeList from "./pages/employeemanagement/CurrentEmployeeList.jsx";
@@ -76,6 +77,7 @@ import SalaryHistory from "./pages/salarymanager/SalaryHistory.jsx";
 import DeleteSalary from "./pages/salarymanager/DeleteSalary.jsx";
 import GenerateSalary from "./pages/salarymanager/GenerateSalary.jsx";
 import ViewSalary from "./pages/salarymanager/ViewSalary.jsx";
+
 
 
 
