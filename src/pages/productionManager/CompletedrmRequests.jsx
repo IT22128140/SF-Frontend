@@ -48,7 +48,7 @@ const CompletedrmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (

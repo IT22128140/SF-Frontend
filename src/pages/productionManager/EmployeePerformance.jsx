@@ -43,7 +43,7 @@ const EmployeePerformance = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
           {empPerformance.map((empPerformance, index) => (

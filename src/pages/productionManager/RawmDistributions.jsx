@@ -38,7 +38,7 @@ const RawmDistributions = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
           {rmdistributes.map((rmdistribute, index) => (

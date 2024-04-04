@@ -43,13 +43,13 @@ const RawmRequests = () => {
           <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>All Requests</button>
         </Link>
         <Link to = '/rmRequests/pending'>
-          <button className = 'p-2 bg-RawmRequest m-8  text-ternary rounded-xl'>Pending Requests</button>
+          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Pending Requests</button>
         </Link>
       </div>
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
