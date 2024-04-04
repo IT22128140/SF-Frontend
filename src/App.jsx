@@ -4,11 +4,11 @@ import { Routes, Route } from 'react-router-dom'
 /* Maneth */
 import Home from './pages/onlinestore/Home.jsx';
 import Login from './pages/onlinestore/Login.jsx';
-
-
-
-
-
+import ProductPage from './pages/onlinestore/ProductPage.jsx';
+import Cart from './pages/onlinestore/Cart.jsx';
+import Checkout from './pages/onlinestore/Checkout.jsx';
+import Addresses from './pages/onlinestore/Addresses.jsx';
+import Catalogue from './pages/onlinestore/Catalogue.jsx';
 
 
 
@@ -168,10 +168,11 @@ const App = () => {
 
       <Route path="/" element={<Home />} />
       <Route path="/Login" element={<Login />} />
-
-
-
-
+      <Route path="/ProductPage/:id" element={<ProductPage />} />
+      <Route path="/Cart" element={<Cart />} />
+      <Route path="/Checkout" element={<Checkout />} />
+      <Route path='/Addresses' element={<Addresses/>} />
+      <Route path='/Catalogue' element={<Catalogue/>} />
 
 
 
