@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
+import PMHeader from '../../components/navbar/PMHeader';
 
 const ViewrmDistributes = () => {
   const [rmdistributes, setrmDistributes] = useState([]);
@@ -23,11 +24,12 @@ const ViewrmDistributes = () => {
   }, [])
 
   return (
-    <div className='p-4'>
+    <div className='relative'>
+      <PMHeader/>
       {loading ? (
         <Spinner/>
       ) : (
-        <div className='flex flex-col bg-orange-100 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'>
+        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
           <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Distributions</h1>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Distribute ID</span>

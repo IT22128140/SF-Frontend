@@ -3,13 +3,12 @@ import axios from 'axios';
 import Spinner from '../../components/Spinner';
 import TableView from '../../components/table/TableView';
 import { Link } from 'react-router-dom';
-import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/PMHeader';
 
-const RawmRequests = () => {
+const CompletedrmRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
@@ -17,7 +16,7 @@ const RawmRequests = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/rmRequests')
+      .get('http://localhost:5555/rmRequests/completed')
       .then((response) => {
         setrmRequests(response.data.data);
         setLoading(false);
@@ -30,11 +29,11 @@ const RawmRequests = () => {
   return (
     <div className='relative'>
       <PMHeader/>
-      <div className = 'flex justify-between items-center m-5'>
+      {/* <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
         </Link>
-      </div>
+      </div> */}
       <div className = 'flex justify-between items-center m-5 font-BreeSerif'>
         <Link to = '/rmRequests/completed'>
           <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Completed Requests</button>
@@ -97,4 +96,4 @@ const RawmRequests = () => {
   )
 }
 
-export default RawmRequests
+export default CompletedrmRequests

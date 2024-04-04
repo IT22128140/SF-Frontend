@@ -3,6 +3,11 @@ import axios from 'axios';
 import Spinner from '../../components/Spinner';
 import TableView from '../../components/table/TableView';
 import { Link } from 'react-router-dom';
+import AddButton from '../../components/button2/AddButton';
+import DeleteButton from '../../components/button2/DeleteButton';
+import EditButton from '../../components/button2/EditButton';
+import ViewButton from '../../components/button2/ViewButton';
+import PMHeader from '../../components/navbar/PMHeader';
 
 const RawmDistributions = () => {
   const [rmdistributes, setrmDistributes] = useState([]);
@@ -23,10 +28,11 @@ const RawmDistributions = () => {
       });
   }, []);
   return (
-    <div className='p-4'>
-      <div className = 'flex justify-between items-center'>
+    <div className='relative'>
+      <PMHeader/>
+      <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmDistributes/create'>
-         <button className='bg-orange-400 hover:bg-orange-600 text-white px-4 py-1 rounded-lg m-5'> Add new Distributions </button>
+         <AddButton/>
         </Link>
       </div>
       {loading ? (
@@ -58,13 +64,16 @@ const RawmDistributions = () => {
               <td className='border border-slate-700 rounded-md'>
                 <div className='flex justify-center gap-x-4'>
                   <Link to={ `/rmDistributes/details/${rmdistribute._id}`}>
-                    <button className='bg-black hover:bg-black text-white px-4 py-1 rounded-lg'>View</button>
+                    <ViewButton/>
                   </Link>
                   <Link to={`/rmDistributes/edit/${rmdistribute._id}`}>
-                    <button className='bg-red-800 hover:bg-red-900 text-white px-4 py-1 rounded-lg'>Edit</button>
+                    <EditButton/>
+                  </Link>
+                  <Link to={`/rmDistributes/delete/${rmdistribute._id}`}>
+                    <DeleteButton/>
                   </Link>
                   <Link to={`/rmRequests/create`}>
-                    <button className='bg-black hover:bg-black text-white px-4 py-1 rounded-lg'>Request</button>
+                    <AddButton/>
                   </Link>
                 </div>
               </td>

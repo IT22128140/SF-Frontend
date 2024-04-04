@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import { Link } from 'react-router-dom';
+import AcceptButton from '../../components/button2/AcceptButton';
+import RejectButton from '../../components/button2/RejectButton';
 
 const ViewrmRequests = () => {
   const [rmrequest, setrmRequests] = useState([]);
@@ -24,11 +26,11 @@ const ViewrmRequests = () => {
   }, [])
 
   return (
-    <div className='p-4'>
+    <div className='relative'>
       {loading ? (
         <Spinner/>
       ) : (
-        <div className='flex flex-col bg-orange-100 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'>
+        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
           <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Requests</h1>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Request ID</span>
@@ -60,10 +62,10 @@ const ViewrmRequests = () => {
           </div>
           <div className='flex justify-center gap-x-20'>
             <Link to={`#`}>
-              <button className='bg-orange-400 hover:bg-orange-600 text-white px-4 py-1 rounded-lg'>Accept</button>
+              <AcceptButton/>
             </Link>
             <Link to={`/rmRequests/delete/${rmrequest._id}`}>
-              <button className='bg-red-800 hover:bg-red-900 text-white px-4 py-1 rounded-lg'>Reject</button>
+              <RejectButton/>
             </Link>
           </div>
         </div>

@@ -3,6 +3,7 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
+import PMHeader from '../../components/navbar/PMHeader';
 
 const UpdatermDistributes = () => {
   const [DistributeID, setDistributeID ] = useState('');
@@ -50,22 +51,23 @@ const UpdatermDistributes = () => {
       .put(`http://localhost:5555/rmDistributes/${id}`, data)
       .then(() => {
         setLoading(false);
-        enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
+        // enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
         navigate('/RawmDistributes');
       })
       .catch ((error) => {
         setLoading(false);
-        // alert('An error happened. Please Check console');
-        enqueueSnackBar('Error', { variant: 'error' });
+        alert('An error happened. Please Check console');
+        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
 
   return (
-    <div className = 'p-4'>
+    <div className = 'relative'>
+      <PMHeader/>
       {loading ? <Spinner/> : ''}
         <div
-          className='flex flex-col bg-stone-200 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
         >
           <h1 className='text-3xl my-4 text-center'>Update Raw Material Distribution Form</h1>
           <div className='my-2'>

@@ -122,6 +122,15 @@ import RawmDistributions from './pages/productionManager/RawmDistributions.jsx';
 import CreatermDistributes from './pages/productionManager/CreatermDistributes.jsx';
 import ViewrmDistributes from './pages/productionManager/ViewrmDistributes.jsx';
 import UpdatermDistributes from './pages/productionManager/UpdatermDistributes.jsx';
+import DeletermDistributes from './pages/productionManager/DeletermDistributes.jsx';
+import RequestforInventory from './pages/productionManager/RequestforInventory.jsx';
+import EmployeePerformance from './pages/productionManager/EmployeePerformance.jsx';
+import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
+import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
+import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
+import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
+
+
 
 
 
@@ -276,6 +285,13 @@ const App = () => {
       <Route path= '/rmDistributes/create' element = {<CreatermDistributes/>} />
       <Route path= '/rmDistributes/details/:id' element = {<ViewrmDistributes/>} />
       <Route path= '/rmDistributes/edit/:id' element = {<UpdatermDistributes/>} />
+      <Route path= '/rmDistributes/delete/:id' element= {<DeletermDistributes/>}/>
+      <Route path= '/RequestforInventory' element={<RequestforInventory/>}/>
+      <Route path= '/EmployeePerformance' element={<EmployeePerformance/>}/>
+      <Route path= '/empPerformances/create' element={<CreateEPReport/>}/>
+      <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
+      <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
+      <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
 
 
 

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/form/Input';
 import { useForm, FormProvider } from 'react-hook-form'; // Importing useForm and FormProvider
 import { useSnackbar } from 'notistack';
+import PMHeader from '../../components/navbar/PMHeader';
 
 const CreatermDistributes = () => {
   const [DistributeID, setDistributeID ] = useState('');
@@ -26,22 +27,23 @@ const CreatermDistributes = () => {
     try {
       await axios.post('http://localhost:5555/rmDistributes', data);
       setLoading(false);
-      enqueueSnackBar('Distribution created successfully', { variant: 'success' });
+    //   enqueueSnackBar('Distribution created successfully', { variant: 'success' });
       navigate('/RawmDistributes');
     }catch ( error ) {
       setLoading(false);
-      //alert('An error happened. Please Check console');
-      enqueueSnackBar('Error', { variant: 'error' });
+      alert('An error happened. Please Check console');
+    //   enqueueSnackBar('Error', { variant: 'error' });
       console.log(error);
     }
   };
 
   return (
-    <div className = 'p-4'>
+    <div className = 'relative'>
+      <PMHeader/>
       {loading ? <Spinner/> : ''}
       <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
-          className='flex flex-col bg-stone-200 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
           onSubmit={methods.handleSubmit(handleSaveRawmDistribute)} // Using handleSubmit from useForm
         >
           <h1 className='text-3xl my-4 text-center'>Raw Material Distribution Form</h1>
