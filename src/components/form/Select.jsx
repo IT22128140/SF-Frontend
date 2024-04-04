@@ -34,6 +34,7 @@ const Select = (props) => {
         value={props.value}
         name={props.name}
         disabled={props.disabled}
+        // onChange={props.onChange}
         {...register(props.name, props.validation)}
       >
         <option value="" defaultChecked hidden>
