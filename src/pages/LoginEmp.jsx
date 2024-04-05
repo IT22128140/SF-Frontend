@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
 import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
@@ -13,7 +12,7 @@ const Login = () => {
         <input
           className="mt-8 w-[100%] p-3 border-gray-200 rounded-md border-2"
           type="text"
-          placeholder="NIC Number"
+          placeholder="Email Address/Phone Number"
         ></input>
         <input
           className=" mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
@@ -24,18 +23,20 @@ const Login = () => {
           <option hidden defaultChecked>
             Select login type
           </option>
-          <option value="donor">Donor</option>
-          <option value="hospital">Hospital</option>
+          <option value="HR_Manager">HR Manager</option>
+          <option value="Stock_Manager">Stock Manager</option>
+          <option value="Repair_Manager">Repair Manager</option>
+          <option value="Process_Manager">Process Manager</option>
+          <option value="Quality_Control_Manager">Quality Control Manager</option>
+          <option value="Store_Manager">Store Manager</option>
         </select>
-        <button className="mt-8 w-[100%] p-3 bg-blue-600 text-white rounded-md">
+        <button className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md">
           Login
         </button>
         <br />
         <hr className="h-[2px] bg-gray-200 rounded-xl "></hr> <br />
-        <h1 className=" font-semibold">Or</h1>
         <br />
-        <Link className="mb-2 font-semibold text-blue-500 text-decoration-line: underline" to="/donator-hospital-register">Sign up as donor</Link>
-        <Link to="/donator-hospital-register " className="font-semibold text-blue-500 text-decoration-line: underline" >Sign up as hospital</Link>
+        <Link className="mb-2 font-semibold text-blue-500 text-decoration-line: underline" to="/RegisEmp">or Register</Link>
       </div>
       <Footer />
     </div>

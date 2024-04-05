@@ -3,7 +3,6 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 /* Maneth */
 import Home from './pages/Home.jsx';
-import Login from './pages/Login.jsx';
 
 
 
@@ -18,8 +17,13 @@ import Login from './pages/Login.jsx';
 
 
 
-
-
+ /* varagan */
+ import LoginEmp from './pages/LoginEmp.jsx';
+ import LoginCus from './pages/LoginCus.jsx';
+ import RegisCus from './pages/RegisCus.jsx';
+ import RegisEmp from './pages/RegisEmp.jsx';
+ import CusProfile from './pages/CusProfile.jsx';
+ 
 
 
 
@@ -161,7 +165,7 @@ const App = () => {
       {/* Maneth */}
 
       <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} />
+      
 
 
 
@@ -174,10 +178,14 @@ const App = () => {
 
 
 
+       {/* varagan */} 
+      <Route path="/LoginEmp" element={<LoginEmp />} />
+      <Route path="/LoginCus" element={<LoginCus />} />
+      <Route path="/RegisCus" element={<RegisCus />} />
+      <Route path="/RegisEmp" element={<RegisEmp />} />
+      <Route path="/CusProfile" element={<CusProfile />} />
 
-
-
-
+      
 
 
 
