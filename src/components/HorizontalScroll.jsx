@@ -1,11 +1,11 @@
 //import React from 'react';
 import { useRef, useState } from "react";
 import CardView from "../components/CardView.jsx";
-import { trends } from '../utils/trends.js';
 import { IoIosArrowDropright } from "react-icons/io";
 import { IoIosArrowDropleft } from "react-icons/io";
+import PropTypes from "prop-types";
 
-const HorizontalScroll = () => {
+const HorizontalScroll = (props) => {
 
     const elementRef = useRef(null);
     const [arrowDisable, setArrowDisable] = useState(true);
@@ -38,8 +38,8 @@ const HorizontalScroll = () => {
           <IoIosArrowDropleft className="size-10 text-secondary"/>  
         </button>
         <div className='flex overflow-hidden w-[90%] border-[5px] border-white border-r-[10px]' ref={elementRef}>
-        {trends.map((tre) => (
-            <CardView key={tre.id} heading={tre.heading} description={tre.des} image={tre.img}></CardView>
+        {props.list.map((list) => (
+            <CardView key={list._id} id={list._id} heading={list.name} description={list.description} image={list.image} price={list.price}></CardView>
         ))}
 
       </div>
@@ -53,6 +53,10 @@ const HorizontalScroll = () => {
 
     </div>
   )
+}
+
+HorizontalScroll.propTypes = {
+    list: PropTypes.array,
 }
 
 export default HorizontalScroll

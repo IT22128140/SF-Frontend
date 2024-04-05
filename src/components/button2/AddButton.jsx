@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from "prop-types";
 
 const AddButton = ({ onClick, className, children }) => {
   return (
@@ -15,6 +15,12 @@ const AddButton = ({ onClick, className, children }) => {
 
     </button>
   );
+};
+
+AddButton.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.string,
 };
 
 export default AddButton;
