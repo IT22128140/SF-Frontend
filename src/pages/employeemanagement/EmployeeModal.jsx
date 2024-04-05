@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 // import { useState, useEffect, useRef } from "react";
 import { MdOutlineCancel } from "react-icons/md";
-import { TbDownload } from "react-icons/tb";
+// import { TbDownload } from "react-icons/tb";
+import DownloadButton from "../../components/button2/DownloadButton.jsx";
 import PropTypes from "prop-types";
 import QRCode from "qrcode.react";
 
@@ -67,15 +68,10 @@ const EmployeeModal = ({ employee, onClose }) => {
                   />
                 )}
               </div>
-              <button
-                className="bg-black w-fit h-fit mt-4 p-2 rounded-lg text-white font-BreeSerif"
-                onClick={download}
-              >
-                <div className="flex flex-row items-center">
-                  <TbDownload className="itext-white mr-2" />
-                  Download
-                </div>
-              </button>
+
+              <div className="mt-4">
+                <DownloadButton download={download} />
+              </div>
             </div>
           </div>
           <hr className="border-gray-500" />
@@ -170,7 +166,7 @@ const EmployeeModal = ({ employee, onClose }) => {
                 className="border border-gray-500 rounded-lg text-gray-600"
               ></input>
             </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>

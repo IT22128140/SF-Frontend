@@ -5,30 +5,26 @@ import PropTypes from "prop-types";
 import AddButton from "./button2/AddButton.jsx";
 import ViewButton from "./button2/ViewButton.jsx";
 
-const DashboardCard = ( prop ) => {
+const DashboardCard = (prop) => {
   return (
     <div className="px-14 py-8">
-      <div className="border border-black rounded-xl w-40% h-fit flex flex-col items-center font-BreeSerif p-6">
-        <h1 className="text-3xl font-Philosopher text-ternary">
-          Employee Management
-        </h1>
+      <div className="border border-black rounded-xl w-[800px] h-fit flex flex-col items-center font-BreeSerif p-6">
+        <h1 className="text-3xl font-Philosopher text-ternary">{prop.topic}</h1>
 
-        <div className="border border-black rounded-xl w-auto h-fit flex flex-col items-center font-BreeSerif p-4 m-8">
-          <h2 className="text-xl text black pb-4">Add New Employees</h2>
-          <Link to="/employees/AddEmployee">
+        <div className="border border-black rounded-xl w-[500px] h-fit flex flex-col items-center font-BreeSerif p-4 m-8">
+          <h2 className="text-xl text black pb-4">{prop.subtopic1}</h2>
+          <Link to={prop.link1}>
             <AddButton />
           </Link>
         </div>
 
-        <div className="border border-black rounded-xl w-auto h-fit flex flex-col items-center font-BreeSerif p-4 m-8">
-          <h2 className="text-xl text black pb-4">
-            Current Employees&rsquo; List
-          </h2>
-          <p className="text-md text-black pb-4">lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <div className="border border-black rounded-xl w-100% h-fit flex flex-col items-center font-BreeSerif p-4 m-8">
+          <h2 className="text-xl text black pb-4">{prop.subtopic2}</h2>
+          <p className="text-md text-black pb-4">{prop.description}</p>
 
-            <Link to={prop.link2}>
-                <ViewButton />
-                </Link>
+          <Link to={prop.link2}>
+            <ViewButton />
+          </Link>
         </div>
       </div>
     </div>
@@ -36,7 +32,12 @@ const DashboardCard = ( prop ) => {
 };
 
 DashboardCard.propTypes = {
-    link2: PropTypes.string,
+  topic: PropTypes.string,
+  subtopic1: PropTypes.string,
+  link1: PropTypes.string,
+  subtopic2: PropTypes.string,
+  description: PropTypes.string,
+  link2: PropTypes.string,
 };
 
 export default DashboardCard;

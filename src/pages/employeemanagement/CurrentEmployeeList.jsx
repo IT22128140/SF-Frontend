@@ -9,7 +9,7 @@ import AddButton from "../../components/button2/AddButton.jsx";
 import ViewButton from "../../components/button2/ViewButton.jsx";
 import EditButton from "../../components/button2/EditButton.jsx";
 import DeleteButton from "../../components/button2/DeleteButton.jsx";
-import { MdAttachMoney } from "react-icons/md";
+import SalaryButton from "../../components/button2/SalaryButton.jsx";
 // import SearchBar from "../../components/SearchBar.jsx";
 import TableView from "../../components/table/TableView";
 import EmployeeModal from "./EmployeeModal.jsx";
@@ -72,7 +72,7 @@ const CurrentEmployeeList = () => {
             Add New Employees
           </h1>
           <Link to="/employees/AddEmployee">
-            <AddButton className="text-4xl text-sky-800" />
+            <AddButton />
           </Link>
         </div>
         {loading ? (
@@ -146,12 +146,7 @@ const CurrentEmployeeList = () => {
                       />
                       {/* </Link> */}
                       <Link to={"#"}>
-                        <button className="w-fit h-fit p-2 rounded-lg text-lg text-white bg-black font-BreeSerif">
-                          <div className="flex fle-row items-center">
-                            <MdAttachMoney className="text-xl mt-1 mr-1" />{" "}
-                            Salary
-                          </div>
-                        </button>
+                        <SalaryButton />
                       </Link>
                     </div>
                   </td>
