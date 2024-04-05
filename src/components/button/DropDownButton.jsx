@@ -14,7 +14,7 @@ const DropDownButton = (props) => {
       <div className="invisible absolute z-50 flex w-full flex-col bg-bgc rounded-md text-ternary shadow-xl group-hover:visible">
 
       {props.options.map((opt) => (
-        <a key={opt.id} className=" rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary" href={props.link}>
+        <a key={opt.id} className="rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary hover:text-bgc" href={props.link}>
           {opt.option}
         </a>
       ))}
