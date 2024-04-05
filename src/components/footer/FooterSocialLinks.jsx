@@ -13,7 +13,7 @@ const FooterSocialLinks = () => {
         Serendib Fashion
       </h1>
 
-      <div className="flex flex-row justify-between lg:text-[200%] sm:text-[150%] text-black">
+      <div className="flex flex-row justify-between lg:text-[200%] sm:text-[150%] text-black ">
         <Link to="https://lk.linkedin.com/">
           <FaLinkedin />
         </Link>
