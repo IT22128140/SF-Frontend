@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const StaffFooter = () => {
   return (
-    <div className="flex flex-col w-full fixed left-0 right-0 bottom-0 bg-white">
+    <div className="flex flex-col w-full left-0 right-0 bottom-0 bg-white">
       <hr />
 
       <div className="flex flex-row justify-center p-4">
