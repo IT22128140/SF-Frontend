@@ -21,9 +21,9 @@ const CardView = (props) => {
 };
 
 CardView.propTypes = {
-  image: PropTypes.String,
-  heading: PropTypes.String,
-  description: PropTypes.String,
+  image: PropTypes.string,
+  heading: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default CardView;
