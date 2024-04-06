@@ -148,7 +148,6 @@ import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
 
 
 
-
 /* Hiranya */
 import MaintenanceHome from "./pages/MaintenanceManager/MaintenanceHome.jsx";
 import CreateRepairRequests from "./pages/MaintenanceManager/CreateRepairRequests.jsx";
@@ -312,7 +311,6 @@ const App = () => {
 
 
       {/* Hiranya */}
-
       <Route path="/repairs" element={<MaintenanceHome />} />
       <Route path="/repairs/create" element={<CreateRepairRequests />} />
       <Route path="/repairs/view" element={<ViewRepairs />} />
