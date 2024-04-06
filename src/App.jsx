@@ -49,10 +49,7 @@ import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
 
 
 /* Isuru */
-<<<<<<< HEAD
-import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
-=======
->>>>>>> 9384fa246bba00375bd6d4342e83354d0df607cb
+
 import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
 import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
@@ -66,17 +63,8 @@ import AddRMaterial from './pages/InventoryAndSupplier/AddRMaterial.jsx';
 import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
 import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
-<<<<<<< HEAD
-import Popup from "./pages/InventoryAndSupplier/popup.jsx";
-=======
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
-
->>>>>>> 9384fa246bba00375bd6d4342e83354d0df607cb
-
-
-
-
-
+import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
 
 
 
@@ -133,12 +121,6 @@ import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
 import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
-import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
-<<<<<<< HEAD
-
-=======
->>>>>>> 9384fa246bba00375bd6d4342e83354d0df607cb
-
 
 
 
@@ -257,7 +239,7 @@ const App = () => {
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
       <Route path= "/Popup" element = {<Popup/>} />
-
+      <Route path= "/IsHome" element = {<IsHome/>} />
 
 
 
