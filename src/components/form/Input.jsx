@@ -16,8 +16,8 @@ const Input = (props) => {
   const isInvalid = isFormInvalid(inputError);
 
   return (
-    <>
-      <div className="flex w-[80%] justify-between mb-2">
+    <div className="flex flex-col font-BreeSerif">
+      <div className="flex justify-between mb-2">
         <label>{props.label}</label>
         <AnimatePresence mode="wait" initial={false}>
           {isInvalid && (
@@ -32,11 +32,14 @@ const Input = (props) => {
         {
           input: (
             <input
-              className="h-11 w-[80%] p-2 border-gray-200 rounded-md border-2"
+              className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
               id={props.id}
               type={props.type}
+              min={props.min}
               placeholder={props.placeholder}
               name={props.name}
+              value={props.value}
+              onChange={props.onChange}
               {...register(props.name, props.validation)}
             />
           ),
@@ -52,7 +55,7 @@ const Input = (props) => {
           ),
         }[props.formtype]
       }
-    </>
+    </div>
   );
 };
 
@@ -85,6 +88,8 @@ Input.propTypes = {
   validation: PropTypes.object,
   name: PropTypes.string,
   options: PropTypes.array,
+  min: PropTypes.string,
+  value: PropTypes.any,
 };
 
 InputError.propTypes = {
