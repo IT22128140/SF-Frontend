@@ -48,16 +48,8 @@ import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
 
 
 
-
 /* Isuru */
-<<<<<<< HEAD
-
 import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
-
-
-
-
-=======
 import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
 import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
@@ -71,9 +63,7 @@ import AddRMaterial from './pages/InventoryAndSupplier/AddRMaterial.jsx';
 import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
 import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
-import Popup from './pages/InventoryAndSupplier/Popup.jsx';
->>>>>>> a9fd0d39f263975cc0358c30c5d40f397b2c6c65
-
+import Popup from "./pages/InventoryAndSupplier/popup.jsx";
 
 
 
@@ -135,10 +125,8 @@ import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
 import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
-<<<<<<< HEAD
-=======
 import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
->>>>>>> a9fd0d39f263975cc0358c30c5d40f397b2c6c65
+
 
 
 
