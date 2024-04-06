@@ -16,7 +16,7 @@ export default {
         'primary': '#da6e2e',
         'secondary': '#c15026',
         'ternary': '#6e2e2c',
-        'bgc': '#FCEADC'
+        'bgc': '#FCEADC',
 
 
 
@@ -75,7 +75,8 @@ export default {
 
 
         //Hiranya
-        
+        'formBackground': "#d9d9d9",
+        'navbar': "#dee2e6"
 
 
 
