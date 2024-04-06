@@ -13,7 +13,11 @@
     "axios": "^1.6.8",
     "cors": "^2.8.5",
     "framer-motion": "^11.0.3",
+<<<<<<< HEAD
     "lucide-react": "^0.364.0",
+=======
+    "qrcode.react": "^3.1.0",
+>>>>>>> 91af126cd91b663b81038146e0319beccb304d6d
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",

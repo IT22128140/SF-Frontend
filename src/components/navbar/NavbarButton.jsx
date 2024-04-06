@@ -8,21 +8,31 @@ const NavbarButton = (props) => {
   return (
     <motion.div
       className="relative"
-      whileHover={{ scale: 1.2 }}
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.8 }}
     >
-      <Link to={props.url}>
-        <div className="p-[1rem] text-white text-[20px] font-bold hover:bg-red-800 hover:text-white transition-colors duration-300 hover:scale-102">
-          {props.button}
-        </div>
-      </Link>
+      {props.active && (
+        <Link to={props.url}>
+          <div className=" py-2 px-3 font-Philosopher text-bgc hover:text-bgc text-xl font-bold hover:bg-secondary bg-secondary transition-colors duration-300">
+            {props.button}
+          </div>
+        </Link>
+      )}
+      {!props.active && (
+        <Link to={props.url}>
+          <div className=" py-2 px-3 font-Philosopher text-ternary hover:text-bgc text-xl font-bold hover:bg-primary transition-colors duration-300">
+            {props.button}
+          </div>
+        </Link>
+      )}
     </motion.div>
   );
 };
 
 NavbarButton.propTypes = {
-  button: PropTypes.String,
-  url: PropTypes.String,
+  button: PropTypes.string,
+  url: PropTypes.string,
+  active: PropTypes.bool,
 };
 
 export default NavbarButton;
