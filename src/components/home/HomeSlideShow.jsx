@@ -11,21 +11,21 @@ const HomeSlideShow = () => {
   ];
 
   return (
-
-      <Fade indicators={true}>
+    <div className="h-[400px] w-full lg:h-full">
+      <Fade indicators={true} >
         <div>
-          <img src={images[0]} className="rounded-[10px] w-[90%] h-[700px]" />
+          <img src={images[0]} className="rounded-[10px] w-[80%] lg:w-[90%] h-[300px] lg:h-full" />
         </div>
 
         <div>
-          <img src={images[1]} className="rounded-[10px] w-[90%] h-[700px]" />
+          <img src={images[1]} className="rounded-[10px] w-[80%] lg:w-[90%] h-[300px] lg:h-full" />
         </div>
 
         <div>
-          <img src={images[2]} className="rounded-[10px] w-[90%] h-[700px]" />
+          <img src={images[2]} className="rounded-[10px] w-[80%] lg:w-[90%] h-[300px] lg:h-full" />
         </div>
       </Fade>
-
+      </div>
   );
 };
 

@@ -1,18 +1,23 @@
-import React from 'react';
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import { TbUpload } from "react-icons/tb";
+import PropTypes from "prop-types";
 
-const SubmitButton = ({ onClick, className, children }) => {
+const SubmitButton = ({ onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-between px-4 py-2 bg-red-500 text-white rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 ${className}`}
+      className={`flex items-center justify-between w-fit h-fit p-1.5 text-lg font-BreeSerif bg-red-500 text-white rounded-lg shadow-md ${className}`}
     >
-      <span className="mr-2">{children}</span> 
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-</svg>
-
+      <TbUpload className="text-xl mr-1.5" />
+      <span>Submit</span>
     </button>
   );
+};
+
+SubmitButton.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default SubmitButton;

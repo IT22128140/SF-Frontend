@@ -1,16 +1,17 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 
 
 /* Maneth */
 import Home from './pages/onlinestore/Home.jsx';
 import Login from './pages/onlinestore/Login.jsx';
-
-
-
-
+import ProductPage from './pages/onlinestore/ProductPage.jsx';
+import Cart from './pages/onlinestore/Cart.jsx';
+import Checkout from './pages/onlinestore/Checkout.jsx';
+import Addresses from './pages/onlinestore/Addresses.jsx';
+import Catalogue from './pages/onlinestore/Catalogue.jsx';
 
 
 
@@ -27,11 +28,11 @@ import Login from './pages/onlinestore/Login.jsx';
 
 
 /*Sandithi */
-import HrDashboard from './pages/employeemanagement/HrDashboard.jsx';
-
-
-
-
+import HrDashboard from "./pages/employeemanagement/HrDashboard.jsx";
+import CurrentEmployeeList from "./pages/employeemanagement/CurrentEmployeeList.jsx";
+import AddEmployee from "./pages/employeemanagement/AddEmployee.jsx";
+import EditEmployee from "./pages/employeemanagement/EditEmployee.jsx";
+import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
 
 
 
@@ -49,12 +50,20 @@ import HrDashboard from './pages/employeemanagement/HrDashboard.jsx';
 
 
 /* Isuru */
-
 import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
-
-
-
-
+import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
+import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
+import EditSuppliers from './pages/InventoryAndSupplier/EditSuppliers.jsx';
+import MachinePartStock from './pages/InventoryAndSupplier/MachinePartStock.jsx';
+import Addmachinepart from './pages/InventoryAndSupplier/AddMachinepart.jsx';
+import EditMpart from './pages/InventoryAndSupplier/EditMpart.jsx';
+import DeleteMparts from './pages/InventoryAndSupplier/DeleteMpart.jsx';
+import RawMaterialStock from './pages/InventoryAndSupplier/RawMaterialStock.jsx';
+import AddRMaterial from './pages/InventoryAndSupplier/AddRMaterial.jsx';
+import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
+import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
+import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
+import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 
 
 
@@ -71,11 +80,12 @@ import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 /* Gihan */
-import ChequeSubmit from './pages/salarymanager/ChequeSubmit.jsx';
-import SalaryHistory from './pages/salarymanager/SalaryHistory.jsx';
-import DeleteSalary from './pages/salarymanager/DeleteSalary.jsx';
-import GenerateSalary from './pages/salarymanager/GenerateSalary.jsx';
-import ViewSalary from './pages/salarymanager/ViewSalary.jsx';
+import ChequeSubmit from "./pages/salarymanager/ChequeSubmit.jsx";
+import SalaryHistory from "./pages/salarymanager/SalaryHistory.jsx";
+import DeleteSalary from "./pages/salarymanager/DeleteSalary.jsx";
+import GenerateSalary from "./pages/salarymanager/GenerateSalary.jsx";
+import ViewSalary from "./pages/salarymanager/ViewSalary.jsx";
+
 
 
 
@@ -127,6 +137,7 @@ import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
 import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
+import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
 
 
 
@@ -147,13 +158,13 @@ import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
 
 
 /* Hiranya */
-import MaintenanceHome from './pages/MaintenanceManager/MaintenanceHome.jsx';
-import CreateRepairRequests from './pages/MaintenanceManager/CreateRepairRequests.jsx';
-import EditReapairs from './pages/MaintenanceManager/EditRepairs.jsx';
-import DeleteRepairs from './pages/MaintenanceManager/DeleteRepairs.jsx';
-import ViewRepairs from './pages/MaintenanceManager/ViewRepairs.jsx';
-import ViewMachines from './pages/MaintenanceManager/ViewMachines.jsx';
-import ViewMPshortages from './pages/MaintenanceManager/ViewMPshortages.jsx';
+import MaintenanceHome from "./pages/MaintenanceManager/MaintenanceHome.jsx";
+import CreateRepairRequests from "./pages/MaintenanceManager/CreateRepairRequests.jsx";
+import EditReapairs from "./pages/MaintenanceManager/EditRepairs.jsx";
+import DeleteRepairs from "./pages/MaintenanceManager/DeleteRepairs.jsx";
+import ViewRepairs from "./pages/MaintenanceManager/ViewRepairs.jsx";
+import ViewMachines from "./pages/MaintenanceManager/ViewMachines.jsx";
+import ViewMPshortages from "./pages/MaintenanceManager/ViewMPshortages.jsx";
 
 
 
@@ -181,11 +192,12 @@ const App = () => {
     <Routes>
       {/* Maneth */}
       <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} /> 
-
-
-
-
+      <Route path="/Login" element={<Login />} />
+      <Route path="/ProductPage/:id" element={<ProductPage />} />
+      <Route path="/Cart" element={<Cart />} />
+      <Route path="/Checkout" element={<Checkout />} />
+      <Route path='/Addresses' element={<Addresses/>} />
+      <Route path='/Catalogue' element={<Catalogue/>} />
 
 
 
@@ -205,15 +217,16 @@ const App = () => {
       {/* Sandithi */}
 
       <Route path="/HrDashboard" element={<HrDashboard />} />
-   
-
-
-
-
-
-
-
-
+      <Route
+        path="/employees/CurrentEmployeeList"
+        element={<CurrentEmployeeList />}
+      />
+      <Route path="/employees/AddEmployee" element={<AddEmployee />} />
+      <Route path="/employees/EditEmployee/:id" element={<EditEmployee />} />
+      <Route
+        path="/employees/DeleteEmployee/:id"
+        element={<DeleteEmployee />}
+      />
 
 
 
@@ -229,12 +242,25 @@ const App = () => {
 
       {/* Isuru*/}
       <Route path="/SupplierDetails" element={<SupplierDetails />} />
+      <Route path="/SupplierDetails/AddSuppliers" element={<AddSuppliers />} />
+      <Route path="/SupplierDetails/EditSuppliers/:id" element={<EditSuppliers />} />
+      <Route path="/SupplierDetails/DeleteSupplier/:id" element={<DeleteSupplier />} />
+
+      <Route path= '/MachinePartStock' element = {<MachinePartStock/>} />
+      <Route path= '/MachinePartStock/AddMachinepart' element = {<Addmachinepart/>} />
+      <Route path= "/MachinePartStock/EditMpart/:id" element = {<EditMpart/>} />
+      <Route path= "/MachinePartStock/DeleteMparts/:id" element = {<DeleteMparts/>} />
+
+      <Route path= '/RawMaterialStock' element = {<RawMaterialStock/>} />
+      <Route path= '/RawMaterialStock/AddRMaterial' element = {<AddRMaterial/>} />
+      <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
+      <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
+
+     <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
+    
 
 
-
-
-
-
+    <Route path= "/Popup" element = {<Popup/>} />
 
 
 
@@ -251,7 +277,6 @@ const App = () => {
 
 
       {/* Sageevan */}
-
 
 
 
@@ -314,13 +339,13 @@ const App = () => {
 
       {/* Hiranya */}
 
-      <Route path='/repairs' element={<MaintenanceHome/>} />
-      <Route path='/repairs/create' element={<CreateRepairRequests/>} />
-      <Route path='/repairs/view' element={<ViewRepairs/>} />
-      <Route path='/repairs/edit/:id' element={<EditReapairs/>} />
-      <Route path='/repairs/delete/:id' element={<DeleteRepairs/>} />
-      <Route path='/machines/view' element={<ViewMachines/>} />
-      <Route path='/mpshortages/view' element={<ViewMPshortages/>} />
+      <Route path="/repairs" element={<MaintenanceHome />} />
+      <Route path="/repairs/create" element={<CreateRepairRequests />} />
+      <Route path="/repairs/view" element={<ViewRepairs />} />
+      <Route path="/repairs/edit/:id" element={<EditReapairs />} />
+      <Route path="/repairs/delete/:id" element={<DeleteRepairs />} />
+      <Route path="/machines/view" element={<ViewMachines />} />
+      <Route path="/mpshortages/view" element={<ViewMPshortages />} />
 
 
 
@@ -368,11 +393,12 @@ const App = () => {
 
 
 
-
-
-
+      
+    
+    
     </Routes>
-  )
-}
+  );
+};
+
 
 export default App

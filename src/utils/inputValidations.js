@@ -15,6 +15,32 @@ export const textValidation = {
     },
   };
 
+  export const numberValidation = {
+    validation: {
+      required: {
+        value: true,
+        message: "Required",
+      }
+    },
+  };
+
+  export const contactValidation = {
+    validation: {
+      required: {
+        value: true,
+        message: "Required",
+      },
+      maxLength: {
+        value: 10,
+        message: "10 characters max",
+      },
+      minLength: {
+        value: 10,
+        message: "10 characters min",
+      },
+    },
+  };
+
   export const emailValidation = {
     validation: {
       required: {

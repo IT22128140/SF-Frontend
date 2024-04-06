@@ -1,20 +1,21 @@
-import React from 'react';
+import PropTypes from "prop-types";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
-const AddButton = ({ onClick, className, children }) => {
+const AddButton = ({ onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-between px-6 py-2 bg-orange-600 text-white rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 ${className}`}
+      className={`flex items-center justify-between py-1.5 px-4 bg-orange-600 text-white text-xl rounded-lg shadow-md font-BreeSerif ${className}`}
     >
-      <span className="mr-2">{children}</span> 
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-</svg>
-
-
-
+      <IoMdAddCircleOutline className="text-xl mr-2" />
+      <span className="">Add</span>
     </button>
   );
+};
+
+AddButton.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default AddButton;
