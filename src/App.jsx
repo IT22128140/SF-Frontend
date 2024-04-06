@@ -5,13 +5,13 @@ import { Routes, Route } from "react-router-dom";
 
 
 /* Maneth */
-import Home from "./pages/onlinestore/Home.jsx";
-import Login from "./pages/onlinestore/Login.jsx";
-
-
-
-
-
+import Home from './pages/onlinestore/Home.jsx';
+import Login from './pages/onlinestore/Login.jsx';
+import ProductPage from './pages/onlinestore/ProductPage.jsx';
+import Cart from './pages/onlinestore/Cart.jsx';
+import Checkout from './pages/onlinestore/Checkout.jsx';
+import Addresses from './pages/onlinestore/Addresses.jsx';
+import Catalogue from './pages/onlinestore/Catalogue.jsx';
 
 
 
@@ -50,12 +50,29 @@ import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
 
 
 /* Isuru */
+<<<<<<< HEAD
 
 import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 
 
 
 
+=======
+import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
+import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
+import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
+import EditSuppliers from './pages/InventoryAndSupplier/EditSuppliers.jsx';
+import MachinePartStock from './pages/InventoryAndSupplier/MachinePartStock.jsx';
+import Addmachinepart from './pages/InventoryAndSupplier/AddMachinepart.jsx';
+import EditMpart from './pages/InventoryAndSupplier/EditMpart.jsx';
+import DeleteMparts from './pages/InventoryAndSupplier/DeleteMpart.jsx';
+import RawMaterialStock from './pages/InventoryAndSupplier/RawMaterialStock.jsx';
+import AddRMaterial from './pages/InventoryAndSupplier/AddRMaterial.jsx';
+import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
+import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
+import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
+import Popup from './pages/InventoryAndSupplier/Popup.jsx';
+>>>>>>> a9fd0d39f263975cc0358c30c5d40f397b2c6c65
 
 
 
@@ -118,6 +135,10 @@ import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
 import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
+<<<<<<< HEAD
+=======
+import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
+>>>>>>> a9fd0d39f263975cc0358c30c5d40f397b2c6c65
 
 
 
@@ -174,11 +195,12 @@ const App = () => {
     <Routes>
       {/* Maneth */}
       <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} /> 
-
-
-
-
+      <Route path="/Login" element={<Login />} />
+      <Route path="/ProductPage/:id" element={<ProductPage />} />
+      <Route path="/Cart" element={<Cart />} />
+      <Route path="/Checkout" element={<Checkout />} />
+      <Route path='/Addresses' element={<Addresses/>} />
+      <Route path='/Catalogue' element={<Catalogue/>} />
 
 
 
