@@ -3,6 +3,7 @@ import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
 import { Link } from "react-router-dom";
 
+
 const Login = () => {
   return (
     <div className="flex flex-col items-center select-none">

@@ -41,7 +41,8 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container mx-auto">
+      <div className="flex flex-col items-center select-none">
+        <NavbarLogo />
         <div className="flex justify-center">
           <div className="w-full max-w-md">
             <div className="text-center mt-">
@@ -133,6 +134,7 @@ class Register extends Component {
             </form>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -41,7 +41,8 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container mx-auto">
+      <div className="flex flex-col items-center select-none">
+        <NavbarLogo />
         <div className="flex justify-center">
           <div className="w-full max-w-md">
             <div className="text-center mt-8">
@@ -120,20 +121,27 @@ class Register extends Component {
                   className="mt-0 w-[100%] p-3 border-gray-300 rounded-md border-2"
                 />
               </div>
+              <div>
+              <p className="text-black-600 mb-4">Employee Type</p>
+                <select className=" mt-0 w-[100%] p-3 border-gray-300 rounded-md border-2">
+                  <option hidden defaultChecked>
+                    Select Employee type
+                  </option>
+                  value={this.state.EmployeeType}
+                  error={errors.EmployeeType}
+                  id="EmployeeType"
+                  type="EmployeeType"
+                  <option value="HR_Manager">HR Manager</option>
+                  <option value="Stock_Manager">Stock Manager</option>
+                  <option value="Repair_Manager">Repair Manager</option>
+                  <option value="Process_Manager">Process Manager</option>
+                  <option value="Quality_Control_Manager">Quality Control Manager</option>
+                  <option value="Store_Manager">Store Manager</option>
+
+                </select>
+              </div>
               <div className="text-center">
-              <select className=" mt-0 w-[100%] p-3 border-gray-300 rounded-md border-2">
-          <option hidden defaultChecked>
-            Select Employee type
-          </option>
-          <option value="HR_Manager">HR Manager</option>
-          <option value="Stock_Manager">Stock Manager</option>
-          <option value="Repair_Manager">Repair Manager</option>
-          <option value="Process_Manager">Process Manager</option>
-          <option value="Quality_Control_Manager">Quality Control Manager</option>
-          <option value="Store_Manager">Store Manager</option>
-        </select>
                 <button
-                  
                   type="submit"
                   className="mt-6 w-[100%] p-3 bg-orange-600 text-white rounded-md"
                 >
@@ -144,6 +152,7 @@ class Register extends Component {
             </form>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
