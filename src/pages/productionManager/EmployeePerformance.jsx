@@ -9,6 +9,7 @@ import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/PMHeader';
 import SearchBar from '../../components/SearchBar';
+import LWMenuBar from './LWMenuBar';
 
 const EmployeePerformance = () => {
   const [empPerformance, setempPerformance] = useState([]);
@@ -35,6 +36,7 @@ const EmployeePerformance = () => {
         placeholder = 'Enter Employee ID' 
         onSearch = ''
       />
+      <LWMenuBar/>
       <div className = 'flex justify-between items-center m-5'>
         <Link to='/empPerformances/create'>
          <AddButton/>

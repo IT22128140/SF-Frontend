@@ -11,7 +11,7 @@ import PMHeader from '../../components/navbar/PMHeader';
 const CompletedrmRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
-  const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
+  const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status'];
 
   useEffect(() => {
     setLoading(true);
@@ -74,11 +74,11 @@ const CompletedrmRequests = () => {
               <td className='border border-slate-700 rounded-md'>
                 {rmrequest.Status}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              {/* <td className='border border-slate-700 rounded-md'>
                 <div className='flex justify-center gap-x-4'>
-                  {/* <Link to={ `/rmRequests/details/${rmrequest._id}`}>
+                  <Link to={ `/rmRequests/details/${rmrequest._id}`}>
                     <ViewButton/>
-                  </Link> */}
+                  </Link>
                   <Link to={`/rmRequests/edit/${rmrequest._id}`}>
                     <EditButton/>
                   </Link>
@@ -86,7 +86,7 @@ const CompletedrmRequests = () => {
                     <DeleteButton/>
                   </Link>
                 </div>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody> 
