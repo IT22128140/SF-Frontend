@@ -210,14 +210,14 @@ const App = () => {
       />
 
 
+ 
 
 
 
 
 
 
-
-
+ 
 
 
 
@@ -226,22 +226,16 @@ const App = () => {
       <Route path="/SupplierDetails/AddSuppliers" element={<AddSuppliers />} />
       <Route path="/SupplierDetails/EditSuppliers/:id" element={<EditSuppliers />} />
       <Route path="/SupplierDetails/DeleteSupplier/:id" element={<DeleteSupplier />} />
-
       <Route path= '/MachinePartStock' element = {<MachinePartStock/>} />
       <Route path= '/MachinePartStock/AddMachinepart' element = {<Addmachinepart/>} />
       <Route path= "/MachinePartStock/EditMpart/:id" element = {<EditMpart/>} />
       <Route path= "/MachinePartStock/DeleteMparts/:id" element = {<DeleteMparts/>} />
-
       <Route path= '/RawMaterialStock' element = {<RawMaterialStock/>} />
       <Route path= '/RawMaterialStock/AddRMaterial' element = {<AddRMaterial/>} />
       <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
-
-     <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
-    
-
-
-    <Route path= "/Popup" element = {<Popup/>} />
+      <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
+      <Route path= "/Popup" element = {<Popup/>} />
 
 
 
