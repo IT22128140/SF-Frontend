@@ -24,6 +24,13 @@ import Catalogue from './pages/onlinestore/Catalogue.jsx';
 
 
 
+ /* varagan */
+ import LoginEmp from './pages/LoginEmp.jsx';
+ import LoginCus from './pages/LoginCus.jsx';
+ import RegisCus from './pages/RegisCus.jsx';
+ import RegisEmp from './pages/RegisEmp.jsx';
+ import CusProfile from './pages/CusProfile.jsx';
+ 
 
 
 
@@ -200,7 +207,14 @@ const App = () => {
 
 
 
+       {/* varagan */} 
+      <Route path="/LoginEmp" element={<LoginEmp />} />
+      <Route path="/LoginCus" element={<LoginCus />} />
+      <Route path="/RegisCus" element={<RegisCus />} />
+      <Route path="/RegisEmp" element={<RegisEmp />} />
+      <Route path="/CusProfile" element={<CusProfile />} />
 
+      
 
 
 
