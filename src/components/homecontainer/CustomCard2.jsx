@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-const CustomCard2 = ({ mainHeader, subHeader1, subHeader2, description, button2Label, onButton1Click, onButton2Click }) => {
+const CustomCard2 = ({ mainHeader, subHeader1, subHeader2, description, button2Label, onButton1Click, onButton2Click, className }) => {
   return (
-    <div className="m-12 bg-bgc-300 h-130 w-134.5 md:w-4/10 rounded-xl hover:bg-bgc-300 duration-700 p-5 flex flex-col justify-center items-center">
+    <div className={`m-12 bg-bgc-300 h-130 w-134.5 md:w-4/10 rounded-xl hover:bg-bgc-300 duration-700 p-5 flex flex-col justify-center items-center ${className}`}>
       <h2 className="py-1 text-3xl text-white font-BreeSerif text-center">{mainHeader}</h2>
       <div className="m-12 bg-bgc h-20 w-96 md:w-1/4 rounded-xl hover:bg-bgc hover:scale-110 duration-700 p-5">
         <h2 className="py-0 text-2xl text-white font-BreeSerif text-center">{subHeader1}</h2>
@@ -43,8 +43,9 @@ CustomCard2.propTypes = {
   subHeader2: PropTypes.string,
   description: PropTypes.string,
   button2Label: PropTypes.string,
-  onButton1Click: PropTypes.func.isRequired,
-  onButton2Click: PropTypes.func.isRequired,
+  ClassName: PropTypes.string,
+  onButton1Click: PropTypes.func,
+  onButton2Click: PropTypes.func,
 };
 
 export default CustomCard2;
