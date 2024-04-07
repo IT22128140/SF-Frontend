@@ -1,16 +1,22 @@
-import React from 'react'
+import PropTypes from "prop-types";
+import { MdOutlineEdit } from "react-icons/md";
 
-const EditButton= ({onclick,className,children}) =>  {
-
+const EditButton = ({ onClick, className }) => {
   return (
-    <button onclick={onclick} className={`flex items-center justify-between px-7 py-2 bg-red-900 text-white rounded-md shadow-md focus:outline-none focus:rin-2 focus:ring-blue-600 ${className}`}>
-        <span className="mr-2">{children}</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-</svg>
-
+    <button
+      onClick={onClick}
+      className={`flex items-center w-fit h-fit justify-between p-1.5 text-md bg-red-900 text-white rounded-lg shadow-md font-BreeSerif  ${className}`}
+    >
+      <MdOutlineEdit className="text-xl ml-1 mr-2" />
+      <span className="mx-2">Edit</span>
     </button>
-  )
-}
+  );
+};
+
+EditButton.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  label: PropTypes.string,
+};
 
 export default EditButton;
