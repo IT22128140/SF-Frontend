@@ -29,7 +29,7 @@ import Catalogue from './pages/onlinestore/Catalogue.jsx';
  import LoginCus from './pages/LoginCus.jsx';
  import RegisCus from './pages/RegisCus.jsx';
  import RegisEmp from './pages/RegisEmp.jsx';
- import CusProfile from './pages/CusProfile.jsx';
+ import ProfileCus from './pages/ProfileCus.jsx';
  import EditProfile from './pages/EditProfile.jsx';
  
  
@@ -214,7 +214,7 @@ const App = () => {
       <Route path="/LoginCus" element={<LoginCus />} />
       <Route path="/RegisCus" element={<RegisCus />} />
       <Route path="/RegisEmp" element={<RegisEmp />} />
-      <Route path="/CusProfile" element={<CusProfile />} />
+      <Route path="/ProfileCus" element={<ProfileCus />} />
       <Route path="/EditProfile" element={<EditProfile />} />
 
       
