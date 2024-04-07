@@ -9,15 +9,15 @@ import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/PMHeader';
 
-const RawmRequests = () => {
+const PendingrmRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
-  const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
+  const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status'];
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/rmRequests')
+      .get('http://localhost:5555/rmRequests/pending')
       .then((response) => {
         setrmRequests(response.data.data);
         setLoading(false);
@@ -30,11 +30,11 @@ const RawmRequests = () => {
   return (
     <div className='relative'>
       <PMHeader/>
-      <div className = 'flex justify-between items-center m-5'>
+      {/* <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
         </Link>
-      </div>
+      </div> */}
       <div className = 'flex justify-between items-center m-5 font-BreeSerif'>
         <Link to = '/rmRequests/completed'>
           <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Completed Requests</button>
@@ -43,7 +43,7 @@ const RawmRequests = () => {
           <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>All Requests</button>
         </Link>
         <Link to = '/rmRequests/pending'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Pending Requests</button>
+          <button className = 'p-2 bg-RawmRequest m-8  text-ternary rounded-xl'>Pending Requests</button>
         </Link>
       </div>
       {loading ? (
@@ -75,11 +75,11 @@ const RawmRequests = () => {
               <td className='border border-slate-700 rounded-md'>
                 {rmrequest.Status}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              {/* <td className='border border-slate-700 rounded-md'>
                 <div className='flex justify-center gap-x-4'>
-                  {/* <Link to={ `/rmRequests/details/${rmrequest._id}`}>
+                  <Link to={ `/rmRequests/details/${rmrequest._id}`}>
                     <ViewButton/>
-                  </Link> */}
+                  </Link>
                   <Link to={`/rmRequests/edit/${rmrequest._id}`}>
                     <EditButton/>
                   </Link>
@@ -87,7 +87,7 @@ const RawmRequests = () => {
                     <DeleteButton/>
                   </Link>
                 </div>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody> 
@@ -97,4 +97,4 @@ const RawmRequests = () => {
   )
 }
 
-export default RawmRequests
+export default PendingrmRequests

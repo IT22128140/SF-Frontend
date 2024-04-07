@@ -8,18 +8,20 @@ import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/PMHeader';
+import SearchBar from '../../components/SearchBar';
+import LWMenuBar from './LWMenuBar';
 
-const RawmRequests = () => {
-  const [rmrequests, setrmRequests] = useState([]);
+const EmployeePerformance = () => {
+  const [empPerformance, setempPerformance] = useState([]);
   const [loading, setLoading] = useState(false);
-  const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
+  const headers = ['Employee ID', 'Line Number', 'Position Number', 'Standard Minute Value(SMV)', 'Working Hours', 'Other Notes', 'Operations'];
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/rmRequests')
+      .get('http://localhost:5555/empPerformances')
       .then((response) => {
-        setrmRequests(response.data.data);
+        setempPerformance(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -30,20 +32,14 @@ const RawmRequests = () => {
   return (
     <div className='relative'>
       <PMHeader/>
+      <SearchBar
+        placeholder = 'Enter Employee ID' 
+        onSearch = ''
+      />
+      <LWMenuBar/>
       <div className = 'flex justify-between items-center m-5'>
-        <Link to='/rmRequests/create'>
+        <Link to='/empPerformances/create'>
          <AddButton/>
-        </Link>
-      </div>
-      <div className = 'flex justify-between items-center m-5 font-BreeSerif'>
-        <Link to = '/rmRequests/completed'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Completed Requests</button>
-        </Link>
-        <Link to = '/RawmRequests'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>All Requests</button>
-        </Link>
-        <Link to = '/rmRequests/pending'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Pending Requests</button>
         </Link>
       </div>
       {loading ? (
@@ -52,40 +48,37 @@ const RawmRequests = () => {
         <table className = 'mx-auto font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
-          {rmrequests.map((rmrequest, index) => (
-            <tr key={rmrequest._id} className='h-8'>
+          {empPerformance.map((empPerformance, index) => (
+            <tr key={empPerformance._id} className='h-8'>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.RequestID}
+                {empPerformance.EmployeeID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Date}
+                {empPerformance.LineNumber}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.FabricType_Colour_Amount}
+                {empPerformance.PositionNumber}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.ButtonType_Colour_Amount}
+                {empPerformance.StandardMinuteValue}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.ThreadType_Colour_Amount}
+                {empPerformance.WorkingHours}
               </td>
               <td className='border border-slate-700 rounded-md'> 
-                {rmrequest.Other_Materials}
-              </td>
-              <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Status}
+                {empPerformance.OtherNotes}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 <div className='flex justify-center gap-x-4'>
-                  {/* <Link to={ `/rmRequests/details/${rmrequest._id}`}>
+                  <Link to={ `/empPerformances/details/${empPerformance._id}`}>
                     <ViewButton/>
-                  </Link> */}
-                  <Link to={`/rmRequests/edit/${rmrequest._id}`}>
+                  </Link>
+                  {/* <Link to={`/empPerformances/edit/${rmrequest._id}`}>
                     <EditButton/>
                   </Link>
-                  <Link to={`/rmRequests/delete/${rmrequest._id}`}>
+                  <Link to={`/empPerformances/delete/${rmrequest._id}`}>
                     <DeleteButton/>
-                  </Link>
+                  </Link> */}
                 </div>
               </td>
             </tr>
@@ -97,4 +90,4 @@ const RawmRequests = () => {
   )
 }
 
-export default RawmRequests
+export default EmployeePerformance
