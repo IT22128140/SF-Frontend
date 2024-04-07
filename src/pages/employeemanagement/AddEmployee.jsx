@@ -141,7 +141,7 @@ const AddEmployee = () => {
                     validation={{ required: "NIC is required" }}
                   />
                   <Input
-                    formtype="input"
+                    formtype="textarea"
                     label="Address"
                     id="address"
                     type="textarea"
@@ -202,9 +202,9 @@ const AddEmployee = () => {
                 </h3>
                 <div className="">
                   <div className="flex flex-col items-start">
-                    <label className="mb-2 ml-14">Occupation</label>
+                    <label className="mb-2 ">Occupation</label>
                     <select
-                      className="h-11 w-[80%] p-2 mb-2 ml-14 border-gray-200 rounded-md border-2"
+                      className="h-11 w-[100%] p-2 mb-2 border-gray-200 rounded-md border-2"
                       id="occupation"
                       name="occupation"
                       // value={occupation}

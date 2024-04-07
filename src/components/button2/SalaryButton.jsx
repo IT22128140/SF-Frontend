@@ -6,7 +6,7 @@ import { MdAttachMoney } from "react-icons/md";
 const SalaryButton = () => {
   return (
     <div>
-      <button className=" flex flex-row items-center text-lg justify-between w-fit h-fit py-2 px-1.5 rounded-lg text-white bg-black font-BreeSerif">
+      <button className=" flex flex-row items-center text-md justify-between w-fit h-fit p-1.5 rounded-lg text-white bg-black font-BreeSerif">
         <MdAttachMoney className="text-xl " />
         <span className="mr-2">Salary</span>
       </button>

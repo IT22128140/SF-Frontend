@@ -2,6 +2,7 @@
 // import { useState, useEffect, useRef } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 // import { TbDownload } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import DownloadButton from "../../components/button2/DownloadButton.jsx";
 import PropTypes from "prop-types";
 import QRCode from "qrcode.react";
@@ -45,7 +46,7 @@ const EmployeeModal = ({ employee, onClose }) => {
         >
           <div className="flex flex-row justify-evenly">
             <img
-              src="../../../public/emp.png"
+              src="/emp.png"
               className="w-36 m-4"
               alt="Employee Image"
             />
@@ -71,19 +72,26 @@ const EmployeeModal = ({ employee, onClose }) => {
 
               <div className="mt-4">
                 <DownloadButton download={download} />
-              </div>
+              </div>             
+            </div>
+
+            <div>
+              <Link to="/resign/RequestResignation" state={employee._id}>
+                <button className="border bg-black w-fit h-fit p-2 rounded-lg text-white font-BreeSerif text-lg shadow-md mt-2">
+                  Terminate</button>
+              </Link>
             </div>
           </div>
           <hr className="border-gray-500" />
-          <div className="flex flex-col gap-x-2 text-2xl font-BreeSerif p-2">
+          <div className="flex flex-col gap-x-2 text-xl font-BreeSerif p-2">
             <div className="flex flex-row justify-between m-2">
               <label className="mr-4 text-ternary">Full Name :</label>
               <input
                 type="text"
                 readOnly
                 value={employee.firstName + " " + employee.lastName}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">NIC : </label>
@@ -91,8 +99,8 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.nic}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Address :</label>
@@ -100,8 +108,8 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.address}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Email :</label>
@@ -109,8 +117,8 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.email}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Contact No :</label>
@@ -118,17 +126,17 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.contactNo}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Date Of Birth :</label>
               <input
                 type="text"
                 readOnly
-                value={employee.dateOfBirth}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                value={employee.dateOfBirth.split("T")[0]}
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Age :</label>
@@ -136,8 +144,8 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.age}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Occupation :</label>
@@ -145,8 +153,8 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.occupation}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Basic Salary :</label>
@@ -154,17 +162,17 @@ const EmployeeModal = ({ employee, onClose }) => {
                 type="text"
                 readOnly
                 value={employee.basicSalary}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
             <div className="flex flex-row m-2 justify-between">
               <label className="mr-4 text-ternary">Admission Date :</label>
               <input
                 type="text"
                 readOnly
-                value={employee.admissionDate}
-                className="border border-gray-500 rounded-lg text-gray-600"
-              ></input>
+                value={employee.admissionDate.split("T")[0]}
+                className="border border-gray-500 rounded-lg text-gray-600 px-2"
+              />
             </div>
           </div>
         </div>
