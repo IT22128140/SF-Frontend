@@ -32,12 +32,12 @@ import HrDashboard from "./pages/employeemanagement/HrDashboard.jsx";
 import CurrentEmployeeList from "./pages/employeemanagement/CurrentEmployeeList.jsx";
 import AddEmployee from "./pages/employeemanagement/AddEmployee.jsx";
 import EditEmployee from "./pages/employeemanagement/EditEmployee.jsx";
-import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
-
-
-
-
-
+// import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
+import ResignedEmployeeList from "./pages/employeemanagement/ResignedEmployeeList.jsx";
+import FiredEmployeeList from "./pages/employeemanagement/FiredEmployeeList.jsx";
+import RequestResignation from "./pages/employeemanagement/RequestResignation.jsx"
+import TerminationPendingList from "./pages/employeemanagement/TerminationPendingList.jsx"
+import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 
 
 
@@ -214,15 +214,15 @@ const App = () => {
       />
       <Route path="/employees/AddEmployee" element={<AddEmployee />} />
       <Route path="/employees/EditEmployee/:id" element={<EditEmployee />} />
-      <Route
+      {/* <Route
         path="/employees/DeleteEmployee/:id"
         element={<DeleteEmployee />}
-      />
-
-
-
-
-
+      /> */}
+      <Route path="/resign/ResignEmployeeList" element={<ResignedEmployeeList />} />
+      <Route path="/resign/FiredEmployeeList" element={<FiredEmployeeList />} />
+      <Route path="/resign/RequestResignation" element={<RequestResignation />} />
+      <Route path="/resign/TerminationPendingList" element={<TerminationPendingList />} />
+      <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
 
 
 
