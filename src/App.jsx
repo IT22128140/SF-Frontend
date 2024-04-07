@@ -24,6 +24,13 @@ import Catalogue from './pages/onlinestore/Catalogue.jsx';
 
 
 
+ /* varagan */
+ import LoginEmp from './pages/LoginEmp.jsx';
+ import LoginCus from './pages/LoginCus.jsx';
+ import RegisCus from './pages/RegisCus.jsx';
+ import RegisEmp from './pages/RegisEmp.jsx';
+ import CusProfile from './pages/CusProfile.jsx';
+ 
 
 
 
@@ -48,8 +55,8 @@ import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.
 
 
 
-
 /* Isuru */
+
 import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
 import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
@@ -64,12 +71,7 @@ import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
 import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
-
-
-
-
-
-
+import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
 
 
 
@@ -126,8 +128,6 @@ import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
 import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
-import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
-
 
 
 
@@ -200,7 +200,14 @@ const App = () => {
 
 
 
+       {/* varagan */} 
+      <Route path="/LoginEmp" element={<LoginEmp />} />
+      <Route path="/LoginCus" element={<LoginCus />} />
+      <Route path="/RegisCus" element={<RegisCus />} />
+      <Route path="/RegisEmp" element={<RegisEmp />} />
+      <Route path="/CusProfile" element={<CusProfile />} />
 
+      
 
 
 
@@ -208,16 +215,9 @@ const App = () => {
       {/* Sandithi */}
 
       <Route path="/HrDashboard" element={<HrDashboard />} />
-      <Route
-        path="/employees/CurrentEmployeeList"
-        element={<CurrentEmployeeList />}
-      />
+      <Route path="/employees/CurrentEmployeeList" element={<CurrentEmployeeList />}/>
       <Route path="/employees/AddEmployee" element={<AddEmployee />} />
       <Route path="/employees/EditEmployee/:id" element={<EditEmployee />} />
-      {/* <Route
-        path="/employees/DeleteEmployee/:id"
-        element={<DeleteEmployee />}
-      /> */}
       <Route path="/resign/ResignEmployeeList" element={<ResignedEmployeeList />} />
       <Route path="/resign/FiredEmployeeList" element={<FiredEmployeeList />} />
       <Route path="/resign/RequestResignation" element={<RequestResignation />} />
@@ -227,7 +227,7 @@ const App = () => {
 
 
 
-
+ 
 
 
 
@@ -236,23 +236,17 @@ const App = () => {
       <Route path="/SupplierDetails/AddSuppliers" element={<AddSuppliers />} />
       <Route path="/SupplierDetails/EditSuppliers/:id" element={<EditSuppliers />} />
       <Route path="/SupplierDetails/DeleteSupplier/:id" element={<DeleteSupplier />} />
-
       <Route path= '/MachinePartStock' element = {<MachinePartStock/>} />
       <Route path= '/MachinePartStock/AddMachinepart' element = {<Addmachinepart/>} />
       <Route path= "/MachinePartStock/EditMpart/:id" element = {<EditMpart/>} />
       <Route path= "/MachinePartStock/DeleteMparts/:id" element = {<DeleteMparts/>} />
-
       <Route path= '/RawMaterialStock' element = {<RawMaterialStock/>} />
       <Route path= '/RawMaterialStock/AddRMaterial' element = {<AddRMaterial/>} />
       <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
-
-     <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
-    
-
-
-    <Route path= "/Popup" element = {<Popup/>} />
-
+      <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
+      <Route path= "/Popup" element = {<Popup/>} />
+      <Route path= "/IsHome" element = {<IsHome/>} />
 
 
 
@@ -317,7 +311,6 @@ const App = () => {
 
 
       {/* Hiranya */}
-
       <Route path="/repairs" element={<MaintenanceHome />} />
       <Route path="/repairs/create" element={<CreateRepairRequests />} />
       <Route path="/repairs/view" element={<ViewRepairs />} />
