@@ -1,4 +1,8 @@
 import React from 'react';
+import HomeSlideShow from "../../components/home/HomeSlideShow.jsx";
+import Footer from "../../components/footer/Footer.jsx";
+import Navbar from "../../components/navbar/CustomerNavbar.jsx";
+import HorizontalScroll from "../../components/HorizontalScroll.jsx";
 
 function App() {
   return (

@@ -12,6 +12,7 @@ class Register extends Component {
       LaststName: "",
       emailAddress: "",
       phoneNumber: "",
+      EmployeeType: "",
       password: "",
       password2: "",
       errors: {}
@@ -30,6 +31,7 @@ class Register extends Component {
       LaststName: this.state.LaststName,
       emailAddress: this.state.emailAddress,
       phoneNumber: this.state.phoneNumber,
+      EmployeeType: this.state.EmployeeType,
       password: this.state.password,
       password2: this.state.password2
     };

@@ -13,7 +13,7 @@ const Login = () => {
         <input
           className="mt-8 w-[100%] p-3 border-gray-200 rounded-md border-2"
           type="text"
-          placeholder="Email Address/Phone Number"
+          placeholder="Email Address"
         ></input>
         <input
           className=" mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
