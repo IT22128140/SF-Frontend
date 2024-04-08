@@ -1,55 +1,72 @@
-import React from 'react';
+import React, { useState } from "react";
+import Footer from "../components/footer/Footer.jsx";
 
-export default Index;
+function EditProfile() {
+    const [profileInfo, setProfileInfo] = useState({
+      FirstName: 'John',
+      LastName: 'Doe',
+      emailAddress: 'john.doe@example.com',
+      phoneNumber: '555-1234',
+      password: '*********'
+    });
+  
 
-function Index() {
-    
-    return (
-        <Layout>
-            <h1>Users</h1>
-            <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th style={{ width: '30%' }}>First Name</th>
-                        <th style={{ width: '30%' }}>Last Name</th>
-                        <th style={{ width: '30%' }}>Username</th>
-                        <th style={{ width: '10%' }}></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users && users.map(user =>
-                        <tr key={user.id}>
-                            <td>{user.firstName}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.username}</td>
-                            <td style={{ whiteSpace: 'nowrap' }}>
-                                <Link href={`/users/edit/${user.id}`} className="btn btn-sm btn-primary me-1">Edit</Link>
-                                <button onClick={() => deleteUser(user.id)} className="btn btn-sm btn-danger btn-delete-user" style={{ width: '60px' }} disabled={user.isDeleting}>
-                                    {user.isDeleting
-                                        ? <span className="spinner-border spinner-border-sm"></span>
-                                        : <span>Delete</span>
-                                    }
-                                </button>
-                            </td>
-                        </tr>
-                    )}
-                    {!users &&
-                        <tr>
-                            <td colSpan="4">
-                                <Spinner />
-                            </td>
-                        </tr>
-                    }
-                    {users && !users.length &&
-                        <tr>
-                            <td colSpan="4" className="text-center">
-                                <div className="p-2">No Users To Display</div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </Layout>
-    );
+  const handleInputChange = (e, field) => {
+    setProfileInfo({ ...profileInfo, [field]: e.target.value });
+  };
+
+
+  return (
+    <div className="flex flex-col justify-center items-center min-h-screen p-36  pr-36">
+      <div className=" p-2 mb-2 rounded-lg w-1/6 pr-2">
+        <img src="emp.png" alt="Logo 1" />
+      </div>
+      <div className="bg-white p-8 rounded-lg shadow-md mb-4">
+        <h1 className="text-4xl font-bold mb-4 text-center">EDIT PROFILE DETAILS</h1>
+        <div className="flex flex-wrap">
+          <div className="bg-primary p-2 mb-2  w-1/2 pr-2">
+            <p>First Name</p>
+          </div>
+          <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
+            <input type="text" value={profileInfo.FirstName} onChange={(e) => handleInputChange(e, 'FirstName')} />
+          </div>
+          <div className="bg-primary p-2 mb-2  w-1/2 pr-2">
+            <p>Last Name</p>
+          </div>
+          <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
+            <input type="text" value={profileInfo.LastName} onChange={(e) => handleInputChange(e, 'LastName')} />
+          </div>
+          <div className="bg-primary p-2 mb-2  w-1/2 pr-2">
+            <p>Email Address</p>
+          </div>
+          <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
+            <input type="text" value={profileInfo.emailAddress} onChange={(e) => handleInputChange(e, 'emailAddress')} />
+          </div>
+          <div className="bg-primary p-2 mb-2  w-1/2 pr-2">
+            <p>Phone Number</p>
+          </div>
+          <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
+            <input type="text" value={profileInfo.phoneNumber} onChange={(e) => handleInputChange(e, 'phoneNumber')} />
+          </div>
+          <div className="bg-primary p-2 mb-2 w-1/2 pr-2">
+            <p>Password</p>
+          </div>
+          <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
+            <input type="password" value={profileInfo.password} onChange={(e) => handleInputChange(e, 'password')} />
+          </div>
+        </div>
+      </div>
+      <div className="w-full flex justify-between">
+              <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
+              //onClick={handleSaveProfile} // Add an onClick event handler to call a function for saving
+              >SAVE</button>
+              <button className="bg-del text-white font-bold py-2 px-8 rounded mt-4"
+              //onClick={handleDeleteProfile} // Add an onClick event handler to call a function for saving
+              >DELETE</button>
+            </div>
+            <Footer />
+    </div>
+  );
 }
+
+export default EditProfile;
