@@ -74,7 +74,7 @@ function EditProfile() {
               //onClick={handleSaveProfile} // Add an onClick event handler to call a function for saving
               >SAVE</button>
               <button className="bg-del text-white font-bold py-2 px-8 rounded mt-4"
-              //onClick={handleDeleteProfile} // Add an onClick event handler to call a function for saving
+              //onClick={handleDeleteProfile} // Add an onClick event handler to call a function for deleting
               >DELETE</button>
             </div>
             <Footer />
