@@ -6,6 +6,7 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import { Link } from 'react-router-dom';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
 const SupplierDetails = () => {
   const [Suppliers, setSuppliers] = useState([]);
@@ -36,7 +37,8 @@ const SupplierDetails = () => {
   };
 
   return (
-    <div className="p-10">
+    <div className="p-1">
+      <IsNavbar sd = {true} />
       <div className="flex items-center justify-between">
         <h1 className="my-9 text-8xl">Supplier Details</h1>
       </div>

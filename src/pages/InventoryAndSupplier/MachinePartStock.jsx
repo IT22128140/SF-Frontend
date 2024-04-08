@@ -6,6 +6,7 @@ import TableView from '../../components/table/TableView';
 import DeleteButton  from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import AddButton from '../../components/button2/AddButton';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
 
 const MachinePartStock = () => {
@@ -39,7 +40,8 @@ const MachinePartStock = () => {
   };
 
   return (
-    <div className="p-10">
+    <div className="p-1">
+      <IsNavbar MpS = {true} />
       <div className="flex items-center justify-between">
   <h1 className=" my-9 text-8xl">Machine Part Stock</h1>
 </div>
