@@ -9,7 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 const FooterSocialLinks = () => {
   return (
     <div className="flex flex-col justify-evenly ml-[2%] w-[14%]">
-      <h1 className="mt-[40%] w-[100%] text-center text-[140%] border-t-primary pt-5 border-t-[3px] font-Lavish font-bold lg:text-5xl sm:text-2xl">
+      <h1 className="mt-[40%] w-[100%] text-center text-[140%] text-primary border-t-primary pt-5 border-t-[3px] font-Lavish font-bold lg:text-5xl sm:text-2xl">
         Serendib Fashion
       </h1>
 

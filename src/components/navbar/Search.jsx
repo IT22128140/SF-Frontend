@@ -42,6 +42,7 @@ const Search = () => {
         <input
           className=" h-10 border-2 border-primary rounded-l-xl shadow-md focus:outline-none pl-2"
           value={keyword}
+          placeholder="Search..."
           onChange={(e) => filteredOptions(e)}
         ></input>
         <div className=" bg-primary text-white h-10 w-10  rounded-r-xl shadow-md">

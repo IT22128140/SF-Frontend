@@ -43,7 +43,7 @@ const Catalogue = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [recievedData]);
 
   if (loading) {
     return <Spinner />;

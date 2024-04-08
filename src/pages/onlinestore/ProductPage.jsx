@@ -56,11 +56,8 @@ const ProductPage = () => {
   });
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner/>;
   }
-  console.log(product.sizes);
-  console.log(product);
-
   return (
     <div>
       <Navbar />

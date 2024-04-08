@@ -1,6 +1,7 @@
 //import React from 'react'
 import PropTypes from "prop-types";
 import { LuChevronDown } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const DropDownButton = (props) => {
   return (
@@ -14,9 +15,9 @@ const DropDownButton = (props) => {
       <div className="invisible absolute z-50 flex w-full flex-col bg-bgc rounded-md text-ternary shadow-xl group-hover:visible">
 
       {props.options.map((opt) => (
-        <a key={opt.id} className="rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary hover:text-bgc" href={props.link}>
+        <Link onClick={props.onClick} key={opt.id} className="rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary hover:text-bgc" to={opt.url} state={opt.state}>
           {opt.option}
-        </a>
+        </Link>
       ))}
       </div>
     </div>
@@ -26,7 +27,7 @@ const DropDownButton = (props) => {
 DropDownButton.propTypes = {
     title: PropTypes.string,
     options: PropTypes.array,
-    link: PropTypes.string,
+    onClick: PropTypes.func,
 }
 
 export default DropDownButton;

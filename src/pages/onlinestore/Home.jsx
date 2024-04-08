@@ -42,12 +42,12 @@ const Home = () => {
 
       <div className="flex flex-col">
         <div className="flex flex-row justify-evenly">
-          <Category image="./Picture1.jpg" heading="Male" link="./Catalogue" state={"mens"}/>
+          <Category image="./Clothes/mens.jpg" heading="Male" link="./Catalogue" state={"mens"}/>
           <Category image="./Picture1.jpg" heading="Women" link="./Catalogue" state={"women"} />
         </div>
         <div className="flex flex-row justify-evenly">
-          <Category image="./Picture1.jpg" heading="Unisex" link="./Catalogue" state={"unisex"}  />
-          <Category image="./Picture1.jpg" heading="Kids" link="./Catalogue" state={"kids"} />
+          <Category image="./Clothes/unisex.jpg" heading="Unisex" link="./Catalogue" state={"unisex"}  />
+          <Category image="./Clothes/kids.jpg" heading="Kids" link="./Catalogue" state={"kids"} />
         </div>
       </div>
 

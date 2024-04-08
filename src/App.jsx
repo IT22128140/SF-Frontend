@@ -12,8 +12,8 @@ import Cart from './pages/onlinestore/Cart.jsx';
 import Checkout from './pages/onlinestore/Checkout.jsx';
 import Addresses from './pages/onlinestore/Addresses.jsx';
 import Catalogue from './pages/onlinestore/Catalogue.jsx';
-
-
+import Orders from "./pages/onlinestore/Orders.jsx";
+import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
 
 
 
@@ -180,8 +180,8 @@ const App = () => {
       <Route path="/Checkout" element={<Checkout />} />
       <Route path='/Addresses' element={<Addresses/>} />
       <Route path='/Catalogue' element={<Catalogue/>} />
-
-
+      <Route path='/Orders' element={<Orders/>} />
+      <Route path='/OngoingOrders' element={<OngoingOrders/>} />
 
 
 
