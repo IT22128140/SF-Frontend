@@ -15,8 +15,8 @@ const Select = (props) => {
   const isInvalid = isFormInvalid(inputError);
 
   return (
-    <>
-      <div className="flex w-[80%] justify-between mb-2">
+    <div className="flex flex-col font-BreeSerif ">
+      <div className="flex justify-between mb-2">
         <label>{props.label}</label>
         <AnimatePresence mode="wait" initial={false}>
           {isInvalid && (
@@ -28,12 +28,13 @@ const Select = (props) => {
         </AnimatePresence>
       </div>
       <select
-        className="h-11 w-[80%] p-2 border-gray-200 rounded-md border-2"
+        className="h-11 p-2 border-gray-200 rounded-md border-2 shadow-sm"
         id={props.id}
         placeholder={props.placeholder}
         value={props.value}
         name={props.name}
         disabled={props.disabled}
+        // onChange={props.onChange}
         {...register(props.name, props.validation)}
       >
         <option value="" defaultChecked hidden>
@@ -45,7 +46,7 @@ const Select = (props) => {
           </option>
         ))}
       </select>
-    </>
+    </div>
   );
 };
 
