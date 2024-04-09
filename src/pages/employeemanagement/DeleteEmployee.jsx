@@ -58,6 +58,7 @@ const DeleteEmployee = ({ id, onClose }) => {
 
           <div className="flex flex-row mt-4">
             <DeleteButton onClick={handleDeleteEmployee}/>
+            &nbsp;&nbsp;&nbsp;
             <CancelButton onClick={onClose}/>
           </div>
           {/* <button

@@ -7,7 +7,7 @@ const CancelButton = ({ onClick }) => {
   return (
     <div>
       <button
-        className="border bg-black w-fit h-fit p-2 rounded-lg text-white font-BreeSerif text-lg shadow-md"
+        className="border bg-black w-fit h-fit p-1.5 rounded-lg text-white font-BreeSerif text-lg shadow-md"
         onClick={onClick}
       >
         <div className="flex flex-row items-center">

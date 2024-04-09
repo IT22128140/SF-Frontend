@@ -45,7 +45,7 @@ const Input = (props) => {
           ),
           textarea: (
             <textarea
-              className=""
+              className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm"
               id={props.id}
               type={props.type}
               placeholder={props.placeholder}

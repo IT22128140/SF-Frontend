@@ -9,17 +9,17 @@ import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/PMHeader';
 
-const RawmRequests = () => {
-  const [rmrequests, setrmRequests] = useState([]);
+const RawmDistributions = () => {
+  const [rmdistributes, setrmDistributes] = useState([]);
   const [loading, setLoading] = useState(false);
-  const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
+  const headers = ['Distribute ID', 'Date', 'Line Number', 'Position Number', 'Distributed', 'Shortage', 'Operations'];
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/rmRequests')
+      .get('http://localhost:5555/rmDistributes')
       .then((response) => {
-        setrmRequests(response.data.data);
+        setrmDistributes(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -31,19 +31,8 @@ const RawmRequests = () => {
     <div className='relative'>
       <PMHeader/>
       <div className = 'flex justify-between items-center m-5'>
-        <Link to='/rmRequests/create'>
+        <Link to='/rmDistributes/create'>
          <AddButton/>
-        </Link>
-      </div>
-      <div className = 'flex justify-between items-center m-5 font-BreeSerif'>
-        <Link to = '/rmRequests/completed'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Completed Requests</button>
-        </Link>
-        <Link to = '/RawmRequests'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>All Requests</button>
-        </Link>
-        <Link to = '/rmRequests/pending'>
-          <button className = 'p-2 bg-RawmRequest m-8 text-ternary rounded-xl'>Pending Requests</button>
         </Link>
       </div>
       {loading ? (
@@ -52,39 +41,39 @@ const RawmRequests = () => {
         <table className = 'mx-auto font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
-          {rmrequests.map((rmrequest, index) => (
-            <tr key={rmrequest._id} className='h-8'>
+          {rmdistributes.map((rmdistribute, index) => (
+            <tr key={rmdistribute._id} className='h-8'>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.RequestID}
+                {rmdistribute.DistributeID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Date}
+                {rmdistribute.Date}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.FabricType_Colour_Amount}
+                {rmdistribute.LineNumber}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.ButtonType_Colour_Amount}
+                {rmdistribute.PositionNumber}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.ThreadType_Colour_Amount}
+                {rmdistribute.Distributed}
               </td>
               <td className='border border-slate-700 rounded-md'> 
-                {rmrequest.Other_Materials}
-              </td>
-              <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Status}
+                {rmdistribute.Shortage}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 <div className='flex justify-center gap-x-4'>
-                  {/* <Link to={ `/rmRequests/details/${rmrequest._id}`}>
+                  <Link to={ `/rmDistributes/details/${rmdistribute._id}`}>
                     <ViewButton/>
-                  </Link> */}
-                  <Link to={`/rmRequests/edit/${rmrequest._id}`}>
+                  </Link>
+                  <Link to={`/rmDistributes/edit/${rmdistribute._id}`}>
                     <EditButton/>
                   </Link>
-                  <Link to={`/rmRequests/delete/${rmrequest._id}`}>
+                  <Link to={`/rmDistributes/delete/${rmdistribute._id}`}>
                     <DeleteButton/>
+                  </Link>
+                  <Link to={`/rmRequests/create`}>
+                    <AddButton/>
                   </Link>
                 </div>
               </td>
@@ -97,4 +86,4 @@ const RawmRequests = () => {
   )
 }
 
-export default RawmRequests
+export default RawmDistributions
