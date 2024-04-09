@@ -37,6 +37,9 @@ export default {
 
 
         //Ridmi
+        'formbg' : "#D9D9D9",
+        'PMnavbar' : "#DEE2E6",
+        'RawmRequest' : "#F8D3C0"
 
 
 
