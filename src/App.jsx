@@ -76,6 +76,8 @@ import SalaryHistory from './pages/salarymanager/SalaryHistory.jsx';
 import DeleteSalary from './pages/salarymanager/DeleteSalary.jsx';
 import GenerateSalary from './pages/salarymanager/GenerateSalary.jsx';
 import ViewSalary from './pages/salarymanager/ViewSalary.jsx';
+import EditSalaryBalance from './pages/salarymanager/EditSalaryBalance.jsx';
+import Payment from './pages/OnlinnePayment/Payment.jsx';
 
 
 
@@ -320,11 +322,13 @@ const App = () => {
 
 
       {/* Gihan */}
-      <Route path="/ChequeSubmit" element={<ChequeSubmit />} />
+      <Route path="/ChequeSubmit/:id" element={<ChequeSubmit />} />
       <Route path="/SalaryHistory" element={<SalaryHistory />} />
-      <Route path="/DeleteSalary" element={<DeleteSalary />} />
-      <Route path="/GenerateSalary" element={<GenerateSalary />} />
-      <Route path="/ViewSalary" element={<ViewSalary />} />
+      <Route path="/DeleteSalary/:id" element={<DeleteSalary />} />
+      <Route path="/GenerateSalary/:id" element={<GenerateSalary />} />
+      <Route path="/ViewSalary/:id" element={<ViewSalary />} />
+      <Route path="/EditSalaryBalance/:id" element={<EditSalaryBalance />} />
+      <Route path="/Payment/:id" element={<Payment />} />
       
 
 
