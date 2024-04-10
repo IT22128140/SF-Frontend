@@ -3,7 +3,6 @@ import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
 import { Link } from "react-router-dom";
 
-
 class Register extends Component {
   constructor() {
     super();
@@ -50,7 +49,7 @@ class Register extends Component {
             </div>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="mb-4">
-              <p className="text-black-600 mb-4">First Name </p>
+                <p className="text-black-600 mb-4">First Name </p>
                 <input
                   onChange={this.onChange}
                   value={this.state.FirstName}
@@ -62,7 +61,7 @@ class Register extends Component {
                 />
               </div>
               <div className="mb-4">
-              <p className="text-black-600 mb-4">Last Name </p>
+                <p className="text-black-600 mb-4">Last Name </p>
                 <input
                   onChange={this.onChange}
                   value={this.state.LastName}
@@ -74,7 +73,7 @@ class Register extends Component {
                 />
               </div>
               <div className="mb-4">
-              <p className="text-black-600 mb-4">Email Address </p>
+                <p className="text-black-600 mb-4">Email Address </p>
                 <input
                   onChange={this.onChange}
                   value={this.state.emailAddress}
@@ -86,7 +85,7 @@ class Register extends Component {
                 />
               </div>
               <div className="mb-4">
-              <p className="text-black-600 mb-4">Phone Number </p>
+                <p className="text-black-600 mb-4">Phone Number </p>
                 <input
                   onChange={this.onChange}
                   value={this.state.phoneNumber}
@@ -98,7 +97,7 @@ class Register extends Component {
                 />
               </div>
               <div className="mb-4">
-              <p className="text-black-600 mb-4">Password </p>
+                <p className="text-black-600 mb-4">Password </p>
                 <input
                   onChange={this.onChange}
                   value={this.state.password}
@@ -110,7 +109,7 @@ class Register extends Component {
                 />
               </div>
               <div className="mb-4">
-              <p className="text-black-600 mb-4">Re-Type Password</p>
+                <p className="text-black-600 mb-4">Re-Type Password</p>
                 <input
                   onChange={this.onChange}
                   value={this.state.password2}
@@ -123,11 +122,10 @@ class Register extends Component {
               </div>
               <div className="text-center">
                 <button
-                  
                   type="submit"
                   className="mt-3 w-[100%] p-3 bg-orange-600 text-white rounded-md"
                 >
-                  
+                  REGISTER
                 </button>
                 <p className="text-gray-600 mb-4">Already have an account? <Link to="/LoginCus" className="text-blue-500">Log in</Link></p>
               </div>

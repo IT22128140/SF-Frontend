@@ -2,22 +2,13 @@ import React, { useState } from 'react';
 import Footer from "../components/footer/Footer";
 
 const FeedbackPage = () => {
-  const [feedbacks, setFeedbacks] = useState([
+  const [feedbacks] = useState([
     { feedback: 'Great job!', rating: 5, name: 'John Doe', email: 'johndoe@example.com' },
     { feedback: 'Very helpful', rating: 4, name: 'Jane Smith', email: 'janesmith@example.com' },
     { feedback: 'Nice work', rating: 3, name: 'Alex Johnson', email: 'alexjohnson@example.com' }
   ]);
-  const [newFeedback, setNewFeedback] = useState('');
-  const [newRating, setNewRating] = useState(0);
-
-  const handleAddFeedback = () => {
-    if (newFeedback && newRating > 0 && newRating <= 5) {
-      setFeedbacks([...feedbacks, { feedback: newFeedback, rating: newRating, name: 'New User', email: 'newuser@example.com' }]);
-      setNewFeedback('');
-      setNewRating(0);
-    }
-  };
-
+ 
+  
   const renderStarRating = (rating) => {
     const stars = [];
     for (let i = 0; i < rating; i++) {

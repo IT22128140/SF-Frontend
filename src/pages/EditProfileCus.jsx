@@ -13,6 +13,15 @@ function EditProfile() {
     const handleInputChange = (e, field) => {
         setProfileInfo({ ...profileInfo, [field]: e.target.value });
     };
+    const handleSaveProfile = () => {
+        // Add code to save profile information
+        console.log("Profile information saved:", profileInfo);
+    };
+    
+    const handleDeleteProfile = () => {
+        // Add code to delete profile
+        console.log("Profile deleted");
+    };
 
     return (
         <div className="flex flex-col justify-center items-center min-h-screen p-36 pr-36">
@@ -56,10 +65,10 @@ function EditProfile() {
             </div>
             <div className="w-full flex justify-between">
                 <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
-                //onClick={handleSaveProfile} // Add an onClick event handler to call a function for saving
+                onClick={handleSaveProfile} // Add an onClick event handler to call a function for saving
                 >SAVE</button>
                 <button className="bg-del text-white font-bold py-2 px-8 rounded mt-4"
-                //onClick={handleDeleteProfile} // Add an onClick event handler to call a function for deleting
+                onClick={handleDeleteProfile} // Add an onClick event handler to call a function for deleting
                 >DELETE</button>
             </div>
             <Footer />
