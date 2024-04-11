@@ -11,11 +11,11 @@ const SearchBar = ({ placeholder, onSearch }) => {
   };
 
   return (
-    <div className="fixed top-0 right-0 m-4">
+    <div className="fixed m-4">
       <div className="relative flex items-center">
 
       <div className="bg-white p-2 flex items-center h-[45px] border-t border-l border-b border-black">
-          <IoSearch className="text-ternary mr-1" />
+          <IoSearch className="mr-1 text-ternary" />
           
         </div>
         <input

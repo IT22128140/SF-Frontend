@@ -5,25 +5,35 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
 
+
 const AddRMaterial = () => {
+    const [requestID,setrequestID] = useState('');
     const [materialType, setMaterialType] = useState('');
     const [colorAndDesign, setColorAndDesign] = useState('');
-    const [quantity, setQuantity] = useState('');
+    const [initialquantity, setinitialquantity] = useState('');
+    const [costperunit, setcostperunit] = useState('');
+    const [restockingdate, setrestockingdate] = useState('');
+    const [availablequantity, setavailablequantity] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSaveRmaterials = () => {
         const data = {
+            
+            requestID,
             materialType,
             colorAndDesign,
-            quantity,
+            initialquantity,
+            costperunit,
+            restockingdate,
+            availablequantity
         };
         setLoading(true);
         axios
             .post('http://localhost:5555/RMstock', data)
             .then(() => {
                 setLoading(false);
-                navigate('/'); // Navigate to the RawMaterialStock page
+                navigate('/RawMaterialStock'); // Navigate to the RawMaterialStock page
             })
             .catch((error) => {
                 setLoading(false);
@@ -38,8 +48,17 @@ const AddRMaterial = () => {
             <h1 className='my-4 text-3xl'>Add Raw materialStock</h1>
             {loading ? <Spinner /> : ''}
             <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+            <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500'>Request id </label>
+                    <input
+                        type='String'
+                        value={requestID}
+                        onChange={(e) => setrequestID(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                    </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>material Type</label>
+                    <label className='mr-4 text-xl text-gray-500'>Material Type</label>
                     <input
                         type='String'
                         value={materialType}
@@ -57,15 +76,32 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>quantity</label>
+                    <label className='mr-4 text-xl text-gray-500'>Initialquantity</label>
                     <input
                         type='number'
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
+                        value={initialquantity}
+                        onChange={(e) => setinitialquantity(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div>
-
+                <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500'>restockingdate</label>
+                    <input
+                        type='Date'
+                        value={restockingdate}
+                        onChange={(e) => setrestockingdate(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                </div>
+                <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500'>Availablequantity</label>
+                    <input
+                        type='number'
+                        value={availablequantity}
+                        onChange={(e) => setavailablequantity(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                </div>
                 <SubmitButton onClick={handleSaveRmaterials} className="mr-2">Submit</SubmitButton>
 
 
