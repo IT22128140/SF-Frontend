@@ -6,6 +6,7 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import { Link } from 'react-router-dom';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 const SupplieredRaws = () => {
@@ -79,6 +80,7 @@ const SupplieredRaws = () => {
       </Link>
      
       </div>
+      <StaffFooter/>
     </div>
   );
 };
