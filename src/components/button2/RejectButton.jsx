@@ -7,7 +7,7 @@ const RejectButton = ({ onclick, className }) => {
   return (
     <button
       onClick={onclick}
-      className={`flex items-center justify-betweenh-fit w-fit p-1.5 font-BreeSerif text-lg bg-red-700 text-white rounded-lg shadow-md  ${className}`}
+      className={`flex items-center justify-betweenh-fit w-fit p-1.5 font-BreeSerif text-md bg-red-700 text-white rounded-lg shadow-md  ${className}`}
     >
       <MdOutlineCancel className="text-xl" />
       <span className="px-2">Reject</span>

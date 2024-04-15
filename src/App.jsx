@@ -39,12 +39,12 @@ import HrDashboard from "./pages/employeemanagement/HrDashboard.jsx";
 import CurrentEmployeeList from "./pages/employeemanagement/CurrentEmployeeList.jsx";
 import AddEmployee from "./pages/employeemanagement/AddEmployee.jsx";
 import EditEmployee from "./pages/employeemanagement/EditEmployee.jsx";
-import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
-
-
-
-
-
+// import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
+import ResignedEmployeeList from "./pages/employeemanagement/ResignedEmployeeList.jsx";
+import FiredEmployeeList from "./pages/employeemanagement/FiredEmployeeList.jsx";
+import RequestResignation from "./pages/employeemanagement/RequestResignation.jsx"
+import TerminationPendingList from "./pages/employeemanagement/TerminationPendingList.jsx"
+import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 
 
 
@@ -82,11 +82,14 @@ import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
 
 
 /* Gihan */
-import ChequeSubmit from "./pages/salarymanager/ChequeSubmit.jsx";
-import SalaryHistory from "./pages/salarymanager/SalaryHistory.jsx";
-import DeleteSalary from "./pages/salarymanager/DeleteSalary.jsx";
-import GenerateSalary from "./pages/salarymanager/GenerateSalary.jsx";
-import ViewSalary from "./pages/salarymanager/ViewSalary.jsx";
+import ChequeSubmit from './pages/salarymanager/ChequeSubmit.jsx';
+import SalaryHistory from './pages/salarymanager/SalaryHistory.jsx';
+import DeleteSalary from './pages/salarymanager/DeleteSalary.jsx';
+import GenerateSalary from './pages/salarymanager/GenerateSalary.jsx';
+import ViewSalary from './pages/salarymanager/ViewSalary.jsx';
+import EditSalaryBalance from './pages/salarymanager/EditSalaryBalance.jsx';
+import Payment from './pages/OnlinnePayment/Payment.jsx';
+import SlipUpload from './pages/OnlinnePayment/SlipUpload.jsx';
 
 
 
@@ -103,17 +106,17 @@ import ViewSalary from "./pages/salarymanager/ViewSalary.jsx";
 
 
 /* Sageevan */
-
-
-
-
-
-
-
-
-
-
-
+import QualityControl from './pages/QualityControl/QualityControl.jsx';
+import AddFinalProduct from './pages/QualityControl/AddFinalProduct.jsx'
+import ReviewRequest from './pages/QualityControl/ReviewRequest.jsx';
+import EditFinalProduct from './pages/QualityControl/EditFinalProduct.jsx';
+import DeleteFinalProduct from './pages/QualityControl/DeleteFinalProduct.jsx';
+import PendingReview from './pages/QualityControl/PendingReview.jsx';
+import AddReleaseProduct from './pages/QualityControl/AddReleaseProduct.jsx';
+import ReleaseProduct from './pages/QualityControl/ReleaseProduct.jsx';
+import AddReview from './pages/QualityControl/AddReview.jsx';
+import ReviewReport from './pages/QualityControl/ReviewReport.jsx';
+import RejectProduct from './pages/QualityControl/RejectProduct.jsx';
 
 
 
@@ -225,21 +228,14 @@ const App = () => {
       {/* Sandithi */}
 
       <Route path="/HrDashboard" element={<HrDashboard />} />
-      <Route
-        path="/employees/CurrentEmployeeList"
-        element={<CurrentEmployeeList />}
-      />
+      <Route path="/employees/CurrentEmployeeList" element={<CurrentEmployeeList />}/>
       <Route path="/employees/AddEmployee" element={<AddEmployee />} />
       <Route path="/employees/EditEmployee/:id" element={<EditEmployee />} />
-      <Route
-        path="/employees/DeleteEmployee/:id"
-        element={<DeleteEmployee />}
-      />
-
-
- 
-
-
+      <Route path="/resign/ResignEmployeeList" element={<ResignedEmployeeList />} />
+      <Route path="/resign/FiredEmployeeList" element={<FiredEmployeeList />} />
+      <Route path="/resign/RequestResignation" element={<RequestResignation />} />
+      <Route path="/resign/TerminationPendingList" element={<TerminationPendingList />} />
+      <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
 
 
 
@@ -279,17 +275,17 @@ const App = () => {
 
 
       {/* Sageevan */}
-
-
-
-
-
-
-
-
-
-
-
+      <Route path="/qualityControl" element={<QualityControl />} />
+      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
+      <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/pendingRequest" element={<PendingReview />} />
+      <Route path="/qualityControl/releaseProduct/addReleaseProduct" element={<AddReleaseProduct />} />
+      <Route path="/qualityControl/releaseProduct" element={<ReleaseProduct />} />
+      <Route path="/qualityControl/reviewRepor/addReview" element={<AddReview />} />
+      <Route path="/qualityControl/reviewReport" element={<ReviewReport />} />
+      <Route path="/qualityControl/rejectProduct" element={<RejectProduct />} />
 
 
 
@@ -369,11 +365,15 @@ const App = () => {
 
 
       {/* Gihan */}
-      <Route path="/ChequeSubmit" element={<ChequeSubmit />} />
+      <Route path="/ChequeSubmit/:id" element={<ChequeSubmit />} />
       <Route path="/SalaryHistory" element={<SalaryHistory />} />
-      <Route path="/DeleteSalary" element={<DeleteSalary />} />
-      <Route path="/GenerateSalary" element={<GenerateSalary />} />
-      <Route path="/ViewSalary" element={<ViewSalary />} />
+      <Route path="/DeleteSalary/:id" element={<DeleteSalary />} />
+      <Route path="/GenerateSalary/:id" element={<GenerateSalary />} />
+      <Route path="/ViewSalary/:id" element={<ViewSalary />} />
+      <Route path="/EditSalaryBalance/:id" element={<EditSalaryBalance />} />
+      <Route path="/Payment/:id" element={<Payment />} />
+      <Route path="/SlipUpload/:id" element={<SlipUpload />} />
+      
       
 
 
