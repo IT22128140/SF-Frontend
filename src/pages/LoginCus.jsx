@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//import axios from "axios";
 import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
 import { Link } from "react-router-dom";
@@ -9,33 +10,36 @@ const Login = () => {
   const [errors, setErrors] = useState({});
 
   const handleLogin = () => {
-    // Form validation
-    let errors = {};
-    if (!email) {
-      errors.email = "Email address is required";
-    }
-    if (!password) {
-      errors.password = "Password is required";
-    }
-    if (Object.keys(errors).length === 0) {
-      // Add your login logic here
-      console.log("Login button clicked");
-    } else {
-      setErrors(errors);
-    }
-    // Password length validation
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
-      return;
-    }
+    let newErrors = {};
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    // Add your login logic here, for example:
-    if (email === "example@example.com" && password === "password123") {
-      // Successful login logic
-      console.log("Login successful!");
-    } else {
-      setError("Invalid email or password. Please try again.");
-    }
+  if (!email) {
+    newErrors.email = "Email address is required";
+  } else if (!emailPattern.test(email)) {
+    newErrors.email = "Please enter a valid email address";
+  }
+
+  if (!password) {
+    newErrors.password = "Password is required";
+  } else if (password.length < 6) {
+    newErrors.password = "Password must be at least 6 characters long.";
+  }
+
+  if (Object.keys(newErrors).length > 0) {
+    setErrors(newErrors);
+    return;
+  }
+
+
+    axios.post('/api/LoginCus', { email, password })
+      .then(response => {
+        // Handle successful login
+        console.log("Login successful!");
+      })
+      .catch(error => {
+        // Handle login error
+        console.error(error.response.data);
+      });
   };
 
   return (
@@ -60,7 +64,6 @@ const Login = () => {
         ></input>
         {errors.password && <p className="text-red-500">{errors.password}</p>}
         
-        {errors.loginType && <p className="text-red-500">{errors.loginType}</p>}
         <button className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md" onClick={handleLogin}>
           Login
         </button>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//import axios from "axios";
 import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
 import { Link } from "react-router-dom";
@@ -8,39 +9,42 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loginType, setLoginType] = useState("");
   const [errors, setErrors] = useState({});
+  
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const handleLogin = () => {
-    // Form validation
-    let errors = {};
+    let newErrors = {};
+
     if (!email) {
-      errors.email = "Email address is required";
+      newErrors.email = "Email address is required";
+    } else if (!emailPattern.test(email)) {
+      newErrors.email = "Please enter a valid email address";
     }
+    
     if (!password) {
-      errors.password = "Password is required";
-    }
-    if (!loginType) {
-      errors.loginType = "Login type is required";
+      newErrors.password = "Password is required";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters long.";
     }
 
-    if (Object.keys(errors).length === 0) {
-      // Add your login logic here
-      console.log("Login button clicked");
-    } else {
-      setErrors(errors);
+    if (!loginType) {
+      newErrors.loginType = "Login type is required";
     }
-    // Password length validation
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    // Add your login logic here, for example:
-    if (email === "example@example.com" && password === "password123") {
-      // Successful login logic
-      console.log("Login successful!");
-    } else {
-      setError("Invalid email or password. Please try again.");
-    }
+    axios.post('/api/LoginCus', { email, password })
+      .then(response => {
+        // Handle successful login
+        console.log("Login successful!");
+      })
+      .catch(error => {
+        // Handle login error
+        console.error(error.response.data);
+      });
   };
 
   return (

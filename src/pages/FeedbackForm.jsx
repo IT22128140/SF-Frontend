@@ -68,9 +68,9 @@ const FeedbackForm = () => {
                 <button type="submit" className="bg-white text-primary px-14 py-2 rounded"
                 //</form>onClick={onCancelClick}
                 >CANCEL</button>
-                <button type="submit" className="bg-primary text-white px-14 py-2 rounded
+                <button type="submit" className="bg-primary text-white px-14 py-2 rounded"
                 //</form>onClick={handleSubmitFeedback}
-                ">SUBMIT</button>
+                >SUBMIT</button>
                 </div>  
             </form>
         </div>
