@@ -16,7 +16,7 @@ const PMHeader = (props) => {
       </div>
 
       <div className="flex flex-row bg-bgc h-fit mb-5 shadow-md">
-        <NavbarButton active={props.home} button={"Home"} url={"#"} />
+        <NavbarButton active={props.home} button={"Home"} url={"/PMHome"} />
         <NavbarButton active={props.rrm} button={"Requesting Raw Materials"} url={"/rmRequests/create"}/>
         <NavbarButton active={props.rmr} button={"Raw Material Requests"} url={"/RawmRequests"} />
         <NavbarButton active={props.dfl} button={"Distribution for Lines"} url={"/rmDistributes/create"} />

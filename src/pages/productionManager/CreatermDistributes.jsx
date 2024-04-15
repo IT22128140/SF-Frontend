@@ -29,12 +29,12 @@ const CreatermDistributes = () => {
     try {
       await axios.post('http://localhost:5555/rmDistributes', data);
       setLoading(false);
-    //   enqueueSnackBar('Distribution created successfully', { variant: 'success' });
+      enqueueSnackBar('Distribution created successfully', { variant: 'success' });
       navigate('/RawmDistributes');
     }catch ( error ) {
       setLoading(false);
-      alert('An error happened. Please Check console');
-    //   enqueueSnackBar('Error', { variant: 'error' });
+      // alert('An error happened. Please Check console');
+      enqueueSnackBar('Error', { variant: 'error' });
       console.log(error);
     }
   };
