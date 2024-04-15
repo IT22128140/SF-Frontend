@@ -29,8 +29,8 @@ const handleDeleteProfile = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-36  pr-36">
-      <div className="p-2 mb-2 rounded-lg w-1/6 pr-2">
-                <input type="image" src="emp.png" alt="Logo 1" />
+      <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
+                <input type="image" src="emp.png" alt="image" />
             </div>
       <div className="bg-white p-8 rounded-lg shadow-md mb-4">
         <h1 className="text-4xl font-bold mb-4 text-center">EDIT PROFILE DETAILS</h1>
