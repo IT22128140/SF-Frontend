@@ -11,8 +11,6 @@ const SearchBar = ({ placeholder, onSearch }) => {
   };
 
   return (
-    
-    <div className="fixed m-4">
     <div className="flex justify-end pr-4 mt-4">
       <div className="relative flex items-center">
 

@@ -14,7 +14,7 @@ const RawMaterialStock = () => {
   const [RMStocks, setRMStocks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredRMStocks, setFilteredRMStocks] = useState([]); // State variable for filtered data
-  const headers = ['Material id', 'Material type', 'color / design', 'initial quantity','restocking date','available quantity',''];
+  const headers = ['Material id', 'Material type', 'color / design', 'initial quantity','costperunit','restocking date','available quantity',''];
 
   useEffect(() => {
     setLoading(true);
@@ -77,6 +77,7 @@ const RawMaterialStock = () => {
                   <td className="text-center border rounded-md border-slate-700">{RMstock.materialType}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.colorAndDesign}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.initialquantity}</td>
+                  <td className="text-center border rounded-md border-slate-700">{RMstock.costperunit}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.restockingdate}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.availablequantity}</td>
                   <td className="text-center border rounded-md border-slate-700"> 
@@ -88,6 +89,9 @@ const RawMaterialStock = () => {
                         <DeleteButton onClick={handleDelete} className="mr-2">Delete</DeleteButton >
                       </Link>
                     </div>
+                    {RMstock.availablequantity < 20 && (
+        <div className="text-red-500">Low Stock</div>
+      )}
                   </td>
                 </tr>
               ))}
