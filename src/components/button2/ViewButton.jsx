@@ -7,7 +7,7 @@ const ViewButton = ({ onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-between w-fit h-fit p-1.5 text-lg font-BreeSerif bg-red-900 text-white rounded-lg shadow-md ${className}`}
+      className={`flex items-center justify-between w-fit h-fit p-1.5 text-md font-BreeSerif bg-red-900 text-white rounded-lg shadow-md ${className}`}
     >
       <IoEyeOutline className="text-xl mx-2" />
       <span className="mr-2">View</span>

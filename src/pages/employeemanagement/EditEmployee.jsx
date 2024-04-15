@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import BackButton from "../../components/button/BackButton.jsx";
@@ -248,7 +248,9 @@ const EditEmployee = () => {
 
           <div className="flex flex-row justify-evenly items-center mt-10">
             <SubmitButton onClick={handleEditEmployee} />
-            <CancelButton />
+            <Link to="/employees/CurrentEmployeeList">
+              <CancelButton />
+            </Link>
           </div>
         </div>
       </div>
