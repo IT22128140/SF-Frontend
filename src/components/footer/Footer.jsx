@@ -15,7 +15,7 @@ const Footer = () => {
         <FooterFeedback />
       </div>
       <center>
-        <label>© 2022 Serendib Fashions Ltd.</label>
+        <label className=" font-BreeSerif">© 2022 Serendib Fashions Ltd.</label>
       </center>
     </>
   );
