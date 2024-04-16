@@ -63,6 +63,8 @@ import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
 import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
 import EditSuppliers from './pages/InventoryAndSupplier/EditSuppliers.jsx';
+import SupplieredRaws from "./pages/InventoryAndSupplier/SupplieredRaws.jsx";
+import DeletesupDetails from "./pages/InventoryAndSupplier/DeleteSupplieredRaws.jsx";
 import MachinePartStock from './pages/InventoryAndSupplier/MachinePartStock.jsx';
 import Addmachinepart from './pages/InventoryAndSupplier/AddMachinepart.jsx';
 import EditMpart from './pages/InventoryAndSupplier/EditMpart.jsx';
@@ -74,6 +76,7 @@ import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
+import Report from "./pages/InventoryAndSupplier/Report.jsx"
 
 
 
@@ -264,6 +267,8 @@ const App = () => {
       <Route path="/SupplierDetails/AddSuppliers" element={<AddSuppliers />} />
       <Route path="/SupplierDetails/EditSuppliers/:id" element={<EditSuppliers />} />
       <Route path="/SupplierDetails/DeleteSupplier/:id" element={<DeleteSupplier />} />
+      <Route path="/SupplierDetails/SupplieredRaws/:id" element={<SupplieredRaws />} />
+      <Route path="/SupplierDetails/DeletesupDetails/:id" element={<DeletesupDetails />} />
       <Route path= '/MachinePartStock' element = {<MachinePartStock/>} />
       <Route path= '/MachinePartStock/AddMachinepart' element = {<Addmachinepart/>} />
       <Route path= "/MachinePartStock/EditMpart/:id" element = {<EditMpart/>} />
@@ -275,6 +280,7 @@ const App = () => {
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
+      <Route path= "/Report" element = {<Report/>} />
 
 
 
