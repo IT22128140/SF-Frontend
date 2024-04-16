@@ -8,10 +8,10 @@ import ViewButton from "./button2/ViewButton.jsx";
 const DashboardCard = (prop) => {
   return (
     <div className="px-14 py-8">
-      <div className="border border-black rounded-xl w-[800px] h-fit flex flex-col items-center font-BreeSerif p-6">
+      <div className="border border-black rounded-xl w-fit h-fit flex flex-col items-center font-BreeSerif p-6">
         <h1 className="text-3xl font-Philosopher text-ternary">{prop.topic}</h1>
 
-        <div className="border border-black rounded-xl w-[500px] h-fit flex flex-col items-center font-BreeSerif p-4 m-8">
+        <div className="border border-black rounded-xl w-[63%] h-fit flex flex-col items-center font-BreeSerif p-4 m-8">
           <h2 className="text-xl text black pb-4">{prop.subtopic1}</h2>
           <Link to={prop.link1}>
             <AddButton />

@@ -10,14 +10,14 @@ const Category = (props) => {
       viewport={{ once: true }}
       whileInView={{ x: 0, opacity: 1 }}
       transition={{ duration: 1 }}
-      className="flex flex-col justify-around items-center w-[45%]"
+      className="flex flex-col justify-around items-center w-[750px]"
     >
-      <img src={props.image} className="w-full mt-[10%]" />
+      <img src={props.image} className="w-full h-[600px] mt-[10%]" />
       <h1 className="font-Lavish text-5xl m-2 text-primary ">
         {props.heading}
       </h1>
       <Link to={props.link} state={props.state}>
-      <button className="bg-ternary text-bgc text-2xl font-Philosopher p-4 w-[50%]">
+      <button className="bg-ternary w-fit text-bgc text-2xl font-Philosopher p-4">
         Shop Now
       </button>
       </Link>

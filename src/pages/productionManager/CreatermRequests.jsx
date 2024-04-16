@@ -31,12 +31,12 @@ const CreatermRequests = () => {
     try {
       await axios.post('http://localhost:5555/rmRequests', data);
       setLoading(false);
-      // enqueueSnackBar('Request created successfully', { variant: 'success' });
+      enqueueSnackBar('Request created successfully', { variant: 'success' });
       navigate('/RawmRequests');
     }catch ( error ) {
       setLoading(false);
-      alert('An error happened. Please Check console');
-      // enqueueSnackBar('Error', { variant: 'error' });
+      // alert('An error happened. Please Check console');
+      enqueueSnackBar('Error', { variant: 'error' });
       console.log(error);
     }
   };

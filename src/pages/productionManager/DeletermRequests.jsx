@@ -18,13 +18,13 @@ const DeletermRequests = () => {
       .delete(`http://localhost:5555/rmRequests/${id}`)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request deleted successfully', { variant: 'success' });
+        enqueueSnackBar('Request deleted successfully', { variant: 'success' });
         navigate('/RawmRequests');
       })
       .catch((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       });
   };

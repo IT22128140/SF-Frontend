@@ -51,13 +51,13 @@ const UpdatermDistributes = () => {
       .put(`http://localhost:5555/rmDistributes/${id}`, data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
+        enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
         navigate('/RawmDistributes');
       })
       .catch ((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
