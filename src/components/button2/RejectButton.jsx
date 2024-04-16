@@ -1,20 +1,23 @@
-import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import { MdOutlineCancel } from "react-icons/md";
+import PropTypes from "prop-types";
 
-const RejectButton= ({onclick,className,children}) =>  {
-
+const RejectButton = ({ onclick, className }) => {
   return (
-    <button onclick={onclick} className={`flex items-center justify-between px-4 py-2 bg-red-700 text-white rounded-md shadow-md focus:outline-none focus:rin-2 focus:ring-blue-600 ${className}`}>
-        <span className="mr-2">{children}</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
-
-
-
-
-
+    <button
+      onClick={onclick}
+      className={`flex items-center justify-betweenh-fit w-fit p-1.5 font-BreeSerif text-md bg-red-700 text-white rounded-lg shadow-md  ${className}`}
+    >
+      <MdOutlineCancel className="text-xl" />
+      <span className="px-2">Reject</span>
     </button>
-  )
-}
+  );
+};
+
+RejectButton.propTypes = {
+  onclick: PropTypes.func,
+  className: PropTypes.string,
+};
 
 export default RejectButton;

@@ -16,7 +16,7 @@ export default {
         'primary': '#da6e2e',
         'secondary': '#c15026',
         'ternary': '#6e2e2c',
-        'bgc': '#FCEADC'
+        'bgc': '#FCEADC',
 
 
 
@@ -37,6 +37,9 @@ export default {
 
 
         //Ridmi
+        'formbg' : "#D9D9D9",
+        'PMnavbar' : "#DEE2E6",
+        'RawmRequest' : "#F8D3C0"
 
 
 

@@ -1,19 +1,23 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React from "react";
+import PropTypes from "prop-types";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 
-const AcceptButton= ({onclick,className,children}) =>  {
-
+const AcceptButton = ({ onclick, className }) => {
   return (
-    <button onclick={onclick} className={`flex items-center justify-between px-4 py-2 bg-orange-600 text-white rounded-md shadow-md focus:outline-none focus:rin-2 focus:ring-blue-600 ${className}`}>
-        <span className="mr-2">{children}</span>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-</svg>
-
-
-
+    <button
+      onClick={onclick}
+      className={`flex items-center justify-between h-fit w-fit p-1.5 bg-orange-600 text-md text-white rounded-lg shadow-md font-BreeSerif ${className}`}
+    >
+      <AiOutlineCheckCircle className="text-xl mr-2" />
+      <span className="mr-2">Accept</span>
     </button>
-  )
-}
+  );
+};
+
+AcceptButton.propTypes = {
+  onclick: PropTypes.func,
+  className: PropTypes.string,
+};
 
 export default AcceptButton;
