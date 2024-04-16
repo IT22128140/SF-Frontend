@@ -44,7 +44,7 @@ const ProductPage = () => {
     axios
       .post("http://localhost:5555/cart/65f888fbae65af39470abd22", cart)
       .then((response) => {
-        alert("Added to cart")
+        alert("Added to cart");
         console.log(response);
         setLoading(false);
       })
@@ -56,7 +56,7 @@ const ProductPage = () => {
   });
 
   if (loading) {
-    return <Spinner/>;
+    return <Spinner />;
   }
   return (
     <div>
@@ -120,34 +120,38 @@ const ProductPage = () => {
                   </div>
                 ))}
               </div>
-              <h1 className=" font-Philosopher text-secondary text-3xl ">
-                Choose Color
-              </h1>
-              <div className="flex flex-row my-5 border-t-2 border-l-2 border-b-2 border-ternary align-middle  w-fit">
-                {product.colors.map((colors) => (
-                  <div
-                    key={colors.id}
-                    className="flex flex-row border-r-2 cursor-pointer border-ternary  shadow-xl"
-                  >
-                    <InputNoLable
-                      formtype="input"
-                      key={colors.id}
-                      type="radio"
-                      id={colors}
-                      name="color"
-                      value={colors}
-                      className="hidden peer"
-                    />
-                    <label
-                      key={colors.id}
-                      htmlFor={colors}
-                      className="cursor-pointer font-BreeSerif text-black p-2 text-center w-20 h-10 peer-checked:bg-primary peer-checked:text-white"
-                    >
-                      {colors}
-                    </label>
+              {product.colors.length > 0 && (
+                <>
+                  <h1 className=" font-Philosopher text-secondary text-3xl ">
+                    Choose Color
+                  </h1>
+                  <div className="flex flex-row my-5 border-t-2 border-l-2 border-b-2 border-ternary align-middle  w-fit">
+                    {product.colors.map((colors) => (
+                      <div
+                        key={colors.id}
+                        className="flex flex-row border-r-2 cursor-pointer border-ternary  shadow-xl"
+                      >
+                        <InputNoLable
+                          formtype="input"
+                          key={colors.id}
+                          type="radio"
+                          id={colors}
+                          name="color"
+                          value={colors}
+                          className="hidden peer"
+                        />
+                        <label
+                          key={colors.id}
+                          htmlFor={colors}
+                          className="cursor-pointer font-BreeSerif text-black p-2 text-center w-20 h-10 peer-checked:bg-primary peer-checked:text-white"
+                        >
+                          {colors}
+                        </label>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </>
+              )}
               <button
                 onClick={onSubmit}
                 className="bg-ternary text-bgc font-BreeSerif w-1/2 text-xl  p-4 rounded-[10px] shadow-xl"

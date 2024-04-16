@@ -34,20 +34,41 @@ const Home = () => {
         <div className="mt-[2%]">
           <HomeSlideShow />
         </div>
-        <h1 className="m-10 text-[40px] font-Lavish text-secondary">
-          New & Trending
-        </h1>
-          <HorizontalScroll list={items}></HorizontalScroll>
       </center>
+      <h1 className="m-10 text-[40px] font-Lavish text-center text-secondary">
+        New & Trending
+      </h1>
+
+      <HorizontalScroll list={items}></HorizontalScroll>
 
       <div className="flex flex-col">
         <div className="flex flex-row justify-evenly">
-          <Category image="./Clothes/mens.jpg" heading="Male" link="./Catalogue" state={"mens"}/>
-          <Category image="./Picture1.jpg" heading="Women" link="./Catalogue" state={"women"} />
+          <Category
+            image="./Clothes/mens.jpg"
+            heading="Male"
+            link="./Catalogue"
+            state={"mens"}
+          />
+          <Category
+            image="./Picture1.jpg"
+            heading="Women"
+            link="./Catalogue"
+            state={"women"}
+          />
         </div>
         <div className="flex flex-row justify-evenly">
-          <Category image="./Clothes/unisex.jpg" heading="Unisex" link="./Catalogue" state={"unisex"}  />
-          <Category image="./Clothes/kids.jpg" heading="Kids" link="./Catalogue" state={"kids"} />
+          <Category
+            image="./Clothes/unisex.jpg"
+            heading="Unisex"
+            link="./Catalogue"
+            state={"unisex"}
+          />
+          <Category
+            image="./Clothes/kids.jpg"
+            heading="Kids"
+            link="./Catalogue"
+            state={"kids"}
+          />
         </div>
       </div>
 

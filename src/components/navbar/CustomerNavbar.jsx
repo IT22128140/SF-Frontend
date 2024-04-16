@@ -16,8 +16,8 @@ const CustomerNavbar = () => {
       <div className="flex flex-row p-5">
         <DropDownButton title="Men's" options={mens} />
         <DropDownButton title="Women's" options={womens} />
-        <DropDownButton title="Bags" options={Unisex} />
-        <DropDownButton title="Bags" options={kids}  />
+        <DropDownButton title="Kids" options={kids} />
+        <DropDownButton title="Unisex" options={Unisex}  />
       </div>
       <div className="flex flex-row h-[70px] justify-between">
         <Search />

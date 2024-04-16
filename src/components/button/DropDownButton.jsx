@@ -13,21 +13,26 @@ const DropDownButton = (props) => {
         <LuChevronDown />
       </div>
       <div className="invisible absolute z-50 flex w-full flex-col bg-bgc rounded-md text-ternary shadow-xl group-hover:visible">
-
-      {props.options.map((opt) => (
-        <Link onClick={props.onClick} key={opt.id} className="rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary hover:text-bgc" to={opt.url} state={opt.state}>
-          {opt.option}
-        </Link>
-      ))}
+        {props.options.map((opt) => (
+          <Link
+            onClick={props.onClick}
+            key={opt.id}
+            className="rounded-md p-1 m-2 block font-semibold text-ternary hover:bg-primary hover:text-bgc"
+            to={opt.url}
+            state={opt.state}
+          >
+            {opt.option}
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
 
 DropDownButton.propTypes = {
-    title: PropTypes.string,
-    options: PropTypes.array,
-    onClick: PropTypes.func,
-}
+  title: PropTypes.string,
+  options: PropTypes.array,
+  onClick: PropTypes.func,
+};
 
 export default DropDownButton;
