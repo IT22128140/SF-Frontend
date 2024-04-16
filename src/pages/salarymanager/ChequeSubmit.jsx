@@ -7,11 +7,13 @@ import AddButton from "../../components/button2/AddButton";
 
 
 const ChequeSubmit = () => {
+  const [cheque, setCheque] = useState({});
+  const { id } = useParams();
   const [file, setFile] = useState();
   const handleUpload = (e) => {
     const formdata = new FormData();
-    formdata.append('cheque', file);
-    Axios.put(`http://localhost:5555/uploads/${id}`, file)
+    formdata.append('file', file);
+    Axios.put(`http://localhost:5555/uploads/${id}`, formdata)
     .then(res => console.log(res))
     .catch(err => console.log(err))
   }
@@ -30,6 +32,7 @@ const ChequeSubmit = () => {
         <div className="absolute top-[400px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-10 block">
         <div>
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button onClick={handleUpload}>Upload</button>
         
       </div>
 
@@ -38,7 +41,7 @@ const ChequeSubmit = () => {
       Notice
     
       </div>
-      <div className="absolute top-[770px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] ">
+      <div className="absolute top-[770px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-1 block">
           <div>
             <input type="text" placeholder="Enter notice"   className="w-150 h-30 " />
           </div>
@@ -46,7 +49,7 @@ const ChequeSubmit = () => {
       <div className="absolute top-[1123px] left-[178px]  [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[36px] text-center tracking-[0] leading-[normal]">
         Attah New Sliip
       </div>
-      <div className="absolute top-[1300px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-10 block">
+      <div className="absolute top-[1200px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-10 block">
         <div>
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         
@@ -55,14 +58,10 @@ const ChequeSubmit = () => {
       </div>
       <div className='p-4 mx-auto max-w-lg '>
           
-      <div className='flex justify-between'>
-         
-              <SubmitButton>Submit</SubmitButton>
+       <SubmitButton className="absolute top-[1500px] left-[591px]">Submit</SubmitButton>
             
-            
-              <AddButton>Add Cheque</AddButton>
+       <AddButton className="absolute top-[1500px] left-[850px]">Add Cheque</AddButton>
 
-              </div>
             
           
            
