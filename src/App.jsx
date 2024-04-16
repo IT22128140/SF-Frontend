@@ -107,17 +107,17 @@ import PaymentSucc from './pages/OnlinnePayment/PaymentSucc.jsx';
 
 
 /* Sageevan */
-
-
-
-
-
-
-
-
-
-
-
+import QualityControl from './pages/QualityControl/QualityControl.jsx';
+import AddFinalProduct from './pages/QualityControl/AddFinalProduct.jsx'
+import ReviewRequest from './pages/QualityControl/ReviewRequest.jsx';
+import EditFinalProduct from './pages/QualityControl/EditFinalProduct.jsx';
+import DeleteFinalProduct from './pages/QualityControl/DeleteFinalProduct.jsx';
+import PendingReview from './pages/QualityControl/PendingReview.jsx';
+import AddReleaseProduct from './pages/QualityControl/AddReleaseProduct.jsx';
+import ReleaseProduct from './pages/QualityControl/ReleaseProduct.jsx';
+import AddReview from './pages/QualityControl/AddReview.jsx';
+import ReviewReport from './pages/QualityControl/ReviewReport.jsx';
+import RejectProduct from './pages/QualityControl/RejectProduct.jsx';
 
 
 
@@ -276,17 +276,17 @@ const App = () => {
 
 
       {/* Sageevan */}
-
-
-
-
-
-
-
-
-
-
-
+      <Route path="/qualityControl" element={<QualityControl />} />
+      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
+      <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/pendingRequest" element={<PendingReview />} />
+      <Route path="/qualityControl/releaseProduct/addReleaseProduct" element={<AddReleaseProduct />} />
+      <Route path="/qualityControl/releaseProduct" element={<ReleaseProduct />} />
+      <Route path="/qualityControl/reviewRepor/addReview" element={<AddReview />} />
+      <Route path="/qualityControl/reviewReport" element={<ReviewReport />} />
+      <Route path="/qualityControl/rejectProduct" element={<RejectProduct />} />
 
 
 
