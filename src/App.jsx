@@ -90,6 +90,7 @@ import ViewSalary from './pages/salarymanager/ViewSalary.jsx';
 import EditSalaryBalance from './pages/salarymanager/EditSalaryBalance.jsx';
 import Payment from './pages/OnlinnePayment/Payment.jsx';
 import SlipUpload from './pages/OnlinnePayment/SlipUpload.jsx';
+import PaymentSucc from './pages/OnlinnePayment/PaymentSucc.jsx';
 
 
 
@@ -373,6 +374,7 @@ const App = () => {
       <Route path="/EditSalaryBalance/:id" element={<EditSalaryBalance />} />
       <Route path="/Payment/:id" element={<Payment />} />
       <Route path="/SlipUpload/:id" element={<SlipUpload />} />
+      <Route path="/PaymentSucc/:id" element={<PaymentSucc />} />
       
       
 
