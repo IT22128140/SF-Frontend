@@ -3,6 +3,7 @@ import BackButton from '../../components/button/BackButton';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 
 
@@ -12,10 +13,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 const EditRMstock =() => {
+  const [requestID,setrequestID] = useState('');
     const [materialType, setmaterialType] = useState('');
     const [colorAndDesign, setcolorAndDesign] = useState ('');
-    const [quantity, setquantity] = useState('');
-  
+    const [initialquantity, setinitialquantity] = useState('');
+    const [restockingdate, setrestockingdate] = useState('');
+    const [availablequantity, setavailablequantity] = useState('');
     const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
@@ -24,10 +27,13 @@ const EditRMstock =() => {
         axios.get(`http://localhost:5555/RMstock/${id}`)
 
             .then((response) =>{
+              setrequestID(response.data.requestID);
                 setmaterialType(response.data.materialType);
                 setcolorAndDesign(response.data.colorAndDesign);
-                setquantity(response.data.quantity);
-             
+                setinitialquantity(response.data.initialquantity);
+                setrestockingdate(response.data.restockingdate);
+                setavailablequantity(response.data.availablequantity);
+                
                 setLoading(false);
             }).catch((error) =>{
                 setLoading(false);
@@ -38,15 +44,18 @@ const EditRMstock =() => {
     
     const handleEditRmaterial = () => {
        const data = {
+        requestID,
         materialType,
         colorAndDesign,
-        quantity,
+        initialquantity,
+        restockingdate,
+        availablequantity
     
 
        };
        setLoading(true);
        axios
-         .put(`http://localhost:5555/mpstock/${id}`, data)
+         .put(`http://localhost:5555/RMstock/${id}`, data)
          .then(() => {
             setLoading(false);
             navigate('/RawMaterialStock');
@@ -64,6 +73,15 @@ const EditRMstock =() => {
         <h1 className='my-4 text-3xl'>Edit Raw Materials</h1>
         {loading ? <Spinner/> : ''}
         <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500'>Request ID</label>
+                <input
+                 type='String'
+                 value={requestID}
+                 onChange={(e) => setrequestID(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
             <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500'>material Type</label>
                 <input
@@ -83,11 +101,29 @@ const EditRMstock =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>quantity</label>
+                <label className='mr-4 text-xl text-gray-500'>initialquantity</label>
                 <input
                  type='number'
-                 value={quantity}
-                 onChange={(e) => setquantity(e.target.value)}
+                 value={initialquantity}
+                 onChange={(e) => setinitialquantity(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
+                <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500'>restockingdate</label>
+                <input
+                 type='Date'
+                 value={restockingdate}
+                 onChange={(e) => setrestockingdate(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
+                <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500'>availablequantity</label>
+                <input
+                 type='number'
+                 value={availablequantity}
+                 onChange={(e) => setavailablequantity(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>

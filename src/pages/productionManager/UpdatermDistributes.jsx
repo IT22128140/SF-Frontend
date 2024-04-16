@@ -3,7 +3,7 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 
 const UpdatermDistributes = () => {
   const [DistributeID, setDistributeID ] = useState('');
@@ -51,13 +51,13 @@ const UpdatermDistributes = () => {
       .put(`http://localhost:5555/rmDistributes/${id}`, data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
+        enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
         navigate('/RawmDistributes');
       })
       .catch ((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
@@ -67,7 +67,7 @@ const UpdatermDistributes = () => {
       <PMHeader/>
       {loading ? <Spinner/> : ''}
         <div
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
         >
           <h1 className='text-3xl my-4 text-center'>Update Raw Material Distribution Form</h1>
           <div className='my-2'>
@@ -150,6 +150,7 @@ const UpdatermDistributes = () => {
           </div>
           <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmDistribute}>Submit</button>
         </div>
+        <StaffFotter/>
     </div>
   )
 }

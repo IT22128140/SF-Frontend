@@ -7,8 +7,9 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import SearchBar from '../../components/SearchBar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import LWMenuBar from './LWMenuBar';
 
 const EmployeePerformance = () => {
@@ -31,7 +32,7 @@ const EmployeePerformance = () => {
   }, []);
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader emp = {true} />
       <SearchBar
         placeholder = 'Enter Employee ID' 
         onSearch = ''
@@ -45,7 +46,7 @@ const EmployeePerformance = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {empPerformance.map((empPerformance, index) => (
@@ -86,6 +87,7 @@ const EmployeePerformance = () => {
         </tbody> 
       </table>
       )}
+      <StaffFooter/>
     </div>
   )
 }

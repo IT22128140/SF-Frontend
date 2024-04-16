@@ -3,7 +3,8 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const UpdatermRequests = () => {
   const [RequestID, setRequestID ] = useState('');
@@ -54,13 +55,13 @@ const UpdatermRequests = () => {
       .put(`http://localhost:5555/rmRequests/${id}`, data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
         navigate('/RawmRequests');
+        enqueueSnackBar('Request updated successfully', { variant: 'success' });
       })
       .catch ((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
@@ -70,7 +71,7 @@ const UpdatermRequests = () => {
       <PMHeader/>
       {loading ? <Spinner/> : ''}
         <div
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
         >
           <h1 className='text-3xl my-4 text-center'>Update Raw Material Request Form</h1>
           <div className='my-2'>
@@ -166,6 +167,7 @@ const UpdatermRequests = () => {
           </div>
           <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmRequest}>Submit</button>
         </div>
+        <StaffFooter/>
     </div>
   )
 }

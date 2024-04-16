@@ -8,7 +8,7 @@ export default {
     fontFamily: {
       Lavish: ["Lavish", "sans-serif"],
       Philosopher: ["Philosopher", "sans-serif"],
-      BreeSerif: ["BreeSerif", "sans-serif"]
+      BreeSerif: ["BreeSerif", "sans-serif"],
     },
     extend: {
       colors: {
@@ -39,7 +39,7 @@ export default {
         //Ridmi
         'formbg' : "#D9D9D9",
         'PMnavbar' : "#DEE2E6",
-        'RawmRequest' : "#F8D3C0"
+        'RawmRequest' : "#F8D3C0",
 
 
 
@@ -78,7 +78,8 @@ export default {
 
 
         //Hiranya
-        
+        'formBackground': "#d9d9d9",
+        'navbar': "#dee2e6",
 
 
 
