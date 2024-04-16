@@ -145,6 +145,7 @@ import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
 import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
+import PMHome from "./pages/productionManager/PMHome.jsx";
 import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
 
 
@@ -327,7 +328,7 @@ const App = () => {
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
-      
+      <Route path= '/PMHome' element = {<PMHome/>}/>
 
 
 
