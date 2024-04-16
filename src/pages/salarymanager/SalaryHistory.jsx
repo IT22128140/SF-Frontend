@@ -46,7 +46,11 @@ const SalaryHistory = () => {
       {loading ? (
         <Spinner />
       ) :(
+        
+        
         <table className='min-w-full'>
+          <br>
+      </br>
           <TableView headers={headers} />
           <tbody>
             {salaryHistory.map((salary,index) => (
