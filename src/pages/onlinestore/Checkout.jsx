@@ -2,8 +2,7 @@ import CustomerNavbar from "../../components/navbar/CustomerNavbar";
 import Footer from "../../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
 // import Input from "../../components/form/Input";
-import { provinces } from "../../utils/arrays.js";
-import { districtsByProvince } from "../../utils/arrays.js";
+import { provinces, districtsByProvince } from "../../utils/arrays.js";
 import { FormProvider, useForm } from "react-hook-form";
 // import {
 //   textValidation,
@@ -109,22 +108,21 @@ const Checkout = () => {
 
     sessionStorage.setItem("deliveryDetails", deliveryDetails);
 
-    if(!id) {
-    axios
-      .post(
-        "http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22",
-        deliveryDetails
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Order placed successfully");
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Error placing order");
-      });
-    }
-    else{
+    if (!id) {
+      axios
+        .post(
+          "http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22",
+          deliveryDetails
+        )
+        .then((response) => {
+          console.log(response);
+          alert("Order placed successfully");
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Error placing order");
+        });
+    } else {
       axios
         .put(
           `http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22/${id}`,
@@ -159,7 +157,7 @@ const Checkout = () => {
                 Delivery Details
               </h2>
               <select
-                className="h-11 font-BreeSerif p-2 border-gray-200 rounded-md border-2"
+                className="h-11 ml-3 mb-5 font-BreeSerif p-2 border-gray-200 rounded-md border-2"
                 onChange={(e) => handleDetailChange(e)}
               >
                 <option value="" defaultChecked>
@@ -171,101 +169,127 @@ const Checkout = () => {
                   </option>
                 ))}
               </select>
-              <div className="flex flex-row mt-5 justify-between">
-                <input
-                  className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
-                  type="text"
-                  id="name"
-                  value={firstName}
-                  name="name"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-                <input
-                  className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
-                  label="Last name"
-                  type="text"
-                  id="name"
-                  value={lastName}
-                  name="name"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
-              {/*contact*/}
-              <div className="flex flex-row mt-5 justify-between">
-                <input
-                  className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
-                  label="Contact number"
-                  type="text"
-                  id="name"
-                  value={contact}
-                  name="name"
-                  onChange={(e) => setContact(e.target.value)}
-                />
-                <input
-                  className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
-                  label="Email"
-                  type="email"
-                  id="name"
-                  name="name"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                />
-              </div>
-              <div className="flex flex-row mt-5 justify-between">
-                <input
-                  className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
-                  label="Address"
-                  type="text"
-                  id="name"
-                  value={address}
-                  name="name"
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <input
-                  className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
-                  label="Postal code"
-                  type="text"
-                  id="name"
-                  value={postalCode}
-                  name="name"
-                  onChange={(e) => setPostalCode(e.target.value)}
-                />
-              </div>
-              <div className="flex w-1/2 mt-5">
-                <select
-                  className="h-11 p-2 border-gray-200 rounded-md border-2 shadow-sm"
-                  id="province"
-                  value={province}
-                  name="province"
-                  onChange={(e) => setProvince(e.target.value)}
-                >
-                  <option value="" defaultChecked hidden>
-                    Select your province
-                  </option>
-                  {provinces.map((opt) => (
-                    <option key={opt.id} value={opt.value}>
-                      {opt.option}
-                    </option>
-                  ))}
-                </select>
-                <select
-                  className="h-11 ml-[93px] p-2 border-gray-200 rounded-md border-2 shadow-sm"
-                  id="district"
-                  value={district}
-                  name="district"
-                  onChange={(e) => setDistrict(e.target.value)}
-                  disabled={!province}
-                >
-                  <option value="" defaultChecked hidden>
-                    Select your province
-                  </option>
-                  {province &&
-                    districtsByProvince[province].map((opt) => (
-                      <option key={opt.id} value={opt.value}>
-                        {opt.option}
+              <div className="flex flex-col items-center font-BreeSerif rounded-xl">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col">
+                    <label className="ml-0.5 mb-1">First name</label>
+                    <input
+                      className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
+                      type="text"
+                      id="name"
+                      value={firstName}
+                      name="name"
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col ml-10">
+                    <label className="ml-0.5 mb-1">Last name</label>
+                    <input
+                      className="h-11 p-2  border-gray-200 rounded-md border-2  shadow-sm "
+                      label="Last name"
+                      type="text"
+                      id="name"
+                      value={lastName}
+                      name="name"
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
+                </div>
+                {/*contact*/}
+                <div className="flex flex-row mt-5 justify-between">
+                  <div className="flex flex-col">
+                    <label className="ml-0.5 mb-1">Contact number</label>
+                    <input
+                      className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
+                      label="Contact number"
+                      type="text"
+                      id="name"
+                      value={contact}
+                      name="name"
+                      onChange={(e) => setContact(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col ml-10">
+                    <label className="ml-0.5 mb-1">Email</label>
+                    <input
+                      className="h-11 p-2  border-gray-200 rounded-md border-2  shadow-sm "
+                      label="Email"
+                      type="email"
+                      id="name"
+                      name="name"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-row mt-5 justify-between">
+                  <div className="flex flex-col">
+                    <label className="ml-0.5 mb-1">Address</label>
+                    <input
+                      className="h-11 p-2  border-gray-200 rounded-md border-2  shadow-sm "
+                      label="Address"
+                      type="text"
+                      id="name"
+                      value={address}
+                      name="name"
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col ml-10">
+                    <label className="ml-0.5 mb-1">Postal code</label>
+                    <input
+                      className="h-11 p-2 border-gray-200 rounded-md border-2  shadow-sm "
+                      label="Postal code"
+                      type="text"
+                      id="name"
+                      value={postalCode}
+                      name="name"
+                      onChange={(e) => setPostalCode(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-row mt-5 justify-between">
+                  <div className="flex flex-col">
+                    <label className="ml-0.5 mb-1">Province</label>
+                    <select
+                      className="h-11 p-2 w-52 border-gray-200 rounded-md border-2  shadow-sm"
+                      id="province"
+                      value={province}
+                      name="province"
+                      onChange={(e) => setProvince(e.target.value)}
+                    >
+                      <option value="" defaultChecked hidden>
+                        Select your province
                       </option>
-                    ))}
-                </select>
+                      {provinces.map((opt) => (
+                        <option key={opt.id} value={opt.value}>
+                          {opt.option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="flex flex-col ml-10 ">
+                    <label className="ml-0.5 mb-1">District</label>
+                    <select
+                      className="h-11 p-2 w-52 border-gray-200 rounded-md border-2  shadow-sm"
+                      id="district"
+                      value={district}
+                      name="district"
+                      onChange={(e) => setDistrict(e.target.value)}
+                      disabled={!province}
+                    >
+                      <option value="" defaultChecked hidden>
+                        Select your province
+                      </option>
+                      {province &&
+                        districtsByProvince[province].map((opt) => (
+                          <option key={opt.id} value={opt.value}>
+                            {opt.option}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                </div>
               </div>
             </form>
           </FormProvider>

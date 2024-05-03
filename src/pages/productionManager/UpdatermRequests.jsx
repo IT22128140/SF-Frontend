@@ -55,13 +55,13 @@ const UpdatermRequests = () => {
       .put(`http://localhost:5555/rmRequests/${id}`, data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
         navigate('/RawmRequests');
+        enqueueSnackBar('Request updated successfully', { variant: 'success' });
       })
       .catch ((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
