@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import BackButton from '../../components/button/BackButton';
+import DeleteButton from '../../components/button2/DeleteButton';
+
 
 const DeleteRMstock = () => {
 const [loading, setloading] = useState(false);
