@@ -12,8 +12,8 @@ import Cart from './pages/onlinestore/Cart.jsx';
 import Checkout from './pages/onlinestore/Checkout.jsx';
 import Addresses from './pages/onlinestore/Addresses.jsx';
 import Catalogue from './pages/onlinestore/Catalogue.jsx';
-
-
+import Orders from "./pages/onlinestore/Orders.jsx";
+import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
 
 
 
@@ -29,7 +29,9 @@ import Catalogue from './pages/onlinestore/Catalogue.jsx';
  import LoginCus from './pages/LoginCus.jsx';
  import RegisCus from './pages/RegisCus.jsx';
  import RegisEmp from './pages/RegisEmp.jsx';
- import CusProfile from './pages/CusProfile.jsx';
+//  import CusProfile from './pages/CusProfile.jsx';
+//  import EditProfile from './pages/EditProfile.jsx';
+ 
  
 
 
@@ -61,6 +63,8 @@ import SupplierDetails from './pages/InventoryAndSupplier/SupplierDetails.jsx';
 import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
 import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
 import EditSuppliers from './pages/InventoryAndSupplier/EditSuppliers.jsx';
+import SupplieredRaws from "./pages/InventoryAndSupplier/SupplieredRaws.jsx";
+import DeletesupDetails from "./pages/InventoryAndSupplier/DeleteSupplieredRaws.jsx";
 import MachinePartStock from './pages/InventoryAndSupplier/MachinePartStock.jsx';
 import Addmachinepart from './pages/InventoryAndSupplier/AddMachinepart.jsx';
 import EditMpart from './pages/InventoryAndSupplier/EditMpart.jsx';
@@ -72,6 +76,7 @@ import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
+import Report from "./pages/InventoryAndSupplier/Report.jsx"
 
 
 
@@ -90,6 +95,7 @@ import ViewSalary from './pages/salarymanager/ViewSalary.jsx';
 import EditSalaryBalance from './pages/salarymanager/EditSalaryBalance.jsx';
 import Payment from './pages/OnlinnePayment/Payment.jsx';
 import SlipUpload from './pages/OnlinnePayment/SlipUpload.jsx';
+import PaymentSucc from './pages/OnlinnePayment/PaymentSucc.jsx';
 
 
 
@@ -142,6 +148,7 @@ import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
 import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
+import PMHome from "./pages/productionManager/PMHome.jsx";
 import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
 
 
@@ -212,8 +219,8 @@ const App = () => {
       <Route path="/Checkout" element={<Checkout />} />
       <Route path='/Addresses' element={<Addresses/>} />
       <Route path='/Catalogue' element={<Catalogue/>} />
-
-
+      <Route path='/Orders' element={<Orders/>} />
+      <Route path='/OngoingOrders' element={<OngoingOrders/>} />
 
 
 
@@ -228,7 +235,8 @@ const App = () => {
       <Route path="/LoginCus" element={<LoginCus />} />
       <Route path="/RegisCus" element={<RegisCus />} />
       <Route path="/RegisEmp" element={<RegisEmp />} />
-      <Route path="/CusProfile" element={<CusProfile />} />
+      {/* <Route path="/CusProfile" element={<CusProfile />} />
+      <Route path="/EditProfile" element={<EditProfile />} /> */}
 
       
 
@@ -259,6 +267,8 @@ const App = () => {
       <Route path="/SupplierDetails/AddSuppliers" element={<AddSuppliers />} />
       <Route path="/SupplierDetails/EditSuppliers/:id" element={<EditSuppliers />} />
       <Route path="/SupplierDetails/DeleteSupplier/:id" element={<DeleteSupplier />} />
+      <Route path="/SupplierDetails/SupplieredRaws/:id" element={<SupplieredRaws />} />
+      <Route path="/SupplierDetails/DeletesupDetails/:id" element={<DeletesupDetails />} />
       <Route path= '/MachinePartStock' element = {<MachinePartStock/>} />
       <Route path= '/MachinePartStock/AddMachinepart' element = {<Addmachinepart/>} />
       <Route path= "/MachinePartStock/EditMpart/:id" element = {<EditMpart/>} />
@@ -270,6 +280,7 @@ const App = () => {
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
+      <Route path= "/Report" element = {<Report/>} />
 
 
 
@@ -323,7 +334,7 @@ const App = () => {
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
-      
+      <Route path= '/PMHome' element = {<PMHome/>}/>
 
 
 
@@ -399,6 +410,7 @@ const App = () => {
       <Route path="/EditSalaryBalance/:id" element={<EditSalaryBalance />} />
       <Route path="/Payment/:id" element={<Payment />} />
       <Route path="/SlipUpload/:id" element={<SlipUpload />} />
+      <Route path="/PaymentSucc/:id" element={<PaymentSucc />} />
       
       
 

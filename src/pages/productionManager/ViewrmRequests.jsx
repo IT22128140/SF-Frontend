@@ -5,6 +5,7 @@ import Spinner from '../../components/Spinner';
 import { Link } from 'react-router-dom';
 import AcceptButton from '../../components/button2/AcceptButton';
 import RejectButton from '../../components/button2/RejectButton';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const ViewrmRequests = () => {
   const [rmrequest, setrmRequests] = useState([]);
@@ -30,7 +31,7 @@ const ViewrmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
+        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary mb-5'>
           <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Requests</h1>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Request ID</span>
@@ -70,6 +71,7 @@ const ViewrmRequests = () => {
           </div>
         </div>
       )}
+      <StaffFooter/>
     </div>
   )
 }

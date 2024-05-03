@@ -11,6 +11,7 @@ import SubmitButton from '../../components/button2/SubmitButton';
 
 
 const Addmachinepart =() => {
+     const [partID, setpartID] = useState('');
     const [partName, setpartName] = useState('');
     const [purchasedDate, setpurchasedDate] = useState ('');
     const [condition, setcondition] = useState('');
@@ -23,6 +24,7 @@ const Addmachinepart =() => {
     
     const handleSaveRmaterials = () => {
        const data = {
+        partID,
         partName,
         purchasedDate,
         condition,
@@ -52,6 +54,15 @@ const Addmachinepart =() => {
         <h1 className='my-4 text-3xl'>Add Machine partStock</h1>
         {loading ? <Spinner/> : ''}
         <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500'>Part ID</label>
+                <input
+                 type='String'
+                 value={partID}
+                 onChange={(e) => setpartID(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
             <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500'>partName</label>
                 <input

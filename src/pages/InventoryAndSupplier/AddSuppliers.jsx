@@ -11,6 +11,7 @@ import SubmitButton from '../../components/button2/SubmitButton';
 
 
 const AddSuppliers =() => {
+  const [SRequestID, setSRequestID] = useState('');
     const [supplierName, setsupplierName] = useState('');
     const [address, setaddress] = useState ('');
     const [contactNumber, setcontactNumber] = useState('');
@@ -22,6 +23,7 @@ const AddSuppliers =() => {
     
     const handleSaveSupplier = () => {
        const data = {
+        SRequestID,
         supplierName,
         address,
         contactNumber,
@@ -50,6 +52,15 @@ const AddSuppliers =() => {
         <h1 className='my-4 text-3xl'>Add supplier</h1>
         {loading ? <Spinner/> : ''}
         <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500'>supplier ID</label>
+                <input
+                 type='String'
+                 value={SRequestID}
+                 onChange={(e) => setSRequestID(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
             <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500'>supplier Name</label>
                 <input

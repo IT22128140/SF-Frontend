@@ -28,7 +28,7 @@ const RequestforInventory = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full font-BreeSerif'>
+        <table className = 'min-w-full font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -66,6 +66,7 @@ const RequestforInventory = () => {
         </tbody> 
       </table>
       )}
+      <StaffFooter/>
     </div>
   )
 }

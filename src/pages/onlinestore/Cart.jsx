@@ -153,7 +153,7 @@ const Cart = () => {
           </div>
           <hr className="my-3 font-extrabold border-ternary border-2" />
           {cart.items.length > 0 && (
-            <Link className="flex flex-row w-full justify-center">
+            <Link to="/Checkout" className="flex flex-row w-full justify-center">
               <button className="bg-ternary text-bgc p-3 rounded-md font-BreeSerif shadow-lg">
                 Proceed to Checkout
               </button>
