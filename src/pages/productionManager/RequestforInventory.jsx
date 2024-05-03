@@ -4,6 +4,8 @@ import Spinner from '../../components/Spinner';
 import TableView from '../../components/table/TableView';
 import { Link } from 'react-router-dom';
 import ViewButton from '../../components/button2/ViewButton';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
 const RequestforInventory = () => {
   const [rmrequests, setrmRequests] = useState([]);
@@ -25,10 +27,11 @@ const RequestforInventory = () => {
   }, []);
   return (
     <div className='relative'>
+      <IsNavbar RmR= {true}/>
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full font-BreeSerif mb-5'>
+        <table className = 'min-w-full font-BreeSerif mb-5 mt-10'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (

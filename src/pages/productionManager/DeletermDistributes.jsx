@@ -31,7 +31,7 @@ const DeletermDistributes = () => {
 
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader drm = {true} />
       {loading ? <Spinner/> : ''}
       <div className='flex flex-col items-center bg-stone-200 rounded-xl w-[600px] p-8 mx-auto font-BreeSerif mb-5'>
         <h3 className='text-2xl'>Are You Sure You want to Delete this Distribution?</h3>
