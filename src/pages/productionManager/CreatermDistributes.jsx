@@ -5,46 +5,48 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/form/Input';
 import { useForm, FormProvider } from 'react-hook-form'; // Importing useForm and FormProvider
 import { useSnackbar } from 'notistack';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const CreatermDistributes = () => {
-  const [DistributeID, setDistributeID ] = useState('');
-  const [Date, setDate ] = useState('');
-  const [LineNumber, setLineNumber] = useState('');
-  const [PositionNumber, setPositionNumber] = useState('');
-  const [Distributed, setDistributed] = useState('');
-  const [Shortage, setShortage] = useState('');
+  // const [DistributeID, setDistributeID ] = useState('');
+  // const [Date, setDate ] = useState('');
+  // const [LineNumber, setLineNumber] = useState('');
+  // const [PositionNumber, setPositionNumber] = useState('');
+  // const [Distributed, setDistributed] = useState('');
+  // const [Shortage, setShortage] = useState('');
 
   const [loading, setLoading ] = useState(false);
   const navigate  = useNavigate();
   const { enqueueSnackBar } = useSnackbar();
 
   const methods = useForm(); // Initializing useForm
+  const { handleSubmit } = methods;
 
   const handleSaveRawmDistribute = async (data) => {
-    
+    console.log(data);
     setLoading(true);
     try {
       await axios.post('http://localhost:5555/rmDistributes', data);
       setLoading(false);
-    //   enqueueSnackBar('Distribution created successfully', { variant: 'success' });
+      enqueueSnackBar('Distribution created successfully', { variant: 'success' });
       navigate('/RawmDistributes');
     }catch ( error ) {
       setLoading(false);
-      alert('An error happened. Please Check console');
-    //   enqueueSnackBar('Error', { variant: 'error' });
+      // alert('An error happened. Please Check console');
+      enqueueSnackBar('Error', { variant: 'error' });
       console.log(error);
     }
   };
 
   return (
     <div className = 'relative'>
-      <PMHeader/>
+      <PMHeader dfl = {true} />
       {loading ? <Spinner/> : ''}
       <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
-          onSubmit={methods.handleSubmit(handleSaveRawmDistribute)} // Using handleSubmit from useForm
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
+          onSubmit={handleSubmit(handleSaveRawmDistribute)} // Using handleSubmit from useForm
         >
           <h1 className='text-3xl my-4 text-center'>Raw Material Distribution Form</h1>
           <Input
@@ -54,8 +56,8 @@ const CreatermDistributes = () => {
             id='distributeid'
             name='DistributeID'
             type='text'
-            value={DistributeID}
-            onChange={(e) => setDistributeID(e.target.value)}
+            // value={DistributeID}
+            // onChange={(e) => setDistributeID(e.target.value)}
             validation={{ required: 'Distribute ID is required' }}
           />
           <Input
@@ -65,8 +67,8 @@ const CreatermDistributes = () => {
             name='Date'
             type='date'
             placeholder='Enter Date'
-            value={Date}
-            onChange={(e) => setDate(e.target.value)}
+            // value={Date}
+            // onChange={(e) => setDate(e.target.value)}
             validation={{ required: 'Date is required' }}
           />
           <Input
@@ -76,8 +78,8 @@ const CreatermDistributes = () => {
             id='linenumber'
             name='LineNumber'
             placeholder='Enter Line Number'
-            value={LineNumber}
-            onChange={(e) => setLineNumber(e.target.value)}
+            // value={LineNumber}
+            // onChange={(e) => setLineNumber(e.target.value)}
             validation={{ required: 'Line Number is required' }}
           />
           <Input
@@ -87,8 +89,8 @@ const CreatermDistributes = () => {
             id='positionnumber'
             name='PositionNumber'
             placeholder='Enter Position Number'
-            value={PositionNumber}
-            onChange={(e) => setPositionNumber(e.target.value)}
+            // value={PositionNumber}
+            // onChange={(e) => setPositionNumber(e.target.value)}
             validation={{ required: 'Position Number is required' }}
           />
           <Input
@@ -98,8 +100,8 @@ const CreatermDistributes = () => {
             id='distributed'
             name='Distributed'
             placeholder='Enter Distributed Raw Materials'
-            value={Distributed}
-            onChange={(e) => setDistributed(e.target.value)}
+            // value={Distributed}
+            // onChange={(e) => setDistributed(e.target.value)}
             validation={{ required: 'Distributed raw materials must be filled' }}
           />
           <Input
@@ -109,13 +111,14 @@ const CreatermDistributes = () => {
             id='shortage'
             name='Shortage'
             placeholder='Shortage if needed'
-            value={Shortage}
-            onChange={(e) => setShortage(e.target.value)}
+            // value={Shortage}
+            // onChange={(e) => setShortage(e.target.value)}
             validation= {{ required: 'If there is no shortage,enter null' }}
           />
           <button className= 'p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
         </form>
       </FormProvider>
+      <StaffFooter/>
     </div>
   )
 }

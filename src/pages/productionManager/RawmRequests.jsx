@@ -7,7 +7,8 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const RawmRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
@@ -29,7 +30,7 @@ const RawmRequests = () => {
   }, []);
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader rmr = {true} />
       <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
@@ -49,7 +50,7 @@ const RawmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -93,6 +94,7 @@ const RawmRequests = () => {
         </tbody> 
       </table>
       )}
+      <StaffFooter/>
     </div>
   )
 }
