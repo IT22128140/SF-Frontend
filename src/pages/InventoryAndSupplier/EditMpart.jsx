@@ -21,6 +21,7 @@ const EditMpart =() => {
     const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
+    
     useEffect(() => {
         setLoading(true);
         axios.get(`http://localhost:5555/MPstock/${id}`)
@@ -66,7 +67,9 @@ const EditMpart =() => {
   return (
     <div className='p-4'>
         <BackButton />
-        <h1 className='my-4 text-3xl'>Edit Machinepart</h1>
+        <div className="flex items-center justify-center mb-9">
+        <h1 className="my-9 text-8xl">Edit Machine Part Stock</h1>
+      </div>
         {loading ? <Spinner/> : ''}
         <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
             <div className='my-4'>

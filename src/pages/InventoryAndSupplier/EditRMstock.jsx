@@ -17,11 +17,13 @@ const EditRMstock =() => {
     const [materialType, setmaterialType] = useState('');
     const [colorAndDesign, setcolorAndDesign] = useState ('');
     const [initialquantity, setinitialquantity] = useState('');
+    const[costperunit,setcostperunit] = useState('');
     const [restockingdate, setrestockingdate] = useState('');
     const [availablequantity, setavailablequantity] = useState('');
     const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
     const {id} = useParams();
+    
     useEffect(() => {
         setLoading(true);
         axios.get(`http://localhost:5555/RMstock/${id}`)
@@ -31,6 +33,7 @@ const EditRMstock =() => {
                 setmaterialType(response.data.materialType);
                 setcolorAndDesign(response.data.colorAndDesign);
                 setinitialquantity(response.data.initialquantity);
+                setcostperunit(response.data.costperunit);
                 setrestockingdate(response.data.restockingdate);
                 setavailablequantity(response.data.availablequantity);
                 
@@ -48,6 +51,7 @@ const EditRMstock =() => {
         materialType,
         colorAndDesign,
         initialquantity,
+        costperunit,
         restockingdate,
         availablequantity
     
@@ -70,11 +74,13 @@ const EditRMstock =() => {
   return (
     <div className='p-4'>
         <BackButton />
-        <h1 className='my-4 text-3xl'>Edit Raw Materials</h1>
+        <div className="flex items-center justify-center mb-9">
+        <h1 className="my-9 text-8xl">Edit raw material Stock</h1>
+      </div>
         {loading ? <Spinner/> : ''}
         <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
         <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Request ID</label>
+                <label className='mr-4 text-xl gray-500'>Request ID</label>
                 <input
                  type='String'
                  value={requestID}
@@ -106,6 +112,15 @@ const EditRMstock =() => {
                  type='number'
                  value={initialquantity}
                  onChange={(e) => setinitialquantity(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
+                <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500'>Cost per unit</label>
+                <input
+                 type='String'
+                 value={costperunit}
+                 onChange={(e) => setcostperunit(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>
