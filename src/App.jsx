@@ -29,8 +29,8 @@ import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
  import LoginCus from './pages/LoginCus.jsx';
  import RegisCus from './pages/RegisCus.jsx';
  import RegisEmp from './pages/RegisEmp.jsx';
- import CusProfile from './pages/CusProfile.jsx';
- import EditProfile from './pages/EditProfile.jsx';
+//  import CusProfile from './pages/CusProfile.jsx';
+//  import EditProfile from './pages/EditProfile.jsx';
  
  
 
@@ -235,8 +235,8 @@ const App = () => {
       <Route path="/LoginCus" element={<LoginCus />} />
       <Route path="/RegisCus" element={<RegisCus />} />
       <Route path="/RegisEmp" element={<RegisEmp />} />
-      <Route path="/CusProfile" element={<CusProfile />} />
-      <Route path="/EditProfile" element={<EditProfile />} />
+      {/* <Route path="/CusProfile" element={<CusProfile />} />
+      <Route path="/EditProfile" element={<EditProfile />} /> */}
 
       
 
