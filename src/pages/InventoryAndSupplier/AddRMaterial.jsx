@@ -24,9 +24,9 @@ const AddRMaterial = () => {
             materialType,
             colorAndDesign,
             initialquantity,
+             restockingdate,
+            availablequantity ,
             costperunit,
-            restockingdate,
-            availablequantity
         };
         setLoading(true);
         axios
@@ -45,7 +45,9 @@ const AddRMaterial = () => {
     return (
         <div className='p-4'>
             <BackButton />
-            <h1 className='my-4 text-3xl'>Add Raw materialStock</h1>
+            <div className="flex items-center justify-center mb-9">
+        <h1 className="my-9 text-8xl">Add raw material details </h1>
+      </div>
             {loading ? <Spinner /> : ''}
             <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
             <div className='my-4'>
@@ -99,6 +101,15 @@ const AddRMaterial = () => {
                         type='number'
                         value={availablequantity}
                         onChange={(e) => setavailablequantity(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                </div>
+                <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500'>cost per unit</label>
+                    <input
+                        type='string'
+                        value={costperunit}
+                        onChange={(e) => setcostperunit(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div>

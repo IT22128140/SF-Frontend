@@ -42,7 +42,9 @@ const AddSupplieredRaws = () => {
     return (
         <div className='p-4'>
             <BackButton />
-            <h1 className='my-4 text-3xl'>Add Details</h1>
+            <div className="flex items-center justify-center mb-9">
+        <h1 className="my-9 text-8xl">Add detals </h1>
+      </div>
             {loading ? <Spinner /> : ''}
             <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
             <div className='my-4'>
