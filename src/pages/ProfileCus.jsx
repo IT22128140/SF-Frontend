@@ -52,7 +52,7 @@ function Profile() {
         </div>
       </div>
     </div>
-    <Link to="/pages/EditProfileCus">
+    <Link to="/EditProfileCus">
       <button className="bg-ternary text-white font-bold py-2 px-8 rounded">
         EDIT
       </button>
