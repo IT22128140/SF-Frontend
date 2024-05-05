@@ -72,7 +72,7 @@ function Register() {
 
     console.log(newUser);
 
-    axios.post("http://localhost:3001/register", newUser)
+    axios.post("http://localhost:5555/register", newUser)
       .then((result) => {
         console.log(result);
         navigate("/LoginCus");

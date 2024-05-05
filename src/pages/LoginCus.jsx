@@ -37,7 +37,7 @@ function Login() {
     setErrors({}); // Clear the errors state if there are no errors
 
     axios
-      .post("http://localhost:3001/login", { email, password })
+      .post("http://localhost:5555/login", { email, password })
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {
