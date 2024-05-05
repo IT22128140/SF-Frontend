@@ -46,7 +46,7 @@ const MachinePartStock = () => {
 
       {loading ? (
         <Spinner />
-      ) : (
+      ) : ( 
         <div className="px-10 mx-auto"> 
         <table className="w-full text-2xl">
           <TableView headers={headers} />

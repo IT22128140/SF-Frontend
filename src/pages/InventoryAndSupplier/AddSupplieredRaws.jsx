@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
 
 
+
 const AddSupplieredRaws = () => {
     const [supplierID,setsupplierID] = useState('');
     const [fabricType_Colour_Quantity, setfabricType_Colour_Quantity] = useState('');
@@ -43,12 +44,12 @@ const AddSupplieredRaws = () => {
         <div className='p-4'>
             <BackButton />
             <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Add detals </h1>
+        <h1 className="text-6xl my-9">Add detals </h1>
       </div>
             {loading ? <Spinner /> : ''}
-            <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+            <div className='flex flex-col border-2 rounded bg-formbg border-sky-300-xl w-[500px] p-4 mx-auto '>
             <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>supplierID </label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>supplierID </label>
                     <input
                         type='String'
                         value={supplierID}
@@ -57,7 +58,7 @@ const AddSupplieredRaws = () => {
                     />
                     </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>fabricType_Colour_Quantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>fabricType_Colour_Quantity</label>
                     <input
                         type='String'
                         value={fabricType_Colour_Quantity}
@@ -66,7 +67,7 @@ const AddSupplieredRaws = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>button_Colour_Quantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>button_Colour_Quantity</label>
                     <input
                         type='String'
                         value={button_Colour_Quantity}
@@ -75,7 +76,7 @@ const AddSupplieredRaws = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>thread_Colour_Quantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>thread_Colour_Quantity</label>
                     <input
                         type='String'
                         value={thread_Colour_Quantity}
@@ -84,7 +85,7 @@ const AddSupplieredRaws = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>other_Materials</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>other_Materials</label>
                     <input
                         type='String'
                         value={other_Materials}
@@ -93,7 +94,7 @@ const AddSupplieredRaws = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>recivedDate</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>recivedDate</label>
                     <input
                         type='Date'
                         value={recivedDate}

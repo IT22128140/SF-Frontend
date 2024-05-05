@@ -73,6 +73,7 @@ import RawMaterialStock from './pages/InventoryAndSupplier/RawMaterialStock.jsx'
 import AddRMaterial from './pages/InventoryAndSupplier/AddRMaterial.jsx';
 import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
 import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
+import AddSupplieredRaws from "./pages/InventoryAndSupplier/AddSupplieredRaws.jsx";
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
@@ -278,6 +279,7 @@ const App = () => {
       <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
+      <Route path='/Fullfillrequset/:id/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
       <Route path= "/Report" element = {<Report/>} />

@@ -29,7 +29,7 @@ const handleDelete = () =>{
     <div className='p-4'>
         <BackButton />
         <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Delete Supplier </h1>
+        <h1 className="text-6xl my-9 font-Philosopher">Delete Supplier </h1>
       </div>
         {loading ? <Spinner /> : ''}
         <div className='flex flex-col items-center justify-between border rounded border-2-sky-400-xl w-[600px] p-8 mx-auto'>

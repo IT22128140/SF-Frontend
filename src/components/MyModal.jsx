@@ -41,7 +41,7 @@ function MyModal({onClose}) {
             .then(() => {
                 setLoading(false);
                 alert('Submit succesfull!');
-                navigate('/Popup'); // Navigate to the RawMaterialStock page
+                navigate('/RequestforInventory'); // Navigate to the RawMaterialStock page
             })
             .catch((error) => {
                 setLoading(false);
