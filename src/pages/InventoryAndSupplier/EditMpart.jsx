@@ -68,12 +68,12 @@ const EditMpart =() => {
     <div className='p-4'>
         <BackButton />
         <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Edit Machine Part Stock</h1>
+        <h1 className="text-6xl my-9 font-Philosopher">Edit Machine Part Stock</h1>
       </div>
         {loading ? <Spinner/> : ''}
-        <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='flex flex-col border-2 bg-formbg rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
             <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>partName</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>partName</label>
                 <input
                  type='String'
                  value={partName}
@@ -82,7 +82,7 @@ const EditMpart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>purchasedDate</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>purchasedDate</label>
                 <input
                  type='String'
                  value={purchasedDate}
@@ -91,7 +91,7 @@ const EditMpart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>condition</label>
+                <label className='mr-4 text-xl text-gray-500 font-philosopher'>condition</label>
                 <input
                  type='String'
                  value={condition}
@@ -101,7 +101,7 @@ const EditMpart =() => {
                 </div>
               
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>costPerUnit</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>costPerUnit</label>
                 <input
                  type='String'
                  value={costPerUnit}
@@ -110,7 +110,7 @@ const EditMpart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>quantity</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>quantity</label>
                 <input
                  type='String'
                  value={quantity}
@@ -119,7 +119,7 @@ const EditMpart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>manufacturer</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>manufacturer</label>
                 <input
                  type='Date'
                  value={manufacturer}

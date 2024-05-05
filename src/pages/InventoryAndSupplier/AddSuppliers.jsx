@@ -51,12 +51,12 @@ const AddSuppliers =() => {
     <div className='p-4 '>
         <BackButton />
         <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Add supplier </h1>
+        <h1 className="text-6xl my-9 font-Philosopher">Add supplier </h1>
       </div>
         {loading ? <Spinner/> : ''}
-        <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='flex flex-col border-2 rounded border-sky-300-xl w-[500px] p-4 mx-auto '>
         <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>supplier ID</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>supplier ID</label>
                 <input
                  type='String'
                  value={SRequestID}
@@ -65,7 +65,7 @@ const AddSuppliers =() => {
                 />
                 </div>
             <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>supplier Name</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>supplier Name</label>
                 <input
                  type='String'
                  value={supplierName}
@@ -74,7 +74,7 @@ const AddSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Adsress</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Address</label>
                 <input
                  type='String'
                  value={address}
@@ -83,7 +83,7 @@ const AddSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>contact Number</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>contact Number</label>
                 <input
                  type='number'
                  value={contactNumber}
@@ -93,7 +93,7 @@ const AddSuppliers =() => {
                 </div>
               
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Email</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Email</label>
                 <input
                  type='String'
                  value={email}
@@ -102,7 +102,7 @@ const AddSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Supplier Type</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Supplier Type</label>
                 <input
                  type='String'
                  value={supplierType}
@@ -111,7 +111,7 @@ const AddSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Contract Expiary</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Contract Expiary</label>
                 <input
                  type='Date'
                  value={contractExpiary}

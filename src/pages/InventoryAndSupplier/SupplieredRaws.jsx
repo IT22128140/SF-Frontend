@@ -33,7 +33,7 @@ const SupplieredRaws = () => {
     // Implement delete functionality
   };
 
-  const handleEdit = () => {
+  const handleAdd = () => {
     // Implement edit functionality
   };
 
@@ -75,14 +75,15 @@ const SupplieredRaws = () => {
         </div>
       )};
       <div className='flex justify-end m-8 mb-4'>
-      <Link to="AddSupplieredRaws"> {/* Link to AddSuppliers page */}
-        <AddButton className="mr-2">Add</AddButton>
+      <Link to="AddSupplieredRaws"> 
+      <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
       </Link>
-     
+    
       </div>
-      <StaffFooter/>
-    </div>
-  );
+       <StaffFooter/>
+      </div> 
+  
+  ); 
 };
 
 export default SupplieredRaws;

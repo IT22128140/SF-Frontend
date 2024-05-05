@@ -22,41 +22,41 @@ const RawMaterialStock = () => {
 
   const headers2 = ['Material type', 'color / design', 'initial quantity','restocking date','available quantity','costperunit','totalcost'];
 
+  const[data,setdata] = useState([]);
+  
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/RMstock')
-      .then((response) => {
-        console.log(response.data);
-        setRMStocks(response.data);
-        setFilteredRMStocks(response.data); // Initialize filtered data with all data
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
+    .get('http://localhost:5555/RMstock')
+    .then((response) => {
+      console.log(response.data);
+      setRMStocks(response.data);
+      setFilteredRMStocks(response.data);
+      const set = RMStocks.map(obj => ({name:obj.materialID, _id:obj._id}));
+        setdata(set);           
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+      setLoading(false);
+    });
+  
   }, []);
 
   const handleDelete  = () => {
-    // Implement delete functionality
+  
   };
 
   const handleEdit = () => {
-    // Implement edit functionality
+    
   };
 
   const handleAdd = () => {
-    // Implement add functionality
+ 
   };
 
-  // Function to handle search/filtering
-  const handleSearch = (searchTerm) => {
-    const filteredRMStocks = RMStocks.filter((item) =>
-      item.materialType.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredRMStocks(filteredRMStocks);
-  };
+  
+  
 
    
   
@@ -85,16 +85,22 @@ const RawMaterialStock = () => {
   
 
   return (
-    <div className="h-screen p-1 bg-transparent bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url("/inventory/RMS.jpg")' }}>
-  
+    // <div className="absolute bg-cover h-screen p-1 overflow-y-auto bg-[url('/Picture2.jpg')] bg-transparent ">
+    <div className='w-full h-full'>
+   
+   <div className='w-full h-full' style={{ backgroundImage: `url(/RawM.png)`, backgroundSize: 'cover' }}>
+      
+     </div>
+
+    <div className='relative'> 
       <IsNavbar RpS={true} /> 
      
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Raw Material Stock</h1>
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Raw Material Stock</h1>
       </div>
 
       <div className="flex items-center justify-center mb-4">
-        <SearchBar placeholder="Search by material type" onSearch={handleSearch} />
+        <SearchBar data = {data} navigate={`/RawMaterialStock/`} placeholder={"Enter material Type"}/>
       </div>
       <div className="flex items-center mb-4">
         <input
@@ -122,7 +128,7 @@ const RawMaterialStock = () => {
             <tbody>
               {filteredRMStocks.map((RMstock,index) => (
                 <tr key={RMstock._id} className="h-8">
-                  <td className="text-center border rounded-md border-slate-700">{RMstock.requestID}</td>
+                  <td className="text-center border rounded-md border-slate-700">{RMstock.materialID}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.materialType}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.colorAndDesign}</td>
                   <td className="text-center border rounded-md border-slate-700">{RMstock.initialquantity}</td> 
@@ -155,6 +161,8 @@ const RawMaterialStock = () => {
           <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
         </Link>
       </div>
+    </div>
+    
     </div>
   );
 };

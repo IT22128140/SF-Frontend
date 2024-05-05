@@ -13,7 +13,7 @@ import SubmitButton from '../../components/button2/SubmitButton';
 
 
 const EditRMstock =() => {
-  const [requestID,setrequestID] = useState('');
+  const [materialID,setmaterialID] = useState('');
     const [materialType, setmaterialType] = useState('');
     const [colorAndDesign, setcolorAndDesign] = useState ('');
     const [initialquantity, setinitialquantity] = useState('');
@@ -29,7 +29,7 @@ const EditRMstock =() => {
         axios.get(`http://localhost:5555/RMstock/${id}`)
 
             .then((response) =>{
-              setrequestID(response.data.requestID);
+              setmaterialID(response.data.materialID);
                 setmaterialType(response.data.materialType);
                 setcolorAndDesign(response.data.colorAndDesign);
                 setinitialquantity(response.data.initialquantity);
@@ -47,7 +47,7 @@ const EditRMstock =() => {
     
     const handleEditRmaterial = () => {
        const data = {
-        requestID,
+        materialID,
         materialType,
         colorAndDesign,
         initialquantity,
@@ -75,21 +75,21 @@ const EditRMstock =() => {
     <div className='p-4'>
         <BackButton />
         <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Edit raw material Stock</h1>
+        <h1 className="text-6xl my-9 font-Philosopher">Edit raw material Stock</h1>
       </div>
         {loading ? <Spinner/> : ''}
         <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
         <div className='my-4'>
-                <label className='mr-4 text-xl gray-500'>Request ID</label>
+                <label className='mr-4 text-xl gray-500 font-Philosopher'>Request ID</label>
                 <input
                  type='String'
-                 value={requestID}
-                 onChange={(e) => setrequestID(e.target.value)}
+                 value={materialID}
+                 onChange={(e) => setmaterialID(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>
             <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>material Type</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>material Type</label>
                 <input
                  type='String'
                  value={materialType}
@@ -98,7 +98,7 @@ const EditRMstock =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>colorAndDesign</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>colorAndDesign</label>
                 <input
                  type='String'
                  value={colorAndDesign}
@@ -107,7 +107,7 @@ const EditRMstock =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>initialquantity</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>initialquantity</label>
                 <input
                  type='number'
                  value={initialquantity}
@@ -116,7 +116,7 @@ const EditRMstock =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Cost per unit</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Cost per unit</label>
                 <input
                  type='String'
                  value={costperunit}
@@ -125,7 +125,7 @@ const EditRMstock =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>restockingdate</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>restockingdate</label>
                 <input
                  type='Date'
                  value={restockingdate}
@@ -134,7 +134,7 @@ const EditRMstock =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>availablequantity</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>availablequantity</label>
                 <input
                  type='number'
                  value={availablequantity}
