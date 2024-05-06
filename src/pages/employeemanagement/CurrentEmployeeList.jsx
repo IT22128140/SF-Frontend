@@ -17,12 +17,14 @@ import EmployeeModal from "./EmployeeModal.jsx";
 import DeleteEmployee from "./DeleteEmployee.jsx";
 import { CiSearch } from "react-icons/ci";
 
+
 const CurrentEmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
   // const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -115,80 +117,81 @@ const CurrentEmployeeList = () => {
         </div>
 
         <div className="flex justify-center ml-20 mb-10">
-          {loading ? (
-            <Spinner />
-          ) : (
-            <table className="w-[95%]">
-              <TableView headers={headers} />
-              <tbody>
-                {filteredData.map((employee, index) => (
-                  <tr key={employee._id} className="h-8">
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {index + 1}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.employeeID}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.firstName}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.lastName}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.nic}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.address}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.email}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.contactNo}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.dateOfBirth.split("T")[0]}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.age}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.occupation}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.basicSalary}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {employee.admissionDate.split("T")[0]}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      <div className="flex justify-center gap-x-4">
-                        <ViewButton
-                          onClick={() => {
-                            setSelectedEmployee(employee);
-                            setShowModal(true);
-                          }}
-                        />
-                        <Link to={`/employees/EditEmployee/${employee._id}`}>
-                          <EditButton />
-                        </Link>
-                        <DeleteButton
-                          onClick={() => {
-                            setSelectedEmployee(employee);
-                            setShowDelete(true);
-                          }}
-                        />
-                        <Link to={"#"}>
-                          <SalaryButton />
-                        </Link>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+
+        {loading ? (
+          <Spinner />
+        ) : (
+          <table className="w-[95%]">
+            <TableView headers={headers} />
+            <tbody>
+              {filteredData.map((employee, index) => (
+                <tr key={employee._id} className="h-8">
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {index + 1}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.employeeID}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.firstName}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.lastName}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.nic}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.address}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.email}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.contactNo}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.dateOfBirth.split("T")[0]}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.age}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.occupation}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.basicSalary}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    {employee.admissionDate.split("T")[0]}
+                  </td>
+                  <td className="border border-slate-700 rounded-md text-center">
+                    <div className="flex justify-center gap-x-4">
+                      <ViewButton
+                        onClick={() => {
+                          setSelectedEmployee(employee);
+                          setShowModal(true);
+                        }}
+                      />
+                      <Link to={`/employees/EditEmployee/${employee._id}`}>
+                        <EditButton />
+                      </Link>
+                      <DeleteButton
+                        onClick={() => {
+                          setSelectedEmployee(employee);
+                          setShowDelete(true);
+                        }}
+                      />
+                      <Link to={`/GenerateSalary/${employee._id}`}>
+                        <SalaryButton />
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
         </div>
 
         {showModal && (

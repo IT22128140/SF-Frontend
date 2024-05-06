@@ -1,78 +1,96 @@
 import { Axios } from "axios";
-import React, {useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 import SubmitButton from "../../components/button2/SubmitButton";
 import AddButton from "../../components/button2/AddButton";
+import HrNavbar from '../../components/navbar/staffheader/HrNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import { Link } from "react-router-dom";
 
 
 
 const ChequeSubmit = () => {
-  const [cheque, setCheque] = useState({});
   const { id } = useParams();
   const [file, setFile] = useState();
-  const handleUpload = (e) => {
-    const formdata = new FormData();
-    formdata.append('file', file);
-    Axios.put(`http://localhost:5555/uploads/${id}`, formdata)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+  const [showNewSlipInput, setShowNewSlipInput] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [showNoticeInput, setShowNoticeInput] = useState(false);
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+
+
+    // Upload file
+    Axios.put(`http://localhost:5555/uploads/${id}`, formData)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    // Add notice
+    if (notice.trim() !== "") {
+      // Handle adding notice logic here
+      console.log("Notice added:", notice);
+    }
   }
 
- 
-  return (
-    <div className="bg-white flex flex-row justify-center w-full">
-      <div className="bg-white w-[1920px] h-[2399px] relative">
-    <div>
-      <div className="absolute  left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[64px] text-center tracking-[0] leading-[normal]">
-        Cheque Submission
-      </div>
-      <div className="absolute top-[315px] left-[178px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[36px] text-center tracking-[0] leading-[normal]">
-        Attach payement slip
-        </div>
-        <div className="absolute top-[400px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-10 block">
-        <div>
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button onClick={handleUpload}>Upload</button>
-        
-      </div>
+  const handleAddCheque = () => {
+    setShowNewSlipInput(true);
+    setShowNoticeInput(true);
+  }
 
-      </div>
-        <div className="absolute top-[720px] left-[178px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[36px] text-center tracking-[0] leading-[normal]">
-      Notice
-    
-      </div>
-      <div className="absolute top-[770px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-1 block">
-          <div>
-            <input type="text" placeholder="Enter notice"   className="w-150 h-30 " />
+  return (
+    <div>
+      <HrNavbar sal={true} />
+      <div className="bg-white flex flex-row justify-center w-full">
+        <div className="bg-white w-full max-w-lg relative">
+          <br />
+          <br />
+          <div className="text-3xl text-center font-semibold text-black mb-8">
+            Cheque Submission
+          </div>
+          <div className="mb-8">
+            <br />
+            <br />
+            <div className="text-xl text-black mb-4">Attach Payment Slip</div>
+            <div>
+              <br />
+              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+            </div>
+          </div>
+          {showNoticeInput && (
+            <div className="mb-8">
+              <div className="text-xl text-black mb-4">Notice</div>
+              <div>
+                <input type="text" placeholder="Enter notice" value={notice} onChange={(e) => setNotice(e.target.value)} className="w-full h-12 mb-2 px-4 border border-black" />
+              </div>
+            </div>
+          )}
+          {showNewSlipInput && (
+            <div>
+              <div className="text-xl text-black mb-4">Attach New Slip</div>
+              <div>
+                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+              </div>
+            </div>
+          )}
+          <br />
+          <div className='flex justify-between mt-8'>
+            <Link to={`/SalaryTable`}>
+            <SubmitButton onClick={handleUpload}>Submit</SubmitButton>
+            </Link>
+            {!showNoticeInput && (
+              <AddButton onClick={handleAddCheque}>Add Cheque</AddButton>
+            )}
           </div>
         </div>
-      <div className="absolute top-[1123px] left-[178px]  [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[36px] text-center tracking-[0] leading-[normal]">
-        Attah New Sliip
       </div>
-      <div className="absolute top-[1200px] left-[591px] [font-family: 'Inter-Regular',Helvetica] font-normal text-black text-[32px] text-center tracking-[0] leading-[normal] border border-black border-1 p-10 block">
-        <div>
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        
-      </div>
-
-      </div>
-      <div className='p-4 mx-auto max-w-lg '>
-          
-       <SubmitButton className="absolute top-[1500px] left-[591px]">Submit</SubmitButton>
-            
-       <AddButton className="absolute top-[1500px] left-[850px]">Add Cheque</AddButton>
-
-            
-          
-           
-          </div> 
-      </div>
-      </div>
-     
-     
+      <br />
+      <br />
+      < br />
+      <StaffFooter />
     </div>
   );
-  
 };
 
 export default ChequeSubmit;
