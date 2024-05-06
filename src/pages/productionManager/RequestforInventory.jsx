@@ -7,6 +7,7 @@ import ViewButton from '../../components/button2/ViewButton';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
+
 const RequestforInventory = () => {
   const [rmrequests, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,28 +37,28 @@ const RequestforInventory = () => {
           <tbody>
           {rmrequests.map((rmrequest, index) => (
             <tr key={rmrequest._id} className='h-8'>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 {rmrequest.RequestID}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 {rmrequest.Date}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 {rmrequest.FabricType_Colour_Amount}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 {rmrequest.ButtonType_Colour_Amount}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 {rmrequest.ThreadType_Colour_Amount}
               </td>
-              <td className='border border-slate-700 rounded-md'> 
+              <td className='border rounded-md border-slate-700'> 
                 {rmrequest.Other_Materials}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 {rmrequest.Status}
               </td>
-              <td className='border border-slate-700 rounded-md'>
+              <td className='border rounded-md border-slate-700'>
                 <div className='flex justify-center gap-x-4'>
                   <Link to={ `/rmRequests/details/${rmrequest._id}`}>
                     <ViewButton/>

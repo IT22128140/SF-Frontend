@@ -48,7 +48,7 @@ const FiredEmployeeList = () => {
       <HrNavbar fel={true} />
 
       <div className="p-4">
-        <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Fired Employees&rsquo; List
         </h1>
 

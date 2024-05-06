@@ -50,12 +50,22 @@ const Addmachinepart =() => {
     
   return (
     <div className='p-4'>
+      
         <BackButton />
-        <h1 className='my-4 text-3xl'>Add Machine partStock</h1>
+        <div className="flex items-center justify-center mb-9">
+<<<<<<< HEAD
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center ">Add Machine Part </h1>
+      </div>
         {loading ? <Spinner/> : ''}
-        <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
+=======
+        <h1 className="text-6xl my-9 font-Philosopher">Add Machine Part </h1>
+      </div>
+        {loading ? <Spinner/> : ''}
+        <div className='flex flex-col border-2 bg-formbg rounded border-sky-300-xl w-[400px] p-4 mx-auto '>
+>>>>>>> 1998b534275a592a78fa34806f5050d2d9815e99
         <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Part ID</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Part ID</label>
                 <input
                  type='String'
                  value={partID}
@@ -64,7 +74,7 @@ const Addmachinepart =() => {
                 />
                 </div>
             <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>partName</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>partName</label>
                 <input
                  type='String'
                  value={partName}
@@ -73,7 +83,7 @@ const Addmachinepart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>purchasedDate</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>purchasedDate</label>
                 <input
                  type='date'
                  value={purchasedDate}
@@ -82,7 +92,7 @@ const Addmachinepart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>condition</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>condition</label>
                 <input
                  type='String'
                  value={condition}
@@ -91,7 +101,7 @@ const Addmachinepart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>costPerUnit</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>costPerUnit</label>
                 <input
                  type='number'
                  value={costPerUnit}
@@ -100,7 +110,7 @@ const Addmachinepart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>quantity</label>
+                <label className='mr-4 text-xl text-gray-500 font-Lavish'>quantity</label>
                 <input
                  type='number'
                  value={quantity}
@@ -109,7 +119,7 @@ const Addmachinepart =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>manufacturer</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>manufacturer</label>
                 <input
                  type='String'
                  value={manufacturer}
