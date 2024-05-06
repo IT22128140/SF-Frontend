@@ -29,8 +29,13 @@ const FeedbackPage = () => {
     return stars;
   };
 
-  const handleContact = (name, email) => {
-    alert(`Contacting ${name} at ${email} regarding their feedback`);
+  const handleContact = async (name, email) => {
+    try {
+      await axios.post('http://localhost:5555/contact', { name, email });
+      alert(`Contacting ${name} at ${email} regarding their feedback`);
+    } catch (error) {
+      console.error('Error contacting user:', error);
+    }
   };
 
   if (loading) {
