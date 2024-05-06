@@ -4,6 +4,8 @@ import Spinner from '../../components/Spinner';
 import TableView from '../../components/table/TableView';
 import { Link } from 'react-router-dom';
 import ViewButton from '../../components/button2/ViewButton';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
 
 const RequestforInventory = () => {
@@ -26,10 +28,16 @@ const RequestforInventory = () => {
   }, []);
   return (
     <div className='relative'>
+      <IsNavbar RmR= {true}/>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Requests
+        </h1>
+      </center>
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'min-w-full mb-5 font-BreeSerif'>
+        <table className = 'ml-1 mr-1 font-BreeSerif mb-5 mt-5'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (

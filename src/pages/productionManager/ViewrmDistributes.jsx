@@ -26,7 +26,12 @@ const ViewrmDistributes = () => {
 
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader drm = {true} />
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Distribution
+        </h1>
+      </center>
       {loading ? (
         <Spinner/>
       ) : (

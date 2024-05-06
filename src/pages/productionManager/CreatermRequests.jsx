@@ -7,6 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form'; // Importing useForm an
 import { useSnackbar } from 'notistack';
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import BackButton from '../../components/button/BackButton';
+import SubmitButton from '../../components/button2/SubmitButton';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const CreatermRequests = () => {
@@ -31,8 +32,8 @@ const CreatermRequests = () => {
     try {
       await axios.post('http://localhost:5555/rmRequests', data);
       setLoading(false);
-      enqueueSnackBar('Request created successfully', { variant: 'success' });
       navigate('/RawmRequests');
+      enqueueSnackBar('Request created successfully', { variant: 'success' });
     }catch ( error ) {
       setLoading(false);
       // alert('An error happened. Please Check console');
@@ -44,11 +45,16 @@ const CreatermRequests = () => {
   return (
     <div className = 'relative'>
       <PMHeader rrm = {true} />
-      <BackButton/>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Requesting Raw Materials
+        </h1>
+      </center>
+      {/* <BackButton/> */}
       {loading ? <Spinner/> : ''}
       <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
+          className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
           onSubmit={handleSubmit(handleSaveRawmRequest)} // Using handleSubmit from useForm
         >
           <h1 className='text-3xl my-4 text-center'>Raw Material Request Form</h1>
@@ -129,7 +135,8 @@ const CreatermRequests = () => {
             // onChange={(e) => setStatus(e.target.value)}
             validation={{ required: 'Status required' }}
           />
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
+          {/* <button className= 'p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button> */}
+          <center className="mt-3"><SubmitButton/></center>
         </form>
       </FormProvider>
       <StaffFooter/>
