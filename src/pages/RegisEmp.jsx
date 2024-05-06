@@ -72,10 +72,10 @@ function Register() {
 
     console.log(newUser);
 
-    axios.post("http://localhost:5555/register", newUser)
+    axios.post("http://localhost:5555/RegusEmp", newUser)
       .then((result) => {
         console.log(result);
-        navigate("/LoginCus");
+        navigate("/pages/LoginEmp");
       })
       .catch((err) => console.log(err));
   };

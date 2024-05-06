@@ -42,13 +42,13 @@ function Login() {
     setErrors({}); // Clear the errors state if there are no errors
 
     axios
-      .post("http://localhost:5555/login", { email, password, loginType })
+      .post("http://localhost:5555/LoginEmp", { email, password, loginType })
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {
           navigate("/home");
         } else {
-          navigate("/RegisEmp");
+          navigate("/pages/RegisEmp");
           alert("You are not registered to this service");
         }
       })
