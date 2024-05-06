@@ -7,7 +7,7 @@ import SubmitButton from '../../components/button2/SubmitButton';
 
 
 const AddRMaterial = () => {
-    const [requestID,setrequestID] = useState('');
+    const [materialID,setmaterialID] = useState('');
     const [materialType, setMaterialType] = useState('');
     const [colorAndDesign, setColorAndDesign] = useState('');
     const [initialquantity, setinitialquantity] = useState('');
@@ -20,13 +20,13 @@ const AddRMaterial = () => {
     const handleSaveRmaterials = () => {
         const data = {
             
-            requestID,
+            materialID,
             materialType,
             colorAndDesign,
             initialquantity,
+             restockingdate,
+            availablequantity ,
             costperunit,
-            restockingdate,
-            availablequantity
         };
         setLoading(true);
         axios
@@ -45,20 +45,29 @@ const AddRMaterial = () => {
     return (
         <div className='p-4'>
             <BackButton />
-            <h1 className='my-4 text-3xl'>Add Raw materialStock</h1>
+            <div className="flex items-center justify-center mb-9">
+<<<<<<< HEAD
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center ">Add raw material details </h1>
+      </div>
             {loading ? <Spinner /> : ''}
-            <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+            <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>
+=======
+        <h1 className="text-6xl my-9 font-Philosopher">Add raw material details </h1>
+      </div>
+            {loading ? <Spinner /> : ''}
+            <div className='flex flex-col border-2 bg-formbg rounded border-sky-300-xl w-[500px] p-4 mx-auto '>
+>>>>>>> 1998b534275a592a78fa34806f5050d2d9815e99
             <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Request id </label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Material id </label>
                     <input
                         type='String'
-                        value={requestID}
-                        onChange={(e) => setrequestID(e.target.value)}
+                        value={materialID}
+                        onChange={(e) => setmaterialID(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                     </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Material Type</label>
+                    <label className='mr-4 text-xl text-gray-500 font-philosopher'>Material Type</label>
                     <input
                         type='String'
                         value={materialType}
@@ -67,7 +76,7 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>colorAndDesign</label>
+                    <label className='mr-4 text-xl text-gray-500 font-philosopher'>colorAndDesign</label>
                     <input
                         type='String'
                         value={colorAndDesign}
@@ -76,7 +85,7 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Initialquantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Initialquantity</label>
                     <input
                         type='number'
                         value={initialquantity}
@@ -85,7 +94,7 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>restockingdate</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>restockingdate</label>
                     <input
                         type='Date'
                         value={restockingdate}
@@ -94,11 +103,20 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Availablequantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Availablequantity</label>
                     <input
                         type='number'
                         value={availablequantity}
                         onChange={(e) => setavailablequantity(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                </div>
+                <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>cost per unit</label>
+                    <input
+                        type='string'
+                        value={costperunit}
+                        onChange={(e) => setcostperunit(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div>
