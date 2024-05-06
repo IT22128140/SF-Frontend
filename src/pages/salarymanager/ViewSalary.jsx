@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../../components/Spinner';
 import { useParams } from 'react-router';
-import BackButton from '../../components/button/BackButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import { Link } from 'react-router-dom';
 import RejectButton from '../../components/button2/RejectButton';
+import HrNavbar from '../../components/navbar/staffheader/HrNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const ViewSalary = () => {
   const [viewSalary, setViewSalary] = useState([]);
@@ -28,10 +29,12 @@ const ViewSalary = () => {
   }, []);
  
   return (
+    <div>
+      <HrNavbar sal={true} />
     <div className='p-4 h-screen overflow-y-auto'>
      
         <div className='flex justify-center items-center'>
-          <h1 className='text-3xl my-8'>View Salary Details</h1>
+          <h1 className='text-3xl my-8 font-Philosopher text-ternary font-semibold'>View Salary Details</h1>
         </div>
         <br />
         <div className=" text-left-10 m-2 font-semibold text-2xl">Profile</div>
@@ -44,10 +47,10 @@ const ViewSalary = () => {
           <div className='p-4 mx-auto max-w-lg '>
           <div className="mb-4">
           <label className="block text-ternary text-sm font-bold mb-3">Full Name</label>
-            <span className="border border-black border-1 p-2 block mb-2">{viewSalary.fullName}</span>
+            <span className="border border-black border-1 p-2 block mb-2">{viewSalary.firstName} {viewSalary.lastName}</span>
             <br/>
             <label className="block text-ternary text-sm font-bold mb-3">Employee ID</label>
-            <span className="border border-black border-1 p-1 block mb-2">{viewSalary._id}</span>
+            <span className="border border-black border-1 p-1 block mb-2">{viewSalary.employeeID}</span>
             <br/>
             <label className="block text-ternary text-sm font-bold mb-3">Basic Salary</label>
             <span className="border border-black border-1 p-1 block mb-2">{viewSalary.basicSalary}</span>
@@ -66,6 +69,14 @@ const ViewSalary = () => {
             <br/>
             <label className="block text-ternary text-sm font-bold mb-3">Notice</label>
             <span className="border border-black border-1 p-1 block mb-2">{viewSalary.notice}</span>
+            <br/>
+            <label className="block text-ternary text-sm font-bold mb-3">Cheque</label>
+            <span className="border border-black border-1 p-1 block mb-2">{viewSalary.cheque}</span>
+            <br/>
+            <br/>
+            <label className="block text-ternary text-sm font-bold mb-3">Date</label>
+            <span className="border border-black border-1 p-1 block mb-2">{viewSalary.date}</span>
+            
           
           </div>
           <br />
@@ -93,6 +104,8 @@ const ViewSalary = () => {
         )}
         
       
+    </div>
+    <StaffFooter />
     </div>
     
   );
