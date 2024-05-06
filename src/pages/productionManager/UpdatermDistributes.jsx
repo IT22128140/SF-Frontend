@@ -64,7 +64,7 @@ const UpdatermDistributes = () => {
 
   return (
     <div className = 'relative'>
-      <PMHeader/>
+      <PMHeader drm = {true} />
       {loading ? <Spinner/> : ''}
         <div
           className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'

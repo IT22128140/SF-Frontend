@@ -26,7 +26,7 @@ const ViewrmDistributes = () => {
 
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader drm = {true} />
       {loading ? (
         <Spinner/>
       ) : (
