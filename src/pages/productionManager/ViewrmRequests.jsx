@@ -31,6 +31,11 @@ const ViewrmRequests = () => {
   return (
     <div className='relative'>
       <IsNavbar RmR= {true}/>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Requests
+        </h1>
+      </center>
       {loading ? (
         <Spinner/>
       ) : (
