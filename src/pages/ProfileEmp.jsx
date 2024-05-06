@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
 
-
 function Profile() {
-  const profileInfo = {
-    FirstName: 'John',
-    LastName: 'Doe',
-    emailAddress: 'john.doe@example.com',
-    phoneNumber: '555-1234',
-    Employeetype: 'Employee type',
-    password: '*********'
-  };
+  const [profileInfo, setProfileInfo] = useState({
+    FirstName: "",
+    LastName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    Employeetype: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    const fetchProfileInfo = async () => {
+      try {
+        const response = await axios.get("http://localhost:5555/ProfileEmp");
+        setProfileInfo(response.data);
+      } catch (error) {
+        console.error("Error fetching profile information:", error);
+      }
+    };
+
+    fetchProfileInfo();
+  }, []);
 
  return (
   <div className="flex flex-col justify-center items-center min-h-screen">

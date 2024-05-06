@@ -16,10 +16,12 @@ export default {
         'primary': '#da6e2e',
         'secondary': '#c15026',
         'ternary': '#6e2e2c',
-        'bgc': '#FCEADC'
+        'bgc': '#FCEADC',
 
 
 
+        //varagan
+        'red': '#DC3545'
 
 
 
