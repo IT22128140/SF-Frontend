@@ -75,7 +75,11 @@ const EditRMstock =() => {
     <div className='p-4'>
         <BackButton />
         <div className="flex items-center justify-center mb-9">
+<<<<<<< HEAD
         <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit raw material Stock</h1>
+=======
+        <h1 className="text-6xl my-9 font-Philosopher">Edit raw material Stock</h1>
+>>>>>>> 1998b534275a592a78fa34806f5050d2d9815e99
       </div>
         {loading ? <Spinner/> : ''}
         <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>

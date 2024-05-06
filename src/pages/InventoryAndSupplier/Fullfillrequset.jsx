@@ -45,7 +45,11 @@ const Fullfillrequest = () => {
     <div className="p-1">
       <IsNavbar  FFR={true} /> 
       <div className="flex items-center justify-center mb-9">
+<<<<<<< HEAD
         <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Fullfilled Requests</h1>
+=======
+        <h1 className="text-6xl my-9">Fullfilled Requests</h1>
+>>>>>>> 1998b534275a592a78fa34806f5050d2d9815e99
       </div>
 
       {loading ? (
