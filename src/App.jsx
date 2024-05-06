@@ -47,7 +47,7 @@ import FiredEmployeeList from "./pages/employeemanagement/FiredEmployeeList.jsx"
 import RequestResignation from "./pages/employeemanagement/RequestResignation.jsx"
 import TerminationPendingList from "./pages/employeemanagement/TerminationPendingList.jsx"
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
-
+import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
 
 
 
@@ -73,10 +73,11 @@ import RawMaterialStock from './pages/InventoryAndSupplier/RawMaterialStock.jsx'
 import AddRMaterial from './pages/InventoryAndSupplier/AddRMaterial.jsx';
 import EditRMstock from './pages/InventoryAndSupplier/EditRMstock.jsx';
 import DeleteRMstock from './pages/InventoryAndSupplier/DeleteRMstock.jsx';
+import AddSupplieredRaws from "./pages/InventoryAndSupplier/AddSupplieredRaws.jsx";
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
-import Report from "./pages/InventoryAndSupplier/Report.jsx"
+
 
 
 
@@ -254,7 +255,7 @@ const App = () => {
       <Route path="/resign/RequestResignation" element={<RequestResignation />} />
       <Route path="/resign/TerminationPendingList" element={<TerminationPendingList />} />
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
-
+      <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
 
 
 
@@ -278,9 +279,10 @@ const App = () => {
       <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
+      <Route path='/Fullfillrequset/:id/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
-      <Route path= "/Report" element = {<Report/>} />
+      
 
 
 

@@ -93,7 +93,7 @@ const AddEmployee = () => {
       <div className="p-4">
         <BackButton />
         <center>
-          <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary">
             New Employee Intergration
           </h1>
         </center>
@@ -103,7 +103,7 @@ const AddEmployee = () => {
           <form onSubmit={handleSubmit(handleSaveEmployee)}>
             <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
               <center>
-                <h3 className="text-3xl mb-4 font-Philosopher text-ternary">
+                <h3 className="mb-4 text-3xl font-Philosopher text-ternary">
                   Personal Information :
                 </h3>
                 <div className="">
@@ -197,7 +197,7 @@ const AddEmployee = () => {
                   />
                 </div>
 
-                <h3 className="text-3xl mt-8 mb-4 font-Philosopher text-ternary">
+                <h3 className="mt-8 mb-4 text-3xl font-Philosopher text-ternary">
                   Employee Information :
                 </h3>
                 <div className="">
