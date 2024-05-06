@@ -31,6 +31,11 @@ const RawmDistributions = () => {
   return (
     <div className='relative'>
       <PMHeader drm = {true} />
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Distribution
+        </h1>
+      </center>
       <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmDistributes/create'>
          <AddButton/>
@@ -39,7 +44,7 @@ const RawmDistributions = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif mb-5'>
+        <table className = 'ml-1 mr-1 font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {rmdistributes.map((rmdistribute, index) => (

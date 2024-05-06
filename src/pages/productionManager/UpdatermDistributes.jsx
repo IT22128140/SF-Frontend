@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 const UpdatermDistributes = () => {
   const [DistributeID, setDistributeID ] = useState('');
@@ -51,8 +53,8 @@ const UpdatermDistributes = () => {
       .put(`http://localhost:5555/rmDistributes/${id}`, data)
       .then(() => {
         setLoading(false);
-        enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
         navigate('/RawmDistributes');
+        enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
       })
       .catch ((error) => {
         setLoading(false);
@@ -65,9 +67,14 @@ const UpdatermDistributes = () => {
   return (
     <div className = 'relative'>
       <PMHeader drm = {true} />
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Distribution
+        </h1>
+      </center>
       {loading ? <Spinner/> : ''}
         <div
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
+          className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
         >
           <h1 className='text-3xl my-4 text-center'>Update Raw Material Distribution Form</h1>
           <div className='my-2'>
@@ -148,9 +155,10 @@ const UpdatermDistributes = () => {
             validation= {{ required: 'If there is no shortage,enter null' }}
             />
           </div>
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmDistribute}>Submit</button>
+          {/* <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmDistribute}>Submit</button> */}
+          <center className="mt-3" onClick={handleUpdateRawmDistribute}><SubmitButton/></center>
         </div>
-        <StaffFotter/>
+        <StaffFooter/>
     </div>
   )
 }
