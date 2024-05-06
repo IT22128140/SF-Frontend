@@ -11,6 +11,9 @@ export default {
       BreeSerif: ["BreeSerif", "sans-serif"],
     },
     extend: {
+      backgroundImage: {
+        'bgimg': "url('/RawM.png')",
+      },
       colors: {
         //Maneth
         'primary': '#da6e2e',
@@ -68,7 +71,7 @@ export default {
 
 
         //Isuru
-
+        
 
 
 
