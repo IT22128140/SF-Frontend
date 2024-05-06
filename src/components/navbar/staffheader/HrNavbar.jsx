@@ -45,7 +45,7 @@ const HrNavbar = (props) => {
           url={"/resign/TerminationPendingList"}
         />
         <NavbarButton active={props.att} button={"Attendance"} url={"#"} />
-        <NavbarButton active={props.sal} button={"Salary"} url={"#"} />
+        <NavbarButton active={props.sal} button={"Salary"} url={"/SalaryTable"} />
       </div>
     </div>
   );

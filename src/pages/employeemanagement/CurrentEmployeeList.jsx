@@ -15,12 +15,14 @@ import TableView from "../../components/table/TableView";
 import EmployeeModal from "./EmployeeModal.jsx";
 import DeleteEmployee from "./DeleteEmployee.jsx";
 
+
 const CurrentEmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  
 
   const headers = [
     "Index",
@@ -138,7 +140,7 @@ const CurrentEmployeeList = () => {
                           setShowDelete(true);
                         }}
                       />
-                      <Link to={"#"}>
+                      <Link to={`/GenerateSalary/${employee._id}`}>
                         <SalaryButton />
                       </Link>
                     </div>
