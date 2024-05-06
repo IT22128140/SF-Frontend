@@ -8,9 +8,12 @@ export default {
     fontFamily: {
       Lavish: ["Lavish", "sans-serif"],
       Philosopher: ["Philosopher", "sans-serif"],
-      BreeSerif: ["BreeSerif", "sans-serif"]
+      BreeSerif: ["BreeSerif", "sans-serif"],
     },
     extend: {
+      backgroundImage: {
+        'bgimg': "url('/RawM.png')",
+      },
       colors: {
         //Maneth
         'primary': '#da6e2e',
@@ -68,7 +71,7 @@ export default {
 
 
         //Isuru
-
+        
 
 
 
@@ -78,7 +81,8 @@ export default {
 
 
         //Hiranya
-        
+        'formBackground': "#d9d9d9",
+        'navbar': "#dee2e6",
 
 
 

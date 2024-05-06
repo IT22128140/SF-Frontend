@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const ViewrmDistributes = () => {
   const [rmdistributes, setrmDistributes] = useState([]);
@@ -25,11 +26,16 @@ const ViewrmDistributes = () => {
 
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader drm = {true} />
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Distribution
+        </h1>
+      </center>
       {loading ? (
         <Spinner/>
       ) : (
-        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
+        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary mb-5'>
           <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Distributions</h1>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Distribute ID</span>
@@ -65,6 +71,7 @@ const ViewrmDistributes = () => {
           </div>
         </div>
       )}
+      <StaffFooter/>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import BackButton from '../../components/button/BackButton';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 
 
@@ -11,6 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 const EditSuppliers =() => {
+  const [SRequestID, setSRequestID] = useState('');
     const [supplierName, setsupplierName] = useState('');
     const [address, setaddress] = useState ('');
     const [contactNumber, setcontactNumber] = useState('');
@@ -25,6 +27,7 @@ const EditSuppliers =() => {
         setLoading(true);
         axios.get(`http://localhost:5555/supdetails/${id}`)
             .then((response) =>{
+              setSRequestID(response.data.SRequestID);
                 setsupplierName(response.data.supplierName);
                 setaddress(response.data.address);
                 setcontactNumber(response.data.contactNumber);
@@ -41,6 +44,7 @@ const EditSuppliers =() => {
     
     const handleEditSupplier = () => {
        const data = {
+        SRequestID,
         supplierName,
         address,
         contactNumber,
@@ -66,11 +70,22 @@ const EditSuppliers =() => {
   return (
     <div className='p-4'>
         <BackButton />
-        <h1 className='my-4 text-3xl'>Edit supplier</h1>
+        <div className="flex items-center justify-center mb-9">
+        <h1 className="text-6xl my-9">Edit suspplier details</h1>
+      </div>
         {loading ? <Spinner/> : ''}
-        <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='flex flex-col bg-formbg border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier ID</label>
+                <input
+                 type='String'
+                 value={SRequestID}
+                 onChange={(e) => setSRequestID(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                </div>
             <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>supplier Name</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier Name</label>
                 <input
                  type='String'
                  value={supplierName}
@@ -79,7 +94,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Adsress</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Address</label>
                 <input
                  type='String'
                  value={address}
@@ -88,7 +103,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>contact Number</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Contact Number</label>
                 <input
                  type='number'
                  value={contactNumber}
@@ -98,7 +113,7 @@ const EditSuppliers =() => {
                 </div>
               
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Email</label>
+                <label className='mr-4 text-xl text-gray-500 font-philosoper '>Email</label>
                 <input
                  type='String'
                  value={email}
@@ -107,7 +122,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Supplier Type</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier Type</label>
                 <input
                  type='String'
                  value={supplierType}
@@ -116,7 +131,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Contract Expiary</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Contract Expiary</label>
                 <input
                  type='Date'
                  value={contractExpiary}

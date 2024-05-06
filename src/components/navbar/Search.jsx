@@ -42,6 +42,7 @@ const Search = () => {
         <input
           className=" h-10 border-2 border-primary rounded-l-xl shadow-md focus:outline-none pl-2"
           value={keyword}
+          placeholder="Search..."
           onChange={(e) => filteredOptions(e)}
         ></input>
         <div className=" bg-primary text-white h-10 w-10  rounded-r-xl shadow-md">
@@ -49,13 +50,18 @@ const Search = () => {
         </div>
       </div>
       {keyword && (
-        <div className="absolute z-50 flex w-full flex-col bg-bgc rounded-md text-ternary shadow-xl">
+        <div className=" invisible px-2 font-BreeSerif absolute z-50 flex w-fit flex-col bg-bgc rounded-md text-ternary shadow-xl group-hover:visible">
           {filteredData.map((opt) => (
             <Link
-              to={`/ProductPage/${opt._id}`}
               key={opt._id}
-              className=" rounded-md p-2 my-2 block font-semibold text-ternary hover:bg-primary"
+              to={`/ProductPage/${opt._id}`}
+              className="flex w-96 rounded-md p-2 my-2 font-semibold text-ternary hover:text-bgc hover:bg-primary"
             >
+              <img
+                src={"." + opt.image}
+                alt={opt.name}
+                className="w-32 rounded-lg mr-5"
+              />
               {opt.name}
             </Link>
           ))}

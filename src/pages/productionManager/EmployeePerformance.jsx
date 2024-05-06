@@ -7,14 +7,16 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import SearchBar from '../../components/SearchBar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import LWMenuBar from './LWMenuBar';
 
 const EmployeePerformance = () => {
   const [empPerformance, setempPerformance] = useState([]);
   const [loading, setLoading] = useState(false);
-  const headers = ['Employee ID', 'Line Number', 'Position Number', 'Standard Minute Value(SMV)', 'Working Hours', 'Other Notes', 'Operations'];
+  const [searchData, setsearchData] = useState([]);
+  const headers = ['Employee ID','Full Name', 'Line Number', 'Position Number', 'Standard Minute Value(SMV)', 'Working Hours', 'Other Notes', 'Operations'];
 
   useEffect(() => {
     setLoading(true);
@@ -22,6 +24,8 @@ const EmployeePerformance = () => {
       .get('http://localhost:5555/empPerformances')
       .then((response) => {
         setempPerformance(response.data.data);
+        const setData = response.data.data.map(obj=>({name:obj.EmployeeID,_id:obj._id}));
+        setsearchData(setData);
         setLoading(false);
       })
       .catch((error) => {
@@ -29,12 +33,19 @@ const EmployeePerformance = () => {
         setLoading(false);
       });
   }, []);
+
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader emp = {true} />
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Employee Performance
+        </h1>
+      </center>
       <SearchBar
-        placeholder = 'Enter Employee ID' 
-        onSearch = ''
+        data = {searchData}
+        navigate = {`/empPerformances/details/`}
+        placeholder = {'Enter Employee ID'}
       />
       <LWMenuBar/>
       <div className = 'flex justify-between items-center m-5'>
@@ -45,13 +56,16 @@ const EmployeePerformance = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif'>
+        <table className = 'mx-auto font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {empPerformance.map((empPerformance, index) => (
             <tr key={empPerformance._id} className='h-8'>
               <td className='border border-slate-700 rounded-md'>
                 {empPerformance.EmployeeID}
+              </td>
+              <td className='border border-slate-700 rounded-md'>
+                {empPerformance.EmployeeName}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 {empPerformance.LineNumber}
@@ -86,6 +100,7 @@ const EmployeePerformance = () => {
         </tbody> 
       </table>
       )}
+      <StaffFooter/>
     </div>
   )
 }

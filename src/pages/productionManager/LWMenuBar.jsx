@@ -33,7 +33,7 @@ const LWMenuBar = () => {
           {isSidebarOpen ? 'Hide LineWorkers' : 'Show LineWorkers'}
         </button>
         {isSidebarOpen && (
-          <div className="flex mt-10 h-full w-64 p-2 bg-formbg font-BreeSerif overflow-y-auto">
+          <div className="absolute z-9 mt-10 h-100px w-100px p-2 bg-formbg font-BreeSerif overflow-y-auto">
           <div className="flex flex-col justify-between p-6">
           <div>
             <h1 className="text-ternary text-xl font-semibold">Line Workers Details</h1>

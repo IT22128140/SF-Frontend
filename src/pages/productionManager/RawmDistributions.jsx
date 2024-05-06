@@ -7,7 +7,8 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const RawmDistributions = () => {
   const [rmdistributes, setrmDistributes] = useState([]);
@@ -29,7 +30,12 @@ const RawmDistributions = () => {
   }, []);
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader drm = {true} />
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Distribution
+        </h1>
+      </center>
       <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmDistributes/create'>
          <AddButton/>
@@ -38,7 +44,7 @@ const RawmDistributions = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif'>
+        <table className = 'ml-1 mr-1 font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {rmdistributes.map((rmdistribute, index) => (
@@ -82,6 +88,7 @@ const RawmDistributions = () => {
         </tbody> 
       </table>
       )}
+      <StaffFooter/>
     </div>
   )
 }

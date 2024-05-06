@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import QRCode from "qrcode.react";
 
 const EmployeeModal = ({ employee, onClose }) => {
-  const qrCode = employee._id;
+  const qrCode = [employee._id, employee.employeeID, employee.firstName, employee.lastName];
 
   const download = () => {
     const qrCodeUrl = document

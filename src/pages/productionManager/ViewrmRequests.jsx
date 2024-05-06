@@ -3,12 +3,15 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import { Link } from 'react-router-dom';
-import AcceptButton from '../../components/button2/AcceptButton';
 import RejectButton from '../../components/button2/RejectButton';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import MyModal from '../../components/MyModal';
 
 const ViewrmRequests = () => {
   const [rmrequest, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showModal,setShowModal] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -27,10 +30,16 @@ const ViewrmRequests = () => {
 
   return (
     <div className='relative'>
+      <IsNavbar RmR= {true}/>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Requests
+        </h1>
+      </center>
       {loading ? (
         <Spinner/>
       ) : (
-        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
+        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary mb-5 mt-10'>
           <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Requests</h1>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Request ID</span>
@@ -61,15 +70,17 @@ const ViewrmRequests = () => {
             <span>{new Date(rmrequest.updatedAt).toString()}</span>
           </div>
           <div className='flex justify-center gap-x-20'>
-            <Link to={`#`}>
-              <AcceptButton/>
-            </Link>
+
+            <button onClick={() => setShowModal(true)} className='flex items-center justify-between h-fit w-fit p-1.5 bg-orange-600 text-md text-white rounded-lg shadow-md font-BreeSerif'>Accept</button>
+            {showModal && <MyModal onClose={() => setShowModal(false)}/>}
+
             <Link to={`/rmRequests/delete/${rmrequest._id}`}>
               <RejectButton/>
             </Link>
           </div>
         </div>
       )}
+      <StaffFooter/>
     </div>
   )
 }
