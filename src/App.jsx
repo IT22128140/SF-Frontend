@@ -29,8 +29,12 @@ import Catalogue from './pages/onlinestore/Catalogue.jsx';
  import LoginCus from './pages/LoginCus.jsx';
  import RegisCus from './pages/RegisCus.jsx';
  import RegisEmp from './pages/RegisEmp.jsx';
- import CusProfile from './pages/CusProfile.jsx';
- import EditProfile from './pages/EditProfile.jsx';
+ import ProfileCus from './pages/ProfileCus.jsx';
+ import ProfileEmp from './pages/ProfileEmp.jsx';
+ import EditProfileCus from './pages/EditProfileCus.jsx';
+ import EditProfileEmp from './pages/EditProfileEmp.jsx';
+ import FeedbackForm from './pages/FeedbackForm.jsx';
+ import FeedbackManage from './pages/FeedbackManage.jsx';
  
  
 
@@ -210,12 +214,16 @@ const App = () => {
 
 
        {/* varagan */} 
-      <Route path="/LoginEmp" element={<LoginEmp />} />
+       <Route path="/LoginEmp" element={<LoginEmp />} />
       <Route path="/LoginCus" element={<LoginCus />} />
       <Route path="/RegisCus" element={<RegisCus />} />
       <Route path="/RegisEmp" element={<RegisEmp />} />
-      <Route path="/CusProfile" element={<CusProfile />} />
-      <Route path="/EditProfile" element={<EditProfile />} />
+      <Route path="/ProfileCus" element={<ProfileCus />} />
+      <Route path="/ProfileEmp" element={<ProfileEmp />} />
+      <Route path="/EditProfileCus" element={<EditProfileCus />} />
+      <Route path="/EditProfileEmp" element={<EditProfileEmp />} />
+      <Route path="/FeedbackForm" element={<FeedbackForm />} />
+      <Route path="/FeedbackManage" element={<FeedbackManage />} />
 
       
 
