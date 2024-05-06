@@ -22,7 +22,7 @@ const HrNavbar = (props) => {
         <NavbarButton active={props.home} button={"Home"} url={"/repairs"} />
         <NavbarButton active={props.rr}  button={"Request New Repair"} url={"/repairs/create"} />
         <NavbarButton active={props.r} button={"Repairs"} url={"/repairs/view"} />
-        <NavbarButton active={props.mpmp} button={"Machine Parts"} url={"/MachinePartStock"} />
+        <NavbarButton active={props.mpmp} button={"Machine Parts"} url={"/machineParts/view"} />
         <NavbarButton active={props.sh} button={"Shortages"} url={"/mpshortages/view"} />
         <NavbarButton active={props.rsh} button={"Request Machine Part Shortage"} url={"/mpshortages/create"} />
         <NavbarButton active={props.m} button={"Machines"} url={"/machines/view"} />

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import RejectButton from '../../components/button2/RejectButton';
+import { MdOutlineCancel } from "react-icons/md";
 
 const AcceptedMPshortages = () => {
 
@@ -29,20 +30,7 @@ const AcceptedMPshortages = () => {
         });
     }, [])
 
-    const handleAccept = () => {
-        setLoading(true);
-        axios
-            .put(`http://localhost:5555/mpshortages/${id}`, { ...mpshortage, Status: 'Accepted' })
-            .then(() => {
-                setMPshortage({ ...mpshortage, Status: 'Accepted' });
-                setLoading(false);
-                navigate('/mpshortages/accepted');
-            })
-            .catch((error) => {
-                console.log(error);
-                setLoading(false);
-            });
-    };
+
 
     return(
         <div className='relative'>
@@ -92,19 +80,7 @@ const AcceptedMPshortages = () => {
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Last Updated Time</span>
                         <span className='font-BreeSerif'>{new Date(mpshortage.updatedAt).toString()}</span>
                     </div>
-
-                    {mpshortage.Status === 'Pending' && (
-                        <button
-                        onClick={handleAccept}
-                        className={`flex items-center justify-between h-fit w-fit p-1.5 bg-orange-600 text-md text-white rounded-lg shadow-md font-BreeSerif `}
-                      >
-                        <AiOutlineCheckCircle className="text-xl mr-2" />
-                        <span className="mr-2">Accept</span>
-                      </button>
-                      
-                    )}
-
-            
+     
                 </div>
             )}
             <StaffFooter/>
