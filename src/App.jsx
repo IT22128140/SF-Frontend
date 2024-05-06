@@ -77,7 +77,7 @@ import AddSupplieredRaws from "./pages/InventoryAndSupplier/AddSupplieredRaws.js
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
-import Report from "./pages/InventoryAndSupplier/Report.jsx"
+
 
 
 
@@ -282,7 +282,7 @@ const App = () => {
       <Route path='/Fullfillrequset/:id/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
-      <Route path= "/Report" element = {<Report/>} />
+      
 
 
 

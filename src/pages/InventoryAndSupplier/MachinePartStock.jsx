@@ -37,7 +37,7 @@ const MachinePartStock = () => {
     <div className="p-1">
       <IsNavbar MpS={true} />
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Machine Part Stock</h1>
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Machine Part Stock</h1>
       </div>
 
       <div className="mb-4">
@@ -48,7 +48,7 @@ const MachinePartStock = () => {
         <Spinner />
       ) : ( 
         <div className="px-10 mx-auto"> 
-        <table className="w-full text-2xl">
+        <table className="mx-auto mb-5 font-BreeSerif ">
           <TableView headers={headers} />
           <tbody>
             {machineparts.map((mpstock, index) => (

@@ -41,7 +41,7 @@ const SupplieredRaws = () => {
   <div className="p-1">
       <IsNavbar sd = {true} />
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl "> Raw materials supplied</h1>
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center "> Raw materials supplied</h1>
       </div>
 
     
@@ -49,7 +49,7 @@ const SupplieredRaws = () => {
         <Spinner />
       ) : (
         <div className="px-10 mx-auto"> 
-        <table className="w-full text-2xl">
+        <table className="mx-auto mb-5 font-BreeSerif ">
           <TableView headers={headers} />
           <tbody>
             {SuppRaws.map((SuppRaw, index) => (

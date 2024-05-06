@@ -53,10 +53,10 @@ const Addmachinepart =() => {
       
         <BackButton />
         <div className="flex items-center justify-center mb-9">
-        <h1 className="text-6xl my-9 font-Philosopher">Add Machine Part </h1>
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center ">Add Machine Part </h1>
       </div>
         {loading ? <Spinner/> : ''}
-        <div className='flex flex-col border-2 bg-formbg rounded border-sky-300-xl w-[400px] p-4 mx-auto '>
+        <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
         <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Part ID</label>
                 <input
