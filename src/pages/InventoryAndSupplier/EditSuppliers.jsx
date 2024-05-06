@@ -71,10 +71,10 @@ const EditSuppliers =() => {
     <div className='p-4'>
         <BackButton />
         <div className="flex items-center justify-center mb-9">
-        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit suspplier details</h1>
+        <h1 className="text-6xl my-9">Edit suspplier details</h1>
       </div>
         {loading ? <Spinner/> : ''}
-        <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
+        <div className='flex flex-col bg-formbg border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
         <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier ID</label>
                 <input

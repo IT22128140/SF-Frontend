@@ -38,7 +38,7 @@ const RejectedRequestPage = () => {
       <HrNavbar req={true} />
 
       <div className="p-4">
-        <h1 className="text-4xl mx-[1.75%] my-8 p-4 font-Philosopher text-ternary font-semibold">
+        <h1 className="text-6xl mx-[1.75%] my-8 p-4 font-Philosopher text-ternary font-semibold">
           Rejected Termination Requests List
         </h1>
 

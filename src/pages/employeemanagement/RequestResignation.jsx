@@ -70,7 +70,7 @@ const RequestResignation = () => {
 
         <div className="bg-bgc border-2 border-bgc rounded-xl w-[900px] p-8 mx-auto font-BreeSerif m-4">
           <center>
-            <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+            <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
               Request to terminate Employee Contract?
             </h1>
           </center>
