@@ -64,7 +64,7 @@ const PendingrmRequests = () => {
                 {rmrequest.RequestID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Date}
+                {rmrequest.Date.split("T")[0]}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 {rmrequest.FabricType_Colour_Amount}
