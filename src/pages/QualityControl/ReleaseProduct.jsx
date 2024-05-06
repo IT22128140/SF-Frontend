@@ -7,18 +7,22 @@ import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import SearchBar from "../../components/SearchBar";
 import TableView from '../../components/table/TableView'
+import AcceptButton from "../../components/button2/AcceptButton";
+import EditButton from "../../components/button2/EditButton";
+import DeleteButton from "../../components/button2/DeleteButton";
 
-const mpShortagesTable = () => {
-    const [mpshortages, setmpshortages] = useState([]);
+
+const ReleaseProduct = () => {
+    const [releaseProducts, setReleaseProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const headers = ['Request ID', 'Part ID', 'Part Name', 'Description', 'Quantity', 'Condition', 'Need Before', 'Operations']
+    const headers = ['release_ID', 'Product Code', 'Bill ID', 'Release Date', 'Reject Date', 'rejected Reason', 'Operations']
     
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:5555/mpshortages')
+            .get('http://localhost:5555/qualityControl/releaseProduct')
             .then((response) => {
-                setmpshortages(response.data.data);
+                setReleaseProducts(response.data.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -29,10 +33,10 @@ const mpShortagesTable = () => {
     return (
         <div className='p-4'>
             <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machine Part Shortages List</h1>
+                <h1 className='text-3xl my-8'>Release Product</h1>
             </div>
             
-            <SearchBar placeholder={"Enter Machine Part Shortage Request ID here"} />
+            <SearchBar placeholder={"Enter Machine ID here"} />
             {loading ? (
                 <Spinner />
             ) : (
@@ -40,39 +44,36 @@ const mpShortagesTable = () => {
                 <table className='min-w-full'>
                     <TableView headers={headers} />
                     <tbody>
-                        {mpshortages.map((mpshortage, index) => (
-                            <tr key={mpshortage._id} className='h-8'>
+                        {releaseProducts && releaseProducts.map((releaseProduct, index) => (
+                            <tr key={releaseProduct._id} className='h-8'>
                                 
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.RequestID}
+                                    {releaseProduct.release_ID}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.PartID}
+                                    {releaseProduct.productCode}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.PartName}
+                                    {releaseProduct.customerID}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.Description}
+                                    {releaseProduct.releaseDate}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.Quantity}
+                                    {releaseProduct.reject_Date}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.Condition}
-                                </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.NeededBeforeDate}
+                                    {releaseProduct.rejectedReason}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4'>
-                                        <Link to={`/mpshortages/details/${mpshortage._id}`}>
+                                        <Link to={`/machines/details/`}>
                                             <BsInfoCircle className='text-2xl text-green-800' />
                                         </Link>
-                                        <Link to={`/mpshortages/edit/${mpshortage._id}`}>
+                                        <Link to={`/machines/edit/`}>
                                             <BsInfoCircle className='text-2xl text-yellow-600' />
                                         </Link>
-                                        <Link to={`/mpshortages/delete/${mpshortage._id}`}>
+                                        <Link to={`/machines/delete/`}>
                                             <BsInfoCircle className='text-2xl text-red-800' />
                                         </Link>
                                     </div>
@@ -87,11 +88,11 @@ const mpShortagesTable = () => {
                 
             )}
 
-                <Link to='/mpshortages/create'>
+                <Link to='/machines/create'>
                     <MdOutlineAddBox className='text-sky-800 text-4xl' />
                 </Link>
         </div>
     );
 };
 
-export default mpShortagesTable
+export default ReleaseProduct

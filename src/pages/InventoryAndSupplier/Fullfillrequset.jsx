@@ -4,13 +4,14 @@ import Spinner from '../../components/Spinner';
 import TableView from '../../components/table/TableView';
 import DeleteButton from '../../components/button2/DeleteButton';
 import { useNavigate } from 'react-router-dom';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
 const Fullfillrequest = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const headers = ['Fabric Type', 'Button Type', 'Thread Type', 'Other Material', 'Filling Date', ''];
+  const headers = ['Request ID','Fabric Type', 'Button Type', 'Thread Type', 'Other Material', 'Filling Date', ''];
 
   useEffect(() => {
     setLoading(true);
@@ -41,19 +42,22 @@ const Fullfillrequest = () => {
   };
 
   return (
-    <div className="p-10">
-      <div className="flex items-center justify-between">
+    <div className="p-1">
+      <IsNavbar  FFR={true} /> 
+      <div className="flex items-center justify-center mb-9">
         <h1 className="my-9 text-8xl">Fullfilled Requests</h1>
       </div>
 
       {loading ? (
         <Spinner />
       ) : (
-        <table className="min-w-full">
+        <div className="px-10 mx-auto">
+        <table className="w-full text-2xl">
           <TableView headers={headers} />
           <tbody>
             {requests.map((request) => (
               <tr key={request._id} className="h-8">
+                <td className="text-center border rounded-md border-slate-700">{request.requstId}</td>
                 <td className="text-center border rounded-md border-slate-700">{request.fabricType}</td>
                 <td className="text-center border rounded-md border-slate-700">{request.buttonType}</td>
                 <td className="text-center border rounded-md border-slate-700">{request.threadType}</td>
@@ -68,7 +72,9 @@ const Fullfillrequest = () => {
             ))}
           </tbody>
         </table>
+        </div>
       )}
+      
     </div>
   );
 };

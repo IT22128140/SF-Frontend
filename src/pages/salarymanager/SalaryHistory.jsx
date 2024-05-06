@@ -5,6 +5,7 @@ import { set } from 'react-hook-form';
 import TableView from '../../components/table/TableView';
 import Spinner from '../../components/Spinner';
 import SearchBar from '../../components/SearchBar';
+import ViewButton from '../../components/button2/ViewButton';
 
 
 
@@ -45,14 +46,20 @@ const SalaryHistory = () => {
       {loading ? (
         <Spinner />
       ) :(
+        
+        
         <table className='min-w-full'>
+          <br>
+      </br>
           <TableView headers={headers} />
           <tbody>
             {salaryHistory.map((salary,index) => (
               <tr key={salary._id} className='h-8'>
                 <td className='border border-slate-700 rounded-md text-center'>{salary._id}</td>
                 <td className='border border-slate-700 rounded-md text-center'>{salary.name}</td>
-                <td className='border border-slate-700 rounded-md text-center'>{salary.fullName}</td>
+                <td className='border border-slate-700 rounded-md text-center'><div className='flex justify-center gap-x-4'>
+                  <Link to={`/ViewSalary/${salary._id}`}>
+                    <ViewButton>View</ViewButton></Link></div></td>
                 <td className='border border-slate-700 rounded-md text-center'>{salary.time}</td>
                 
               </tr>

@@ -43,7 +43,7 @@ const Catalogue = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [recievedData]);
 
   if (loading) {
     return <Spinner />;
@@ -52,7 +52,7 @@ const Catalogue = () => {
     <div>
       <CustomerNavbar />
       <div className="flex flex-row pt-8 pl-8">
-        <div className=" bg-bgc w-1*4 p-5 rounded-lg shadow-lg">
+        <div className=" bg-bgc w-1*4 p-5 rounded-lg shadow-lg  h-fit">
           <h1 className=" font-Lavish text-primary font-bold text-2xl">
             CATEGORIES
           </h1>
@@ -70,19 +70,7 @@ const Catalogue = () => {
             <RadioButton
               name="check"
               value="menstshirt"
-              label="T Shirts"
-              onChange={(e) => filterItems(e)}
-            />
-            <RadioButton
-              name="check"
-              value="menshoodies"
-              label="Hoodies"
-              onChange={(e) => filterItems(e)}
-            />
-            <RadioButton
-              name="check"
-              value="mensshorts"
-              label="Shorts"
+              label="T-Shirts"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
@@ -95,6 +83,18 @@ const Catalogue = () => {
               name="check"
               value="mensdenims"
               label="Denims"
+              onChange={(e) => filterItems(e)}
+            />
+            <RadioButton
+              name="check"
+              value="mensshorts"
+              label="Shorts"
+              onChange={(e) => filterItems(e)}
+            />
+            <RadioButton
+              name="check"
+              value="menshoodies"
+              label="Hoodies"
               onChange={(e) => filterItems(e)}
             />
           </div>
@@ -123,8 +123,8 @@ const Catalogue = () => {
             />
             <RadioButton
               name="check"
-              value="womenshoodies"
-              label="Hoodies"
+              value="womenskirts"
+              label="Skirts"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
@@ -143,41 +143,41 @@ const Catalogue = () => {
           {/* Childrens */}
           <div>
             <h2 className=" font-Philosopher text-secondary text-2xl my-3">
-              Children
+              Kids
             </h2>
             <RadioButton
               name="check"
-              value="childrendresses"
-              label="Dresses"
+              value="kidstshirts"
+              label="T-Shirts"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
               name="check"
-              value="childrentops"
+              value="kidstops"
               label="Tops"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
               name="check"
-              value="childrenhoodies"
+              value="kidshoodies"
               label="Hoodies"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
               name="check"
-              value="childrenshorts"
+              value="kidsshorts"
               label="Shorts"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
               name="check"
-              value="childrenskirts"
-              label="Skirts"
+              value="kidstrousers"
+              label="Trousers"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
               name="check"
-              value="childrendenims"
+              value="kidsdenims"
               label="Denims"
               onChange={(e) => filterItems(e)}
             />
@@ -189,26 +189,14 @@ const Catalogue = () => {
             </h2>
             <RadioButton
               name="check"
-              value="unisexshirts"
-              label="Shirts"
-              onChange={(e) => filterItems(e)}
-            />
-            <RadioButton
-              name="check"
               value="unisextshirts"
-              label="T Shirts"
+              label="T-Shirt"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton
               name="check"
               value="unisexhoodies"
               label="Hoodies"
-              onChange={(e) => filterItems(e)}
-            />
-            <RadioButton
-              name="check"
-              value="unisexshorts"
-              label="Shorts"
               onChange={(e) => filterItems(e)}
             />
             <RadioButton

@@ -1,6 +1,7 @@
 import React from "react";
 import IsNavbar from "../../components/navbar/staffheader/IsNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
+import DashboardCard from "../../components/DashboardCard.jsx";
 
 import { Link } from "react-router-dom";
 
@@ -16,7 +17,7 @@ const IsDashboard = () => {
 
         <div className="flex flex-row justify-evenly">
           <DashboardCard
-            topic="Employee Management"
+            topic="Suppliers Management"
             subtopic1="Add New Employees"
             link1="/employees/AddEmployee"
             subtopic2="Current Employees&rsquo; List"
@@ -24,7 +25,7 @@ const IsDashboard = () => {
             link2="/employees/CurrentEmployeeList"
           />
           <DashboardCard
-            topic="Attendane Management"
+            topic="Raw material stock"
             subtopic1="Approve Attendance"
             link1="#"
             subtopic2="View Attendance"
@@ -35,7 +36,7 @@ const IsDashboard = () => {
 
         <div className="flex flex-row justify-evenly">
           <DashboardCard
-            topic="Resignation Management"
+            topic="Machine part stock"
             subtopic1="Request Termination"
             link1="#"
             subtopic2="Resigned Employees&rsquo; List"
@@ -43,7 +44,7 @@ const IsDashboard = () => {
             link2="#"
           />
           <DashboardCard
-            topic="Salary Management"
+            topic="Raw material request"
             subtopic1="<Placeholder>"
             link1="#"
             subtopic2="View Salary"
