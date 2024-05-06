@@ -22,6 +22,7 @@ export const textValidation = {
         message: "Required",
       }
     },
+    
   };
 
   export const contactValidation = {
