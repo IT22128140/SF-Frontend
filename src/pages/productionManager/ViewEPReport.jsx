@@ -35,9 +35,10 @@ const ViewEPReport = () => {
   };
 
   const downloadPDF = () => {
+
     const opt = {
       margin: 1,
-      filename: 'employeePerformance_report.pdf',
+      filename: `EmployeePerformanceReport_${id}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -47,7 +48,7 @@ const ViewEPReport = () => {
 
   return (
     <div className="relative">
-      <PMHeader />
+      <PMHeader emp={true}/>
       {loading ? (
         <Spinner />
       ) : (
