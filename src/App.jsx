@@ -47,7 +47,7 @@ import FiredEmployeeList from "./pages/employeemanagement/FiredEmployeeList.jsx"
 import RequestResignation from "./pages/employeemanagement/RequestResignation.jsx"
 import TerminationPendingList from "./pages/employeemanagement/TerminationPendingList.jsx"
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
-
+import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
 
 
 
@@ -254,7 +254,7 @@ const App = () => {
       <Route path="/resign/RequestResignation" element={<RequestResignation />} />
       <Route path="/resign/TerminationPendingList" element={<TerminationPendingList />} />
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
-
+      <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
 
 
 

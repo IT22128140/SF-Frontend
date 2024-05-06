@@ -10,7 +10,7 @@ import ViewButton from "../../components/button2/ViewButton.jsx";
 import EditButton from "../../components/button2/EditButton.jsx";
 import DeleteButton from "../../components/button2/DeleteButton.jsx";
 import SalaryButton from "../../components/button2/SalaryButton.jsx";
-// import SearchBar from "../../components/SearchBar.jsx";
+import SearchBar from "../../components/SearchBar.jsx";
 import TableView from "../../components/table/TableView";
 import EmployeeModal from "./EmployeeModal.jsx";
 import DeleteEmployee from "./DeleteEmployee.jsx";
@@ -21,6 +21,7 @@ const CurrentEmployeeList = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [data, setData] = useState([]);
 
   const headers = [
     "Index",
@@ -45,6 +46,8 @@ const CurrentEmployeeList = () => {
       .get("http://localhost:5555/employee")
       .then((res) => {
         setEmployees(res.data.data);
+        const set = res.data.data.map(obj => ({name:obj.employeeID, _id:obj._id}));
+        setData(set);
         console.log(res.data.data);
         setLoading(false);
       })
@@ -55,14 +58,14 @@ const CurrentEmployeeList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
       <HrNavbar cel={true} />
 
       <div className="p-4">
-          <h1 className="text-4xl mx-[1.75%] my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-6xl mx-[1.75%] my-8 font-Philosopher text-ternary font-semibold">
             Current Employees&rsquo; List
           </h1>
-        {/* <SearchBar placeholder={"Enter Employee ID Here"} /> */}
+        <SearchBar data={data} navigate={`/EmployeeModal`} placeholder={"Enter Employee ID Here"} />
 
         <div className="border mx-[1.75%] border-black rounded-lg w-fit p-4 my-10 flex flex-row">
           <h1 className="text-2xl font-BreeSerif text-ternary mr-10">

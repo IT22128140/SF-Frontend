@@ -93,7 +93,7 @@ const AddEmployee = () => {
       <div className="p-4">
         <BackButton />
         <center>
-          <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
             New Employee Intergration
           </h1>
         </center>
