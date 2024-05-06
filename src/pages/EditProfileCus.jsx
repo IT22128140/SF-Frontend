@@ -54,7 +54,7 @@ function EditProfile() {
     }
   };
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen p-36 pr-36">
+        <div className="flex flex-col justify-center items-center min-h-screen ">
             <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
                 <input type="image" src="emp.png" alt="image" />
             </div>
