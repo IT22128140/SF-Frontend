@@ -190,6 +190,9 @@ import ShowMachine from './pages/MaintenanceManager/ShowMachine.jsx';
 import ShowMPshortage from './pages/MaintenanceManager/ShowMPshortage.jsx';
 import WorkersSidebar from './pages/MaintenanceManager/WorkersSidebar.jsx';
 import MonthlyMaintenance from './pages/MaintenanceManager/MonthlyMaintenance.jsx';
+import AddMaintenance from './pages/MaintenanceManager/AddMaintenance.jsx';
+import MachineParts from './pages/MaintenanceManager/MachineParts.jsx';
+import EditMachineParts from "./pages/MaintenanceManager/EditMachineParts.jsx";
 
 
 
@@ -380,6 +383,9 @@ const App = () => {
       <Route path='/mpshortages/view/:id' element={<ShowMPshortage/>} />
       <Route path='/repairs/sidebar' element={<WorkersSidebar/>} />
       <Route path='/repairs/report' element={<MonthlyMaintenance/>} />
+      <Route path='/maintenance/create' element={<AddMaintenance/>} />
+      <Route path='/machineParts/view' element={<MachineParts/>} />
+      <Route path='/machineParts/edit/:id' element={<EditMachineParts/>} />
 
 
 

@@ -102,9 +102,6 @@ const mpShortagesTable = () => {
                 
             )}
 
-                <Link to='/mpshortages/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
-                </Link>
                 <StaffFooter/>
         </div>
     );
