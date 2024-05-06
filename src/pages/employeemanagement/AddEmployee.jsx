@@ -103,7 +103,7 @@ const AddEmployee = () => {
           <form onSubmit={handleSubmit(handleSaveEmployee)}>
             <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
               <center>
-                <h3 className="text-3xl mb-4 font-Philosopher text-ternary">
+                <h3 className="mb-4 text-3xl font-Philosopher text-ternary">
                   Personal Information :
                 </h3>
                 <div className="">
@@ -197,7 +197,7 @@ const AddEmployee = () => {
                   />
                 </div>
 
-                <h3 className="text-3xl mt-8 mb-4 font-Philosopher text-ternary">
+                <h3 className="mt-8 mb-4 text-3xl font-Philosopher text-ternary">
                   Employee Information :
                 </h3>
                 <div className="">
