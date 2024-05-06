@@ -28,13 +28,20 @@ const handleDelete = () =>{
   return (
     <div className='p-4'>
         <BackButton />
-        <h1 className='my-4 text-3xl'>Delete the details</h1>
+        <div className="flex items-center justify-center mb-9">
+<<<<<<< HEAD
+        <h1 className="my-8 text-5xl font-semibold font-philosopher text-ternary alignment-center">Delete Supplied Raw material </h1>
+=======
+        <h1 className="text-6xl my-9 font-philosopher">Delete Supplied Raw material </h1>
+>>>>>>> 1998b534275a592a78fa34806f5050d2d9815e99
+      </div>
         {loading ? <Spinner /> : ''}
-        <div className='flex-col items-center border rounded border-2-sky-400-xl w-[600px] p-8 mx-auto'>
-            <h3 className='text-3xl'>Are you sure you want to delete this details?</h3>
-            
-            <DeleteButton  onClick={handleDelete} className="mr-2">Delete</DeleteButton >
-        </div>
+        <div className='flex flex-col items-center bg-formbg justify-between border rounded border-2-sky-400-xl w-[600px] p-8 mx-auto'>
+    <h3 className='text-3xl text-center'>Are you sure you want to delete this details?</h3>
+    <div className="mt-auto pt-7">
+        <DeleteButton onClick={handleDelete} className="mr-2">Delete</DeleteButton>
+    </div>
+</div>
         </div>
   )
 }

@@ -6,10 +6,15 @@ import Spinner from "../../components/Spinner.jsx";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import TableView from "../../components/table/TableView";
+// import SearchBar from "../../components/SearchBar.jsx";
+import { CiSearch } from "react-icons/ci";
 
 const ResignedEmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   const headers = [
     "Index",
@@ -28,12 +33,24 @@ const ResignedEmployeeList = () => {
     "Termination Date",
   ];
 
+  const filteredOptions = (e) => {
+    const inputValue = e.target.value.toLowerCase();
+    const filteredData = employees.filter((opt) =>
+      opt.employeeID.toLowerCase().includes(inputValue)
+    );
+    setKeyword(e.target.value);
+    setFilteredData(filteredData);
+  };
+
   useEffect(() => {
     setLoading(true);
     axios
       .get("http://localhost:5555/employeeStatus/resigned")
       .then((res) => {
         setEmployees(res.data.data);
+        // const set = res.data.data.map(obj => ({name:obj.employeeID, _id:obj._id}));
+        // setData(set);
+        setFilteredData(res.data.data);
         console.log(res.data.data);
         setLoading(false);
       })
@@ -47,9 +64,27 @@ const ResignedEmployeeList = () => {
       <HrNavbar rel={true} />
 
       <div className="p-4">
-          <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
             Resigned Employees&rsquo; List
           </h1>
+          
+          {/* <SearchBar data={data} navigate={``} placeholder={"Enter Employee ID Here"} /> */}
+          <div className="flex justify-end mt-4 pr-4 cursor-pointer ">
+          <div className="flex flex-row p-3.5">
+            <div className="bg-primary text-white h-10 w-8 rounded-l-xl shadow-md">
+              <CiSearch className="text-[35px] mt-0.5" />
+            </div>
+            <div className="bg-primary text-white font-Philosopher p-2 flex items-center h-10 w-[70px]">
+              Search
+            </div>
+            <input
+              className="h-10 border-2 border-primary shadow-md focus:outline-none pl-2 rounded-r-xl"
+              value={keyword}
+              placeholder="Enter Employee ID Here"
+              onChange={(e) => filteredOptions(e)}
+            ></input>
+          </div>
+        </div>
 
           <div className="flex justify-center ml-20 mb-10">
         {loading ? (
@@ -58,7 +93,7 @@ const ResignedEmployeeList = () => {
           <table className="w-[95%]">
             <TableView headers={headers} />
             <tbody>
-              {employees.map((employee, index) => (
+              {filteredData.map((employee, index) => (
                 <tr key={employee._id} className="h-8">
                   <td className="border border-slate-700 rounded-md text-center">
                     {index + 1}

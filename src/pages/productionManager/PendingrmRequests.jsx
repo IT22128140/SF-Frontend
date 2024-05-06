@@ -30,7 +30,7 @@ const PendingrmRequests = () => {
   }, []);
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader rmr = {true} />
       {/* <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
