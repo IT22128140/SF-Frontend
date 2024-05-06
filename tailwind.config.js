@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'bgimg': "url('/RawM.png')",
+        'bgimg': "url('/Wall2.png')",
       },
       colors: {
         //Maneth
