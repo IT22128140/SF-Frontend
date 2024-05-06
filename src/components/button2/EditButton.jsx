@@ -5,10 +5,10 @@ const EditButton = ({ onClick, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center w-fit h-fit justify-between p-1.5 bg-red-900 text-white rounded-md shadow-md hover:bg-red-950 transition duration-300 ease-in-out ${className}`}
+      className={`flex items-center w-fit h-fit justify-between p-1.5 text-md bg-red-900 text-white rounded-lg shadow-md font-BreeSerif  ${className}`}
     >
-      <MdOutlineEdit className="text-xl ml-1" />
-      <span className="mx-4">Edit</span>
+      <MdOutlineEdit className="text-xl ml-1 mr-2" />
+      <span className="mx-2">Edit</span>
     </button>
   );
 };

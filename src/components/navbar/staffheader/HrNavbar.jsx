@@ -19,16 +19,37 @@ const HrNavbar = (props) => {
       </div>
 
       <div className="flex flex-row bg-bgc h-fit shadow-md">
-        <NavbarButton active={props.home} button={"Home"} url={"/HrDashboard"} />
+        <NavbarButton
+          active={props.home}
+          button={"Home"}
+          url={"/HrDashboard"}
+        />
         <NavbarButton
           active={props.cel}
           button={"Current Employees' List"}
           url={"/employees/CurrentEmployeeList"}
         />
-        <NavbarButton active={props.rel} button={"Resigned Employees' List"} url={"#"} />
-        <NavbarButton active={props.fel} button={"Fired Employees' List"} url={"#"} />
-        <NavbarButton active={props.att} button={"Attendance"} url={"#"} />
-        <NavbarButton active={props.sal} button={"Salary"} url={"#"} />
+        <NavbarButton
+          active={props.rel}
+          button={"Resigned Employees' List"}
+          url={"/resign/ResignEmployeeList"}
+        />
+        <NavbarButton
+          active={props.fel}
+          button={"Fired Employees' List"}
+          url={"/resign/FiredEmployeeList"}
+        />
+        <NavbarButton
+          active={props.req}
+          button={"Termination Pending List"}
+          url={"/resign/TerminationPendingList"}
+        />
+        <NavbarButton
+          active={props.att}
+          button={"Attendance"}
+          url={"/attendance/AttendancePage"}
+        />
+        <NavbarButton active={props.sal} button={"Salary"} url={"/SalaryTable"} />
       </div>
     </div>
   );
@@ -39,9 +60,9 @@ HrNavbar.propTypes = {
   cel: PropTypes.bool,
   rel: PropTypes.bool,
   fel: PropTypes.bool,
+  req: PropTypes.bool,
   att: PropTypes.bool,
   sal: PropTypes.bool,
 };
-
 
 export default HrNavbar;

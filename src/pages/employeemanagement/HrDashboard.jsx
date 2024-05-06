@@ -3,6 +3,7 @@ import React from "react";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import DashboardCard from "../../components/DashboardCard.jsx";
+import ViewButton from "../../components/button2/ViewButton.jsx";
 import { Link } from "react-router-dom";
 
 const HrDashboard = () => {
@@ -11,7 +12,7 @@ const HrDashboard = () => {
       <HrNavbar home={true} />
 
       <div className="p-4">
-        <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Dashboard
         </h1>
 
@@ -35,14 +36,50 @@ const HrDashboard = () => {
         </div>
 
         <div className="flex flex-row justify-evenly">
-          <DashboardCard
+          {/* <DashboardCard
             topic="Resignation Management"
-            subtopic1="Request Termination"
-            link1="#"
-            subtopic2="Resigned Employees&rsquo; List"
+            subtopic2="Rejected Request List"
             description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            link2="#"
-          />
+            link2="/resign/RejectedRequestPage"
+          /> */}
+          <div>
+            <div className="px-14 py-8">
+              <div className="border border-black rounded-xl w-[800px] h-fit flex flex-col items-center font-BreeSerif p-6">
+                <h1 className="text-3xl font-Philosopher text-ternary">
+                  Resignation Management
+                </h1>
+
+                <div className="border border-black rounded-xl w-100% h-fit flex flex-col items-center font-BreeSerif p-2 m-8">
+                  <h2 className="text-xl text black pb-2">
+                    Termination Pending List
+                  </h2>
+                  <p className="text-md text-black pb-2">
+                    lorem ipsum Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit
+                  </p>
+
+                  <Link to="/resign/TerminationPendingList">
+                    <ViewButton />
+                  </Link>
+                </div>
+                <div className="border border-black rounded-xl w-100% h-fit flex flex-col items-center font-BreeSerif p-2 m-8">
+                  <h2 className="text-xl text black pb-2">
+                    Rejected Request List
+                  </h2>
+                  <p className="text-md text-black pb-2">
+                    lorem ipsum Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit.Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit
+                  </p>
+
+                  <Link to="/resign/RejectedRequestPage">
+                    <ViewButton />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
           <DashboardCard
             topic="Salary Management"
             subtopic1="<Placeholder>"
