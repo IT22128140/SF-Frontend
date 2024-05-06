@@ -86,9 +86,9 @@ const CreateMaintenance = () => {
       <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
-        <form onSubmit={methods.handleSubmit(handleSaveMaintenance)} className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+        <form onSubmit={methods.handleSubmit(handleSaveMaintenance)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
         
-        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Add new Maintenance Record</h1>
+        <h1 className='text-4xl  font-philosopher text-black font-semibold my-8 text-center alignment-center'>Add new Maintenance Record</h1>
           <Input
             formtype='input'
             label='Maintenance ID'

@@ -6,6 +6,7 @@ import Spinner from '../../components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import RejectButton from '../../components/button2/RejectButton';
 
 const AcceptedMPshortages = () => {
 
@@ -100,7 +101,10 @@ const AcceptedMPshortages = () => {
                         <AiOutlineCheckCircle className="text-xl mr-2" />
                         <span className="mr-2">Accept</span>
                       </button>
+                      
                     )}
+
+            
                 </div>
             )}
             <StaffFooter/>

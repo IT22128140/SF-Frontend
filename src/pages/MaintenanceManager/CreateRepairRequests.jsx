@@ -86,9 +86,9 @@ const CreateRepairRequests = () => {
       <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
-        <form onSubmit={methods.handleSubmit(handleSaveRepair)} className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+        <form onSubmit={methods.handleSubmit(handleSaveRepair)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
         
-        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Request New Repair</h1>
+        <h1 className='text-4xl  font-philosopher text-black font-semibold my-8 text-center alignment-center'>Request New Repair</h1>
           <Input
             formtype='input'
             label='Repair ID'
@@ -155,7 +155,7 @@ const CreateRepairRequests = () => {
 
         {/* Render checkboxes for workers */}
         <fieldset>
-            <legend>Workers</legend>
+            <legend>Add Repair Workers</legend>
             {workers.map((worker) => (
               <div key={worker._id}>
                 <input
