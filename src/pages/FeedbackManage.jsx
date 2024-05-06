@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import Footer from "../components/footer/Footer";
 
 const FeedbackPage = () => {
-  const [feedbacks] = useState([
-    { feedback: 'Great job!', rating: 5, name: 'John Doe', email: 'johndoe@example.com' },
-    { feedback: 'Very helpful', rating: 4, name: 'Jane Smith', email: 'janesmith@example.com' },
-    { feedback: 'Nice work', rating: 3, name: 'Alex Johnson', email: 'alexjohnson@example.com' }
-  ]);
- 
-  
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFeedbacks = async () => {
+      try {
+        const response = await axios.get('http://localhost:5555/feedbacks');
+        setFeedbacks(response.data);
+      } catch (error) {
+        console.error('Error fetching feedbacks:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeedbacks();
+  }, []);
+
   const renderStarRating = (rating) => {
     const stars = [];
     for (let i = 0; i < rating; i++) {
@@ -21,8 +33,12 @@ const FeedbackPage = () => {
     alert(`Contacting ${name} at ${email} regarding their feedback`);
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="container mx-auto px-60 py-60">
+    <div className="container mx-auto ">
       <h2 className="text-4xl font-semibold mb-4 text-center">FEEDBACKS</h2>
       <div className="grid grid-cols-1 gap-4">
         {feedbacks.map((feedback, index) => (
