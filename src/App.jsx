@@ -77,7 +77,10 @@ import AddSupplieredRaws from "./pages/InventoryAndSupplier/AddSupplieredRaws.js
 import Fullfillrequset from './pages/InventoryAndSupplier/Fullfillrequset.jsx';
 import Popup from './pages/InventoryAndSupplier/Popup.jsx';
 import IsHome from "./pages/InventoryAndSupplier/IsHome.jsx";
-
+import Pendingshortsge from './pages/InventoryAndSupplier/ViewPendingShortage.jsx'
+import AcceptedMPS from './pages/InventoryAndSupplier/AcceptedMPS.jsx'
+import Viewshortage from './pages/InventoryAndSupplier/ViewShortage.jsx'
+import Deleteshortage from './pages/InventoryAndSupplier/Deleteshortage.jsx'
 
 
 
@@ -282,10 +285,10 @@ const App = () => {
       <Route path='/Fullfillrequset/:id/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
-      
-
-
-
+      <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
+      <Route path= "/Shortages/Accpted" element = {<AcceptedMPS/>} />
+      <Route path= "/Shortages/Viewshortage/:id" element = {<Viewshortage/>} />
+      <Route path= "/Shortages/delete/:id" element = {<Deleteshortage/>} />
 
 
 
