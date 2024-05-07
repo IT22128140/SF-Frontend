@@ -26,7 +26,7 @@ const DeleteSalary = () => {
   };
 
   return (
-    <div>
+    <div  className='w-full h-full bg-scroll bg-repeat bg-bgimg'>
       <HrNavbar sal={true} />
       <div className="flex justify-center items-center h-screen">
         <div className="bg-orange-100 text-black p-5 rounded-lg w-96">

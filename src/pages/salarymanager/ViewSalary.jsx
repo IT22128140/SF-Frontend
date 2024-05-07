@@ -29,6 +29,7 @@ const ViewSalary = () => {
   }, []);
  
   return (
+    <div className='w-full h-full bg-scroll bg-repeat bg-bgimg' >
     <div>
       <HrNavbar sal={true} />
     <div className='p-4 h-screen overflow-y-auto'>
@@ -43,7 +44,7 @@ const ViewSalary = () => {
         {loading ? (
           <Spinner />
         ) : (
-          
+          <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>
           <div className='p-4 mx-auto max-w-lg '>
           <div className="mb-4">
           <label className="block text-ternary text-sm font-bold mb-3">Full Name</label>
@@ -51,6 +52,12 @@ const ViewSalary = () => {
             <br/>
             <label className="block text-ternary text-sm font-bold mb-3">Employee ID</label>
             <span className="border border-black border-1 p-1 block mb-2">{viewSalary.employeeID}</span>
+            <br/>
+            <label className="block text-ternary text-sm font-bold mb-3">Employee Contact Number</label>
+            <span className="border border-black border-1 p-1 block mb-2">{viewSalary.contactNo}</span>
+            <br/>
+            <label className="block text-ternary text-sm font-bold mb-3">Employee Email</label>
+            <span className="border border-black border-1 p-1 block mb-2">{viewSalary.email}</span>
             <br/>
             <label className="block text-ternary text-sm font-bold mb-3">Basic Salary</label>
             <span className="border border-black border-1 p-1 block mb-2">{viewSalary.basicSalary}</span>
@@ -73,9 +80,11 @@ const ViewSalary = () => {
             <label className="block text-ternary text-sm font-bold mb-3">Cheque</label>
             <span className="border border-black border-1 p-1 block mb-2">{viewSalary.cheque}</span>
             <br/>
-            <br/>
             <label className="block text-ternary text-sm font-bold mb-3">Date</label>
             <span className="border border-black border-1 p-1 block mb-2">{viewSalary.date}</span>
+            <br/>
+            <label className="block text-ternary text-sm font-bold mb-3">Notice</label>
+            <span className="border border-black border-1 p-1 block mb-2">{viewSalary.notice}</span>
             
           
           </div>
@@ -96,6 +105,7 @@ const ViewSalary = () => {
 
 
           </div>
+          </div>
           
 
               
@@ -106,6 +116,7 @@ const ViewSalary = () => {
       
     </div>
     <StaffFooter />
+    </div>
     </div>
     
   );

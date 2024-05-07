@@ -1,43 +1,45 @@
-import { Axios } from "axios";
-import React, { useState } from "react";
-import { useParams } from "react-router";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/button2/SubmitButton";
 import AddButton from "../../components/button2/AddButton";
 import HrNavbar from '../../components/navbar/staffheader/HrNavbar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
-import { Link } from "react-router-dom";
-
-
+import axios from 'axios';
 
 const ChequeSubmit = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
-  const [file, setFile] = useState();
-  const [showNewSlipInput, setShowNewSlipInput] = useState(false);
+  const [cheque1, setcheque1] = useState(null);
+  const [cheque2, setcheque2] = useState(null);
   const [notice, setNotice] = useState("");
+  const [showNewSlipInput, setShowNewSlipInput] = useState(false);
   const [showNoticeInput, setShowNoticeInput] = useState(false);
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append('file', file);
-    
+  const handleUpload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append('file', cheque1);
+      formData.append('file', cheque2);
+      formData.append('notice', notice);
 
+      await axios.put(`http://localhost:5555/salary/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
-    // Upload file
-    Axios.put(`http://localhost:5555/uploads/${id}`, formData)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-
-    // Add notice
-    if (notice.trim() !== "") {
-      // Handle adding notice logic here
-      console.log("Notice added:", notice);
+      console.log("File uploaded successfully");
+      navigate("/SalaryTable"); // Redirect to SalaryTable after successful upload
+    } catch (error) {
+      console.error("Error uploading file:", error);
     }
-  }
+  };
 
   const handleAddCheque = () => {
     setShowNewSlipInput(true);
     setShowNoticeInput(true);
-  }
+  };
 
   return (
     <div>
@@ -55,7 +57,7 @@ const ChequeSubmit = () => {
             <div className="text-xl text-black mb-4">Attach Payment Slip</div>
             <div>
               <br />
-              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+              <input type="file" onChange={(e) => setcheque1(e.target.cheque1)} />
             </div>
           </div>
           {showNoticeInput && (
@@ -70,15 +72,13 @@ const ChequeSubmit = () => {
             <div>
               <div className="text-xl text-black mb-4">Attach New Slip</div>
               <div>
-                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+                <input type="file" onChange={(e) => setcheque2(e.target.cheque2)} />
               </div>
             </div>
           )}
           <br />
           <div className='flex justify-between mt-8'>
-            <Link to={`/SalaryTable`}>
             <SubmitButton onClick={handleUpload}>Submit</SubmitButton>
-            </Link>
             {!showNoticeInput && (
               <AddButton onClick={handleAddCheque}>Add Cheque</AddButton>
             )}

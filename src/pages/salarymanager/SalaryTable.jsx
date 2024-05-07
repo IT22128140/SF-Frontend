@@ -13,7 +13,7 @@ const SalaryTable = () => {
   const [salaryTable, setSalaryTable] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const headers = ['EmployeeID', 'Employee Name','Contact Number','Email','Basic Salary','Attendance','Over Time','Bonus','Total Amount', 'Operation'];
+  const headers = ['EmployeeID', 'Employee Name','Basic Salary','Attendance','Over Time','Bonus','Total Amount','Cheque','Date','Notice', 'Operation'];
 
   useEffect(() => {
     setLoading(true);
@@ -31,7 +31,7 @@ const SalaryTable = () => {
   }, []);
 
   return (
-    <div>
+    <div  className='w-full h-full bg-scroll bg-repeat bg-bgimg'>
       <HrNavbar sal={true} />
       <div className='p-4'>
         <div className='flex justify-between items-center'>
@@ -58,13 +58,14 @@ const SalaryTable = () => {
                  
                   <td className='border border-slate-700 rounded-md text-center'>{salary.firstName} {salary.lastName}</td>
                   <td className='border border-slate-700 rounded-md text-center'>{salary.employeeID}</td>
-                  <td className='border border-slate-700 rounded-md text-center'>{salary.contactNo}</td>
-                  <td className='border border-slate-700 rounded-md text-center'>{salary.email}</td>
                   <td className='border border-slate-700 rounded-md text-center'>{salary.basicSalary}</td>
                   <td className='border border-slate-700 rounded-md text-center'>{salary.attendance}</td>
                   <td className='border border-slate-700 rounded-md text-center'>{salary.overtime}</td>
                   <td className='border border-slate-700 rounded-md text-center'>{salary.bonus}</td>
                   <td className='border border-slate-700 rounded-md text-center'>{salary.totalAmount}</td>
+                  <td className='border border-slate-700 rounded-md text-center'>{salary.cheque1} </td>
+                  <td className='border border-slate-700 rounded-md text-center'>{salary.date} </td>
+                  <td className='border border-slate-700 rounded-md text-center'>{salary.notice} </td>
 
 
 
@@ -73,9 +74,7 @@ const SalaryTable = () => {
                       <Link to={`/EditSalaryBalance/${salary._id}`}> {/* Use salary._id for dynamic link */}
                         <EditButton />
                       </Link>
-                      <Link to={`/ChequeSubmit/${salary._id}`}> {/* Use salary._id for dynamic link */}
-                        <AddButton />
-                      </Link>
+                      
                     </div>
                   </td>
                 </tr>

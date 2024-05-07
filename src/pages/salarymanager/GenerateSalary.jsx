@@ -22,6 +22,8 @@ const GenerateSalary = () => {
   const [overtimeHours, setOvertimeHours] = useState(0);
   const [bonus, setBonus] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [date, setDate] = useState('');
+  const [notice, setNotice] = useState('');
 
   const calculateTotalAmount = () => {
     const basic = parseFloat(basicSalary);
@@ -41,43 +43,10 @@ const GenerateSalary = () => {
 
     setTotalAmount(totalAmountValue);
 
-    // axios.put(`http://localhost:5555/editsalary/${id}`, { totalAmount: totalAmountValue })
-    //   .then(response => {
-    //     console.log('Total amount updated successfully:', response.data);
-    //   })
-    //   .catch(error => {
-    //     console.error('Error updating total amount:', error);
-    //   });
+  
   };
 
-//   const handleSaveSalary = () => {
-//     const data = {
-//       firstName,
-//       lastName,
-//       employeeID,
-//       contactNo,
-//       email,
-//       basicSalary,
-//       attendance,
-//       overtime,
-//       bonus,
-//       totalAmount,
-    
 
-//     };
-//     setLoading(true);
-//     axios
-//       .post(`http://localhost:5555/salary`, data)
-//       .then(() => {
-//          setLoading(false);
-//          navigate('/SalaryTable');
-//       })
-//       .catch((error) => {
-//          setLoading(false);
-//          alert('AN error happened.please check console');
-//          console.log(error);
-//       });
-//  };
 
 
 const handleSaveSalary = () => {
@@ -92,10 +61,9 @@ const handleSaveSalary = () => {
     overtime: overtimeHours, // Corrected variable name
     bonus,
     totalAmount,
-    // notice: '', // You need to provide a value for notice
-    // cheque1: '', // You need to provide a value for cheque1
-    // cheque2: '', // You need to provide a value for cheque2
-    // profile: '', // You need to provide a value for profile
+    date,
+    notice,
+  
   };
   setLoading(true);
   axios
@@ -138,7 +106,7 @@ const handleSaveSalary = () => {
   }, [id]);
 
   return (
-    <div>
+    <div  className='w-full h-full bg-scroll bg-repeat bg-bgimg'>
       <HrNavbar sal={true} />
       <div className='p-4 h-screen overflow-y-auto'>
         <div className='flex justify-center items-center'>
@@ -150,6 +118,7 @@ const handleSaveSalary = () => {
         {loading ? (
           <Spinner />
         ) : (
+          <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>
           <div className='p-4 mx-auto max-w-lg '>
             <div className="mb-4">
               <label className="block text-ternary text-sm font-bold mb-3">Full Name</label>
@@ -168,29 +137,50 @@ const handleSaveSalary = () => {
               <span className="border border-black border-1 p-1 block mb-2">{employeeData.basicSalary}</span>
               <br/>
               <label className="block text-ternary text-sm font-bold mb-3">Attendance</label>
-              <input 
-                type="number"
-                value={attendance}
-                onChange={(e) => setAttendance(e.target.value)}
-                className="border border-black border-1 p-1 block mb-2"
-              />
-              <br/>
-              <label className="block text-ternary text-sm font-bold mb-3">Over Time Hours</label>
-              <input 
-                type="number"
-                value={overtimeHours}
-                onChange={(e) => setOvertimeHours(e.target.value)}
-                className="border border-black border-1 p-1 block mb-2"
-              />
-              <br/>
-              <label className="block text-ternary text-sm font-bold mb-3">Bonus</label>
-              <input 
-                type="number"
-                value={bonus}
-                onChange={(e) => setBonus(e.target.value)}
-                className="border border-black border-1 p-1 block mb-2"
-              />
-              <br/>
+<input 
+  type="number"
+  value={attendance}
+  onChange={(e) => {
+    if (e.target.value <= 30) {
+      setAttendance(e.target.value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{attendance > 30 && (
+  <p className="text-red-500">Attendance cannot exceed 30</p>
+)}
+<br/>
+<label className="block text-ternary text-sm font-bold mb-3">Over Time Hours</label>
+<input 
+  type="number"
+  value={overtimeHours}
+  onChange={(e) => {
+    if (e.target.value <= 200) {
+      setOvertimeHours(e.target.value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{overtimeHours > 200 && (
+  <p className="text-red-500">Overtime hours cannot exceed 200</p>
+)}
+<br/>
+<label className="block text-ternary text-sm font-bold mb-3">Bonus</label>
+<input 
+  type="number"
+  value={bonus}
+  onChange={(e) => {
+    if (e.target.value <= 100000) {
+      setBonus(e.target.value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{bonus > 100000 && (
+  <p className="text-red-500">Bonus cannot exceed 100,000</p>
+)}
+<br/>
             </div>
             <br />
             <div className='flex justify-center'>
@@ -200,13 +190,39 @@ const handleSaveSalary = () => {
             <br />
             <br />
             <label className="block text-ternary text-2xl font-bold mb-3">Total Amount</label>
-            <span className="border border-black border-1 p-1 block mb-2">{totalAmount}</span> 
+            <span className="border border-black border-1 p-1 block mb-2">RS.{totalAmount}</span>
+            
+             
             <br />
+            <br/>
+              <label className="block text-ternary text-sm font-bold mb-3">Date</label>
+              <input 
+                type="Date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="border border-black border-1 p-1 block mb-2"
+              />
             <br />
+            <br/>
+            <label className="block text-ternary text-sm font-bold mb-3">Notice</label>
+<textarea
+  value={notice}
+  onChange={(e) => {
+    const words = e.target.value.split(/\s+/).filter(Boolean);
+    if (words.length <= 50) {
+      setNotice(e.target.value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{notice.split(/\s+/).filter(Boolean).length > 50 && (
+  <p className="text-red-500">Notice text cannot exceed 50 words</p>
+)}
             <div className='flex justify-center'>
             <SubmitButton onClick={handleSaveSalary} className="mr-2">Submit</SubmitButton>
               
             </div> 
+          </div>
           </div>
         )}
       </div>

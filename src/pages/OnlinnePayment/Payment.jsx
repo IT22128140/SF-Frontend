@@ -38,27 +38,32 @@ const Payment = () => {
                     <Spinner />
                 ) : (
                     <>
+                    
                         <div className="mb-4">
 
                             <h3 className="text-sm font-semibold leading-relaxed absolute top-[200px] left-[400px] ">Easily handle payments on our safe online platform. Quick, simple, and secure transactions ensure a smooth digital experience, <br />
 
                             making your financial interactions trouble-free and efficient.</h3>
+                           
+                            
 
                             <label className="block text-ternary text-lg font-bold mb-2 absolute top-[290px] left-[500px] ">Total Payment</label>
 
-                            <span className="border border-black border-1 p-2 block mb-2 absolute top-[330px] left-[500px] rounded-lg">Rs.{payment.totalpayment}</span>
+                            <span className="border border-black border-1 p-2 block mb-2 absolute top-[330px] left-[500px] rounded-lg">Rs.{}</span>
 
                             <label className="block text-ternary text-lg font-bold mb-2 absolute top-[400px] left-[500px] ">Select your payment method</label>
                             
                             <button className="border border-black border-1 p-2 block mb-2 absolute top-[460px] left-[500px] bg-primary text-white rounded-lg">Cash on delivery</button>
-                            <Link to={`/slipupload/${id}`}>
+                            <Link to={`/slipupload`}>
                             <button className="border border-black border-1 p-2 block mb-2 absolute top-[540px] left-[500px]  bg-primary text-white rounded-lg">Slip Upload</button>
                             </Link>
 
                         </div>
+                       
+                        
 
                         <div className="flex justify-center items-center absolute top-[620px] left-[500px]">
-                         <Link to={`/PaymentSucc/${payment._id}`}>
+                         <Link to={`/PaymentSucc`}>
                             <DeleteButton>Delete</DeleteButton>
                          </Link>
                             

@@ -6,12 +6,15 @@ import { Link } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
 import HrNavbar from '../../components/navbar/staffheader/HrNavbar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import { set } from 'react-hook-form';
 
 const EditSalaryBalance = () => {
   const [editSalaryBalance, setEditSalaryBalance] = useState({});
   const [attendance, setAttendance] = useState(0);
   const [overtime, setOverTime] = useState(0);
   const [bonus, setBonus] = useState(0);
+  const [date, setDate] = useState('');
+    const [notice, setNotice] = useState('');
   const [totalAmount, setTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -54,6 +57,8 @@ const EditSalaryBalance = () => {
         setOverTime(response.data.overtime);
         setBonus(response.data.bonus);
         setTotalAmount(response.data.totalAmount);
+        setDate(response.data.date);
+        setNotice(response.data.notice);
         setLoading(false);
       })
       .catch((error) => {
@@ -67,6 +72,8 @@ const EditSalaryBalance = () => {
       attendance: attendance,
       overtime: overtime,
       bonus: bonus,
+      date: date,
+        notice: notice,
       totalAmount: totalAmount
     };
     setLoading(true);
@@ -84,7 +91,7 @@ const EditSalaryBalance = () => {
   };
 
   return (
-    <div>
+    <div  className='w-full h-full bg-scroll bg-repeat bg-bgimg'>
       <HrNavbar sal={true} />
       <div className='p-4 h-screen overflow-y-auto'>
         <div className='flex justify-center items-center'>
@@ -99,6 +106,7 @@ const EditSalaryBalance = () => {
         {loading ? (
           <Spinner />
         ) : (
+          <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>
           <div className='p-4 mx-auto max-w-lg '>
             <div className="mb-4">
               <label className="block text-ternary text-sm font-bold mb-3">Full Name</label>
@@ -110,38 +118,84 @@ const EditSalaryBalance = () => {
               <label className="block text-ternary text-sm font-bold mb-3">Basic Salary</label>
               <span className="border border-black border-1 p-1 block mb-2">{editSalaryBalance.basicSalary}</span> <br />
               <label className="block text-ternary text-sm font-bold mb-3">Attendance</label>
-              <input
-                type="number"
-                value={attendance}
-                onChange={(e) => setAttendance(e.target.value)}
-                className="border border-black border-1 p-1 block mb-2"
-              /> <br />
-              <label className="block text-ternary text-sm font-bold mb-3">Over Time Hours</label>
-              <input
-                type="number"
-                value={overtime}
-                onChange={(e) => setOverTime(e.target.value)}
-                className="border border-black border-1 p-1 block mb-2"
-              /> <br />
-              <label className="block text-ternary text-sm font-bold mb-3">Bonus</label>
-              <input
-                type="number"
-                value={bonus}
-                onChange={(e) => setBonus(e.target.value)}
-                className="border border-black border-1 p-1 block mb-2"
-              /> <br />
+<input
+  type="number"
+  value={attendance}
+  onChange={(e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value <= 30) {
+      setAttendance(value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{attendance > 30 && (
+  <p className="text-red-500">Attendance cannot exceed 30</p>
+)}
+<br />
+<label className="block text-ternary text-sm font-bold mb-3">Over Time Hours</label>
+<input
+  type="number"
+  value={overtime}
+  onChange={(e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value <= 250) {
+      setOverTime(value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{overtime > 250 && (
+  <p className="text-red-500">Overtime hours cannot exceed 250</p>
+)}
+<br />
+<label className="block text-ternary text-sm font-bold mb-3">Bonus</label>
+<input
+  type="number"
+  value={bonus}
+  onChange={(e) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value <= 200000) {
+      setBonus(value);
+    }
+  }}
+  className="border border-black border-1 p-1 block mb-2"
+/>
+{bonus > 200000 && (
+  <p className="text-red-500">Bonus cannot exceed 200,000</p>
+)}
+<br />
               <div className='flex justify-center'>
                 <button type="button" onClick={calculateTotalAmount} className="mr-4 bg-black p-2 rounded text-white">Generate</button>
               </div>
               <label className="block text-ternary text-sm font-bold mb-3">Total Amount</label>
               <span className="border border-black border-1 p-1 block mb-2">{totalAmount}</span>
-              <br /> <br /> <br /> <br />
+              <br />
+              <label className="block text-ternary text-sm font-bold mb-3">DAte</label>
+              <input
+                type="Date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="border border-black border-1 p-1 block mb-2"
+              /> <br />
+              <label className="block text-ternary text-sm font-bold mb-3">Notice</label>
+              <textarea // Change to textarea for multiline input
+              value={notice}
+             onChange={(e) => setNotice(e.target.value)}
+             className="border border-black border-1 p-1 block mb-2"
+              />
+                {notice.split(/\s+/).filter(Boolean).length > 50 && (
+                 <p className="text-red-500">Notice text cannot exceed 50 words</p>
+                  )}
+                <br />
+               <br /> <br /> <br />
             </div>
             <br />
             <div className='flex justify-center'>
               <SubmitButton onClick={handleSalary}>Submit</SubmitButton>
             </div>
           </div>
+        </div>
         )}
       </div>
       <StaffFooter />
