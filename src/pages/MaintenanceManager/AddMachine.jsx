@@ -35,9 +35,10 @@ const AddMachine = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader am={true}/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <BackButton/>
       {loading ? <Spinner /> : ''}
-      {/* Wrap the form with FormProvider */}
+   
       <FormProvider {...methods}> 
         <form onSubmit={methods.handleSubmit(handleSaveMachine)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
         <h1 className='text-4xl  font-philosopher text-black font-semibold my-8 text-center alignment-center'>Add New Machine</h1>
@@ -114,7 +115,8 @@ const AddMachine = () => {
           <SubmitButton/>
         </form>
       </FormProvider>
-
+      <div className='h-40'></div>
+      </div>
       <StaffFooter/>
     </div>
   )

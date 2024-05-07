@@ -44,20 +44,16 @@ const RepairTable = () => {
     return (
         <div className='relative'>
             <MaintenanceManagerHeader r={true}/>
-
+            <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <SearchBar data= {data2} navigate={`/repairs/view/`} placeholder={"Enter Repair ID"}/>
-
-           
+       
                 <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Repairs List</h1>
-        
-
-
-            
+    
             {loading ? (
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {repairs.map((repair, index) => (
@@ -109,6 +105,7 @@ const RepairTable = () => {
                 <Link to='/repairs/create'>
                     <AddButton />
                 </Link>
+                </div>
                 </div>
                 <StaffFooter/>
         </div>

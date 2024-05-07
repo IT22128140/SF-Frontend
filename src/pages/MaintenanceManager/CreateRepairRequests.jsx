@@ -46,14 +46,14 @@ const CreateRepairRequests = () => {
   const handleSaveRepair = async (data) => {
     setLoading(true);
     try {
-      // Extract Workers array from data
-    const workers = data.Workers;
+      
+    const workers = data.Workers;// Extract Workers array from data
 
-    // Create new object without Workers field
+    // Create new object
     const newData = { ...data };
     delete newData.Workers;
       
-    // Add selected workers to the data before saving
+    // Add selected workers to the data
     const dataWithWorkers = { ...newData, Workers: selectedWorkers };
 
       await axios.post('http://localhost:5555/repairs', dataWithWorkers);
@@ -85,6 +85,7 @@ const CreateRepairRequests = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader rr={true}/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <BackButton/>
       <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
@@ -181,6 +182,8 @@ const CreateRepairRequests = () => {
           <SubmitButton/>
         </form>
       </FormProvider>
+      <div className='h-40'></div>
+      </div>
       <StaffFooter/>
     </div>
   )

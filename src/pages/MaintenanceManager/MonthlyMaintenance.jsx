@@ -95,20 +95,21 @@ const RepairDetailsInRange = () => {
   return (
     <div>
       <MaintenanceManagerHeader/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <h2 className='text-4xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Search Repair Details, Machine Details Within Date Range</h2>
-      <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] h-auto p-4 mx-auto font-BreeSerif mt-10 " ref={reportRef}>
+      <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] h-auto p-4 mx-auto font-BreeSerif mt-10 " ref={reportRef}>
       <div className='flex flex-row'>
           <img src="/Logo2.png" alt="logo" className="w-[13rem] h-[3rem] lg:w-[15rem] lg:h-[4rem]" />
-          <img src="/Logo1.png" alt="logo" className="w-[4rem] h-[3rem] lg:w-[6rem] lg:h-[4.5rem]  ml-auto" />
+          <img src="/Logo1.png" alt="logo" className="w-[4rem] h-[4rem] lg:w-[6rem] lg:h-[5.5rem]  ml-auto" />
       </div>
       <h2 className='mt-10 text-center text-ternary text-2xl'>Maintenance Report</h2>
         
-        <p className='text-center mt-10 text-white text-xl'>Enter Date Range </p>
+        <p className='text-center mt-10 text-black text-xl'>Date Range </p>
         <div className='ml-20 mt-7 mb-10'>
         <label>From :  </label>
-        <input className='mr-12 bg-formBackground text-white' type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+        <input className='mr-12 bg-bgc text-black' type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
         <label>To : </label>
-        <input className='bg-formBackground text-white' type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+        <input className='bg-bgc text-black' type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
       </div>
 
       {loading && <Spinner/>}
@@ -202,6 +203,8 @@ const RepairDetailsInRange = () => {
         <button onClick={downloadPDF} className="bg-black text-white font-BreeSerif py-2 px-4 rounded">
           Download PDF
         </button>
+      </div>
+      <div className='h-40'></div>
       </div>
       <StaffFooter/>
     </div>

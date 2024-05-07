@@ -67,6 +67,7 @@ const EditRepair = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader/>
+      <div className=' relative w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
 
@@ -189,6 +190,7 @@ const EditRepair = () => {
           ))}
         </div>
           <SubmitButton onClick={handleEditRepair}/>
+          </div>
           </div>
           <StaffFooter/>
     </div>

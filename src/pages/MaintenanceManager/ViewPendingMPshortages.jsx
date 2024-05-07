@@ -40,6 +40,7 @@ const mpShortagesTable = () => {
     return (
         <div className='relative'>
             <MaintenanceManagerHeader sh={true}/>
+            <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <Link to={'/mpshortages/accepted'}>
             <button className={`flex items-center mt-4  justify-between w-fit h-fit p-1.5 text-md font-BreeSerif bg-red-900 text-white rounded-lg shadow-md`}>View Accepted Shortages</button>
             </Link>
@@ -53,7 +54,7 @@ const mpShortagesTable = () => {
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {mpshortages.map((mpshortage, index) => (
@@ -100,8 +101,8 @@ const mpShortagesTable = () => {
             
                 
             )}
-
-                
+            <div className="h-40 mt-10 ml-5"></div>
+            </div>
                 <StaffFooter/>
         </div>
     );

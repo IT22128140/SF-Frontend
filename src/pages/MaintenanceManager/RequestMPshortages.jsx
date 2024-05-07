@@ -35,6 +35,7 @@ const RequestsMPshortage = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader rsh={true}/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <BackButton/>
       {loading ? <Spinner /> : ''}
       {/* Wrap the form with FormProvider */}
@@ -123,6 +124,8 @@ const RequestsMPshortage = () => {
           <SubmitButton/>
         </form>
       </FormProvider>
+      <div className='h-40'></div>
+      </div>
       <StaffFooter/>
     </div>
   )
