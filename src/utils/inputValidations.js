@@ -22,6 +22,7 @@
         message: "Required",
       }
     },
+    
   };
 
   export const contactValidation = {

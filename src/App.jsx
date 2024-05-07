@@ -14,7 +14,7 @@ import Addresses from './pages/onlinestore/Addresses.jsx';
 import Catalogue from './pages/onlinestore/Catalogue.jsx';
 import Orders from "./pages/onlinestore/Orders.jsx";
 import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
-
+import CompletedOrders from "./pages/onlinestoremanagement/CompletedOrders.jsx";
 
 
 
@@ -233,7 +233,7 @@ const App = () => {
       <Route path='/Catalogue' element={<Catalogue/>} />
       <Route path='/Orders' element={<Orders/>} />
       <Route path='/OngoingOrders' element={<OngoingOrders/>} />
-
+      <Route path='/CompletedOrders' element={<CompletedOrders/>} />
 
 
 
