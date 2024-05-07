@@ -36,7 +36,7 @@ const pendingshortsge = () =>{
 
 
     return (
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <IsNavbar sh={true}/>
             <Link to={'/mpshortages/accepted'}>
             <button>Accepted Shortages</button>

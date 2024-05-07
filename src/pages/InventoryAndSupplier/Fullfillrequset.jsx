@@ -43,7 +43,7 @@ const Fullfillrequest = () => {
   };
 
   return (
-    <div className="p-1">
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <IsNavbar  FFR={true} /> 
       <div className="flex items-center justify-center mb-9">
         <h1 className="my-8 text-6xl font-semibold font-br text-ternary alignment-center">Fullfilled Requests</h1>

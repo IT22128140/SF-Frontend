@@ -36,7 +36,7 @@ const SupplierDetails = () => {
   };
 
   return (
-    <div className="p-1">
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <IsNavbar sd={true} />
       <div className="flex items-center justify-center mb-9">
         <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Supplier Details</h1>
@@ -46,7 +46,7 @@ const SupplierDetails = () => {
         <Spinner />
       ) : (
         <div className="px-10 mx-auto">
-          <table className="mx-auto mb-5 font-BreeSerif ">
+          <table className="mx-auto mb-5 bg-white font-BreeSerif ">
             <TableView headers={headers} />
             <tbody>
               {Suppliers.map((supdetails, index) => (

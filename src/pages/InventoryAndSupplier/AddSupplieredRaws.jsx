@@ -42,7 +42,7 @@ const AddSupplieredRaws = () => {
     };
 
     return (
-        <div className='p-4'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <BackButton />
             <div className="flex items-center justify-center mb-9">
 
