@@ -70,11 +70,13 @@ const EditSuppliers =() => {
   return (
     <div className='p-4'>
         <BackButton />
-        <h1 className='my-4 text-3xl'>Edit supplier</h1>
+        <div className="flex items-center justify-center mb-9">
+        <h1 className="text-6xl my-9">Edit suspplier details</h1>
+      </div>
         {loading ? <Spinner/> : ''}
-        <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+        <div className='flex flex-col bg-formbg border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
         <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Supplier ID</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier ID</label>
                 <input
                  type='String'
                  value={SRequestID}
@@ -83,7 +85,7 @@ const EditSuppliers =() => {
                 />
                 </div>
             <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Supplier Name</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier Name</label>
                 <input
                  type='String'
                  value={supplierName}
@@ -92,7 +94,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Address</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Address</label>
                 <input
                  type='String'
                  value={address}
@@ -101,7 +103,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Contact Number</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Contact Number</label>
                 <input
                  type='number'
                  value={contactNumber}
@@ -111,7 +113,7 @@ const EditSuppliers =() => {
                 </div>
               
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Email</label>
+                <label className='mr-4 text-xl text-gray-500 font-philosoper '>Email</label>
                 <input
                  type='String'
                  value={email}
@@ -120,7 +122,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Supplier Type</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier Type</label>
                 <input
                  type='String'
                  value={supplierType}
@@ -129,7 +131,7 @@ const EditSuppliers =() => {
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500'>Contract Expiary</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Contract Expiary</label>
                 <input
                  type='Date'
                  value={contractExpiary}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams,Link } from 'react-router-dom';
 import axios from 'axios';  
 import RejectButton from '../../components/button2/RejectButton';
 import DeleteButton from '../../components/button2/DeleteButton';
@@ -46,15 +46,26 @@ const Payment = () => {
 
                             <label className="block text-ternary text-lg font-bold mb-2 absolute top-[290px] left-[500px] ">Total Payment</label>
 
-                            <span className="border border-black border-1 p-2 block mb-2 absolute top-[330px] left-[500px]">Rs.{payment.totalpayment}</span>
+                            <span className="border border-black border-1 p-2 block mb-2 absolute top-[330px] left-[500px] rounded-lg">Rs.{payment.totalpayment}</span>
 
                             <label className="block text-ternary text-lg font-bold mb-2 absolute top-[400px] left-[500px] ">Select your payment method</label>
                             
-                            <button className="border border-black border-1 p-2 block mb-2 absolute top-[460px] left-[500px]">Cash on delivery</button>
-
-                            <button className="border border-black border-1 p-2 block mb-2 absolute top-[540px] left-[500px]">Slip Upload</button>
+                            <button className="border border-black border-1 p-2 block mb-2 absolute top-[460px] left-[500px] bg-primary text-white rounded-lg">Cash on delivery</button>
+                            <Link to={`/slipupload/${id}`}>
+                            <button className="border border-black border-1 p-2 block mb-2 absolute top-[540px] left-[500px]  bg-primary text-white rounded-lg">Slip Upload</button>
+                            </Link>
 
                         </div>
+
+                        <div className="flex justify-center items-center absolute top-[620px] left-[500px]">
+                         <Link to={`/PaymentSucc/${payment._id}`}>
+                            <DeleteButton>Delete</DeleteButton>
+                         </Link>
+                            
+                        </div>
+                        
+                  
+
                         
                     </>
                 )}

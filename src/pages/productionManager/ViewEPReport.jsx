@@ -35,9 +35,10 @@ const ViewEPReport = () => {
   };
 
   const downloadPDF = () => {
+
     const opt = {
       margin: 1,
-      filename: 'employeePerformance_report.pdf',
+      filename: `EmployeePerformanceReport_${id}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -47,15 +48,28 @@ const ViewEPReport = () => {
 
   return (
     <div className="relative">
-      <PMHeader />
+      <PMHeader emp={true}/>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Employee Performance
+        </h1>
+      </center>
       {loading ? (
         <Spinner />
       ) : (
-        <div ref={reportRef} className="flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary mb-5">
+        <div ref={reportRef} className="flex flex-col bg-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif text-ternary mb-5">
+          <div className="flex flex-row">
+            <img src="/Logo2.png" alt="logo" className="w-[13rem] h-[3rem] lg:w-[15rem] lg:h-[4rem]" />
+            <img src="/Logo1.png" alt="logo" className="w-[4rem] h-[4rem] lg:w-[6rem] lg:h-[5.5rem] ml-auto"/>
+          </div>
           <h1 className="text-3xl my-4 text-center font-semibold">Employee Performance Report</h1>
           <div className="my-4">
             <span className="text-xl mr-4">Employee ID</span>
             <span>{empPerformance.EmployeeID}</span>
+          </div>
+          <div className="my-4">
+            <span className="text-xl mr-4">Employee Name</span>
+            <span>{empPerformance.EmployeeName}</span>
           </div>
           <div className="my-4">
             <span className="text-xl mr-4">Line Number</span>

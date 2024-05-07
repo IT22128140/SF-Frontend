@@ -11,6 +11,9 @@ export default {
       BreeSerif: ["BreeSerif", "sans-serif"],
     },
     extend: {
+      backgroundImage: {
+        'bgimg': "url('/Wall2.png')",
+      },
       colors: {
         //Maneth
         'primary': '#da6e2e',
@@ -20,6 +23,8 @@ export default {
 
 
 
+        //varagan
+        'red': '#DC3545'
 
 
 
@@ -68,7 +73,7 @@ export default {
 
 
         //Isuru
-
+        
 
 
 

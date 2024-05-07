@@ -8,6 +8,7 @@ import TableView from '../../components/table/TableView';
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
 import ViewButton from "../../components/button2/ViewButton";
+import AddButton from "../../components/button2/AddButton";
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
@@ -98,9 +99,11 @@ const MachineTable = () => {
                       
             )}
 
+               <div className="flex h-40 mt-10 ml-5">
                 <Link to='/machines/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
+                    <AddButton />
                 </Link>
+                </div>
                 <StaffFooter/>
         </div>
     );

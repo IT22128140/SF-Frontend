@@ -45,14 +45,14 @@ const Fullfillrequest = () => {
     <div className="p-1">
       <IsNavbar  FFR={true} /> 
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-9 text-8xl">Fullfilled Requests</h1>
+        <h1 className="my-8 text-6xl font-semibold font-br text-ternary alignment-center">Fullfilled Requests</h1>
       </div>
 
       {loading ? (
         <Spinner />
       ) : (
         <div className="px-10 mx-auto">
-        <table className="w-full text-2xl">
+        <table className="mx-auto mb-5 font-BreeSerif ">
           <TableView headers={headers} />
           <tbody>
             {requests.map((request) => (

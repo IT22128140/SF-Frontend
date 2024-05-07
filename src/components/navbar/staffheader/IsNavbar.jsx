@@ -19,8 +19,8 @@ const IsNavbar = (props) => {
       <div className="flex flex-row mt-3 rounded-lg shadow-lg bg-bgc"> {/* Increased shadow and added rounded corners */}
         <NavbarButton active={props.Ishome} button={"Home"} url={"/IsHome"} />
         <NavbarButton active={props.sd} button={"Supplier details"} url={"/SupplierDetails"} />
-        <NavbarButton active={props.RmR} button={"Raw material request"} url={"#"} />
-        <NavbarButton active={props.MpR} button={"Machine part request"} url={"#"} />
+        <NavbarButton active={props.RmR} button={"Raw material request"} url={"/RequestforInventory"} />
+        <NavbarButton active={props.MpR} button={"Machine part request"} url={"/shortages/view"} />
         <NavbarButton active={props.RpS} button={"Raw material stock"} url={"/RawMaterialStock"} />
         <NavbarButton active={props.MpS} button={"Machine part stock"} url={"/MachinePartStock"} />
         <NavbarButton active={props.FFR} button={"Fulfilled RM Requests"} url={"/Fullfillrequset"} />

@@ -5,60 +5,83 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
 
-
 const AddRMaterial = () => {
-    const [requestID,setrequestID] = useState('');
+    const [materialID, setMaterialID] = useState('');
     const [materialType, setMaterialType] = useState('');
     const [colorAndDesign, setColorAndDesign] = useState('');
-    const [initialquantity, setinitialquantity] = useState('');
-    const [costperunit, setcostperunit] = useState('');
-    const [restockingdate, setrestockingdate] = useState('');
-    const [availablequantity, setavailablequantity] = useState('');
+    const [initialQuantity, setInitialQuantity] = useState('');
+    const [costPerUnit, setCostPerUnit] = useState('');
+    const [restockingDate, setRestockingDate] = useState('');
+    const [availableQuantity, setAvailableQuantity] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    const validateForm = () => {
+        let isValid = true;
+
+        if (!materialID.trim()) {
+            isValid = false;
+            alert('Please enter Material ID');
+        } else if (!materialID.trim().startsWith('RM')) {
+            isValid = false;
+            alert('Material ID should start with "RM"');
+        }
+
+        if (!materialType.trim()) {
+            isValid = false;
+            alert('Please enter Material Type');
+        }
+
+        // Add more validation rules as needed...
+
+        return isValid;
+    };
+
     const handleSaveRmaterials = () => {
-        const data = {
-            
-            requestID,
-            materialType,
-            colorAndDesign,
-            initialquantity,
-            costperunit,
-            restockingdate,
-            availablequantity
-        };
-        setLoading(true);
-        axios
-            .post('http://localhost:5555/RMstock', data)
-            .then(() => {
-                setLoading(false);
-                navigate('/RawMaterialStock'); // Navigate to the RawMaterialStock page
-            })
-            .catch((error) => {
-                setLoading(false);
-                alert('An error happened. Please check console');
-                console.log(error);
-            });
+        if (validateForm()) {
+            const data = {
+                materialID,
+                materialType,
+                colorAndDesign,
+                initialQuantity,
+                restockingDate,
+                availableQuantity,
+                costPerUnit,
+            };
+            setLoading(true);
+            axios
+                .post('http://localhost:5555/RMstock', data)
+                .then(() => {
+                    setLoading(false);
+                    navigate('/RawMaterialStock');
+                })
+                .catch((error) => {
+                    setLoading(false);
+                    alert('An error occurred. Please check console.');
+                    console.log(error);
+                });
+        }
     };
 
     return (
         <div className='p-4'>
             <BackButton />
-            <h1 className='my-4 text-3xl'>Add Raw materialStock</h1>
+            <div className="flex items-center justify-center mb-9">
+                <h1 className="text-6xl my-9 font-Philosopher">Add raw material details</h1>
+            </div>
             {loading ? <Spinner /> : ''}
-            <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
-            <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Request id </label>
+            <div className='flex flex-col border-2 bg-formbg rounded border-sky-300-xl w-[500px] p-4 mx-auto '>
+                <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Material ID</label>
                     <input
                         type='String'
-                        value={requestID}
-                        onChange={(e) => setrequestID(e.target.value)}
+                        value={materialID}
+                        onChange={(e) => setMaterialID(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
-                    </div>
+                </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Material Type</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Material Type</label>
                     <input
                         type='String'
                         value={materialType}
@@ -67,7 +90,7 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>colorAndDesign</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Color and Design</label>
                     <input
                         type='String'
                         value={colorAndDesign}
@@ -76,39 +99,45 @@ const AddRMaterial = () => {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Initialquantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Initial Quantity</label>
                     <input
                         type='number'
-                        value={initialquantity}
-                        onChange={(e) => setinitialquantity(e.target.value)}
+                        value={initialQuantity}
+                        onChange={(e) => setInitialQuantity(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>restockingdate</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Restocking Date</label>
                     <input
                         type='Date'
-                        value={restockingdate}
-                        onChange={(e) => setrestockingdate(e.target.value)}
+                        value={restockingDate}
+                        onChange={(e) => setRestockingDate(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Availablequantity</label>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Available Quantity</label>
                     <input
                         type='number'
-                        value={availablequantity}
-                        onChange={(e) => setavailablequantity(e.target.value)}
+                        value={availableQuantity}
+                        onChange={(e) => setAvailableQuantity(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                </div>
+                <div className='my-4'>
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Cost Per Unit</label>
+                    <input
+                        type='string'
+                        value={costPerUnit}
+                        onChange={(e) => setCostPerUnit(e.target.value)}
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div>
                 <SubmitButton onClick={handleSaveRmaterials} className="mr-2">Submit</SubmitButton>
-
-
             </div>
         </div>
-
-    )
-}
+    );
+};
 
 export default AddRMaterial;
