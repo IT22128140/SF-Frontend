@@ -14,7 +14,7 @@ import Addresses from './pages/onlinestore/Addresses.jsx';
 import Catalogue from './pages/onlinestore/Catalogue.jsx';
 import Orders from "./pages/onlinestore/Orders.jsx";
 import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
-
+import CompletedOrders from "./pages/onlinestoremanagement/CompletedOrders.jsx";
 
 
 
@@ -52,7 +52,7 @@ import RequestResignation from "./pages/employeemanagement/RequestResignation.js
 import TerminationPendingList from "./pages/employeemanagement/TerminationPendingList.jsx"
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
-
+import QrCodeScanner from "./pages/QrCodeScanner.jsx";
 
 
 
@@ -233,7 +233,7 @@ const App = () => {
       <Route path='/Catalogue' element={<Catalogue/>} />
       <Route path='/Orders' element={<Orders/>} />
       <Route path='/OngoingOrders' element={<OngoingOrders/>} />
-
+      <Route path='/CompletedOrders' element={<CompletedOrders/>} />
 
 
 
@@ -271,7 +271,7 @@ const App = () => {
       <Route path="/resign/TerminationPendingList" element={<TerminationPendingList />} />
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
       <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
-
+      <Route path="/QrCodeScanner" element={<QrCodeScanner />} />
 
 
  
@@ -428,8 +428,8 @@ const App = () => {
       <Route path="/GenerateSalary/:id" element={<GenerateSalary />} />
       <Route path="/ViewSalary/:id" element={<ViewSalary />} />
       <Route path="/EditSalaryBalance/:id" element={<EditSalaryBalance />} />
-      <Route path="/Payment/:id" element={<Payment />} />
-      <Route path="/SlipUpload/:id" element={<SlipUpload />} />
+      <Route path="/Payment" element={<Payment />} />
+      <Route path="/SlipUpload" element={<SlipUpload />} />
       <Route path="/PaymentSucc/:id" element={<PaymentSucc />} />
       <Route path="/SalaryTable" element={<SalaryTable />} />
      

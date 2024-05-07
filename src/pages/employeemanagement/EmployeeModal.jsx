@@ -1,14 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-// import { useState, useEffect, useRef } from "react";
 import { MdOutlineCancel } from "react-icons/md";
-// import { TbDownload } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import DownloadButton from "../../components/button2/DownloadButton.jsx";
 import PropTypes from "prop-types";
 import QRCode from "qrcode.react";
 
 const EmployeeModal = ({ employee, onClose }) => {
-  const qrCode = [employee._id, employee.employeeID, employee.firstName, employee.lastName];
+  const qrCode = [employee._id];
 
   const download = () => {
     const qrCodeUrl = document
@@ -33,9 +31,11 @@ const EmployeeModal = ({ employee, onClose }) => {
         onClick={(event) => event.stopPropagation()}
         className="w-[700px] max-w-full h-auto bg-white rounded-xl p-4 flex flex-col relative"
       >
-        <h2 className="text-4xl text-secondary font-Philosopher font-semibold pl-4 pt-2">
-          Profile
-        </h2>
+        <center>
+          <h2 className="text-4xl text-secondary font-Philosopher font-semibold pl-4 pt-2">
+            Profile
+          </h2>
+        </center>
         <MdOutlineCancel
           className="absolute top-6 right-6 text-3xl text-secondary cursor-pointer"
           onClick={onClose}
@@ -45,11 +45,7 @@ const EmployeeModal = ({ employee, onClose }) => {
           className="border-2 border-gray-500 rounded-lg px-4 py-2 mt-6 ml-4 mr-4 mb-4 relative hover:shadow-xl"
         >
           <div className="flex flex-row justify-evenly">
-            <img
-              src="/emp.png"
-              className="w-36 m-4"
-              alt="Employee Image"
-            />
+            <img src="/emp.png" className="w-36 m-4" alt="Employee Image" />
 
             <div className="m-4">
               <div
@@ -72,13 +68,14 @@ const EmployeeModal = ({ employee, onClose }) => {
 
               <div className="mt-4">
                 <DownloadButton download={download} />
-              </div>             
+              </div>
             </div>
 
             <div>
               <Link to="/resign/RequestResignation" state={employee._id}>
                 <button className="border bg-black w-fit h-fit p-2 rounded-lg text-white font-BreeSerif text-lg shadow-md mt-2">
-                  Terminate</button>
+                  Terminate
+                </button>
               </Link>
             </div>
           </div>
