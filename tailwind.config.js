@@ -13,6 +13,8 @@ export default {
     extend: {
       backgroundImage: {
         'bgimg': "url('/wall4.webp')",
+        'bgform': "url('/Wallpaper.jpg')",
+        
       },
       colors: {
         //Maneth
