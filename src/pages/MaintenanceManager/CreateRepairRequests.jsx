@@ -10,6 +10,8 @@ import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
 import {textValidation} from '../../utils/inputValidations'
+import {paraValidation} from '../../utils/inputValidations'
+import {dateValidation} from '../../utils/inputValidations'
 
 const CreateRepairRequests = () => {
 
@@ -97,7 +99,8 @@ const CreateRepairRequests = () => {
             type='text'
             placeholder='Enter Repair ID'
             name='RepairID'
-            validation={{ required: 'Repair ID is required' }}
+            {...textValidation}
+            // validation={{ required: 'Repair ID is required' }}
           />
 
           <Input
@@ -106,7 +109,8 @@ const CreateRepairRequests = () => {
           id='repairDescription'
           placeholder='Enter Repair Description'
           name='RepairDescription'
-          validation={{ required: 'Repair Description is required' }}
+          {...paraValidation}
+          // validation={{ required: 'Repair Description is required' }}
         />
         <Input
           formtype='input'
@@ -115,7 +119,8 @@ const CreateRepairRequests = () => {
           type='date'
           placeholder='Enter Requested Date'
           name='RequestedDate'
-          validation={{ required: 'Requested Date is required' }}
+          {...dateValidation}
+          // validation={{ required: 'Requested Date is required' }}
         />
         <Input
           formtype='input'
@@ -124,7 +129,8 @@ const CreateRepairRequests = () => {
           type='text'
           placeholder='Enter Requested Time'
           name='RequestedTime'
-          validation={{ required: 'Requested Time is required' }}
+          {...textValidation}
+          // validation={{ required: 'Requested Time is required' }}
         />
         <Input
           formtype='input'
@@ -133,7 +139,8 @@ const CreateRepairRequests = () => {
           type='text'
           placeholder='Enter Urgency Level'
           name='UrgencyLevel'
-          validation={{ required: 'Urgency Level is required' }}
+          {...textValidation}
+          // validation={{ required: 'Urgency Level is required' }}
         />
         <Input
           formtype='input'
@@ -142,19 +149,19 @@ const CreateRepairRequests = () => {
           type='text'
           placeholder='Enter Status'
           name='Status'
-          validation={{ required: 'Status is required' }}
+          {...textValidation}
+          // validation={{ required: 'Status is required' }}
         />
         <Input
           formtype='input'
           label='Completed Date'
           id='completedDate'
-          type='text'
+          type='date'
           placeholder='Enter Completed Date'
           name='CompletedDate'
           // validation={{ required: 'Completed Date is required' }}
         />
 
-        {/* Render checkboxes for workers */}
         <fieldset>
             <legend>Add Repair Workers</legend>
             {workers.map((worker) => (

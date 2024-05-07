@@ -8,6 +8,9 @@ import MaintenanceManagerHeader from '../../components/navbar/staffheader/Mainte
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
+import {textValidation} from '../../utils/inputValidations'
+import {paraValidation} from '../../utils/inputValidations'
+import {dateValidation} from '../../utils/inputValidations'
 
 const RequestsMPshortage = () => {
 
@@ -45,7 +48,8 @@ const RequestsMPshortage = () => {
             type='text'
             placeholder='Enter Request ID'
             name='RequestID'
-            validation={{ required: 'Request ID is required' }}
+            {...textValidation}
+            // validation={{ required: 'Request ID is required' }}
           />
           <Input
             formtype='input'
@@ -54,7 +58,8 @@ const RequestsMPshortage = () => {
             type='date'
             placeholder='Enter Requesting Date'
             name='Requested'
-            validation={{ required: 'Requested Date is required' }}
+            {...dateValidation}
+            // validation={{ required: 'Requested Date is required' }}
           />
         <Input
           formtype='input'
@@ -63,7 +68,8 @@ const RequestsMPshortage = () => {
           type='text'
           placeholder='Enter Part Name'
           name='PartName'
-          validation={{ required: 'Part Name is required' }}
+          {...textValidation}
+          // validation={{ required: 'Part Name is required' }}
         />
         <Input
           formtype='textarea'
@@ -71,7 +77,8 @@ const RequestsMPshortage = () => {
           id='description'
           placeholder='Enter Description'
           name='Description'
-          validation={{ required: 'Description is required' }}
+          {...textValidation}
+          // validation={{ required: 'Description is required' }}
         />
         <Input
           formtype='input'
@@ -80,7 +87,8 @@ const RequestsMPshortage = () => {
           type='text'
           placeholder='Enter Quantity'
           name='Quantity'
-          validation={{ required: 'Quantity required' }}
+          {...textValidation}
+          // validation={{ required: 'Quantity required' }}
         />
         <Input
           formtype='input'
@@ -89,7 +97,8 @@ const RequestsMPshortage = () => {
           type='text'
           placeholder='Enter Condition'
           name='Condition'
-          validation={{ required: 'Condition required' }}
+          {...textValidation}
+          // validation={{ required: 'Condition required' }}
         />
         <Input
           formtype='input'
@@ -98,7 +107,8 @@ const RequestsMPshortage = () => {
           type='text'
           placeholder='Enter the Date Needed Before'
           name='NeededBeforeDate'
-          validation={{ required: 'Date is required' }}
+          {...textValidation}
+          // validation={{ required: 'Date is required' }}
         />
         <Input
           formtype='input'
@@ -107,7 +117,8 @@ const RequestsMPshortage = () => {
           type='text'
           placeholder='Enter Status'
           name='Status'
-          validation={{ required: 'Status required' }}
+          {...textValidation}
+          // validation={{ required: 'Status required' }}
         />
           <SubmitButton/>
         </form>

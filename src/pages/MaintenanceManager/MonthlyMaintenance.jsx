@@ -111,12 +111,6 @@ const RepairDetailsInRange = () => {
         <input className='bg-formBackground text-white' type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
       </div>
 
-
-      {/* <button disabled={!startDate || !endDate}>
-        Search
-      </button> */}
-
-
       {loading && <Spinner/>}
       <h3 className='text-xl mb-3'>Repair Details:</h3>
       {repairs.length > 0 ? (
@@ -149,7 +143,6 @@ const RepairDetailsInRange = () => {
               </div>
               
               
-              {/* Add other fields as needed */}
             </div>
           ))}
            <div className='m-auto mt-8 w-56 p-2 border-gray-200 rounded-md border-2 text-center'>
@@ -159,7 +152,6 @@ const RepairDetailsInRange = () => {
             <li  key={workerId}>
               <div className='mb-4'>
                 <p className='mr-1'> Worker ID : {workerId}</p>
-                {/* <p className='mr-1'> Name : {fname}</p> */}
                 <p className='mr-1'> No. of Repairs : {workerRepairsMap[workerId].count}</p>
               </div>
             </li>

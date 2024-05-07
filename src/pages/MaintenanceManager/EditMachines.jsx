@@ -67,7 +67,7 @@ const EditMachine = () => {
       <MaintenanceManagerHeader/>
       {loading ? <Spinner /> : ''}
 
-       <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Edit Machine Details</h1>
 
        <div className="flex w-[80%] justify-between mb-2">
