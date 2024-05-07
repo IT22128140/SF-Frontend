@@ -30,11 +30,11 @@ const SupplieredRaws = () => {
   }, []);
 
   const handleDelete = () => {
-    // Implement delete functionality
+    
   };
 
   const handleAdd = () => {
-    // Implement edit functionality
+    
   };
 
   return (

@@ -34,7 +34,7 @@ const AddRMaterial = () => {
             alert('Please enter Material Type');
         }
 
-        // Add more validation rules as needed...
+        
 
         return isValid;
     };

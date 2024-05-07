@@ -69,8 +69,8 @@ const EditSuppliers =() => {
     
   return (
     <div className='p-4'>
-        <BackButton />
-        <IsNavbar/>
+        <IsNavbar/><BackButton />
+        
         <div className="flex items-center justify-center mb-9">
         <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Edit supplier details</h1>
       </div>

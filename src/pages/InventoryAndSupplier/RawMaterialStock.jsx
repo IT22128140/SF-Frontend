@@ -17,7 +17,7 @@ const RawMaterialStock = () => {
   const [loading, setLoading] = useState(false);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [searchResults, setSearchResults] = useState([]); // State variable for filtered data
+  const [searchResults, setSearchResults] = useState([]);
   const headers = ['Raw material ID', 'Material type', 'color / design', 'initial quantity', 'restocking date', 'available quantity', 'costperunit', 'totalcost',''];
   
   const headers2 = ['Material type', 'color / design', 'initial quantity','restocking date','available quantity','costperunit','totalcost'];
@@ -40,15 +40,15 @@ const RawMaterialStock = () => {
   }, []);
 
   const handleDelete = () => {
-    // Implement delete functionality
+    
   };
 
   const handleEdit = () => {
-    // Implement edit functionality
+    
   };
 
   const handleAdd = () => {
-    // Implement add functionality
+    
   };
 
   const handleGenerateReport = () => {

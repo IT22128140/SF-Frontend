@@ -24,7 +24,7 @@ export default {
 
 
         //varagan
-        'red': '#DC3545'
+        'red': '#DC3545',
 
 
 

@@ -33,7 +33,7 @@ const Fullfillrequest = () => {
       .delete(`http://localhost:5555/ReqFF/${id}`)
       .then(() => {
         setLoading(false);
-        setRequests(requests.filter(request => request._id !== id)); // Remove deleted request from state
+        setRequests(requests.filter(request => request._id !== id)); 
       })
       .catch((error) => {
         setLoading(false);

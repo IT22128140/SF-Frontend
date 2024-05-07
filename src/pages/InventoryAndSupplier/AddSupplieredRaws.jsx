@@ -32,7 +32,7 @@ const AddSupplieredRaws = () => {
             .post('http://localhost:5555/suppRM', data)
             .then(() => {
                 setLoading(false);
-                navigate('/SupplieredRaws'); // Navigate to the RawMaterialStock page
+                navigate('/SupplieredRaws'); 
             })
             .catch((error) => {
                 setLoading(false);

@@ -5,7 +5,7 @@ import Spinner from '../../components/Spinner';
 import TableView from '../../components/table/TableView';
 import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
-import ViewButton from '../../components/button2/ViewButton'; // Changed import
+import ViewButton from '../../components/button2/ViewButton'; 
 import { Link } from 'react-router-dom';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
@@ -32,7 +32,7 @@ const SupplierDetails = () => {
   }, []);
 
   const handleDelete = () => {
-    // Implement delete functionality
+    
   };
 
   return (
@@ -66,7 +66,7 @@ const SupplierDetails = () => {
                       <Link to={`DeleteSupplier/${supdetails._id}`}>
                         <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
                       </Link>
-                      <Link to={`SupplieredRaws/${supdetails._id}`}> {/* Corrected Link */}
+                      <Link to={`SupplieredRaws/${supdetails._id}`}> 
                         <ViewButton>Details</ViewButton>
                       </Link>
                     </div>
