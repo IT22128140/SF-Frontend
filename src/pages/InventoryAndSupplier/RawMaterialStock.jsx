@@ -7,45 +7,40 @@ import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import AddButton from '../../components/button2/AddButton';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
-import SearchBar from '../../components/SearchBar';
 import SearchBar2 from '../../components/SearchBar2'; 
-import ReportButton from '../../components/button2/ReportButton';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 const RawMaterialStock = () => {
   const [RMStocks, setRMStocks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [startDate,setStartDate] = useState('');
+  const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const headers = ['Raw material ID', 'Material type', 'color / design', 'initial quantity', 'restocking date', 'available quantity', 'costperunit', 'totalcost',''];
   
-  const [searchResults, setSearchResults] = useState([]); // State variable for filtered data
-  const headers = ['Raw material ID','Material type', 'color / design', 'initial quantity','restocking date','available quantity','costperunit','totalcost',''];
-
   const headers2 = ['Material type', 'color / design', 'initial quantity','restocking date','available quantity','costperunit','totalcost'];
 
-  const[data,setdata] = useState([]);
-  
+
+
   useEffect(() => {
     setLoading(true);
     axios
-    .get('http://localhost:5555/RMstock')
-    .then((response) => {
-      console.log(response.data);
-      setRMStocks(response.data);
-      setFilteredRMStocks(response.data);
-               
-      setLoading(false);
-    })
-    .catch((error) => {
-      console.log(error);
-      setLoading(false);
-    });
-  
+      .get('http://localhost:5555/RMstock')
+      .then((response) => {
+        console.log(response.data);
+        setRMStocks(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   }, []);
 
-  const handleDelete  = () => {
-  
+  const handleDelete = () => {
+    
   };
 
   const handleEdit = () => {
@@ -53,14 +48,9 @@ const RawMaterialStock = () => {
   };
 
   const handleAdd = () => {
- 
+    
   };
 
-  
-  
-
-   
-  
   const handleGenerateReport = () => {
     const filteredRMStocks = RMStocks.filter((RMstock) => {
       const RMstockDate = new Date(RMstock.restockingdate);
@@ -68,34 +58,42 @@ const RawMaterialStock = () => {
     });
   
     const doc = new jsPDF();
-    doc.text('Raw material Report', 10, 10);
+    const img = new Image();
+    const img2 = new Image();
+    
+    img.src = "/Logo1.png";
+    img2.src = "/Logo2.png";
+
+    img.onload = function (){
+      
+      doc.addImage(img2, "png",10,10,30,20);
+      doc.addImage(img, "PNG", 160,10,30,20);
+    
+    doc.text('Raw material Report', 80, 20);
     doc.autoTable({
       head: [headers2],
       body: filteredRMStocks.map((RMstock) => [
         RMstock.materialType,
         RMstock.colorAndDesign,
         RMstock.initialquantity,
-        RMstock.restockingdate,
+        RMstock.restockingdate.split("T")[0],
         RMstock.availablequantity,
         RMstock.costperunit,
         RMstock.costperunit * RMstock.initialquantity
       ]),
+      startY: 50,
     });
     doc.save('Monthly_raw_material_report.pdf');
   };
-  
-
+}
   return (
-    <div className='w-full h-full bg-scroll bg-repeat bg-bgimg' /*style={{ backgroundImage: `url(/RawM.png)`, backgroundSize: 'cover' }}*/>
-      
-      
+    
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <div className='relative'> 
         <IsNavbar RpS={true} /> 
-       
         <div className="flex items-center justify-center mb-9">
           <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Raw Material Stock</h1>
         </div>
-
         <div className="flex items-center justify-center mb-4">
           <SearchBar2 data={RMStocks} setSearchResults={setSearchResults} />
         </div>
@@ -123,8 +121,9 @@ const RawMaterialStock = () => {
             <table className="w-full text-2xl bg-white">
               <TableView headers={headers} />
               <tbody>
-                {searchResults.map((RMstock,index) => (
-                  <tr key={RMstock._id} className="h-8">
+                {searchResults.length > 0 ? (
+                  searchResults.map((RMstock, index) => (
+                    <tr key={RMstock._id} className="h-8">
                     <td className="text-center border rounded-md border-slate-700">{RMstock.materialID}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.materialType}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.colorAndDesign}</td>
@@ -146,20 +145,48 @@ const RawMaterialStock = () => {
                         <div className="text-red-500">Low Stock</div>
                       )}
                     </td>
-                  </tr>
-                ))}
+                    </tr>
+                  ))
+                ) : (
+                  RMStocks.map((RMstock, index) => (
+                    <tr key={RMstock._id} className="h-8">
+                       <td className="text-center border rounded-md border-slate-700">{RMstock.materialID}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.materialType}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.colorAndDesign}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.initialquantity}</td> 
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.restockingdate.split("T")[0]}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.availablequantity}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.costperunit}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.costperunit * RMstock.initialquantity}</td>
+                    <td className="text-center border rounded-md border-slate-700"> 
+                      <div className="flex justify-center gap-x-4"> 
+                        <Link to={`EditRMstock/${RMstock._id}`}>
+                          <EditButton onClick={handleEdit} className="mr-2">Edit</EditButton>
+                        </Link> 
+                        <Link to={`DeleteRMstock/${RMstock._id}`}>
+                          <DeleteButton onClick={handleDelete} className="mr-2">Delete</DeleteButton >
+                        </Link>
+                      </div>
+                      {RMstock.availablequantity < 20 && (
+                        <div className="text-red-500">Low Stock</div>
+                      )}
+                    </td>
+
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
         )}
 
-      <div className='flex justify-end m-8 mb-4'>
-        <Link to="AddRMaterial">
-          <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
-        </Link>
+        <div className='flex justify-end m-8 mb-4'>
+          <Link to="AddRMaterial">
+            <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
+          </Link>
+        </div>
       </div>
-    </div>
-    
+      <StaffFooter/>
     </div>
   );
 };

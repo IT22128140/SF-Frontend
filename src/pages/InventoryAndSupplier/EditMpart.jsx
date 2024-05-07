@@ -4,8 +4,8 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
-
-
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 
@@ -65,11 +65,12 @@ const EditMpart =() => {
     };
     
   return (
-    <div className='p-4'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
         <BackButton />
+        <IsNavbar/>
         <div className="flex items-center justify-center mb-9">
 
-        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit Machine Part Stock</h1>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Edit Machine Part Stock</h1>
       </div>
         {loading ? <Spinner/> : ''}
         <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
@@ -132,6 +133,7 @@ const EditMpart =() => {
                 <SubmitButton onClick={handleEditmachinepart} className="mr-2">Submit</SubmitButton>
     
             </div>
+            <StaffFooter/>
         </div>
 
   )
