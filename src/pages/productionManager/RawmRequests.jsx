@@ -31,6 +31,7 @@ const RawmRequests = () => {
   return (
     <div className='relative'>
       <PMHeader rmr = {true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Requests
@@ -55,7 +56,7 @@ const RawmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'ml-1 mr-1 font-BreeSerif mb-5'>
+        <table className = 'ml-1 mr-1 font-BreeSerif bg-white'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -99,6 +100,8 @@ const RawmRequests = () => {
         </tbody> 
       </table>
       )}
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter/>
     </div>
   )

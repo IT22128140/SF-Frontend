@@ -41,6 +41,7 @@ const DeletermRequests = () => {
         onClick={handleDeleteRequest}>Yes, Delete it</button> */}
         <center className="mt-3" onClick={handleDeleteRequest}><DeleteButton/></center>
       </div>
+      <div className="h-40 mt-10 ml-5"></div>
       <StaffFooter/>
     </div>
   )
