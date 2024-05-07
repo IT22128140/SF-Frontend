@@ -95,7 +95,7 @@ const EditSalaryBalance = () => {
   };
 
   return (
-    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
       <HrNavbar sal={true} />
       <div className="p-4 h-screen overflow-y-auto">
         <div className="flex justify-center items-center">

@@ -28,7 +28,7 @@ const ViewSalary = () => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
       <div>
         <HrNavbar sal={true} />
         <div className="p-4 h-screen overflow-y-auto">

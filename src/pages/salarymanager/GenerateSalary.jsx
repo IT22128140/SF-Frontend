@@ -24,6 +24,10 @@ const GenerateSalary = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [date, setDate] = useState("");
   const [notice, setNotice] = useState("");
+  const [attendanceError, setAttendanceError] = useState("");
+  const [overtimeError, setOvertimeError] = useState("");
+  const [bonusError, setBonusError] = useState("");
+  const [noticeError, setNoticeError] = useState("");
 
   const calculateTotalAmount = () => {
     const basic = parseFloat(basicSalary);
@@ -38,13 +42,32 @@ const GenerateSalary = () => {
       const adjustedSalary = basic + overtime * 200 + bonusAmount + 3000;
       totalAmountValue = adjustedSalary.toFixed(2);
     } else {
-      totalAmountValue = "Invalid attendance range";
+      setTotalAmount(0);
+      setAttendanceError("Invalid attendance range");
+      return;
     }
 
     setTotalAmount(totalAmountValue);
   };
 
   const handleSaveSalary = () => {
+    if (attendance > 30) {
+      setAttendanceError("Attendance cannot exceed 30");
+      return;
+    }
+    if (overtimeHours > 200) {
+      setOvertimeError("Overtime hours cannot exceed 200");
+      return;
+    }
+    if (bonus > 100000) {
+      setBonusError("Bonus cannot exceed 100,000");
+      return;
+    }
+    if (notice.split(/\s+/).filter(Boolean).length > 50) {
+      setNoticeError("Notice text cannot exceed 50 words");
+      return;
+    }
+
     const data = {
       firstName,
       lastName,
@@ -99,7 +122,7 @@ const GenerateSalary = () => {
   }, [id]);
 
   return (
-    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
       <HrNavbar sal={true} />
       <div className="p-4 h-screen overflow-y-auto">
         <div className="flex justify-center items-center">
@@ -158,14 +181,15 @@ const GenerateSalary = () => {
                   type="number"
                   value={attendance}
                   onChange={(e) => {
+                    setAttendanceError("");
                     if (e.target.value <= 30) {
                       setAttendance(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {attendance > 30 && (
-                  <p className="text-red-500">Attendance cannot exceed 30</p>
+                {attendanceError && (
+                  <p className="text-red-500">{attendanceError}</p>
                 )}
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -175,16 +199,15 @@ const GenerateSalary = () => {
                   type="number"
                   value={overtimeHours}
                   onChange={(e) => {
+                    setOvertimeError("");
                     if (e.target.value <= 200) {
                       setOvertimeHours(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {overtimeHours > 200 && (
-                  <p className="text-red-500">
-                    Overtime hours cannot exceed 200
-                  </p>
+                {overtimeError && (
+                  <p className="text-red-500">{overtimeError}</p>
                 )}
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -194,15 +217,14 @@ const GenerateSalary = () => {
                   type="number"
                   value={bonus}
                   onChange={(e) => {
+                    setBonusError("");
                     if (e.target.value <= 100000) {
                       setBonus(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {bonus > 100000 && (
-                  <p className="text-red-500">Bonus cannot exceed 100,000</p>
-                )}
+                {bonusError && <p className="text-red-500">{bonusError}</p>}
                 <br />
               </div>
               <br />
@@ -243,6 +265,7 @@ const GenerateSalary = () => {
               <textarea
                 value={notice}
                 onChange={(e) => {
+                  setNoticeError("");
                   const words = e.target.value.split(/\s+/).filter(Boolean);
                   if (words.length <= 50) {
                     setNotice(e.target.value);
@@ -250,11 +273,7 @@ const GenerateSalary = () => {
                 }}
                 className="border border-black border-1 p-1 block mb-2"
               />
-              {notice.split(/\s+/).filter(Boolean).length > 50 && (
-                <p className="text-red-500">
-                  Notice text cannot exceed 50 words
-                </p>
-              )}
+              {noticeError && <p className="text-red-500">{noticeError}</p>}
               <div className="flex justify-center">
                 <SubmitButton onClick={handleSaveSalary} className="mr-2">
                   Submit
