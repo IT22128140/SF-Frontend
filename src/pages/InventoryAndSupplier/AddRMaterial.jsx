@@ -71,7 +71,7 @@ const AddRMaterial = () => {
             <IsNavbar/>
             
             <div className="flex items-center justify-center mb-9">
-                <h1 className="text-6xl my-9 font-Philosopher">Add raw material details</h1>
+                <h1 className="text-6xl my-9 font-Philosopher text-ternary">Add raw material details</h1>
             </div>
             {loading ? <Spinner /> : ''}
             <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif

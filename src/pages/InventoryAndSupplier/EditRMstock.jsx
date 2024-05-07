@@ -77,7 +77,7 @@ const EditRMstock =() => {
         <IsNavbar/>
         <div className="flex items-center justify-center mb-9">
 
-        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit raw material Stock</h1>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Edit raw material Stock</h1>
 
       </div>
         {loading ? <Spinner/> : ''}

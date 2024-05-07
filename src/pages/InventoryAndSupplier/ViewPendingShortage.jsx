@@ -41,7 +41,6 @@ const pendingshortsge = () =>{
             <Link to={'/mpshortages/accepted'}>
             <button>Accepted Shortages</button>
             </Link>
-           
 
             <div className='flex items-center justify-between'>
                 <h1 className='my-8 text-3xl'>Machine Part Shortages List</h1>
@@ -51,7 +50,7 @@ const pendingshortsge = () =>{
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='ml-1 mr-1 bg-white font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {mpshortages.map((mpshortage, index) => (

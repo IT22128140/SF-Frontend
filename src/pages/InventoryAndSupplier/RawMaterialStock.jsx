@@ -92,7 +92,7 @@ const RawMaterialStock = () => {
       <div className='relative'> 
         <IsNavbar RpS={true} /> 
         <div className="flex items-center justify-center mb-9">
-          <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Raw Material Stock</h1>
+          <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Raw Material Stock</h1>
         </div>
         <div className="flex items-center justify-center mb-4">
           <SearchBar2 data={RMStocks} setSearchResults={setSearchResults} />
@@ -118,7 +118,7 @@ const RawMaterialStock = () => {
           <Spinner />
         ) : (
           <div className="px-10 mx-auto">
-            <table className="w-full text-2xl bg-white">
+            <table className="mx-auto mb-5 bg-white font-BreeSerif ">
               <TableView headers={headers} />
               <tbody>
                 {searchResults.length > 0 ? (
@@ -142,7 +142,7 @@ const RawMaterialStock = () => {
                         </Link>
                       </div>
                       {RMstock.availablequantity < 20 && (
-                        <div className="text-red-500">Low Stock</div>
+                        <div className="text-2xl text-red-500 ">Low Stock</div>
                       )}
                     </td>
                     </tr>

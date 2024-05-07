@@ -65,7 +65,7 @@ const Viewshortage = () =>{
     
 
     return(
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <IsNavbar/>
             {loading ? (
              <Spinner/>

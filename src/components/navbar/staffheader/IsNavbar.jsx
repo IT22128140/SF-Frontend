@@ -6,12 +6,12 @@ import PropTypes from "prop-types";
 
 const IsNavbar = (props) => {
   return (
-    <div className="px-10 py-5 navbar-container"> {/* Increased padding for a larger size */}
+    <div className="px-10 py-5 navbar-container">
       <div className="flex flex-row items-center justify-between bg-white rounded-lg"> {/* Increased padding and added rounded corners */}
        <NavbarLogo />
      
         <NavbarUserProfile
-          source={"../../Logo1.png"}
+          source={"../../emp.png"}
           username={"inventory manager"}
         />
       </div>

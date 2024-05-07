@@ -41,7 +41,7 @@ const SupplieredRaws = () => {
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <IsNavbar sd = {true} />
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center "> Raw materials supplied</h1>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center "> Raw materials supplied</h1>
       </div>
 
     
