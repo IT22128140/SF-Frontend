@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import Spinner from "./Spinner";
 
 const SearchBar = ({ data, navigate, placeholder }) => {
   const [keyword, setKeyword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
 
   const filteredOptions = (e) => {
@@ -18,10 +15,6 @@ const SearchBar = ({ data, navigate, placeholder }) => {
     setKeyword(e.target.value);
     setFilteredData(filteredData);
   };
-
-  if (loading) {
-    return <Spinner />;
-  }
 
   return (
     <div className="flex justify-end mt-4 pr-4 cursor-pointer ">
@@ -57,6 +50,7 @@ const SearchBar = ({ data, navigate, placeholder }) => {
 SearchBar.propTypes = {
   navigate: PropTypes.string,
   placeholder: PropTypes.string,
+  data: PropTypes.array,
 };
 
 export default SearchBar;

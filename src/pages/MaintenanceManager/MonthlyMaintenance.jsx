@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Spinner from '../../components/Spinner';
+import html2pdf from 'html2pdf.js';
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
@@ -12,6 +13,7 @@ const RepairDetailsInRange = () => {
   const [loading, setLoading] = useState(false);
   const [workerRepairsMap, setWorkerRepairsMap] = useState({});
   const [totalMachineCost, setTotalMachineCost] = useState(0);
+  const reportRef = useRef(null);
 
 
 
@@ -78,14 +80,28 @@ const RepairDetailsInRange = () => {
     setTotalMachineCost(cost);
   };
 
+  const downloadPDF = () => {
+    const opt = {
+      margin: 1,
+      filename: 'maintenance_report.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(reportRef.current).save();
+  };
+
 
   return (
     <div>
       <MaintenanceManagerHeader/>
       <h2 className='font-Philosopher text-3xl text-primary text-center mt-20'>Search Repair Details, Machine Details Within Date Range</h2>
-      <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] h-auto p-4 mx-auto font-BreeSerif mt-10">
-      
-      <h2 className='text-center text-ternary text-2xl'>Maintenance Report</h2>
+      <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] h-auto p-4 mx-auto font-BreeSerif mt-10 " ref={reportRef}>
+      <div className='flex flex-row'>
+          <img src="/Logo2.png" alt="logo" className="w-[13rem] h-[3rem] lg:w-[15rem] lg:h-[4rem]" />
+          <img src="/Logo1.png" alt="logo" className="w-[4rem] h-[3rem] lg:w-[6rem] lg:h-[4.5rem]  ml-auto" />
+      </div>
+      <h2 className='mt-10 text-center text-ternary text-2xl'>Maintenance Report</h2>
         
         <p className='text-center mt-10 text-white text-xl'>Enter Date Range </p>
         <div className='ml-20 mt-7 mb-10'>
@@ -189,6 +205,11 @@ const RepairDetailsInRange = () => {
         
       </div>
      
+      </div>
+      <div className="flex justify-center mb-4">
+        <button onClick={downloadPDF} className="bg-black text-white font-BreeSerif py-2 px-4 rounded">
+          Download PDF
+        </button>
       </div>
       <StaffFooter/>
     </div>

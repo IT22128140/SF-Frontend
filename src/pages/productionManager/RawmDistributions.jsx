@@ -53,7 +53,7 @@ const RawmDistributions = () => {
                 {rmdistribute.DistributeID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmdistribute.Date}
+                {rmdistribute.Date.split("T")[0]}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 {rmdistribute.LineNumber}

@@ -1,30 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
 
 function EditProfile() {
-    const [profileInfo, setProfileInfo] = useState({
-        FirstName: 'John',
-        LastName: 'Doe',
-        emailAddress: 'john.doe@example.com',
-        phoneNumber: '555-1234',
-        password: '*********'
-    });
+  const [profileInfo, setProfileInfo] = useState({
+    FirstName: "",
+    LastName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    password: "",
+  });
 
-    const handleInputChange = (e, field) => {
-        setProfileInfo({ ...profileInfo, [field]: e.target.value });
-    };
-    const handleSaveProfile = () => {
-        // Add code to save profile information
-        console.log("Profile information saved:", profileInfo);
-    };
-    
-    const handleDeleteProfile = () => {
-        // Add code to delete profile
-        console.log("Profile deleted");
+  useEffect(() => {
+    const fetchProfileInfo = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5555/EditProfileCus`);
+        setProfileInfo(response.data);
+      } catch (error) {
+        console.error("Error fetching profile information:", error);
+      }
     };
 
+    fetchProfileInfo();
+  }, []);
+
+  const handleInputChange = (e, field) => {
+    setProfileInfo((prevProfileInfo) => ({
+      ...prevProfileInfo,
+      [field]: e.target.value,
+    }));
+  };
+
+  const handleSaveProfile = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5555/EditProfileCus/save`,
+        profileInfo
+      );
+      console.log("Profile information saved:", response.data);
+    } catch (error) {
+      console.error("Error saving profile:", error);
+    }
+  };
+
+  const handleDeleteProfile = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5555/EditProfileCus/delete/${profileInfo.emailAddress}`
+      );
+      console.log("Profile deleted:", response.data);
+    } catch (error) {
+      console.error("Error deleting profile:", error);
+    }
+  };
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen p-36 pr-36">
+        <div className="flex flex-col justify-center items-center min-h-screen ">
             <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
                 <input type="image" src="emp.png" alt="image" />
             </div>
@@ -65,10 +95,10 @@ function EditProfile() {
             </div>
             <div className="w-full flex justify-between">
                 <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
-                onClick={handleSaveProfile} // Add an onClick event handler to call a function for saving
+                onClick={handleSaveProfile} 
                 >SAVE</button>
-                <button className="bg-del text-white font-bold py-2 px-8 rounded mt-4"
-                onClick={handleDeleteProfile} // Add an onClick event handler to call a function for deleting
+                <button className="bg-red1 text-white font-bold py-2 px-8 rounded mt-4"
+                onClick={handleDeleteProfile} 
                 >DELETE</button>
             </div>
             <Footer />

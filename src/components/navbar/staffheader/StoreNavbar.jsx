@@ -21,10 +21,11 @@ const StoreNavbar = (props) => {
           button={"Ongoing Orders"}
           url={"/OngoingOrders"}
         />
-        {/* <NavbarButton active={props.rel} button={"Resigned Employees' List"} url={"#"} />
-        <NavbarButton active={props.fel} button={"Fired Employees' List"} url={"#"} />
-        <NavbarButton active={props.att} button={"Attendance"} url={"#"} />
-        <NavbarButton active={props.sal} button={"Salary"} url={"#"} /> */}
+        <NavbarButton
+          active={props.rel}
+          button={"Completed Orders"}
+          url={"/CompletedOrders"}
+        />
       </div>
     </div>
   );
@@ -34,9 +35,6 @@ StoreNavbar.propTypes = {
   home: PropTypes.bool,
   cel: PropTypes.bool,
   rel: PropTypes.bool,
-  fel: PropTypes.bool,
-  att: PropTypes.bool,
-  sal: PropTypes.bool,
 };
 
 

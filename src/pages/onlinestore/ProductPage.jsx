@@ -28,11 +28,14 @@ const ProductPage = () => {
       });
   }, [id]);
 
+  console.log(product);
+
   const methods = useForm();
 
   const onSubmit = methods.handleSubmit((data) => {
     const cart = {
-      productId: product._id,
+      _id : product._id,
+      productId: product.productId,
       price: product.price,
       quantity: data.amount,
       size: data.size,
@@ -95,9 +98,9 @@ const ProductPage = () => {
                 Select Size
               </h1>
               <div className="flex flex-row my-5 border-t-2 border-l-2 border-b-2 border-ternary align-middle w-fit">
-                {product.sizes.map((size) => (
+                {product.sizes.map((size,index) => (
                   <div
-                    key={size.id}
+                    key={index}
                     className="flex flex-row border-r-2 cursor-pointer border-ternary  shadow-xl "
                   >
                     <InputNoLable
@@ -126,9 +129,9 @@ const ProductPage = () => {
                     Choose Color
                   </h1>
                   <div className="flex flex-row my-5 border-t-2 border-l-2 border-b-2 border-ternary align-middle  w-fit">
-                    {product.colors.map((colors) => (
+                    {product.colors.map((colors,index) => (
                       <div
-                        key={colors.id}
+                        key={index}
                         className="flex flex-row border-r-2 cursor-pointer border-ternary  shadow-xl"
                       >
                         <InputNoLable

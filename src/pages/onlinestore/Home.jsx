@@ -50,7 +50,7 @@ const Home = () => {
             state={"mens"}
           />
           <Category
-            image="./Picture1.jpg"
+            image="./Clothes/womens.jpg"
             heading="Women"
             link="./Catalogue"
             state={"women"}
