@@ -85,7 +85,7 @@ const EditFinalProduct = () => {
 
       {loading ? <Spinner/> : ''}
         <div
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
         >
           <div className='my-2'>
             <label className='text-xl mr-4'>Product Code</label>

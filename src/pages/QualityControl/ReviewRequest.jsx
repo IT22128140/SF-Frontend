@@ -7,8 +7,10 @@ import SearchBar from "../../components/searchBar2";
 import TableView from '../../components/table/TableView';
 import AcceptButton from "../../components/button2/AcceptButton";
 import EditButton from "../../components/button2/EditButton";
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import DeleteButton from "../../components/button2/DeleteButton";
 import DeleteFinalProduct from "./DeleteFinalProduct";
+import NoteTakingApp from '../../components/Keep/NoteTakingApp';
 
 const ReviewRequest = () => {
   const [productRequests, setProductRequests] = useState([]);
@@ -135,13 +137,16 @@ const ReviewRequest = () => {
           </div>
           <div className="text-center font-bold mt-4 mb-8">
             {totalQuantity > 250 ? (
-              <div className="text-center font-bold mt-4 mb-8">
+              <div className="text-center text-red-600 font-bold mt-4 mb-8">
               <p> QC Depertment Maximum Processing Count Is Almost Full</p>
               </div>
             ) : null}
           </div>
         </div>
       )}
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+      <NoteTakingApp />
+      <StaffFooter />
     </div>
   );
 };

@@ -90,10 +90,10 @@ const AddReview = () => {
       <BackButton />
       <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>AddReview</h1>
       {loading ? <Spinner /> : ''}
-      <FormProvider {...methods}> {/* Providing methods from useForm */}
+      <FormProvider {...methods}> 
         <form
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
-          onSubmit={methods.handleSubmit(handleSaveAddReview)} // Using handleSubmit from useForm
+          className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
+          onSubmit={methods.handleSubmit(handleSaveAddReview)} 
         >
           
 

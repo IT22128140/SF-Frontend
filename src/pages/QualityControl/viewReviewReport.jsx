@@ -46,12 +46,17 @@ const ViewReviwReport = () => {
         att={false}
         sal={false}
       />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Quality Evaluation Report</h1>
+      <h1 className='text-6xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Quality Evaluation Report</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       {loading ? (
         <Spinner />
       ) : (
         <div id="pdfContent" className='flex flex-col bg-gray-200 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
-          <h1 className='text-3xl my-4 text-center font-semibold'>SERENDIP FASHION</h1>
+          <div className='flex flex-row'>
+          <img src="/Logo2.png" alt="logo" className="w-[13rem] h-[3rem] lg:w-[15rem] lg:h-[4rem]" />
+          <img src="/Logo1.png" alt="logo" className="w-[4rem] h-[3rem] lg:w-[6rem] lg:h-[4.5rem]  ml-auto" />
+      </div>
+          
           <div className='my-4'>
             <span className='text-xl mr-4'>reviewId :</span>
             <span>{reviwReport.reviewId}</span>

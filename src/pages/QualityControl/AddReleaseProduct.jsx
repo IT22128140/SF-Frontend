@@ -91,7 +91,7 @@ const AddReleaseProduct = () => {
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
           onSubmit={methods.handleSubmit(handleSaveAddreleaseProduct)} // Using handleSubmit from useForm
         >
           

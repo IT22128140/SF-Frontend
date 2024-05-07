@@ -52,12 +52,13 @@ const ViewFinalProduct = () => {
         att={false}
         sal={false}
       />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Accept Preview</h1>
+      <h1 className='text-6xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Accept Preview</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       
       {loading ? (
         <Spinner />
       ) : (
-        <div id="pdfContent" className='flex flex-col bg-gray-200 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary'>
+        <div id="pdfContent" className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>
     
           <div className='my-4'>
             <span className='text-xl mr-4'>RequestId        :</span>

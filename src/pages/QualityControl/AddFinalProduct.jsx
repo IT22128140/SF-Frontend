@@ -7,6 +7,7 @@ import Select from '../../components/form/Select';
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
 import PMHeader from '../../components/navbar/PMHeader';
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import Picture1 from '../../../public/Picture1.jpg'
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -55,7 +56,7 @@ const AddFinalProduct = () => {
   ];
 
   return (
-    <div className='relative' style={{ backgroundImage: "./Picture1.jpg", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className='relative' style={{ backgroundImage: "/Picture1.jpg", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <PMHeader />
       <h1 className='text-4xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request Quality Evaluation For Final Product</h1>
       {loading ? <Spinner /> : ''}
@@ -136,6 +137,8 @@ const AddFinalProduct = () => {
          </div>
         </form>
       </FormProvider>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+      <StaffFooter />
     </div>
   )
 }

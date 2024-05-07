@@ -44,11 +44,28 @@ productReviews.forEach((request) => {
   const totalItemCount = productReviews.length;
 
   const handlePrint = () => {
-    const element = document.getElementById('pdfContent');
+    const printableContent = document.createElement('div');
+    printableContent.classList.add('printable-content');
+  
+    const logo1 = document.createElement('img');
+    logo1.src = '/Logo2.png';
+    logo1.alt = 'logo';
+    logo1.className = 'w-32 h-12 lg:w-40 lg:h-16 mr-auto';
+    printableContent.appendChild(logo1);
+  
+    const logo2 = document.createElement('img');
+    logo2.src = '/Logo1.png';
+    logo2.alt = 'logo';
+    logo2.className = 'w-16 h-12 lg:w-24 lg:h-18 ml-auto';
+    printableContent.appendChild(logo2);
+  
+    const pdfContent = document.getElementById('pdfContent');
+    printableContent.appendChild(pdfContent.cloneNode(true)); 
 
-    html2pdf()
-      .from(element)
-      .save();
+    const options = {
+      orientation: 'landscape'
+    };
+    html2pdf().set(options).from(printableContent).save();
   };
 
 
