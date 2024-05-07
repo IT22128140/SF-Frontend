@@ -20,6 +20,10 @@
       required: {
         value: true,
         message: "Required",
+      },
+      pattern: {
+        value: /^[0-9]*$/,
+        message: "Only numbers are allowed",
       }
     },
     

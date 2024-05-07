@@ -52,7 +52,7 @@ import RequestResignation from "./pages/employeemanagement/RequestResignation.js
 import TerminationPendingList from "./pages/employeemanagement/TerminationPendingList.jsx"
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
-
+import QrCodeScanner from "./pages/QrCodeScanner.jsx";
 
 
 
@@ -271,7 +271,7 @@ const App = () => {
       <Route path="/resign/TerminationPendingList" element={<TerminationPendingList />} />
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
       <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
-
+      <Route path="/QrCodeScanner" element={<QrCodeScanner />} />
 
 
  
@@ -294,7 +294,7 @@ const App = () => {
       <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
-      <Route path='/Fullfillrequset/:id/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
+      <Route path='/SupplierDetails/SupplieredRaws/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
