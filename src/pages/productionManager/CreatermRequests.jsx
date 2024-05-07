@@ -9,6 +9,9 @@ import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import { textValidation } from '../../utils/inputValidations';
+import { dateValidation } from '../../utils/inputValidations';
+import { paraValidation } from '../../utils/inputValidations';
 
 const CreatermRequests = () => {
   // const [RequestID, setRequestID ] = useState('');
@@ -67,7 +70,8 @@ const CreatermRequests = () => {
             type='text'
             // value={RequestID}
             // onChange={(e) => setRequestID(e.target.value)}
-            validation={{ required: 'Request ID is required' }}
+            // validation={{ required: 'Request ID is required' }}
+            {...textValidation}
           />
           <Input
             formtype='input'
@@ -78,7 +82,8 @@ const CreatermRequests = () => {
             placeholder='Enter Date'
             // value={Date}
             // onChange={(e) => setDate(e.target.value)}
-            validation={{ required: 'Date is required' }}
+            // validation={{ required: 'Date is required' }}
+            {...dateValidation}
           />
           <Input
             formtype='textarea'
@@ -89,7 +94,8 @@ const CreatermRequests = () => {
             placeholder='Enter Fabric Type, Colour and Amount'
             // value={FabricType_Colour_Amount}
             // onChange={(e) => setFabricType(e.target.value)}
-            validation={{ required: 'Fabric  Type is required' }}
+            // validation={{ required: 'Fabric  Type is required' }}
+            {...paraValidation}
           />
           <Input
             formtype='textarea'
@@ -100,7 +106,8 @@ const CreatermRequests = () => {
             placeholder='Enter Button Type, Colour and Amount'
             // value={ButtonType_Colour_Amount}
             // onChange={(e) => setButtonType(e.target.value)}
-            validation={{ required: 'Button Type is required' }}
+            // validation={{ required: 'Button Type is required' }}
+            {...paraValidation}
           />
           <Input
             formtype='textarea'
@@ -111,7 +118,8 @@ const CreatermRequests = () => {
             placeholder='Enter Thread Type, Colour and Amount'
             // value={ThreadType_Colour_Amount}
             // onChange={(e) => setThreadType(e.target.value)}
-            validation={{ required: 'Thread Type is required' }}
+            // validation={{ required: 'Thread Type is required' }}
+            {...paraValidation}
           />
           <Input
             formtype='textarea'
@@ -122,7 +130,8 @@ const CreatermRequests = () => {
             label='Other Materials'
             // value={Other_Materials}
             // onChange={(e) => setOther(e.target.value)}
-            validation= {{ required: 'Other materials required' }}
+            // validation= {{ required: 'Other materials required' }}
+            {...paraValidation}
           />
           <Input
             formtype='input'
@@ -133,7 +142,8 @@ const CreatermRequests = () => {
             label='Status'
             // value={Status}
             // onChange={(e) => setStatus(e.target.value)}
-            validation={{ required: 'Status required' }}
+            // validation={{ required: 'Status required' }}
+            {...textValidation}
           />
           {/* <button className= 'p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button> */}
           <center className="mt-3"><SubmitButton/></center>

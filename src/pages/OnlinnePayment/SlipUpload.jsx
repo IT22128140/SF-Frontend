@@ -5,11 +5,17 @@ import Spinner from '../../components/Spinner';
 import SubmitButton from '../../components/button2/SubmitButton';
 import CustomerNavbar from '../../components/navbar/CustomerNavbar';
 import Footer from '../../components/footer/Footer';
+import { Link } from 'react-router-dom';
+import RejectButton from '../../components/button2/RejectButton';
 
 const SlipUpload = () => {
     const [payment, setPayment] = useState({});
     const [loading, setLoading] = useState(false); // Initially set to true to show loading spinner
     const { id } = useParams();
+
+    const handleUpload = (e) => {
+        console.log(payment);
+    };
 
     useEffect(() => {
         axios
@@ -24,7 +30,21 @@ const SlipUpload = () => {
                 setLoading(false); // Set loading to false even if there's an error
             });
 
-    }, []);
+    }, [id]);
+
+    axios
+         .post(`http://localhost:5555/payment/${id}`)
+            .then(() => {
+                setLoading(false);
+                navigate(`/PaymentSucc/${id}`);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                setLoading(false);
+            })
+
+
+    
     return (
         <div>
         <div>
@@ -39,7 +59,7 @@ const SlipUpload = () => {
             <br />
 
             <label className="block text-ternary text-sm font-bold mb-3 absolute top-[280px] left-[300px]">Bank Name</label>
-            <span className="border border-black border-1 p-1 block mb-2 absolute top-[310px] left-[300px]">Seylan Bank</span>
+            <span className="border border-black border-1 p-1 block mb-2 absolute top-[310px] left-[300px]">Seylan bank</span>
 
             
             <label className="block text-ternary text-sm font-bold mb-3 absolute top-[365px] left-[300px]">Account Number</label>
@@ -52,7 +72,7 @@ const SlipUpload = () => {
 
             <label className="block text-ternary text-sm font-bold mb-3 absolute top-[580px] left-[300px]">Add Slip image</label>
             <input
-                  type="file"
+                  type="file" onChange={e => setPayment(e.target.files[0])}
                 className="appearance-none border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[300px] w-60 h-20"
             />
                 
@@ -84,12 +104,21 @@ const SlipUpload = () => {
                  className="border border-black border-1 p-1 block mb-2 absolute top-[830px] left-[900px]"
             /> 
             <div>
+            <Link to={`/PaymentSucc/${id}`}>
             <SubmitButton className=" absolute top-[1000px] left-[600px]">Confirm</SubmitButton>
+            </Link>
+
+            <Link to={`/Payment/${id}`}>
+            <RejectButton className=" absolute top-[1000px] left-[800px]">Back</RejectButton>
+            </Link>
+            
             </div>
             </div>
             
             
             </div>
+            <br /><br /> <br /><br /><br /><br /><br /> <br /><br />
+            <br />
             <Footer/>
             </div>
             

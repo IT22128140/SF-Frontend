@@ -92,7 +92,7 @@ const EditMPshortage = () => {
        </div>
        <div> 
           <input
-            type='date'
+            type='text'
             placeholder='Enter Requested Date'
             name='Requested'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'            

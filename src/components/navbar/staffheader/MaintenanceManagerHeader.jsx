@@ -20,13 +20,14 @@ const HrNavbar = (props) => {
 
       <div className="flex flex-row bg-bgc h-fit shadow-md">
         <NavbarButton active={props.home} button={"Home"} url={"/repairs"} />
-        <NavbarButton active={props.rr}  button={"Request Repair"} url={"/repairs/create"} />
+        <NavbarButton active={props.rr}  button={"Request New Repair"} url={"/repairs/create"} />
         <NavbarButton active={props.r} button={"Repairs"} url={"/repairs/view"} />
-        <NavbarButton active={props.mpmp} button={"Machine Parts"} url={"/MachinePartStock"} />
+        <NavbarButton active={props.mpmp} button={"Machine Parts"} url={"/machineParts/view"} />
         <NavbarButton active={props.sh} button={"Shortages"} url={"/mpshortages/view"} />
-        <NavbarButton active={props.rsh} button={"Request Shortage"} url={"/mpshortages/create"} />
+        <NavbarButton active={props.rsh} button={"Request Machine Part Shortage"} url={"/mpshortages/create"} />
         <NavbarButton active={props.m} button={"Machines"} url={"/machines/view"} />
         <NavbarButton active={props.am} button={"Add Machines"} url={"/machines/create"} />
+        <NavbarButton active={props.mr} button={"Maintenance Report"} url={"/repairs/report"} />
       </div>
     </div>
   );

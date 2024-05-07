@@ -29,8 +29,12 @@ import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
  import LoginCus from './pages/LoginCus.jsx';
  import RegisCus from './pages/RegisCus.jsx';
  import RegisEmp from './pages/RegisEmp.jsx';
-//  import CusProfile from './pages/CusProfile.jsx';
-//  import EditProfile from './pages/EditProfile.jsx';
+ import ProfileCus from './pages/ProfileCus.jsx';
+ import ProfileEmp from './pages/ProfileEmp.jsx';
+ import EditProfileCus from './pages/EditProfileCus.jsx';
+ import EditProfileEmp from './pages/EditProfileEmp.jsx';
+ import FeedbackForm from './pages/FeedbackForm.jsx';
+ import FeedbackManage from './pages/FeedbackManage.jsx';
  
  
 
@@ -100,6 +104,7 @@ import EditSalaryBalance from './pages/salarymanager/EditSalaryBalance.jsx';
 import Payment from './pages/OnlinnePayment/Payment.jsx';
 import SlipUpload from './pages/OnlinnePayment/SlipUpload.jsx';
 import PaymentSucc from './pages/OnlinnePayment/PaymentSucc.jsx';
+import SalaryTable from './pages/salarymanager/SalaryTable.jsx'
 
 
 
@@ -192,6 +197,9 @@ import ShowMachine from './pages/MaintenanceManager/ShowMachine.jsx';
 import ShowMPshortage from './pages/MaintenanceManager/ShowMPshortage.jsx';
 import WorkersSidebar from './pages/MaintenanceManager/WorkersSidebar.jsx';
 import MonthlyMaintenance from './pages/MaintenanceManager/MonthlyMaintenance.jsx';
+import AddMaintenance from './pages/MaintenanceManager/AddMaintenance.jsx';
+import MachineParts from './pages/MaintenanceManager/MachineParts.jsx';
+import EditMachineParts from "./pages/MaintenanceManager/EditMachineParts.jsx";
 
 
 
@@ -235,12 +243,16 @@ const App = () => {
 
 
        {/* varagan */} 
-      <Route path="/LoginEmp" element={<LoginEmp />} />
+       <Route path="/LoginEmp" element={<LoginEmp />} />
       <Route path="/LoginCus" element={<LoginCus />} />
       <Route path="/RegisCus" element={<RegisCus />} />
       <Route path="/RegisEmp" element={<RegisEmp />} />
-      {/* <Route path="/CusProfile" element={<CusProfile />} />
-      <Route path="/EditProfile" element={<EditProfile />} /> */}
+      <Route path="/ProfileCus" element={<ProfileCus />} />
+      <Route path="/ProfileEmp" element={<ProfileEmp />} />
+      <Route path="/EditProfileCus" element={<EditProfileCus />} />
+      <Route path="/EditProfileEmp" element={<EditProfileEmp />} />
+      <Route path="/FeedbackForm" element={<FeedbackForm />} />
+      <Route path="/FeedbackManage" element={<FeedbackManage />} />
 
       
 
@@ -382,6 +394,9 @@ const App = () => {
       <Route path='/mpshortages/view/:id' element={<ShowMPshortage/>} />
       <Route path='/repairs/sidebar' element={<WorkersSidebar/>} />
       <Route path='/repairs/report' element={<MonthlyMaintenance/>} />
+      <Route path='/maintenance/create' element={<AddMaintenance/>} />
+      <Route path='/machineParts/view' element={<MachineParts/>} />
+      <Route path='/machineParts/edit/:id' element={<EditMachineParts/>} />
 
 
 
@@ -416,6 +431,10 @@ const App = () => {
       <Route path="/Payment/:id" element={<Payment />} />
       <Route path="/SlipUpload/:id" element={<SlipUpload />} />
       <Route path="/PaymentSucc/:id" element={<PaymentSucc />} />
+      <Route path="/SalaryTable" element={<SalaryTable />} />
+     
+      
+      
       
       
 
