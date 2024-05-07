@@ -11,8 +11,8 @@ import Input from "../../components/form/Input.jsx";
 import SubmitButton from "../../components/button2/SubmitButton.jsx";
 
 const AttendancePage = () => {
-//   const [loading, setLoading] = useState(false);
-//   const navigate = useNavigate();
+  //   const [loading, setLoading] = useState(false);
+  //   const navigate = useNavigate();
   const methods = useForm();
   const { handleSubmit } = methods;
 
@@ -21,26 +21,28 @@ const AttendancePage = () => {
       <HrNavbar att={true} />
       <div className="p-4">
         <BackButton />
-        <h1 className="text-6xl mx-[1.75%] my-8 font-Philosopher text-ternary font-semibold">
-            Employee  Attendance 
+        <center>
+          <h1 className="text-6xl mx-[1.75%] my-8 font-Philosopher text-ternary font-semibold">
+            Employee Attendance
           </h1>
+        </center>
         {/* {loading ? <Spinner /> : ""} */}
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit()}>
             <div className="flex fle-row m-8 w-auto">
-            <Input
-              formtype="input"
-              label="Date"
-              id="date"
-              type="date"
-              placeholder="Select Date"
-              name="date"
-              validation={{ required: "Date is required" }}
-            />
-            
-            <div className="mt-8 ml-10">
-            <SubmitButton title="Submit" />
-            </div>
+              <Input
+                formtype="input"
+                label="Date"
+                id="date"
+                type="date"
+                placeholder="Select Date"
+                name="date"
+                validation={{ required: "Date is required" }}
+              />
+
+              <div className="mt-8 ml-10">
+                <SubmitButton title="Submit" />
+              </div>
             </div>
           </form>
         </FormProvider>
