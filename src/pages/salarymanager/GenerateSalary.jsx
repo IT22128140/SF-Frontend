@@ -126,7 +126,7 @@ const GenerateSalary = () => {
       <HrNavbar sal={true} />
       <div className="p-4 h-screen overflow-y-auto">
         <div className="flex justify-center items-center">
-          <h1 className="text-3xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
             Generate Employee Salary
           </h1>
         </div>
