@@ -4,6 +4,8 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const AddRMaterial = () => {
     const [materialID, setMaterialID] = useState('');
@@ -66,11 +68,14 @@ const AddRMaterial = () => {
     return (
         <div className='p-4'>
             <BackButton />
+            <IsNavbar/>
+            
             <div className="flex items-center justify-center mb-9">
                 <h1 className="text-6xl my-9 font-Philosopher">Add raw material details</h1>
             </div>
             {loading ? <Spinner /> : ''}
-            <div className='flex flex-col border-2 bg-formbg rounded border-sky-300-xl w-[500px] p-4 mx-auto '>
+            <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif
+ '>
                 <div className='my-4'>
                     <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Material ID</label>
                     <input
@@ -136,6 +141,7 @@ const AddRMaterial = () => {
                 </div>
                 <SubmitButton onClick={handleSaveRmaterials} className="mr-2">Submit</SubmitButton>
             </div>
+            <StaffFooter/>
         </div>
     );
 };

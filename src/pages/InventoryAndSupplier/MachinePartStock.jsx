@@ -7,6 +7,7 @@ import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import AddButton from '../../components/button2/AddButton';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const MachinePartStock = () => {
   const [machineparts, setmachinepart] = useState([]);
@@ -37,7 +38,7 @@ const MachinePartStock = () => {
     <div className="p-1">
       <IsNavbar MpS={true} />
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Machine Part Stock</h1>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Machine Part Stock</h1>
       </div>
 
       <div className="mb-4">
@@ -55,7 +56,7 @@ const MachinePartStock = () => {
               <tr key={mpstock._id} className="h-8">
                 <td className="text-center border rounded-md border-slate-700">{mpstock.partID}</td>
                 <td className="text-center border rounded-md border-slate-700">{mpstock.partName}</td>
-                <td className="text-center border rounded-md border-slate-700">{mpstock.purchasedDate}</td>
+                <td className="text-center border rounded-md border-slate-700">{mpstock.purchasedDate.split("T")[0]}</td>
                 <td className="text-center border rounded-md border-slate-700">{mpstock.condition}</td>
                 <td className="text-center border rounded-md border-slate-700">{mpstock.costPerUnit}</td>
                 <td className="text-center border rounded-md border-slate-700">{mpstock.quantity}</td>
@@ -80,11 +81,12 @@ const MachinePartStock = () => {
         </table> 
         </div>
       )}
-      <div className='flex justify-end m-8 mb-4'>
+      <div className='flex justify-end m-6 mb-4'>
       <Link to="Addmachinepart">
           <AddButton onClick={handleAdd} >Add</AddButton>
         </Link>
         </div>
+        <StaffFooter/>
     </div>
   );
 };

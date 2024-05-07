@@ -4,7 +4,8 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
-
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 
@@ -50,6 +51,7 @@ const AddSuppliers =() => {
     
     <div className='p-4 '>
         <BackButton />
+        <IsNavbar/>
         <div className="flex items-center justify-center mb-9">
 
         <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Add supplier </h1>
@@ -126,6 +128,7 @@ const AddSuppliers =() => {
 
     
             </div>
+            <StaffFooter/>
         </div>
 
   )

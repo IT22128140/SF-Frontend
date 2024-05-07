@@ -4,8 +4,8 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
-
-
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 
@@ -74,6 +74,7 @@ const EditRMstock =() => {
   return (
     <div className='p-4'>
         <BackButton />
+        <IsNavbar/>
         <div className="flex items-center justify-center mb-9">
 
         <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit raw material Stock</h1>
@@ -148,6 +149,7 @@ const EditRMstock =() => {
                 <SubmitButton onClick={handleEditRmaterial} className="mr-2">Submit</SubmitButton>
     
             </div>
+            <StaffFooter/>
         </div>
 
   )

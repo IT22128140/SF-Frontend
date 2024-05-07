@@ -5,6 +5,7 @@ import TableView from '../../components/table/TableView';
 import DeleteButton from '../../components/button2/DeleteButton';
 import { useNavigate } from 'react-router-dom';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const Fullfillrequest = () => {
   const [requests, setRequests] = useState([]);
@@ -74,7 +75,7 @@ const Fullfillrequest = () => {
         </table>
         </div>
       )}
-      
+      <StaffFooter/>
     </div>
   );
 };

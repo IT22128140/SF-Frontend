@@ -8,6 +8,7 @@ import DeleteButton from '../../components/button2/DeleteButton';
 import ViewButton from '../../components/button2/ViewButton'; // Changed import
 import { Link } from 'react-router-dom';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import EditButton from '../../components/button2/EditButton';
 
 const SupplierDetails = () => {
@@ -38,7 +39,7 @@ const SupplierDetails = () => {
     <div className="p-1">
       <IsNavbar sd={true} />
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Supplier Details</h1>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Supplier Details</h1>
       </div>
 
       {loading ? (
@@ -56,7 +57,7 @@ const SupplierDetails = () => {
                   <td className="text-center border rounded-md border-slate-700">{supdetails.contactNumber}</td>
                   <td className="text-center border rounded-md border-slate-700">{supdetails.email}</td>
                   <td className="text-center border rounded-md border-slate-700">{supdetails.supplierType}</td>
-                  <td className="text-center border rounded-md border-slate-700">{supdetails.contractExpiary}</td>
+                  <td className="text-center border rounded-md border-slate-700">{supdetails.contractExpiary.split("T")[0]}</td>
                   <td className="text-center border rounded-md border-slate-700">
                     <div className="flex justify-around">
                       <Link to={`EditSuppliers/${supdetails._id}`}>
@@ -81,6 +82,7 @@ const SupplierDetails = () => {
           <AddButton>Add</AddButton>
         </Link>
       </div>
+      <StaffFooter/>
     </div>
   );
 };

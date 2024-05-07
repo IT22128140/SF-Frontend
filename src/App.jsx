@@ -282,7 +282,7 @@ const App = () => {
       <Route path= "/RawMaterialStock/EditRMstock/:id" element = {<EditRMstock/>} />
       <Route path= '/RawMaterialStock/DeleteRMstock/:id' element = {<DeleteRMstock/>} />
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
-      <Route path='/Fullfillrequset/:id/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
+      <Route path='/SupplierDetails/SupplieredRaws/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
