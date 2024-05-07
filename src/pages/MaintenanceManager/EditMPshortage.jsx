@@ -24,6 +24,7 @@ const EditMPshortage = () => {
     axios.get(`http://localhost:5555/mpshortages/${id}`)
     .then((response) => {
       setRequestID(response.data.RequestID);
+      setRequested(response.data.Requested);
       setPartID(response.data.PartID);
       setPartName(response.data.PartName);
       setDescription(response.data.Description);
@@ -81,7 +82,7 @@ const EditMPshortage = () => {
             placeholder='Enter Request ID'
             name='RequestID'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'            
-            value={RequestID}
+            value={RequestID.split("T")[0]}
             onChange={(e) => setRequestID(e.target.value)}
             validation={{ required: 'Request ID is required' }}
           />

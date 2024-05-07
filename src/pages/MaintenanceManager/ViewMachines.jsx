@@ -43,10 +43,9 @@ const MachineTable = () => {
             <MaintenanceManagerHeader m={true}/>
 
             <SearchBar data= {data1} navigate={`/machines/view/`} placeholder={"Enter Machine ID"}/>
+          
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Machines List</h1>
             
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machines List</h1>
-            </div>
             
             {loading ? (
                 <Spinner />
@@ -65,7 +64,7 @@ const MachineTable = () => {
                                     {machine.MachineName}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {machine.PurchasedDate}
+                                    {machine.PurchasedDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {machine.Condition}

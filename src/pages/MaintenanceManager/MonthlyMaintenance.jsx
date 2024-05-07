@@ -95,7 +95,7 @@ const RepairDetailsInRange = () => {
   return (
     <div>
       <MaintenanceManagerHeader/>
-      <h2 className='font-Philosopher text-3xl text-primary text-center mt-20'>Search Repair Details, Machine Details Within Date Range</h2>
+      <h2 className='text-4xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Search Repair Details, Machine Details Within Date Range</h2>
       <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] h-auto p-4 mx-auto font-BreeSerif mt-10 " ref={reportRef}>
       <div className='flex flex-row'>
           <img src="/Logo2.png" alt="logo" className="w-[13rem] h-[3rem] lg:w-[15rem] lg:h-[4rem]" />
@@ -131,7 +131,7 @@ const RepairDetailsInRange = () => {
               </div>
               <div className='flex flex-row mr-10'>
               <p className='mr-2'>Requested Date : </p>
-              <p>{repair.RequestedDate}</p>
+              <p>{repair.RequestedDate.split("T")[0]}</p>
               </div>
               <div className='flex flex-row mr-10'>
               <p className='mr-2'>Repair Description : </p>

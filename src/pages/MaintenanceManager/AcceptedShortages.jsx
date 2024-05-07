@@ -40,13 +40,13 @@ const mpShortagesTable = () => {
         <div className='relative'>
             <MaintenanceManagerHeader sh={true}/>
             <Link to={'/mpshortages/view'}>
-            <button>Pending Shortages</button>
+            <button className="flex items-center mt-4  justify-between w-fit h-fit p-1.5 text-md font-BreeSerif bg-red-900 text-white rounded-lg shadow-md">View Pending Shortages</button>
             </Link>
             <SearchBar data= {data3} navigate={`/mpshortages/view/`} placeholder={"Enter Request ID"}/>
 
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machine Part Shortages List</h1>
-            </div>
+
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Machine Part Shortages List</h1>
+
             
             {loading ? (
                 <Spinner />
@@ -62,7 +62,7 @@ const mpShortagesTable = () => {
                                     {mpshortage.RequestID}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.Requested}
+                                    {mpshortage.Requested.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {mpshortage.PartName}
@@ -77,7 +77,7 @@ const mpShortagesTable = () => {
                                     {mpshortage.Condition}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.NeededBeforeDate}
+                                    {mpshortage.NeededBeforeDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4 ml-2 mr-2'>

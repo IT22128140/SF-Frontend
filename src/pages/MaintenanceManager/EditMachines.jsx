@@ -109,7 +109,7 @@ const EditMachine = () => {
             placeholder='Enter Purchased Date'
             name='PurchasedDate'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'
-            value={PurchasedDate}
+            value={PurchasedDate.split("T")[0]}
             onChange={(e) => setPurchasedDate(e.target.value)}
             validation={{ required: 'Purchased Date is required' }}
           />

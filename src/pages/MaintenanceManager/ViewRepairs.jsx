@@ -47,9 +47,9 @@ const RepairTable = () => {
 
             <SearchBar data= {data2} navigate={`/repairs/view/`} placeholder={"Enter Repair ID"}/>
 
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Repairs List</h1>
-            </div>
+           
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Repairs List</h1>
+        
 
 
             
@@ -70,7 +70,7 @@ const RepairTable = () => {
                                     {repair.RepairDescription}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.RequestedDate}
+                                    {repair.RequestedDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {repair.RequestedTime}
@@ -85,7 +85,7 @@ const RepairTable = () => {
                                     {repair.Workers}
                                 </td> */}
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.CompletedDate}
+                                    {repair.CompletedDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4 ml-2 mr-2'>
