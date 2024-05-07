@@ -27,7 +27,14 @@ const SalaryHistory = () => {
     "Date",
     "Operation",
   ];
-  const headers2 = ["ID", "Employee Name","Basic Salary","Total Amount","Notice", "Date"];
+  const headers2 = [
+    "ID",
+    "Employee Name",
+    "Basic Salary",
+    "Total Amount",
+    "Notice",
+    "Date",
+  ];
 
   useEffect(() => {
     setLoading(true);
@@ -36,7 +43,7 @@ const SalaryHistory = () => {
       .then((response) => {
         console.log(response.data);
         setSalaryHistory(response.data);
-        setOriginalData(response.data); // Save original data
+        setOriginalData(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -44,8 +51,6 @@ const SalaryHistory = () => {
         setLoading(false);
       });
   }, []);
-
-
 
   const handleSearch = (e) => {
     const inputValue = e.target.value.toLowerCase();
@@ -57,15 +62,12 @@ const SalaryHistory = () => {
   };
 
   const handleGenerateReport = () => {
-    // Filter data based on the specified time range
     const filteredData = originalData.filter((salary) => {
       const salaryDate = new Date(salary.date);
       return (
         salaryDate >= new Date(startDate) && salaryDate <= new Date(endDate)
       );
     });
-
-   
 
     // Create PDF
     const doc = new jsPDF();
@@ -74,33 +76,31 @@ const SalaryHistory = () => {
 
     img.src = "/Logo1.png";
     img2.src = "/Logo2.png";
-    
-  
-    img.onload = function () {
-      // Add the image to the PDF
-      doc.addImage(img2, "PNG", 10, 10, 30, 20); // Adjust the coordinates and dimensions as needed
 
-      doc.addImage(img, "PNG", 170, 10, 30, 20); // Adjust the coordinates and dimensions as needed
-  
-    doc.text("Salary Report", 80, 40,);
-    doc.autoTable({
-      head: [headers2],
-      body: filteredData.map((salary) => [
-        salary.employeeID,
-        salary.firstName + " " + salary.lastName,
-        salary.basicSalary,
-        salary.totalAmount,
-        salary.notice,
-        salary.date,
-      ]),
-      startY: 50,
-    });
-    doc.save("salary_report.pdf");
+    img.onload = function () {
+      doc.addImage(img2, "PNG", 10, 10, 30, 20);
+
+      doc.addImage(img, "PNG", 170, 10, 30, 20);
+
+      doc.text("Salary Report", 80, 40);
+      doc.autoTable({
+        head: [headers2],
+        body: filteredData.map((salary) => [
+          salary.employeeID,
+          salary.firstName + " " + salary.lastName,
+          salary.basicSalary,
+          salary.totalAmount,
+          salary.notice,
+          salary.date,
+        ]),
+        startY: 50,
+      });
+      doc.save("salary_report.pdf");
+    };
   };
-  }
 
   return (
-    <div  className='w-full h-full bg-scroll bg-repeat bg-bgimg'>
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
       <HrNavbar sal={true} />
       <div className="p-4">
         <div className="flex justify-between items-center">
