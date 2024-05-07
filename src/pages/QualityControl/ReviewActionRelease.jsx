@@ -6,11 +6,8 @@ import SearchBar from "../../components/searchBar2";
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
-import NoteTakingApp from '../../components/Keep/NoteTakingApp';
-import html2pdf from 'html2pdf.js';
 
-
-const ReviewReport = () => {
+const ReviewActionRelease = () => {
   const [productReviews, setProductReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
@@ -19,7 +16,7 @@ const ReviewReport = () => {
   useEffect(() => {
     setLoading(true);
     axios
-  .get('http://localhost:5555/qualityControl/productReview')
+  .get('http://localhost:5555/qualityControl/productReview/release')
   .then((response) => {
     setProductReviews(response.data.data);
     setLoading(false);
@@ -42,15 +39,6 @@ productReviews.forEach((request) => {
   const filteredRequests = productReviews.filter((v) => v.productCode && v.productCode.toLowerCase().includes(search.toLowerCase()));
   const itemCount = filteredRequests.length;
   const totalItemCount = productReviews.length;
-
-  const handlePrint = () => {
-    const element = document.getElementById('pdfContent');
-
-    html2pdf()
-      .from(element)
-      .save();
-  };
-
 
   return (
     <div className='p-4'>
@@ -80,8 +68,7 @@ productReviews.forEach((request) => {
     {loading ? (
         <Spinner />
     ) : (
-        <div>
-          <div id="pdfContent">
+      <div>
         <table className='min-w-full'>
             <TableView headers={headers} />
             <tbody>
@@ -114,9 +101,9 @@ productReviews.forEach((request) => {
                         </td>
                         <td className='border border-slate-700 rounded-md text-center'>
                             <div className='flex justify-center gap-x-4'>
-                            <Link to={`/qualityControl/reviewReport/view/${productReview._id}`}>
+                            <Link to={`/qualityControl/releaseProduct/addReleaseProduct/${productReview._id}`}>
                                 <Button className='mr-2'>
-                                    Report
+                                    Release
                                 </Button>
                             </Link>
                             </div>
@@ -125,26 +112,17 @@ productReviews.forEach((request) => {
                 ))}
             </tbody>
         </table>
-        </div>
         <div className="text-center mt-4 mb-8">
             <p>Total Items: {totalItemCount}</p>
             <p>Total Items Matching "{search}": {itemCount}</p>
         </div>
-        <div className="text-center text-red-600 font-bold mt-4 mb-8">
-            {Object.entries(itemCountMap).map(([productCode, count]) => (
-              count > 2 && <p key={productCode}>"{productCode}" Product Reviewed "{count}" Times</p>
-            ))}
-        </div>
-    </div>    
+        
+      </div>  
     )}
 
-          {/* <div className='flex justify-center gap-x-20'>
-            <Button className=' bg-red-400 hover:bg-red-600 ' onClick={handlePrint}>Generate Review Report</Button>
-          </div> */}
-
-     <NoteTakingApp />  
+       
     </div>
   );
 };
 
-export default ReviewReport;
+export default ReviewActionRelease;
