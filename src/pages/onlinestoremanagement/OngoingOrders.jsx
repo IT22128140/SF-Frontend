@@ -7,6 +7,7 @@ import ViewButton from "../../components/button2/ViewButton";
 import { CiSearch } from "react-icons/ci";
 import ViewDeliveryDetails from "./ViewDeliveryDetails";
 import ViewBill from "./ViewBill";
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter"
 
 const OngoingOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -168,6 +169,7 @@ const OngoingOrders = () => {
           onClose={() => setShowBill(false)}
         />
       )}
+            <StaffFooter></StaffFooter>
     </div>
   );
 };

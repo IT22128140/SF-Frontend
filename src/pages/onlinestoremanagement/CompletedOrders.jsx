@@ -6,6 +6,8 @@ import TableView from "../../components/table/TableView";
 import ViewButton from "../../components/button2/ViewButton";
 import { CiSearch } from "react-icons/ci";
 import ViewDeliveryDetails from "./ViewDeliveryDetails";
+import ViewBill from "./ViewBill";
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter"
 
 const OngoingOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -14,6 +16,8 @@ const OngoingOrders = () => {
   const [keyword, setKeyword] = useState("");
   const [delivery, setDelivery] = useState({});
   const [showDelivery, setShowDelivery] = useState(false);
+  const [bill, setBill] = useState({});
+  const [showBill, setShowBill] = useState(false);
 
   const headers = [
     "Order ID",
@@ -22,6 +26,7 @@ const OngoingOrders = () => {
     "Total Amount",
     "Delivery Details",
     "Payment Details",
+    "Bill",
     "Status",
   ];
 
@@ -113,6 +118,15 @@ const OngoingOrders = () => {
                     </div>
                   </td>
                   <td className="border border-slate-700 text-center">
+                    <div className="flex justify-center gap-x-4">
+                      <ViewButton
+                        onClick={() => {
+                          setBill(order), setShowBill(true);
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td className="border border-slate-700 text-center">
                   <div className="flex flex-col">
                     Current :- {order.status}
                     <select
@@ -151,6 +165,13 @@ const OngoingOrders = () => {
           onClose={() => setShowDelivery(false)}
         />
       )}
+            {showBill && (
+        <ViewBill
+          bill={bill}
+          onClose={() => setShowBill(false)}
+        />
+      )}
+      <StaffFooter></StaffFooter>
     </div>
   );
 };
