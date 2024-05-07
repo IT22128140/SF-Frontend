@@ -428,8 +428,8 @@ const App = () => {
       <Route path="/GenerateSalary/:id" element={<GenerateSalary />} />
       <Route path="/ViewSalary/:id" element={<ViewSalary />} />
       <Route path="/EditSalaryBalance/:id" element={<EditSalaryBalance />} />
-      <Route path="/Payment/:id" element={<Payment />} />
-      <Route path="/SlipUpload/:id" element={<SlipUpload />} />
+      <Route path="/Payment" element={<Payment />} />
+      <Route path="/SlipUpload" element={<SlipUpload />} />
       <Route path="/PaymentSucc/:id" element={<PaymentSucc />} />
       <Route path="/SalaryTable" element={<SalaryTable />} />
      
