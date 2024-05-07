@@ -46,10 +46,15 @@ const CompletedrmRequests = () => {
           <button className = 'p-2 bg-RawmRequest m-8  text-ternary rounded-xl'>Pending Requests</button>
         </Link>
       </div>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Completed Raw Material Requests
+        </h1>
+      </center>
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif mb-5'>
+        <table className = 'ml-1 mr-1 font-BreeSerif mb-5'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -58,7 +63,7 @@ const CompletedrmRequests = () => {
                 {rmrequest.RequestID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Date}
+                {rmrequest.Date.split("T")[0]}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 {rmrequest.FabricType_Colour_Amount}

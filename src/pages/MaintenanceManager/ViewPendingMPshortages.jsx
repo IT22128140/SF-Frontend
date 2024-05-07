@@ -7,6 +7,7 @@ import TableView from '../../components/table/TableView';
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
 import ViewButton from "../../components/button2/ViewButton";
+import AddButton from "../../components/button2/AddButton";
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import SearchBar from "../../components/SearchBar";
@@ -96,15 +97,11 @@ const mpShortagesTable = () => {
                         ))}
                     </tbody>
                 </table>
-                
-
-
+            
                 
             )}
 
-                <Link to='/mpshortages/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
-                </Link>
+                
                 <StaffFooter/>
         </div>
     );

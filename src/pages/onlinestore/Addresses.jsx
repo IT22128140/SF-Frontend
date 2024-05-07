@@ -79,7 +79,9 @@ const Addresses = () => {
       {showDelete && (
         <DeleteAddress id={id} onClose={() => setShowDelete(false)} />
       )}
-      {showEdit && <EditAddress adress={adress} onClose={() => setShowEdit(false)} />}
+      {showEdit && (
+        <EditAddress adress={adress} onClose={() => setShowEdit(false)} />
+      )}
       <Footer />
     </div>
   );

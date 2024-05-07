@@ -20,11 +20,11 @@ const Orders = () => {
     };
   }, []);
 
-  console.log(date);
+
 
   function Completed() {
     const filteredData = orders.filter((opt) =>
-      opt.status.toLowerCase().includes("completed")
+      opt.status.toLowerCase().includes("delivered")
     );
     setCompleted("bg-bgc");
     setOngoing("");
@@ -33,7 +33,7 @@ const Orders = () => {
 
   function Ongoing(data) {
     const filteredData = data.filter(
-      (opt) => !opt.status.toLowerCase().includes("completed")
+      (opt) => !opt.status.toLowerCase().includes("delivered")
     );
     setOngoing("bg-bgc");
     setCompleted("");

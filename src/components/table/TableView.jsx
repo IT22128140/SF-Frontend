@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const TableView = ({ headers }) => {
   return (
@@ -10,6 +10,10 @@ const TableView = ({ headers }) => {
       </tr>
     </thead>
   );
+};
+
+TableView.propTypes = {
+  headers: PropTypes.array,
 };
 
 export default TableView;
