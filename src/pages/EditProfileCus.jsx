@@ -34,7 +34,7 @@ function EditProfile() {
   const handleSaveProfile = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5555/EditProfileCus/save`,
+        `http://localhost:5555/EditProfileCus`,
         profileInfo
       );
       console.log("Profile information saved:", response.data);
@@ -46,7 +46,7 @@ function EditProfile() {
   const handleDeleteProfile = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:5555/EditProfileCus/delete/${profileInfo.emailAddress}`
+        `http://localhost:5555/EditProfileCus${profileInfo.emailAddress}`
       );
       console.log("Profile deleted:", response.data);
     } catch (error) {
