@@ -86,12 +86,12 @@ const RawMaterialStock = () => {
   
 
   return (
-    <div className='w-full h-full bg-contain bg-bgimg' /*style={{ backgroundImage: `url(/RawM.png)`, backgroundSize: 'cover' }}*/>
+    <div className='w-full h-full bg-scroll bg-repeat bg-bgimg' /*style={{ backgroundImage: `url(/RawM.png)`, backgroundSize: 'cover' }}*/>
       
       
       <div className='relative'> 
         <IsNavbar RpS={true} /> 
-        {/* <img src='/RawM.png' bg-cover inset-0/> */}
+       
         <div className="flex items-center justify-center mb-9">
           <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Raw Material Stock</h1>
         </div>
@@ -129,7 +129,7 @@ const RawMaterialStock = () => {
                     <td className="text-center border rounded-md border-slate-700">{RMstock.materialType}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.colorAndDesign}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.initialquantity}</td> 
-                    <td className="text-center border rounded-md border-slate-700">{RMstock.restockingdate}</td>
+                    <td className="text-center border rounded-md border-slate-700">{RMstock.restockingdate.split("T")[0]}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.availablequantity}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.costperunit}</td>
                     <td className="text-center border rounded-md border-slate-700">{RMstock.costperunit * RMstock.initialquantity}</td>

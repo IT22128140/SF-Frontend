@@ -1,45 +1,57 @@
-import React, {useState} from 'react';
-import BackButton from '../../components/button/BackButton';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import SubmitButton from '../../components/button2/SubmitButton';
-import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
+const EditMachineParts =() => {
 
-
-
-const Addmachinepart =() => {
-     const [partID, setpartID] = useState('');
     const [partName, setpartName] = useState('');
     const [purchasedDate, setpurchasedDate] = useState ('');
     const [condition, setcondition] = useState('');
-    const [costPerUnit, setcostPerUnit] = useState('');
-    const [quantity, setquantity] = useState('');
-    const [manufacturer, setqmanufacturer] = useState('');
-    
+    const [costPerUnit, setcostPerUnit]= useState('');
+    const [quantity , setquantity] = useState('');
+    const [manufacturer, setmanufacturer] = useState('');
     const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
+    const {id} = useParams();
     
-    const handleSaveRmaterials = () => {
+    useEffect(() => {
+        setLoading(true);
+        axios.get(`http://localhost:5555/MPstock/${id}`)
+            .then((response) =>{
+                setpartName(response.data.partName);
+                setpurchasedDate(response.data.purchasedDate);
+                setcondition(response.data.condition);
+                setcostPerUnit(response.data.costPerUnit);
+                setquantity(response.data.quantity);
+                setmanufacturer(response.data.manufacturer);
+                setLoading(false);
+            }).catch((error) =>{
+                setLoading(false);
+                alert('An error happened');
+                console.log(error);
+            });
+    }, [id]);
+    
+    const handleEditmachinepart = () => {
        const data = {
-        partID,
         partName,
         purchasedDate,
         condition,
         costPerUnit,
         quantity,
         manufacturer,
-       
 
        };
        setLoading(true);
        axios
-         .post('http://localhost:5555/MPstock', data)
+         .put(`http://localhost:5555/mpstock/${id}`, data)
          .then(() => {
             setLoading(false);
-            navigate('/MachinePartStock');
+            navigate('/machineParts/view');
          })
          .catch((error) => {
             setLoading(false);
@@ -50,25 +62,15 @@ const Addmachinepart =() => {
     
   return (
     <div className='p-4'>
-      <IsNavbar/>
-        <BackButton />
+        <MaintenanceManagerHeader/>
+        {/* <BackButton /> */}
         <div className="flex items-center justify-center mb-9">
 
-        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center ">Add Machine Part </h1>
+        <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit Machine Part Stock</h1>
       </div>
         {loading ? <Spinner/> : ''}
         <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
 
-       
-        <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Part ID</label>
-                <input
-                 type='String'
-                 value={partID}
-                 onChange={(e) => setpartID(e.target.value)}
-                  className='w-full px-4 py-2 border-2 border-gray-500'
-                />
-                </div>
             <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>partName</label>
                 <input
@@ -81,14 +83,14 @@ const Addmachinepart =() => {
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>purchasedDate</label>
                 <input
-                 type='date'
+                 type='String'
                  value={purchasedDate}
                  onChange={(e) => setpurchasedDate(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>condition</label>
+                <label className='mr-4 text-xl text-gray-500 font-philosopher'>condition</label>
                 <input
                  type='String'
                  value={condition}
@@ -96,19 +98,20 @@ const Addmachinepart =() => {
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>
+              
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>costPerUnit</label>
                 <input
-                 type='number'
+                 type='String'
                  value={costPerUnit}
                  onChange={(e) => setcostPerUnit(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>
                 <div className='my-4'>
-                <label className='mr-4 text-xl text-gray-500 font-Lavish'>quantity</label>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>quantity</label>
                 <input
-                 type='number'
+                 type='String'
                  value={quantity}
                  onChange={(e) => setquantity(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
@@ -117,23 +120,18 @@ const Addmachinepart =() => {
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>manufacturer</label>
                 <input
-                 type='String'
+                 type='Date'
                  value={manufacturer}
-                 onChange={(e) => setqmanufacturer(e.target.value)}
+                 onChange={(e) => setmanufacturer(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
                 </div>
-              
-                
-                
-              <SubmitButton onClick={handleSaveRmaterials} className="mr-2">Submit</SubmitButton>
-
+                <SubmitButton onClick={handleEditmachinepart} className="mr-2">Submit</SubmitButton>
     
             </div>
-            <StaffFooter/>
         </div>
 
   )
 }
 
-export default Addmachinepart;
+export default EditMachineParts

@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Spinner from "../../components/Spinner";
-import { Link } from "react-router-dom";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import TableView from '../../components/table/TableView';
-import EditButton from "../../components/button2/EditButton";
-import DeleteButton from "../../components/button2/DeleteButton";
-import ViewButton from "../../components/button2/ViewButton";
-import AddButton from "../../components/button2/AddButton";
-import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
+import React,{useEffect,useState} from 'react';
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
-import SearchBar from "../../components/SearchBar";
+import axios from 'axios';
+import Spinner from '../../components/Spinner';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import EditButton from '../../components/button2/EditButton';
+import DeleteButton from '../../components/button2/DeleteButton';
+import ViewButton from '../../components/button2/ViewButton'; 
+import TableView from '../../components/table/TableView';
 
-const mpShortagesTable = () => {
+const pendingshortsge = () =>{
     const [mpshortages, setmpshortages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [data3, setdata3] = useState([]);
@@ -24,8 +23,7 @@ const mpShortagesTable = () => {
             .get('http://localhost:5555/mpshortages/pending')
             .then((response) => {
                 setmpshortages(response.data.data);
-                const set = response.data.data.map(obj => ({name:obj.RequestID, _id:obj._id}));
-                setdata3(set);
+                
                 setLoading(false);
             })
             .catch((error) => {
@@ -39,14 +37,14 @@ const mpShortagesTable = () => {
 
     return (
         <div className='relative'>
-            <MaintenanceManagerHeader sh={true}/>
+            <IsNavbar sh={true}/>
             <Link to={'/mpshortages/accepted'}>
             <button>Accepted Shortages</button>
             </Link>
-            <SearchBar data= {data3} navigate={`/mpshortages/view/`} placeholder={"Enter Request ID"}/>
+           
 
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machine Part Shortages List</h1>
+            <div className='flex items-center justify-between'>
+                <h1 className='my-8 text-3xl'>Machine Part Shortages List</h1>
             </div>
             
             {loading ? (
@@ -59,30 +57,30 @@ const mpShortagesTable = () => {
                         {mpshortages.map((mpshortage, index) => (
                             <tr key={mpshortage._id} className='h-8'>
                                 
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.RequestID}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.Requested}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.PartName}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.Description}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.Quantity}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.Condition}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
+                                <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.NeededBeforeDate}
                                 </td>
-                                <td className='border border-slate-700 rounded-md text-center'>
-                                    <div className='flex justify-center gap-x-4 ml-2 mr-2'>
-                                        <Link to={`/mpshortages/view/${mpshortage._id}`}>
+                                <td className='text-center border rounded-md border-slate-700'>
+                                    <div className='flex justify-center ml-2 mr-2 gap-x-4'>
+                                        <Link to={`/Shortages/Viewshortage/${mpshortage._id}`}>
                                             <ViewButton/>
                                         </Link>
                                         <Link to={`/mpshortages/edit/${mpshortage._id}`}>
@@ -97,14 +95,16 @@ const mpShortagesTable = () => {
                         ))}
                     </tbody>
                 </table>
-            
+                
+
+
                 
             )}
 
                 
                 <StaffFooter/>
         </div>
-    );
+    );
 };
 
-export default mpShortagesTable
+export default pendingshortsge;
