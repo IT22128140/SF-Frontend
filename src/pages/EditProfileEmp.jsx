@@ -110,7 +110,7 @@ function EditProfile() {
               <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
               onClick={handleSaveProfile}
               >SAVE</button>
-              <button className="bg-red text-white font-bold py-2 px-8 rounded mt-4"
+              <button className="bg-red1 text-white font-bold py-2 px-8 rounded mt-4"
               onClick={handleDeleteProfile}
               >DELETE</button>
             </div>
