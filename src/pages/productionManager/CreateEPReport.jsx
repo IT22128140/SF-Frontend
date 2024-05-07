@@ -48,6 +48,7 @@ const CreateEPReport = () => {
   return (
     <div className = 'relative'>
       <PMHeader ger = {true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Performance Reports
@@ -149,6 +150,8 @@ const CreateEPReport = () => {
           <center className="mt-3"><SubmitButton/></center>
         </form>
       </FormProvider>
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter/>
     </div>
   )

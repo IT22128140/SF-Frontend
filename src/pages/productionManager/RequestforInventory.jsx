@@ -29,6 +29,7 @@ const RequestforInventory = () => {
   return (
     <div className='relative'>
       <IsNavbar RmR= {true}/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Requests
@@ -37,7 +38,7 @@ const RequestforInventory = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'ml-1 mr-1 font-BreeSerif mb-5 mt-5'>
+        <table className = 'ml-1 mr-1 font-BreeSerif mb-5 mt-5 bg-white'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -75,6 +76,8 @@ const RequestforInventory = () => {
         </tbody> 
       </table>
       )}
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter/>
     </div>
   )

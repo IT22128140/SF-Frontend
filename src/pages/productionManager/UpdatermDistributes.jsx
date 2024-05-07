@@ -67,6 +67,7 @@ const UpdatermDistributes = () => {
   return (
     <div className = 'relative'>
       <PMHeader drm = {true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Distribution
@@ -157,6 +158,8 @@ const UpdatermDistributes = () => {
           </div>
           {/* <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmDistribute}>Submit</button> */}
           <center className="mt-3" onClick={handleUpdateRawmDistribute}><SubmitButton/></center>
+        </div>
+        <div className="h-40 mt-10 ml-5"></div>
         </div>
         <StaffFooter/>
     </div>
