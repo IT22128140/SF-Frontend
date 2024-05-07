@@ -53,7 +53,7 @@ const Viewshortage = () =>{
             .then(() => {
                 setMPshortage({ ...mpshortage, Status: 'Rejected' });
                 setLoading(false);
-                // Delay navigation until after the component re-renders
+                
                 navigate(`/Shortages/delete/${mpshortage._id}`);
             })
             .catch((error) => {

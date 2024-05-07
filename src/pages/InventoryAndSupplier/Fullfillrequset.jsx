@@ -5,6 +5,7 @@ import TableView from '../../components/table/TableView';
 import DeleteButton from '../../components/button2/DeleteButton';
 import { useNavigate } from 'react-router-dom';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const Fullfillrequest = () => {
   const [requests, setRequests] = useState([]);
@@ -32,7 +33,7 @@ const Fullfillrequest = () => {
       .delete(`http://localhost:5555/ReqFF/${id}`)
       .then(() => {
         setLoading(false);
-        setRequests(requests.filter(request => request._id !== id)); // Remove deleted request from state
+        setRequests(requests.filter(request => request._id !== id)); 
       })
       .catch((error) => {
         setLoading(false);
@@ -42,7 +43,7 @@ const Fullfillrequest = () => {
   };
 
   return (
-    <div className="p-1">
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <IsNavbar  FFR={true} /> 
       <div className="flex items-center justify-center mb-9">
         <h1 className="my-8 text-6xl font-semibold font-br text-ternary alignment-center">Fullfilled Requests</h1>
@@ -74,7 +75,7 @@ const Fullfillrequest = () => {
         </table>
         </div>
       )}
-      
+      <StaffFooter/>
     </div>
   );
 };
