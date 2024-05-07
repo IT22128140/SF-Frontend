@@ -4,6 +4,10 @@ export const occupations = [
   { id: 3, value: "Supervisor", option: "Supervisor" },
   { id: 4, value: "LineWorker", option: "Line Worker" },
   { id: 5, value: "RepairWorker", option: "Repair Worker" },
+  { id: 6, value: "ProductionManager", option: "Production Manager" },
+  { id: 7, value: "QualityControlManager", option: "Quality Control Manager" },
+  { id: 8, value: "SupplierManager", option: "Supplier Manager" },
+  { id: 9, value: "StoreManager", option: "Store Manager" },
 ];
 
 export const idPrefix = {
@@ -12,4 +16,8 @@ export const idPrefix = {
     Supervisor: "SPV",
     LineWorker: "LW",
     RepairWorker: "RW",
+    ProductionManager: "PM",
+    QualityControlManager: "QC",
+    SupplierManager: "SM",
+    StoreManager: "STM",
 };

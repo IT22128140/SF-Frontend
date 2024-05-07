@@ -4,7 +4,8 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/button2/SubmitButton';
-
+import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 const AddSupplieredRaws = () => {
@@ -31,7 +32,7 @@ const AddSupplieredRaws = () => {
             .post('http://localhost:5555/suppRM', data)
             .then(() => {
                 setLoading(false);
-                navigate('/SupplieredRaws'); // Navigate to the RawMaterialStock page
+                navigate('/SupplieredRaws'); 
             })
             .catch((error) => {
                 setLoading(false);
@@ -41,7 +42,7 @@ const AddSupplieredRaws = () => {
     };
 
     return (
-        <div className='p-4'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <BackButton />
             <div className="flex items-center justify-center mb-9">
 

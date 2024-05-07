@@ -85,9 +85,11 @@ const CurrentEmployeeList = () => {
       <HrNavbar cel={true} />
 
       <div className="p-4">
-        <h1 className="text-6xl mx-[1.75%] my-8 font-Philosopher text-ternary font-semibold">
-          Current Employees&rsquo; List
-        </h1>
+        <center>
+          <h1 className="text-6xl mx-[1.75%] my-8 font-Philosopher text-ternary font-semibold">
+            Current Employees&rsquo; List
+          </h1>
+        </center>
 
         {/* <SearchBar data={data} navigate={``} placeholder={"Enter Employee ID Here"} /> */}
         <div className="flex justify-end mt-4 pr-4 cursor-pointer ">
