@@ -3,7 +3,9 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 const UpdatermRequests = () => {
   const [RequestID, setRequestID ] = useState('');
@@ -54,23 +56,29 @@ const UpdatermRequests = () => {
       .put(`http://localhost:5555/rmRequests/${id}`, data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
         navigate('/RawmRequests');
+        enqueueSnackBar('Request updated successfully', { variant: 'success' });
       })
       .catch ((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
 
   return (
     <div className = 'relative'>
-      <PMHeader/>
+      <PMHeader rmr = {true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Requests
+        </h1>
+      </center>
       {loading ? <Spinner/> : ''}
         <div
-          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif mb-5'
         >
           <h1 className='text-3xl my-4 text-center'>Update Raw Material Request Form</h1>
           <div className='my-2'>
@@ -164,8 +172,12 @@ const UpdatermRequests = () => {
             validation={{ required: 'Status required' }}
             />
           </div>
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmRequest}>Submit</button>
+          {/* <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleUpdateRawmRequest}>Submit</button> */}
+          <center className="mt-3" onClick={handleUpdateRawmRequest}><SubmitButton/></center>
         </div>
+        <div className="h-40 mt-10 ml-5"></div>
+        </div>
+        <StaffFooter/>
     </div>
   )
 }

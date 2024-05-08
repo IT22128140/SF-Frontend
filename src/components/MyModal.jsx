@@ -17,7 +17,7 @@ function MyModal({onClose}) {
 
 
     
-
+    const [requstId, setrequstId] = useState('');
     const [fabricType, setfabricType] = useState('');
     const [buttonType, setbuttonType] = useState('');
     const [threadType, setthreadType] = useState('');
@@ -28,6 +28,7 @@ function MyModal({onClose}) {
 
     const handleSaveRequest = () => {
         const data = {
+            requstId,
             fabricType,
             buttonType,
             threadType,
@@ -40,7 +41,7 @@ function MyModal({onClose}) {
             .then(() => {
                 setLoading(false);
                 alert('Submit succesfull!');
-                navigate('/Popup'); // Navigate to the RawMaterialStock page
+                navigate('/RequestforInventory'); // Navigate to the RawMaterialStock page
             })
             .catch((error) => {
                 setLoading(false);
@@ -49,16 +50,25 @@ function MyModal({onClose}) {
             });
     };
   return (
-    <div ref={modalRef} onClick={closeModal} className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm'>
+    <div ref={modalRef} onClick={closeModal} className='absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm'>
         <div className='flex flex-col items-center justify-center gap-5 mt-10 text-black'>
             <button onClick={onClose} className='place-self-end'><X size={50}/></button>
             <div className='p-4'>
        
-            <h1 className='my-4 font-medium text-white text-7xl text-5enter'>Full fill the Request</h1>
+            <h1 className='my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center'>Full fill the Request</h1>
             {loading ? <Spinner /> : ''}
-            <div className='flex flex-col border-2 rounded border-sky-400-xl w-[600px] p-4 mx-auto '>
+            <div className='flex flex-col border-2 rounded border-sky-300-xl w-[500px] p-4 mx-auto '>
+            <div className='pt-3 my-4'>
+                    <label className='mr-4 text-3xl text-white '>Request Id</label>
+                    <input
+                        type='String'
+                        value={requstId}
+                        onChange={(e) => setrequstId(e.target.value)}
+                        className='w-full px-4 py-2 border-2 border-gray-500'
+                    />
+                </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Fabric Type</label>
+                    <label className='mr-4 text-3xl text-white'>Fabric Type</label>
                     <input
                         type='String'
                         value={fabricType}
@@ -67,7 +77,7 @@ function MyModal({onClose}) {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Button Type</label>
+                    <label className='mr-4 text-3xl text-white'>Button Type</label>
                     <input
                         type='String'
                         value={buttonType}
@@ -76,7 +86,7 @@ function MyModal({onClose}) {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Thread Type</label>
+                    <label className='mr-4 text-3xl text-white'>Thread Type</label>
                     <input
                         type='String'
                         value={threadType}
@@ -84,7 +94,7 @@ function MyModal({onClose}) {
                         className='w-full px-4 py-2 border-2 border-gray-500'
                     />
                 </div> <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Other Material</label>
+                    <label className='mr-4 text-3xl text-white'>Other Material</label>
                     <input
                         type='String'
                         value={otherMaterial}
@@ -93,7 +103,7 @@ function MyModal({onClose}) {
                     />
                 </div>
                 <div className='my-4'>
-                    <label className='mr-4 text-xl text-gray-500'>Filling Date</label>
+                    <label className='mr-4 text-3xl text-white'>Filling Date</label>
                     <input
                         type='Date'
                         value={fillingDate}

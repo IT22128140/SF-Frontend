@@ -12,9 +12,11 @@ const HrDashboard = () => {
       <HrNavbar home={true} />
 
       <div className="p-4">
-        <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
-          Dashboard
-        </h1>
+        <center>
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+            Dashboard
+          </h1>
+        </center>
 
         <div className="flex flex-row justify-evenly">
           <DashboardCard
@@ -31,7 +33,7 @@ const HrDashboard = () => {
             link1="#"
             subtopic2="View Attendance"
             description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            link2="#"
+            link2="/attendance/AttendancePage"
           />
         </div>
 
@@ -44,12 +46,12 @@ const HrDashboard = () => {
           /> */}
           <div>
             <div className="px-14 py-8">
-              <div className="border border-black rounded-xl w-[800px] h-fit flex flex-col items-center font-BreeSerif p-6">
+              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6">
                 <h1 className="text-3xl font-Philosopher text-ternary">
                   Resignation Management
                 </h1>
 
-                <div className="border border-black rounded-xl w-100% h-fit flex flex-col items-center font-BreeSerif p-2 m-8">
+                <div className="border border-black rounded-xl w-100% h-fit bg-bgc flex flex-col items-center font-BreeSerif p-2 m-8">
                   <h2 className="text-xl text black pb-2">
                     Termination Pending List
                   </h2>
@@ -63,7 +65,7 @@ const HrDashboard = () => {
                     <ViewButton />
                   </Link>
                 </div>
-                <div className="border border-black rounded-xl w-100% h-fit flex flex-col items-center font-BreeSerif p-2 m-8">
+                <div className="border border-black rounded-xl w-100% h-fit bg-bgc flex flex-col items-center font-BreeSerif p-2 m-8">
                   <h2 className="text-xl text black pb-2">
                     Rejected Request List
                   </h2>
@@ -82,11 +84,11 @@ const HrDashboard = () => {
           </div>
           <DashboardCard
             topic="Salary Management"
-            subtopic1="<Placeholder>"
-            link1="#"
-            subtopic2="View Salary"
+            subtopic1="Salary Table"
+            link1="/SalaryTable"
+            subtopic2="View Salary History"
             description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            link2="#"
+            link2="/SalaryHistory"
           />
         </div>
       </div>

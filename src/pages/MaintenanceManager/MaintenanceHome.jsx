@@ -1,106 +1,53 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import Spinner from "../../components/Spinner";
-// import { Link } from "react-router-dom";
-// import { AiOutlineEdit } from 'react-icons/ai';
-// import { BsInfoCircle } from "react-icons/bs";
-// import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import React from 'react';
+import { Link } from "react-router-dom";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import DashboardCard from '../../components/DashboardCard';
 
-// const MHome = () => {
-//     const [repairs, setRepairs] = useState([]);
-//     const [loading, setLoading] = useState(false);
-//     useEffect(() => {
-//         setLoading(true);
-//         axios
-//             .get('http://localhost:5555/repairs')
-//             .then((response) => {
-//                 setRepairs(response.data.data);
-//                 setLoading(false);
-//             })
-//             .catch((error) => {
-//                 console.log(error);
-//                 setLoading(false);
-//             });
-//     }, [])
-//     return (
-//         <div className='p-4'>
-//             <div className='flex justify-between items-center'>
-//                 <h1 className='text-3xl my-8'>Repairs List</h1>
-//                 <Link to='/repairs/create'>
-//                     <MdOutlineAddBox className='text-sky-800 text-4xl' />
-//                 </Link>
-//             </div>
-//             {loading ? (
-//                 <Spinner />
-//             ) : (
-//                 <table className='w-full border-seperate border-spacing-2'>
-//                     <thead>
-//                         <tr>
-//                             <th className='border border-slate-600 rounded-md'>ID</th>
-//                             <th className='border border-slate-600 rounded-md'>Description</th>
-//                             <th className='border border-slate-600 rounded-md'>Requested Date</th>
-//                             <th className='border border-slate-600 rounded-md'>Requested Time</th>
-//                             <th className='border border-slate-600 rounded-md'>Urgency Level</th>
-//                             <th className='border border-slate-600 rounded-md'>Status</th>
-//                             <th className='border border-slate-600 rounded-md'>Completed Date</th>
-//                             <th className='border border-slate-600 rounded-md'>Operations</th>
-//                         </tr>
-//                     </thead>
-//                     <tbody>
-//                         {repairs.map((repair, index) => (
-//                             <tr key={repair._id} className='h-8'>
-                                
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.RepairID}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.RepairDescription}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.RequestedDate}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.RequestedTime}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.UrgencyLevel}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.Status}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     {repair.CompletedDate}
-//                                 </td>
-//                                 <td className='border border-slate-700 rounded-md text-center'>
-//                                     <div className='flex justify-center gap-x-4'>
-//                                         <Link to={`/repairs/details/${repair._id}`}>
-//                                             <BsInfoCircle className='text-2xl text-green-800' />
-//                                         </Link>
-//                                         <Link to={`/repairs/edit/${repair._id}`}>
-//                                             <BsInfoCircle className='text-2xl text-yellow-600' />
-//                                         </Link>
-//                                         <Link to={`/repairs/delete/${repair._id}`}>
-//                                             <BsInfoCircle className='text-2xl text-red-800' />
-//                                         </Link>
-//                                     </div>
-//                                 </td>
-//                             </tr>
-//                         ))}
-//                     </tbody>
-//                 </table>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default MHome
-import React from 'react'
-
-const MaintenanceHome = () => {
+const MaintenanceManager = () => {
   return (
-    <div>MaintenanceHome</div>
-    
-  )
-}
+    <div className='re;lative'>
+    <MaintenanceManagerHeader home = {true}/>
+    <div className = 'flex flex-row ml-12'>
+            <DashboardCard
+             topic = 'Repairs'
+             subtopic1 = 'Add new Repairs'
+             link1 = '/repairs/create'
+             subtopic2 = 'Request new Repair'
+             description= 'Check this page to edit or view repair details'
+             link2 = '/repairs/view'
+            />
+            <DashboardCard
+             topic = 'Machine Part Shortages'
+             subtopic1 = 'Request for Shortage'
+             link1 = '/mpshortages/create'
+             subtopic2 = 'Manage Shortages'
+             description= 'Visit this page to view requested shortages'
+             link2 = '/mpshortages/view'
+            />
+        </div>
+        <div className = 'flex flex-row ml-12'>
+            <DashboardCard
+             topic = 'Machines'
+             subtopic1 = 'Add new Machines'
+             link1 = 'machines/create'
+             subtopic2 = 'Manage Machines'
+             description= 'View and manage the machine details'
+             link2 = 'machines/view'
+            />
+            <DashboardCard
+             topic = 'Generate Maintenance Report'
+             subtopic1 = 'Make a new Maintenance Report'
+             link1 = '/repairs/report'
+             subtopic2 = 'Maintenance Management'
+             description= 'Generate a maintenance report to view the specific maintenance details and repairs for each repair worker'
+             link2 = '/repairs/report'
+            />
+        </div>
+    <StaffFooter/>
+    </div>
+  );
+};
 
-export default MaintenanceHome
+export default MaintenanceManager;

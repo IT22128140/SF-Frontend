@@ -1,4 +1,4 @@
-export const textValidation = {
+  export const textValidation = {
     validation: {
       required: {
         value: true,
@@ -20,8 +20,13 @@ export const textValidation = {
       required: {
         value: true,
         message: "Required",
+      },
+      pattern: {
+        value: /^[0-9]*$/,
+        message: "Only numbers are allowed",
       }
     },
+    
   };
 
   export const contactValidation = {
@@ -96,6 +101,28 @@ export const nicValidation = {
     pattern: {
       value: /^[0-9]{9}[vV]$/i,
       message: "Invalid email address",
+    },
+  },
+};
+
+export const paraValidation = {
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+    minLength: {
+      value: 3,
+      message: "3 characters min",
+    },
+  },
+};
+
+export const dateValidation = {
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
     },
   },
 };
