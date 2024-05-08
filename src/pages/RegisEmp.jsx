@@ -11,7 +11,7 @@ function Register() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [EmployeeType, setEmployeeType] = useState("");
+  const [employeeType, setemployeeType] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -36,8 +36,8 @@ function Register() {
       case "password2":
         setPassword2(value);
         break;
-        case "EmployeeType":
-        setEmployeeType(select);
+      case "employeeType":
+        setemployeeType(value);
         break;
       default:
         break;
@@ -47,13 +47,17 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!FirstName || !LastName || !emailAddress || !phoneNumber || !password || !password2 || !EmployeeType) {
+    if (!FirstName || !LastName || !emailAddress || !phoneNumber || !password || !password2 || !employeeType) {
       setError("Please fill in all the fields.");
       return;
     }
 
     if (!/\S+@\S+\.\S+/.test(emailAddress)) {
       setError("Please enter a valid email address.");
+      return;
+    }
+    if (!/^\d{10}$/.test(phoneNumber)) {
+      setError("Please enter a valid 10-digit phone number.");
       return;
     }
     if (password !== password2) {
@@ -67,7 +71,7 @@ function Register() {
       emailAddress,
       phoneNumber,
       password,
-      EmployeeType
+      employeeType,
     };
 
     console.log(newUser);
@@ -75,7 +79,7 @@ function Register() {
     axios.post("http://localhost:5555/RegisEmp", newUser)
       .then((result) => {
         console.log(result);
-        navigate("/pages/LoginEmp");
+        navigate("/LoginEmp");
       })
       .catch((err) => console.log(err));
   };
@@ -159,8 +163,8 @@ function Register() {
           <div className="mb-4">
             <p className="text-black-600 mb-4">Employee Type</p>
             <select
-            value={EmployeeType}
-            onChange={(e) => setEmployeeType(e.target.value)}
+            value={employeeType}
+            onChange={(e) => setemployeeType(e.target.value)}
             id="EmployeeType"
             className="mt-0 w-[100%] p-3 border-gray-300 rounded-md border-2"
             >

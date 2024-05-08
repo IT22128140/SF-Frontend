@@ -52,6 +52,10 @@ function Register() {
       setError("Please enter a valid email address.");
       return;
     }
+    if (!/^\d{10}$/.test(phoneNumber)) {
+      setError("Please enter a valid 10-digit phone number.");
+      return;
+    }
     if (password !== password2) {
       setError("Passwords do not match.");
       return;
@@ -70,7 +74,7 @@ function Register() {
     axios.post("http://localhost:5555/RegisCus", newUser)
       .then((result) => {
         console.log(result);
-        navigate("/pages/LoginCus");
+        navigate("/LoginCus");
       })
       .catch((err) => console.log(err));
   };
