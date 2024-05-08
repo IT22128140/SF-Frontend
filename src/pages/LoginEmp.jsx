@@ -49,8 +49,8 @@ function Login() {
       if (result.data === "Success") {
         navigate("/home");
       } else {
-        navigate("/LoginCus");
-        alert("Please Check Your Email and Password");
+        navigate("/LoginEmp");
+        alert("Please Check Your Email , Password and Login Type");
       }
     } catch (error) {
       console.error("An error occurred:", error);
