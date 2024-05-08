@@ -5,16 +5,20 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/SearchBar";
-import TableView from '../../components/table/TableView'
-import AcceptButton from "../../components/button2/AcceptButton";
+import SearchBar from "../../components/searchBar2";
+import TableView from '../../components/table/TableView';
+import QENavbar from "../../components/navbar/staffheader/QENavbar";
+import Button from "../../components/button/Button";
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
+import PMHeader from '../../components/navbar/PMHeader';
+
 
 const RejectProduct = () => {
   const [rejectedProducts, setRejectedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const headers = ['Product Code', 'Rejected Date', 'Defect', 'Bill ID', 'Operations']
+  const [search, setSearch] = useState("");
+  const headers = ['Reject ID', 'Product Code', 'Fabric Type', 'Color', 'Stitching Type', 'Quantity', 'Defects', 'Operations']
   
   useEffect(() => {
     setLoading(true);
@@ -29,13 +33,27 @@ const RejectProduct = () => {
     setLoading(false);
   });
 }, []);
+
+const itemCountMap = {};
+rejectedProducts.forEach((request) => {
+    if (request.productCode) {
+      const productCode = request.productCode.toLowerCase();
+      itemCountMap[productCode] = (itemCountMap[productCode] || 0) + 1;
+    }
+  });
+
+  
+  const filteredRequests = rejectedProducts.filter((v) => v.productCode && v.productCode.toLowerCase().includes(search.toLowerCase()));
+  const itemCount = filteredRequests.length;
+  const totalItemCount = rejectedProducts.length;
+
   return (
     <div className='p-4'>
-      <div className='flex justify-between items-center '>
-        <h1 className='text-3xl my-8'>Review Request For Quality Evaluation </h1>
-      </div>
+      <PMHeader />
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Rejected Product in Quality Evaluation</h1>
+      
 
-      <SearchBar placeholder={"Enter Product Code"} />
+      <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
     {loading ? (
         <Spinner />
     ) : (
@@ -43,32 +61,37 @@ const RejectProduct = () => {
         <table className='min-w-full'>
             <TableView headers={headers} />
             <tbody>
-                {rejectedProducts && rejectedProducts.map((rejectedProduct, index) => (
+                {rejectedProducts && filteredRequests.map((rejectedProduct, index) => (
                     <tr key={rejectedProduct._id} className='h-8'>
-                        
+                        <td className='border border-slate-700 rounded-md text-center'>
+                            {rejectedProduct.rejectId}
+                        </td>
                         <td className='border border-slate-700 rounded-md text-center'>
                             {rejectedProduct.productCode}
                         </td>
                         <td className='border border-slate-700 rounded-md text-center'>
-                            {rejectedProduct.rejectDate}
+                            {rejectedProduct.fabricType}
                         </td>
                         <td className='border border-slate-700 rounded-md text-center'>
-                            {rejectedProduct.defect}
+                            {rejectedProduct.color}
                         </td>
                         <td className='border border-slate-700 rounded-md text-center'>
-                            {rejectedProduct.customer_ID}
+                            {rejectedProduct.stitchingType}
+                        </td>
+                        <td className='border border-slate-700 rounded-md text-center'>
+                            {rejectedProduct.quantity}
+                        </td>
+                        <td className='border border-slate-700 rounded-md text-center'>
+                            {rejectedProduct.defects}
                         </td>
                         <td className='border border-slate-700 rounded-md text-center'>
                             <div className='flex justify-center gap-x-4'>
-                                <Link to={`/qualityControl/reviewRequest/edit/`}>
-                                    <BsInfoCircle className='text-2xl text-green-800' />
-                                </Link>
-                                <Link to={`/qualityControl/reviewRequest/edit/`}>
-                                    <BsInfoCircle className='text-2xl text-yellow-600' />
-                                </Link>
-                                <Link to={`/qualityControl/reviewRequest/delete/`}>
-                                    <BsInfoCircle className='text-2xl text-red-800' />
-                                </Link>
+                            <Link to={`#`}>
+                                <Button className='mr-2'>
+                                    Re-review
+                                </Button>
+                            </Link>
+                                
                             </div>
                         </td>
                     </tr>

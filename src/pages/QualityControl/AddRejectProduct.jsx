@@ -10,15 +10,16 @@ import BackButton from '../../components/button/BackButton';
 import Select from '../../components/form/Select';
 
 
-const AddReview = () => {
+const AddRejectProduct = () => {
 
   const [productCode, setProductCode] = useState('');
+  const [customerID, setCustomerID] = useState('');
   const [fabricType, setFabricType] = useState('');
   const [color, setColor] = useState('');
   const [stitchingType, setStitchingType] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [inspectionResult, setInspectionResult] = useState('');
   const [defects, setDefects] = useState('');
+ 
 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -30,13 +31,14 @@ const AddReview = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/qualityControl/productRequest/${id}`)
+    axios.get(`http://localhost:5555/qualityControl/productReview/${id}`)
       .then((response) => {
         setProductCode(response.data.productCode)
         setFabricType(response.data.fabricType)
         setColor(response.data.color)
         setStitchingType(response.data.stitchingType)
         setQuantity(response.data.quantity)
+        setDefects(response.data.defects)
         setLoading(false);
       })
       .catch((error) => {
@@ -46,23 +48,22 @@ const AddReview = () => {
       });
   }, [])
 
-  const handleSaveAddReview = () => {
+  const handleSaveAddRejectProduct = () => {
     const data = {
       productCode,
       fabricType,
       color,
       stitchingType,
       quantity,
-      inspectionResult,
       defects,
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/qualityControl/productReview', data)
+      .post('http://localhost:5555/qualityControl/rejectedProduct', data)
       .then(() => {
         setLoading(false);
         // enqueueSnackBar('Request updated successfully', { variant: 'success' });
-        navigate('/qualityControl/reviewReport');
+        navigate('/qualityControl/reviewReport/actionReject');
       })
       .catch((error) => {
         setLoading(false);
@@ -71,11 +72,6 @@ const AddReview = () => {
         console.log(error);
       });
   };
-
-  const option1 = [
-    { id: 1, value: 'Approved', option: 'Approved' },
-    { id: 2, value: 'Reject', option: 'Reject'},
-  ];
 
   return (
     <div className='relative'>
@@ -88,12 +84,12 @@ const AddReview = () => {
         sal={false}
       />
       <BackButton />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>AddReview</h1>
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Notify Reject Product</h1>
       {loading ? <Spinner /> : ''}
-      <FormProvider {...methods}> 
+      <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
-          className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
-          onSubmit={methods.handleSubmit(handleSaveAddReview)} 
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          onSubmit={methods.handleSubmit(handleSaveAddRejectProduct)} // Using handleSubmit from useForm
         >
           
 
@@ -168,24 +164,6 @@ const AddReview = () => {
           </div>
 
           <div className='my-2'>
-            <label className='text-xl mr-4'>Inspection Result</label>
-            <select
-              className='drop-shadow-md px-4 py-2 w-full h-10'
-              type='select'
-              id='inspectionResult'
-              name='inspectionResult'
-              placeholder='Add Evaluation Result'
-              value={inspectionResult}
-              onChange={(e) => setInspectionResult(e.target.value)}
-              validation={{ required: 'Add Inspection Result' }}
-            >
-              <option value=''>Add Evaluation Result</option>
-              <option value='Approved'>Approved</option>
-              <option value='Reject'>Reject</option>
-            </select>
-          </div>
-
-          <div className='my-2'>
             <label className='text-xl mr-4'>Defects</label>
             <textarea
               className='drop-shadow-md px-4 py-2 w-full h-10'
@@ -195,8 +173,10 @@ const AddReview = () => {
               placeholder='Enter Defects'
               value={defects}
               onChange={(e) => setDefects(e.target.value)}
+              validation={{ required: 'Defects is required' }}
             />
           </div>
+
           <button className='p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
         </form>
       </FormProvider>
@@ -204,5 +184,5 @@ const AddReview = () => {
   )
 }
 
-export default AddReview;
+export default AddRejectProduct;
 
