@@ -8,9 +8,14 @@ export default {
     fontFamily: {
       Lavish: ["Lavish", "sans-serif"],
       Philosopher: ["Philosopher", "sans-serif"],
-      BreeSerif: ["BreeSerif", "sans-serif"]
+      BreeSerif: ["BreeSerif", "sans-serif"],
     },
     extend: {
+      backgroundImage: {
+        'bgimg': "url('/wall4.webp')",
+        'bgform': "url('/Wall2.png')",
+
+      },
       colors: {
         //Maneth
         'primary': '#da6e2e',
@@ -20,6 +25,8 @@ export default {
 
 
 
+        //varagan
+        'red1': '#DC3545',
 
 
 
@@ -39,7 +46,7 @@ export default {
         //Ridmi
         'formbg' : "#D9D9D9",
         'PMnavbar' : "#DEE2E6",
-        'RawmRequest' : "#F8D3C0"
+        'RawmRequest' : "#F8D3C0",
 
 
 
@@ -68,7 +75,7 @@ export default {
 
 
         //Isuru
-
+        
 
 
 
@@ -78,7 +85,8 @@ export default {
 
 
         //Hiranya
-        
+        'formBackground': "#d9d9d9",
+        'navbar': "#dee2e6",
 
 
 

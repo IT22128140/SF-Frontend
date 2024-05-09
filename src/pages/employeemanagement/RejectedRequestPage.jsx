@@ -22,7 +22,7 @@ const RejectedRequestPage = () => {
   useEffect(() => {
     setLoading(true);
     axios
-    .get("http://localhost:5555/resign/rejected")
+      .get("http://localhost:5555/resign/rejected")
       .then((res) => {
         setRequests(res.data);
         setLoading(false);
@@ -38,9 +38,11 @@ const RejectedRequestPage = () => {
       <HrNavbar req={true} />
 
       <div className="p-4">
-        <h1 className="text-4xl mx-[1.75%] my-8 p-4 font-Philosopher text-ternary font-semibold">
-          Rejected Termination Requests List
-        </h1>
+        <center>
+          <h1 className="text-6xl mx-[1.75%] my-8 p-4 font-Philosopher text-ternary font-semibold">
+            Rejected Termination Requests List
+          </h1>
+        </center>
 
         <div className="flex justify-center mb-10">
           {loading ? (

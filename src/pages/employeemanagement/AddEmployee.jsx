@@ -9,8 +9,8 @@ import BackButton from "../../components/button/BackButton.jsx";
 import Spinner from "../../components/Spinner.jsx";
 import Input from "../../components/form/Input.jsx";
 import SubmitButton from "../../components/button2/SubmitButton.jsx";
-// import Select from "../../components/form/Select.jsx";
 import { idPrefix, occupations } from "../../utils/employeeIdArray.js";
+import { textValidation, emailValidation, contactValidation, nicValidation, numberValidation } from "../../utils/inputValidations.js";
 
 const AddEmployee = () => {
   const [loading, setLoading] = useState(false);
@@ -20,18 +20,6 @@ const AddEmployee = () => {
 
   const [fullId, setFullId] = useState("");
   const [occupation, setOccupation] = useState("");
-
-  // function generateEmployeeId(e) {
-  //   setOccupation(e);
-  //   axios.get(`http://localhost:5555/occupation/${e}`)
-  //   .then((response) => {
-  //     const employeeCount = response.data + 1;
-  //     setFullId(`${idPrefix[e]}${employeeCount}`);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // }
 
   const [employee, setEmployee] = useState([]);
   const [maxCount, setMaxCount] = useState(0);
@@ -48,12 +36,10 @@ const AddEmployee = () => {
       }
       maxCount = Math.max(...arrayCount);
     }
-    // console.log(maxCount);
     setMaxCount(maxCount);
     setOccupation(e);
     setFullId(`${idPrefix[e]}${maxCount + 1}`);
   }
-  // console.log(arrayCount);
 
   useEffect(() => {
     axios
@@ -93,7 +79,7 @@ const AddEmployee = () => {
       <div className="p-4">
         <BackButton />
         <center>
-          <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary">
             New Employee Intergration
           </h1>
         </center>
@@ -103,7 +89,7 @@ const AddEmployee = () => {
           <form onSubmit={handleSubmit(handleSaveEmployee)}>
             <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
               <center>
-                <h3 className="text-3xl mb-4 font-Philosopher text-ternary">
+                <h3 className="mb-4 text-3xl font-Philosopher text-ternary">
                   Personal Information :
                 </h3>
                 <div className="">
@@ -114,8 +100,7 @@ const AddEmployee = () => {
                     type="text"
                     placeholder="Enter First Name"
                     name="firstName"
-                    // value={firstName}
-                    // onChange={(e) => setFirstName(e.target.value)}
+                    {...textValidation}
                     validation={{ required: "First Name is required" }}
                   />
                   <Input
@@ -125,8 +110,7 @@ const AddEmployee = () => {
                     type="text"
                     placeholder="Enter Last Name"
                     name="lastName"
-                    // value={lastName}
-                    // onChange={(e) => setLastName(e.target.value)}
+                    {...textValidation}
                     validation={{ required: "Last Name is required" }}
                   />
                   <Input
@@ -136,8 +120,7 @@ const AddEmployee = () => {
                     type="text"
                     placeholder="Enter NIC"
                     name="nic"
-                    // value={nic}
-                    // onChange={(e) => setNic(e.target.value)}
+                    {...nicValidation}
                     validation={{ required: "NIC is required" }}
                   />
                   <Input
@@ -147,8 +130,6 @@ const AddEmployee = () => {
                     type="textarea"
                     placeholder="Enter Address"
                     name="address"
-                    // value={address}
-                    // onChange={(e) => setAddress(e.target.value)}
                     validation={{ required: "Address is required" }}
                   />
                   <Input
@@ -158,8 +139,7 @@ const AddEmployee = () => {
                     type="email"
                     placeholder="Enter Email"
                     name="email"
-                    // value={email}
-                    // onChange={(e) => setEmail(e.target.value)}
+                    {...emailValidation}
                     validation={{ required: "Email is required" }}
                   />
                   <Input
@@ -169,8 +149,7 @@ const AddEmployee = () => {
                     type="number"
                     placeholder="Enter Contact No"
                     name="contactNo"
-                    // value={contactNo}
-                    // onChange={(e) => setContactNo(e.target.value)}
+                    {...contactValidation}
                     validation={{ required: "Contact No is required" }}
                   />
                   <Input
@@ -180,8 +159,6 @@ const AddEmployee = () => {
                     type="date"
                     placeholder="Enter Date Of Birth"
                     name="dateOfBirth"
-                    // value={dateOfBirth}
-                    // onChange={(e) => setDateOfBirth(e.target.value)}
                     validation={{ required: "Date Of Birth is required" }}
                   />
                   <Input
@@ -191,13 +168,12 @@ const AddEmployee = () => {
                     type="number"
                     placeholder="Enter Age"
                     name="age"
-                    // value={age}
-                    // onChange={(e) => setAge(e.target.value)}
+                    {...numberValidation}
                     validation={{ required: "Age is required" }}
                   />
                 </div>
 
-                <h3 className="text-3xl mt-8 mb-4 font-Philosopher text-ternary">
+                <h3 className="mt-8 mb-4 text-3xl font-Philosopher text-ternary">
                   Employee Information :
                 </h3>
                 <div className="">
@@ -207,11 +183,7 @@ const AddEmployee = () => {
                       className="h-11 w-[100%] p-2 mb-2 border-gray-200 rounded-md border-2"
                       id="occupation"
                       name="occupation"
-                      // value={occupation}
                       onChange={(e) => generateEmployeeId(e.target.value)}
-                      // options={occupations}
-                      // firstOption="Select Occupation"
-                      // validation={{ required: "Occupation is required" }}
                     >
                       <option value="" defaultChecked hidden>
                         Select Occupation
@@ -230,8 +202,7 @@ const AddEmployee = () => {
                     type="number"
                     placeholder="Enter Basic Salary"
                     name="basicSalary"
-                    // value={basicSalary}
-                    // onChange={(e) => setBasicSalary(e.target.value)}
+                    {...numberValidation}
                     validation={{ required: "Basic Salary is required" }}
                   />
                   <Input
@@ -241,8 +212,6 @@ const AddEmployee = () => {
                     type="date"
                     placeholder="Enter Admission Date"
                     name="admissionDate"
-                    // value={admissionDate}
-                    // onChange={(e) => setAdmissionDate(e.target.value)}
                     validation={{ required: "Admission Date is required" }}
                   />
                 </div>

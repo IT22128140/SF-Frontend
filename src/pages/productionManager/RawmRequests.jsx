@@ -7,7 +7,8 @@ import AddButton from '../../components/button2/AddButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 const RawmRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
@@ -29,7 +30,13 @@ const RawmRequests = () => {
   }, []);
   return (
     <div className='relative'>
-      <PMHeader/>
+      <PMHeader rmr = {true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Raw Material Requests
+        </h1>
+      </center>
       <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
@@ -49,7 +56,7 @@ const RawmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'mx-auto font-BreeSerif'>
+        <table className = 'ml-1 mr-1 font-BreeSerif bg-white'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -58,7 +65,7 @@ const RawmRequests = () => {
                 {rmrequest.RequestID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Date}
+                {rmrequest.Date.split("T")[0]}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 {rmrequest.FabricType_Colour_Amount}
@@ -93,6 +100,9 @@ const RawmRequests = () => {
         </tbody> 
       </table>
       )}
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
+      <StaffFooter/>
     </div>
   )
 }

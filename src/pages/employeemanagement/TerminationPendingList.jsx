@@ -47,9 +47,11 @@ const TerminationPendingList = () => {
       <HrNavbar req={true} />
 
       <div className="p-4">
-        <h1 className="text-4xl mx-[1.75%] my-8 p-4 font-Philosopher text-ternary font-semibold">
-          Termination Pending List
-        </h1>
+        <center>
+          <h1 className="text-6xl mx-[1.75%] my-8 p-4 font-Philosopher text-ternary font-semibold">
+            Termination Pending List
+          </h1>
+        </center>
 
         <div className="flex justify-center mb-10">
           {loading ? (
