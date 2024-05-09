@@ -3,7 +3,7 @@ import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
-import SearchBar from "../../components/searchBar2";
+import SearchBar from "../../components/searchBar3";
 import TableView from '../../components/table/TableView';
 import AcceptButton from "../../components/button2/AcceptButton";
 import EditButton from "../../components/button2/EditButton";
