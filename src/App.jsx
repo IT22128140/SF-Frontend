@@ -148,6 +148,9 @@ import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
 import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
+import AddProductList from './pages/productionManager/AddProductList.jsx'; //new
+import GarmentProductList from './pages/productionManager/GarmentProductLIst.jsx'; //new
+import EditProductList from './pages/productionManager/EditProductLIst.jsx'; //new
 
 
 
@@ -281,7 +284,7 @@ const App = () => {
 
       {/* Sageevan */}
       <Route path="/qualityControl" element={<QualityControl />} />
-      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
       <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
@@ -326,6 +329,11 @@ const App = () => {
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
+      <Route path= '/sfProduct/Add' element={<AddProductList />}/> {/*new */}
+      <Route path= '/sfProduct' element={<GarmentProductList />}/> {/*new */}
+      <Route path= '/sfProduct/edit/:id' element={<EditProductList />}/> {/*new */}
+
+      
       
 
 

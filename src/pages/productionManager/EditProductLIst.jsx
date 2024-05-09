@@ -3,13 +3,13 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import PMHeader from '../../components/navbar/PMHeader';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
+import PMHeader from '../../components/navbar/PMHeader';
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
 import { FormProvider, useForm } from 'react-hook-form';
 
-const AddFinalProduct = () => {
+const EditProductList = () => {
   const [productCode, setProductCode] = useState('');
   const [fabricType, setFabricType] = useState('');
   const [color, setColor] = useState('');
@@ -42,7 +42,7 @@ const AddFinalProduct = () => {
   }, []);
 
 
-  const handleEditProductRequest = () => {
+  const handleEditProductList = () => {
     const data = {
       productCode,
       fabricType,
@@ -53,29 +53,29 @@ const AddFinalProduct = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/qualityControl/productRequest', data)// Use axios.put for updating existing data
+      .put(`http://localhost:5555/garmentProduct/${id}`, data)// Use axios.put for updating existing data
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
-        navigate('#'); //need to change ridmis home 
+        
+        navigate('/sfProduct'); // Change the path as needed
       })
-      .catch((error) => {
+      .catch ((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
+       
         console.log(error);
-      });
+      } );  
   };
 
   const handleCancel = () => {
-    navigate('#'); // Change the path as needed
+    navigate('/sfProduct'); // Change the path as needed
   };
 
 
   return (
     <div className = 'relative'>
       <PMHeader />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Edit Ridmi's Part</h1>
 
       {loading ? <Spinner/> : ''}
         <div
@@ -151,10 +151,10 @@ const AddFinalProduct = () => {
             />
           </div>
 
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleEditProductRequest}>Request Quality Evaluation</button>
+          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleEditProductList}>Edit</button>
         </div>
     </div>
   )
 }
 
-export default AddFinalProduct;
+export default EditProductList;
