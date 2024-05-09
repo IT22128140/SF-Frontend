@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
-import QENavbar from "../../components/navbar/staffheader/QENavbar";
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 
 import TableView from '../../components/table/TableView';
 import Button from "../../components/button/Button.jsx";
 import EditButton from "../../components/button2/EditButton";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import DeleteButton from "../../components/button2/DeleteButton";
-
+import AddButton from "../../components/button2/AddButton.jsx";
 
 const GarmentProductList = () => {
   const [productLists, setProductLists] = useState([]);
@@ -37,17 +36,24 @@ const GarmentProductList = () => {
 
 
   return (
-    <div className='p-4'>
-      <PMHeader />
-      <div className='p-4'>
-        <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Redmi's Part</h1>
-        </div>
-        
+    <div className='relative'>
+      <PMHeader qr={true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Garment Product List
+        </h1>
+      </center>
+      <div className = 'flex justify-between items-center m-5'>
+        <Link to= '/sfProduct/Add'>
+         <AddButton/>
+        </Link>
+      </div> 
         {loading ? (
           <Spinner />
         ) : (
           <div> 
-          <table className='min-w-full'>
+          <table className='mx-auto font-BreeSerif mb-5 bg-white'>
             <TableView headers={headers} />
             <tbody>
               {productLists && productLists.map((productList, index) => (
@@ -75,14 +81,10 @@ const GarmentProductList = () => {
                         </Button>
                       </Link>
                       <Link to={`/sfProduct/edit/${productList._id}`}>
-                        <EditButton className='mr-2'>
-                          Edit
-                        </EditButton>
+                        <EditButton/>
                       </Link>
                       <Link to={`#`}>
-                      <DeleteButton className='mr-2' >
-                        Delete
-                      </DeleteButton>
+                        <DeleteButton/>
                       </Link>
                     </div>
                   </td>
@@ -90,13 +92,10 @@ const GarmentProductList = () => {
               ))}
             </tbody>
             </table>
-          
-          
-          
         </div>
       )}
-      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-      
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter />
     </div>
   );

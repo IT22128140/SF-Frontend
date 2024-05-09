@@ -23,7 +23,7 @@ const PMHeader = (props) => {
         <NavbarButton active={props.drm} button={"Raw Material Distribution"} url={"/RawmDistributes"} />
         <NavbarButton active={props.emp} button={"Employee Performance"} url={"/EmployeePerformance"} />
         <NavbarButton active={props.ger} button={"Performance Reports"} url={"/empPerformances/create"} />
-        <NavbarButton active={props.qr} button={"Quality Review"} url={"/qualityControl/reviewRequest/add"} />
+        <NavbarButton active={props.qr} button={"Quality Review"} url={"/sfProduct"} />
       </div>
     </div>
   );

@@ -3,11 +3,11 @@ import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import QENavbar from "../../components/navbar/staffheader/QENavbar";
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
-import { FormProvider, useForm } from 'react-hook-form';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 const EditProductList = () => {
   const [productCode, setProductCode] = useState('');
@@ -56,31 +56,29 @@ const EditProductList = () => {
       .put(`http://localhost:5555/garmentProduct/${id}`, data)// Use axios.put for updating existing data
       .then(() => {
         setLoading(false);
-        
         navigate('/sfProduct'); // Change the path as needed
       })
       .catch ((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-       
         console.log(error);
       } );  
   };
 
-  const handleCancel = () => {
-    navigate('/sfProduct'); // Change the path as needed
-  };
-
-
   return (
     <div className = 'relative'>
-      <PMHeader />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Edit Ridmi's Part</h1>
-
-      {loading ? <Spinner/> : ''}
+    <PMHeader qr={true}/>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Garment Product List
+        </h1>
+    </center>
+    {loading ? <Spinner/> : ''}
         <div
           className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
         >
+          <h1 className='text-3xl my-4 text-center'>Update Final Products</h1>
           <div className='my-2'>
             <label className='text-xl mr-4'>Product Code</label>
             <textarea
@@ -151,9 +149,13 @@ const EditProductList = () => {
             />
           </div>
 
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleEditProductList}>Edit</button>
+          <center className="mt-3" onClick={handleEditProductList}><SubmitButton/></center>
         </div>
+    <div className="h-40 mt-10 ml-5"></div>
     </div>
+        <StaffFooter/>
+    </div>
+    
   )
 }
 
