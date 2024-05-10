@@ -28,22 +28,29 @@ function Login() {
     } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters long.";
     }
-    console.log(emailAddress, password);
 
     setErrors(newErrors);
+    console.log(emailAddress, password);
 
-    try {
-      const result = await axios.post("http://localhost:5555/LoginCus", { emailAddress, password });
-      console.log(result);
-      if (result.data === "Success") {
+    if (Object.keys(newErrors).length === 0) {
+      try {
+        const response = await axios.post("http://localhost:5555/LoginCus", {
+          emailAddress,
+          password,
+        });
+
+        if (response.data.message === "Login successful") {
+          const token = response.data.token;
+          localStorage.setItem("token", token);
           navigate("/home");
-      } else {
+        } else {
           navigate("/LoginCus");
-          alert("Please Check Your Email and Password");
+          alert("You are not registered to this service");
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+        // Handle error, maybe show a message to the user
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
-      // Handle error, maybe show a message to the user
     }
   };
 
@@ -59,7 +66,7 @@ function Login() {
             placeholder="Email Address"
             value={emailAddress}
             onChange={(e) => setEmailAddress(e.target.value)}
-          ></input>
+          />
           {errors.emailAddress && <p className="text-red-500">{errors.emailAddress}</p>}
           <input
             className="mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
@@ -67,14 +74,14 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></input>
+          />
           {errors.password && <p className="text-red-500">{errors.password}</p>}
           <button type="submit" className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md">
             Login
           </button>
         </form>
         <br />
-        <hr className="h-[2px] bg-gray-200 rounded-xl "></hr>
+        <hr className="h-[2px] bg-gray-200 rounded-xl" />
         <br />
         <Link className="mb-2 font-semibold text-blue-500 text-decoration-line: underline" to="/RegisCus">
           or Register

@@ -52,10 +52,17 @@ function Register() {
       setError("Please enter a valid email address.");
       return;
     }
+
     if (!/^\d{10}$/.test(phoneNumber)) {
       setError("Please enter a valid 10-digit phone number.");
       return;
     }
+
+    if (password.length < 8 || !/\d/.test(password) || !/[!@#$%^&*]/.test(password)) {
+      setError("Password must be at least 8 characters long and contain at least one digit and one special character.");
+      return;
+    }
+
     if (password !== password2) {
       setError("Passwords do not match.");
       return;
@@ -68,27 +75,30 @@ function Register() {
       phoneNumber,
       password
     };
-
-    console.log(newUser);
-
+console.log(newUser);
     axios.post("http://localhost:5555/RegisCus", newUser)
       .then((result) => {
-        console.log(result);
+        const token = result.data.token;
+        // Store token securely, for example using sessionStorage
+        sessionStorage.setItem('token', token);
         navigate("/LoginCus");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError("An error occurred. Please try again later.");
+        console.log(err);
+      });
   };
 
-
   return (
-  <div className="flex flex-col items-center select-none">
-    <NavbarLogo />
-    <div className="flex justify-center">
-      <div className="w-full max-w-md">
-        <div className="text-center mt-">
-          <h4 className="text-3xl font-bold mb-4">CUSTOMER REGISTRATION FORM</h4>
-        </div>
-        <form noValidate onSubmit={onSubmit}>
+    <div className="flex flex-col items-center select-none">
+      <NavbarLogo />
+      <div className="flex justify-center">
+        <div className="w-full max-w-md">
+          <div className="text-center mt-">
+            <h4 className="text-3xl font-bold mb-4">CUSTOMER REGISTRATION FORM</h4>
+          </div>
+          <form noValidate onSubmit={onSubmit}>
+            
           <div className="mb-4">
             <p className="text-black-600 mb-4">First Name </p>
             <input
@@ -155,28 +165,27 @@ function Register() {
               className="mt-0 w-[100%] p-3 border-gray-300 rounded-md border-2"
             />
           </div>
-          {error && <p className="text-red-500">{error}</p>}
-          <div className="text-center">
-            <button
-              type="submit"
-              className="mt-3 w-[100%] p-3 bg-orange-600 text-white rounded-md"
-            >
-              REGISTER
-            </button>
-            <p className="text-gray-600 mb-4">
-              Already have an account?{" "}
-              <Link to="/LoginCus" className="text-blue-500">
-                Log in
-              </Link>
-            </p>
-          </div>
-        </form>
+            {error && <p className="text-red-500">{error}</p>}
+            <div className="text-center">
+              <button
+                type="submit"
+                className="mt-3 w-[100%] p-3 bg-orange-600 text-white rounded-md" 
+              >
+                REGISTER
+              </button>
+              <p className="text-gray-600 mb-4">
+                Already have an account?{" "}
+                <Link to="/LoginCus" className="text-blue-500">
+                  Log in
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-    );
-  }
+  );
+}
 
-
-export default Register;
+export default Register;

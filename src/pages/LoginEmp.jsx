@@ -40,7 +40,7 @@ function Login() {
     }
 
     try {
-      const result = await axios.post("http://localhost:5555/LoginCus", {
+      const result = await axios.post("http://localhost:5555/LoginEmp", {
         emailAddress,
         password,
         loginType,
