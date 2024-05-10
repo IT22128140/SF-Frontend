@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
-import { CiSearch } from 'react-icons/ci';
+import PropTypes from 'prop-types';
+import { IoSearch } from 'react-icons/io5';
 
-const SearchBar = ({ data, setSearchResults }) => {
+const SearchBar = ({ placeholder, onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    setSearchTerm(searchTerm);
-    const filteredData = data.filter(item =>
-      item.materialType.toLowerCase().includes(searchTerm)
-    );
-    setSearchResults(filteredData);
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value);
   };
 
   return (
-    <div className="flex justify-end pr-4 mt-4 cursor-pointer">
-      <div className="flex flex-row p-3.5">
-        <div className="flex items-center justify-center w-8 h-10 text-white shadow-md bg-primary rounded-l-xl">
-          <CiSearch className="text-[20px]" />
+    <div className="flex justify-end mt-4 mb-4 pr-4">
+      <div className="relative flex items-center">
+
+        <div className="bg-white p-2 flex items-center h-[45px] border-t border-l border-b border-black">
+          <IoSearch className="text-ternary mr-1" />
+
         </div>
-        <div className="bg-primary text-white font-Philosopher p-2 flex items-center h-10 w-[70px]">Search</div>
         <input
-          className="h-10 pl-2 border-2 shadow-md border-primary focus:outline-none rounded-r-xl"
+          type="text"
+          placeholder={placeholder}
           value={searchTerm}
-          placeholder="Search by material type"
-          onChange={handleSearch}
+          onChange={handleChange}
+          className="px-2 py-2 w-[300px] h-[45px] font-BreeSerif border-t border-r border-b border-black focus:outline-none focus:ring-0  flex-grow"
         />
+
+        <div className="bg-black p-2 flex items-center h-[45px]">
+          <span className="text-white font-BreeSerif">Search</span>
+        </div>
       </div>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  placeholder: PropTypes.string,
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

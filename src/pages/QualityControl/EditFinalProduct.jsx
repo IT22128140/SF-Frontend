@@ -72,7 +72,7 @@ const EditFinalProduct = () => {
 
 
   return (
-    <div className = 'relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
         home={true}
         cel={false}
@@ -96,6 +96,7 @@ const EditFinalProduct = () => {
             name='productCode'
             placeholder='Enter ProductCode'
             value={productCode}
+            readOnly = {true}
             onChange={(e) => setProductCode(e.target.value)}
             validation={{ required: 'Product Code is required' }}
             />
@@ -110,6 +111,7 @@ const EditFinalProduct = () => {
             name='fabricType'
             placeholder='Enter Fabric Type'
             value={fabricType}
+            readOnly = {true}
             onChange={(e) => setFabricType(e.target.value)}
             validation={{ required: 'Fabric Type is required' }}
             />
@@ -138,6 +140,7 @@ const EditFinalProduct = () => {
             name='stitchingType'
             placeholder='Enter Stitching Type'
             value={stitchingType}
+            readOnly = {true}
             onChange={(e) => setStitchingType(e.target.value)}
             validation={{ required: 'Stitching Type is required' }}
             />
@@ -153,7 +156,21 @@ const EditFinalProduct = () => {
             placeholder='Enter Quantity'
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            validation={{ required: 'Quantity is required' }}
+            validation={{
+              required: 'Quantity is required',
+              pattern: {
+                value: /^[0-9]+(\.[0-9]+)?$/, // Allow decimal numbers
+                message: 'Quantity must be a number',
+              },
+              min: {
+                value: 0,
+                message: 'Quantity must be at least 0',
+              },
+              max: {
+                value: 100.0, // Maximum quantity
+                message: 'Maximum quantity of one set is 100',
+              }
+            }}
             />
           </div>
 
