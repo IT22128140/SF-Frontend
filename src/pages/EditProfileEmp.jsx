@@ -8,7 +8,7 @@ function EditProfile() {
     LastName: '',
     emailAddress: '',
     phoneNumber: '',
-    Employeetype: '',
+    employeeType: '',
     password: ''
   });
   
@@ -87,7 +87,7 @@ function EditProfile() {
             <p>Employee Type</p>
           </div>
           <div className="bg-bgc p-2 mb-2 w-1/2 pr-2">
-          <select value={profileInfo.Employeetype} onChange={(e) =>  handleInputChange(e, 'Employeetype')} className="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <select value={profileInfo.employeeType} onChange={(e) =>  handleInputChange(e, 'employeeType')} className="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
           <option value="HR_Manager">HR Manager</option>
           <option value="Stock_Manager">Stock Manager</option>
           <option value="Repair_Manager">Repair Manager</option>

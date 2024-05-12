@@ -79,7 +79,6 @@ function Register() {
     axios.post("http://localhost:5555/RegisCus", newUser)
       .then((result) => {
         const token = result.data.token;
-        // Store token securely, for example using sessionStorage
         sessionStorage.setItem('token', token);
         navigate("/LoginCus");
       })

@@ -60,6 +60,12 @@ function Register() {
       setError("Please enter a valid 10-digit phone number.");
       return;
     }
+
+    if (password.length < 8 || !/\d/.test(password) || !/[!@#$%^&*]/.test(password)) {
+      setError("Password must be at least 8 characters long and contain at least one digit and one special character.");
+      return;
+    }
+    
     if (password !== password2) {
       setError("Passwords do not match.");
       return;
@@ -71,17 +77,20 @@ function Register() {
       emailAddress,
       phoneNumber,
       password,
-      employeeType,
+      employeeType: employeeType,
     };
 
     console.log(newUser);
-
     axios.post("http://localhost:5555/RegisEmp", newUser)
       .then((result) => {
-        console.log(result);
+        const token = result.data.token;
+        sessionStorage.setItem('token', token);
         navigate("/LoginEmp");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError("An error occurred. Please try again later.");
+        console.log(err);
+      });
   };
 
 

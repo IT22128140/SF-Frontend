@@ -9,7 +9,7 @@ function Profile() {
     LastName: "",
     emailAddress: "",
     phoneNumber: "",
-    Employeetype: "",
+    employeeType: "",
     password: "",
   });
 
@@ -59,7 +59,7 @@ function Profile() {
         <p>Employee Type</p>
         </div>
         <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
-          <p>{profileInfo.Employeetype}</p>
+          <p>{profileInfo.employeeType}</p>
         </div>
         <div className="bg-primary p-2 mb-2 w-1/2 pr-2">
           <p>Password</p>

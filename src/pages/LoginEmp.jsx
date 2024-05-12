@@ -9,7 +9,7 @@ const emailAddressPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 function Login() {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
-  const [loginType, setLoginType] = useState("");
+  const [employeeType, setemployeeType] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -30,8 +30,8 @@ function Login() {
       newErrors.password = "Password must be at least 6 characters long.";
     }
 
-    if (!loginType) {
-      newErrors.loginType = "Login type is required";
+    if (!employeeType) {
+      newErrors.employeeType = "Employee type is required";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -42,11 +42,12 @@ function Login() {
     const login = {
       emailAddress,
       password,
-      loginType,
-    }
+      employeeType,
+    };
+    console.log(login);
 
     try {
-      const result = await axios.post("http://localhost:5555/LoginEmp",login);
+      const result = await axios.post("http://localhost:5555/LoginEmp", login);
 
       console.log(result);
       if (result.data) {
@@ -54,14 +55,14 @@ function Login() {
         navigate("/ProfileEmp");
       } else {
         navigate("/LoginEmp");
-        alert("Please Check Your Email , Password and Login Type");
+        alert("Please Check Your Email, Password, and Employee Type");
       }
     } catch (error) {
       console.error("An error occurred:", error);
       // Handle error, maybe show a message to the user
     }
+  };
 
-}
   return (
     <div className="flex flex-col items-center select-none">
       <NavbarLogo />
@@ -88,20 +89,18 @@ function Login() {
           {errors.password && <p className="text-red-500">{errors.password}</p>}
           <select
             className="mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
-            value={loginType}
-            onChange={(e) => setLoginType(e.target.value)}
+            value={employeeType}
+            onChange={(e) => setemployeeType(e.target.value)}
           >
-            <option hidden>Select login type</option>
+            <option hidden>Select Employee type</option>
             <option value="HR_Manager">HR Manager</option>
             <option value="Stock_Manager">Stock Manager</option>
             <option value="Repair_Manager">Repair Manager</option>
             <option value="Process_Manager">Process Manager</option>
-            <option value="Quality_Control_Manager">
-              Quality Control Manager
-            </option>
+            <option value="Quality_Control_Manager">Quality Control Manager</option>
             <option value="Store_Manager">Store Manager</option>
           </select>
-        {errors.loginType && <p className="text-red-500">{errors.loginType}</p>}
+        {errors.employeeType && <p className="text-red-500">{errors.employeeType}</p>}
           <button className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md" onClick={handleSubmit}>
             Login
           </button>
