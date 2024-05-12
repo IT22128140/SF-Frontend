@@ -75,7 +75,7 @@ function Register() {
       phoneNumber,
       password
     };
-console.log(newUser);
+    console.log(newUser);
     axios.post("http://localhost:5555/RegisCus", newUser)
       .then((result) => {
         const token = result.data.token;

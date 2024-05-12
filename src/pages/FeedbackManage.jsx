@@ -30,7 +30,7 @@ const FeedbackPage = () => {
     }
     return stars;
   };
-  
+
   const handleSearch = (event) => {
     const searchTermNumber = Number(event.target.value);
     if (!isNaN(searchTermNumber) && searchTermNumber >= 1 && searchTermNumber <= 5) {
@@ -45,13 +45,14 @@ const FeedbackPage = () => {
   };
 
   const filteredFeedbacks = feedbacks
-  .filter(feedback => {
-    if (searchTerm) {
-      return feedback.rating === searchTerm;
-    }
-    return true;
-  })
-  .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    .filter(feedback => {
+      if (searchTerm) {
+        return feedback.rating === searchTerm;
+      }
+      return true;
+    })
+    .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -87,4 +88,6 @@ const FeedbackPage = () => {
       <Footer />
     </div>
   );
-};export default FeedbackPage;
+};
+
+export default FeedbackPage;

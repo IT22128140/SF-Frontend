@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const emailAddressPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
-function Login() {
+const Login = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -29,31 +29,33 @@ function Login() {
       newErrors.password = "Password must be at least 6 characters long.";
     }
 
-    setErrors(newErrors);
-    console.log(emailAddress, password);
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
-    if (Object.keys(newErrors).length === 0) {
+    const login = {
+      emailAddress,
+      password,
+    }
+
       try {
-        const response = await axios.post("http://localhost:5555/LoginCus", {
-          emailAddress,
-          password,
-        });
+        const result = await axios.post("http://localhost:5555/LoginCus",login);
 
-        if (response.data.message === "Login successful") {
-          const token = response.data.token;
-          localStorage.setItem("token", token);
-          navigate("/home");
+        console.log(result);
+        if (result.data) {
+          sessionStorage.setItem("token", result.data._id);
+          navigate("/ProfileCus");
         } else {
           navigate("/LoginCus");
-          alert("You are not registered to this service");
+          alert("Please Check Your Email and Password ");
         }
       } catch (error) {
         console.error("An error occurred:", error);
         // Handle error, maybe show a message to the user
       }
-    }
-  };
-
+  
+  }
   return (
     <div className="flex flex-col items-center select-none">
       <NavbarLogo />
@@ -76,6 +78,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           {errors.password && <p className="text-red-500">{errors.password}</p>}
+          {/* {token && <p>Token: {token}</p>} */}
           <button type="submit" className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md">
             Login
           </button>

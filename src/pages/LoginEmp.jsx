@@ -39,15 +39,19 @@ function Login() {
       return;
     }
 
+    const login = {
+      emailAddress,
+      password,
+      loginType,
+    }
+
     try {
-      const result = await axios.post("http://localhost:5555/LoginEmp", {
-        emailAddress,
-        password,
-        loginType,
-      });
+      const result = await axios.post("http://localhost:5555/LoginEmp",login);
+
       console.log(result);
-      if (result.data === "Success") {
-        navigate("/home");
+      if (result.data) {
+        sessionStorage.setItem("token", result.data._id);
+        navigate("/ProfileEmp");
       } else {
         navigate("/LoginEmp");
         alert("Please Check Your Email , Password and Login Type");
@@ -56,8 +60,8 @@ function Login() {
       console.error("An error occurred:", error);
       // Handle error, maybe show a message to the user
     }
-  };
 
+}
   return (
     <div className="flex flex-col items-center select-none">
       <NavbarLogo />
