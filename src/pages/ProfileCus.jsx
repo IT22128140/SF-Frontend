@@ -3,7 +3,7 @@ import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
 
-function Profile() {
+const Profile =() => {
   const [profileInfo, setProfileInfo] = useState({
     FirstName: '',
     LastName: '',
@@ -12,18 +12,16 @@ function Profile() {
     password: '',
   });
 
-  useEffect(() => {
-    const fetchProfileInfo = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5555/ProfileCus`);
-        setProfileInfo(response.data);
-      } catch (error) {
-        console.error("Error fetching profile information:", error);
-      }
-    };
 
-    fetchProfileInfo();
-  }, []);
+  useEffect(() => {
+
+        const token = sessionStorage.getItem("token");
+        axios.get(`http://localhost:5555/ProfileCus/${token}`).then((response) => {
+          setProfileInfo(response.data);
+        }).catch((error) => {
+          console.error("Error fetching profile information:", error);
+        });
+      }, []);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">

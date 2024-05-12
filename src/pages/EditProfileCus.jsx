@@ -12,16 +12,13 @@ function EditProfile() {
   });
 
   useEffect(() => {
-    const fetchProfileInfo = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5555/EditProfileCus`);
-        setProfileInfo(response.data);
-      } catch (error) {
-        console.error("Error fetching profile information:", error);
-      }
-    };
 
-    fetchProfileInfo();
+    const token = sessionStorage.getItem("token");
+    axios.get(`http://localhost:5555/ProfileCus/${token}`).then((response) => {
+      setProfileInfo(response.data);
+    }).catch((error) => {
+      console.error("Error fetching profile information:", error);
+    });
   }, []);
 
   const handleInputChange = (e, field) => {
@@ -34,7 +31,7 @@ function EditProfile() {
   const handleSaveProfile = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5555/EditProfileCus/save`,
+        `http://localhost:5555/EditProfileCus`,
         profileInfo
       );
       console.log("Profile information saved:", response.data);
@@ -46,7 +43,7 @@ function EditProfile() {
   const handleDeleteProfile = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:5555/EditProfileCus/delete/${profileInfo.emailAddress}`
+        `http://localhost:5555/EditProfileCus${profileInfo.emailAddress}`
       );
       console.log("Profile deleted:", response.data);
     } catch (error) {
@@ -97,7 +94,7 @@ function EditProfile() {
                 <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
                 onClick={handleSaveProfile} 
                 >SAVE</button>
-                <button className="bg-red1 text-white font-bold py-2 px-8 rounded mt-4"
+                <button className="bg-red text-white font-bold py-2 px-8 rounded mt-4"
                 onClick={handleDeleteProfile} 
                 >DELETE</button>
             </div>

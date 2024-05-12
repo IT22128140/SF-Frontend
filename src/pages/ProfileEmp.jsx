@@ -9,21 +9,18 @@ function Profile() {
     LastName: "",
     emailAddress: "",
     phoneNumber: "",
-    Employeetype: "",
+    employeeType: "",
     password: "",
   });
 
   useEffect(() => {
-    const fetchProfileInfo = async () => {
-      try {
-        const response = await axios.get("http://localhost:5555/ProfileEmp");
-        setProfileInfo(response.data);
-      } catch (error) {
-        console.error("Error fetching profile information:", error);
-      }
-    };
 
-    fetchProfileInfo();
+    const token = sessionStorage.getItem("token");
+    axios.get(`http://localhost:5555/ProfileEmp/${token}`).then((response) => {
+      setProfileInfo(response.data);
+    }).catch((error) => {
+      console.error("Error fetching profile information:", error);
+    });
   }, []);
 
  return (
@@ -62,7 +59,7 @@ function Profile() {
         <p>Employee Type</p>
         </div>
         <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
-          <p>{profileInfo.Employeetype}</p>
+          <p>{profileInfo.employeeType}</p>
         </div>
         <div className="bg-primary p-2 mb-2 w-1/2 pr-2">
           <p>Password</p>
