@@ -43,11 +43,11 @@ const SalaryTable = () => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <HrNavbar sal={true} />
       <div className="p-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
             Salary List
           </h1>
         </div>
@@ -57,7 +57,7 @@ const SalaryTable = () => {
 
         <br />
         <br />
-        <table className="min-w-full">
+        <table className="min-w-full bg-white">
           <TableView headers={headers} />
           <tbody>
             {loading ? (
@@ -91,13 +91,13 @@ const SalaryTable = () => {
                     {salary.totalAmount}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.cheque1}{" "}
+                    {salary.cheque1 && <img src={salary.cheque1} alt="cheque" />} 
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.date}{" "}
+                    {salary.date}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.notice}{" "}
+                    {salary.notice}
                   </td>
 
                   <td className="border border-slate-700 rounded-md text-center">

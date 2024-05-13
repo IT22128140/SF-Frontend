@@ -12,6 +12,7 @@ import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 const EditMpart =() => {
+  const [partID, setpartID] = useState('');
     const [partName, setpartName] = useState('');
     const [purchasedDate, setpurchasedDate] = useState ('');
     const [condition, setcondition] = useState('');
@@ -19,6 +20,7 @@ const EditMpart =() => {
     const [quantity , setquantity] = useState('');
     const [manufacturer, setmanufacturer] = useState('');
     const [loading,setLoading] = useState(false);
+    const [validationErrors, setValidationErrors] = useState({});
     const navigate = useNavigate();
     const {id} = useParams();
     
@@ -26,6 +28,7 @@ const EditMpart =() => {
         setLoading(true);
         axios.get(`http://localhost:5555/MPstock/${id}`)
             .then((response) =>{
+              setpartName(response.data.partID);
                 setpartName(response.data.partName);
                 setpurchasedDate(response.data.purchasedDate);
                 setcondition(response.data.condition);
@@ -40,8 +43,45 @@ const EditMpart =() => {
             });
     }, [id]);
     
+    
     const handleEditmachinepart = () => {
+      
+      const errors = {};
+
+      if (!partID) {
+          errors.partID = 'Part ID is required';
+      }
+
+      if (!partName) {
+          errors.partName = 'Part Name is required';
+      }
+
+      if (!purchasedDate) {
+          errors.purchasedDate = 'Purchased Date is required';
+      }
+
+      if (!condition) {
+          errors.condition = 'Condition is required';
+      }
+
+      if (costPerUnit < 0) {
+          errors.costPerUnit = 'Cost Per Unit should not be negative';
+      }
+
+      if (quantity < 0) {
+          errors.quantity = 'Quantity should not be negative';
+      }
+
+      if (!manufacturer) {
+          errors.manufacturer = 'Manufacturer is required';
+      }
+
+      if (Object.keys(errors).length > 0) {
+          setValidationErrors(errors);
+          return;
+      }
        const data = {
+        partID,
         partName,
         purchasedDate,
         condition,
@@ -74,7 +114,16 @@ const EditMpart =() => {
       </div>
         {loading ? <Spinner/> : ''}
         <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
-
+        <div className='my-4'>
+                <label className='mr-4 text-xl text-gray-500 font-Philosopher'>partID</label>
+                <input
+                 type='String'
+                 value={partID}
+                 onChange={(e) => setpartID(e.target.value)}
+                  className='w-full px-4 py-2 border-2 border-gray-500'
+                />
+                 {validationErrors.partID && <small className="text-red-500">{validationErrors.partID}</small>}
+                </div>
             <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>partName</label>
                 <input
@@ -83,15 +132,17 @@ const EditMpart =() => {
                  onChange={(e) => setpartName(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
+                 {validationErrors.partName && <small className="text-red-500">{validationErrors.partName}</small>}
                 </div>
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>purchasedDate</label>
                 <input
-                 type='String'
+                 type='Date'
                  value={purchasedDate}
                  onChange={(e) => setpurchasedDate(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
+                {validationErrors.purchasedDate && <small className="text-red-500">{validationErrors.purchasedDate}</small>}
                 </div>
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-philosopher'>condition</label>
@@ -101,6 +152,7 @@ const EditMpart =() => {
                  onChange={(e) => setcondition(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
+                 {validationErrors.condition && <small className="text-red-500">{validationErrors.condition}</small>}
                 </div>
               
                 <div className='my-4'>
@@ -111,6 +163,7 @@ const EditMpart =() => {
                  onChange={(e) => setcostPerUnit(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
+                  {validationErrors.costPerUnit && <small className="text-red-500">{validationErrors.costPerUnit}</small>}
                 </div>
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>quantity</label>
@@ -120,15 +173,17 @@ const EditMpart =() => {
                  onChange={(e) => setquantity(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
+                  {validationErrors.quantity && <small className="text-red-500">{validationErrors.quantity}</small>}
                 </div>
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>manufacturer</label>
                 <input
-                 type='Date'
+                 type='String'
                  value={manufacturer}
                  onChange={(e) => setmanufacturer(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
+                  {validationErrors.manufacturer && <small className="text-red-500">{validationErrors.manufacturer}</small>}
                 </div>
                 <SubmitButton onClick={handleEditmachinepart} className="mr-2">Submit</SubmitButton>
     
