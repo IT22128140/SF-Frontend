@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/searchBar2";
+import SearchBar from "../../components/SearchBar3";
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
@@ -46,7 +46,7 @@ productReviews.forEach((request) => {
   const totalItemCount = productReviews.length;
 
   return (
-    <div className='p-4'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
         <QENavbar
         home={true}
         cel={false}
