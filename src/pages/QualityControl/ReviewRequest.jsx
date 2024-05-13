@@ -3,7 +3,7 @@ import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
-import SearchBar from "../../components/searchBar2";
+import SearchBar from "../../components/SearchBar3.jsx";
 import TableView from '../../components/table/TableView';
 import AcceptButton from "../../components/button2/AcceptButton";
 import EditButton from "../../components/button2/EditButton";
@@ -26,7 +26,7 @@ const ReviewRequest = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/qualityControl/productRequest')
+      .get('http://localhost:5555/qualityControl/productRequest/requestReview')
       .then((response) => {
         setProductRequests(response.data.data);
 
@@ -59,10 +59,10 @@ const ReviewRequest = () => {
 
 
   return (
-    <div className='p-4'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
-        home={true}
-        cel={false}
+        home={false}
+        cel={true}
         rel={false}
         fel={false}
         att={false}
