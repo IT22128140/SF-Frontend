@@ -9,6 +9,7 @@ import SearchBar from "../../components/searchBar2";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
 
@@ -48,14 +49,15 @@ const PendingReview = () => {
   return (
     <div className='p-4'>
         <QENavbar
-        home={true}
+        home={false}
         cel={false}
-        rel={false}
+        rel={true}
         fel={false}
         att={false}
         sal={false}
       />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Pending Review For Quality Evaluation</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Pending Review For Quality Evaluation</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
 
     
       <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
@@ -63,7 +65,7 @@ const PendingReview = () => {
         <Spinner />
     ) : (
         <div>
-        <table className='min-w-full'>
+        <table className='mx-auto font-BreeSerif mb-5 bg-white'>
             <TableView headers={headers} />
             <tbody>
                 {productRequests && filteredRequests.map((productRequest, index) => (
@@ -114,7 +116,10 @@ const PendingReview = () => {
         </div>
     </div>    
     )}
-
+    <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+    <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+    <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+<StaffFooter />
 </div>
   );
 };
