@@ -14,6 +14,7 @@ const SlipUpload = () => {
   const [bankName, setBankName] = useState("");
   const [branchName, setBranchName] = useState("");
   const [fullName, setFullName] = useState("");
+  const [paymentSlip, setPaymentSlip] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ const SlipUpload = () => {
       bankName,
       branchName,
       fullName,
+      paymentSlip,
     };
 
     try {
@@ -84,6 +86,17 @@ const SlipUpload = () => {
       setLoading(false);
       alert("An error occurred while processing your request");
     }
+  };
+
+  const handlePaymentSlip = async (e) => {
+    const file = e.target.files[0];
+    const fileSizeMB  = file.size / (1024 / 1024);
+    if (fileSizeMB > 5) {
+      alert("File size must be less than 5MB");
+      return;
+    }
+    const base64 = await convertToBase64(file);
+    setPaymentSlip(base64);
   };
 
   return (
@@ -128,7 +141,10 @@ const SlipUpload = () => {
           </label>
           <input
             type="file"
-            onChange={(e) => setPayment(e.target.files[0])}
+            name="paymentSlip"
+            id="paymentSlip"
+            accept=".jpg,.jpeg,.png,.pdf"
+            onChange={(e) =>handlePaymentSlip (e.target.files[0])}
             className="appearance-none border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[300px] w-60 h-20"
           />
 
@@ -211,4 +227,17 @@ const SlipUpload = () => {
   );
 };
 
-export default SlipUpload;
+export default SlipUpload
+
+function convertToBase64(file){
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}
