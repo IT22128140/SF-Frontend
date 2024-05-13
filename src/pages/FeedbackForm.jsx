@@ -21,6 +21,7 @@ const StarRating = ({ rating, onStarClick }) => {
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
+    id: '',
     name: '',
     email: '',
     phoneNumber: '', 
@@ -62,14 +63,20 @@ const FeedbackForm = () => {
 
     try {
       console.log('Sending form data:', formDataCopy);
-      await axios.post('http://localhost:5555/feedback', formDataCopy);
+      const response = await axios.post('http://localhost:5555/feedback', formDataCopy);
+      const feedbackId = response.data.id; // Get the ID from the response data
+      setFormData({
+        ...formData,
+        id: feedbackId, // Set the ID in the formData state
+      });
       console.log('Form data sent successfully');
       setFormData({
+        id: '',
         name: '',
         email: '',
         phoneNumber: '',
         feedback: '',
-        rating: 0,
+        rating: 0, 
       });
     } catch (error) {
       console.error('Error sending form data:', error);

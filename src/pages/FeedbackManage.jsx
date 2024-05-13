@@ -16,6 +16,7 @@ const FeedbackPage = () => {
         setFeedbacks(response.data);
       } catch (error) {
         console.error('Error fetching feedbacks:', error);
+        // Handle the error appropriately (e.g., display an error message)
       } finally {
         setLoading(false);
       }
@@ -41,8 +42,24 @@ const FeedbackPage = () => {
     }
   };
 
-  const handleContact = (name, email, phoneNumber) => {
-    setContactData({ name, email, phoneNumber });
+  const handleContact = (id, name, email, phoneNumber) => {
+    setContactData({ id, name, email, phoneNumber });
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      console.log(id)
+      await axios.delete(`http://localhost:5555/feedbacks/${id}`);
+  
+      // Update the UI to remove the deleted feedback item
+      setFeedbacks(prevFeedbacks => prevFeedbacks.filter(feedback => feedback.id !== id));
+  
+      // Provide feedback to the user
+      console.log(`Feedback with ID ${id} deleted successfully.`);
+    } catch (error) {
+      console.error('Error deleting feedback:', error);
+      // Handle the error appropriately (e.g., display an error message to the user)
+    }
   };
 
   const filteredFeedbacks = feedbacks
@@ -66,20 +83,24 @@ const FeedbackPage = () => {
       </div>
       <h2 className="text-4xl font-semibold mb-4 text-center">FEEDBACKS</h2>
       <div className="grid grid-cols-1 gap-4">
-        {filteredFeedbacks.map((feedback, index) => (
-          <div key={index} className="border border-primary p-4 rounded-md">
-            <div className="text-yellow-500 text-3xl">
-              <p>{renderStarRating(feedback.rating)}</p>
-            </div>
-            <p>{feedback.feedback}</p>
-            <button onClick={() => handleContact(feedback.name, feedback.email, feedback.phoneNumber)} className="mt-2 bg-green-500 text-white px-2 py-1 rounded-md">Contact {feedback.name}</button>
+      {filteredFeedbacks.map((feedback, index) => (
+      <div key={index} className="border border-primary p-4 rounded-md ">
+        <div className="text-yellow-500 text-3xl">
+          <p>{renderStarRating(feedback.rating)}</p>
           </div>
-        ))}
+          <p>{feedback.feedback}</p>
+          <div className="flex justify-between items-center">
+            <button onClick={() => handleContact(feedback.id,feedback.name, feedback.email, feedback.phoneNumber)} className="bg-green-500 text-white px-2 py-1 rounded-md">Contact {feedback.name}</button>
+            <button onClick={() => handleDelete(feedback.id)} className="bg-red text-white px-2 py-1 rounded-md">Delete</button>
+            </div>
+            </div>
+          ))}
       </div>
       {contactData && (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
           <div className="bg-white p-4 rounded-md">
             <h2 className="text-2xl font-bold mb-4">Contact Details</h2>
+            <p>ID: {contactData.id}</p>
             <p>Name: {contactData.name}</p>
             <p>Email: {contactData.email}</p>
             <p>Phone Number: {contactData.phoneNumber}</p>
