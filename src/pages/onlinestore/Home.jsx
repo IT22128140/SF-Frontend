@@ -6,7 +6,6 @@ import Footer from "../../components/footer/Footer.jsx";
 import Navbar from "../../components/navbar/CustomerNavbar.jsx";
 import HorizontalScroll from "../../components/HorizontalScroll.jsx";
 import Category from "../../components/home/Category.jsx";
-import { enqueueSnackbar } from "notistack";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -22,7 +21,6 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        enqueueSnackbar("Error fetching items", { variant: "error" });
       });
   }, []);
 

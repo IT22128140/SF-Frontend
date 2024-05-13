@@ -28,9 +28,9 @@ const CompletedrmRequests = () => {
       });
   }, []);
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='relative'>
       <PMHeader rmr = {true} />
-      <div>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       {/* <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>

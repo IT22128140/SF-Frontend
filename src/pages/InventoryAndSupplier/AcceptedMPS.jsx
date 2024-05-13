@@ -36,19 +36,15 @@ const AcceptedMPS = () =>{
 
 
     return (
-        <div>
-              <IsNavbar sh={true}/>
-             <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-            
-            <Link to={'/Shortages/view'}>
-  <button className="px-4 py-2 text-white transition-colors duration-300 ease-in-out rounded-md shadow-md hite bg-ternary hover:ternary font-Lavish">
-    Pending Shortages
-  </button>
-</Link>
-
+        <div className='relative'>
+            <IsNavbar sh={true}/>
+            <Link to={'/mpshortages/view'}>
+            <button>Pending Shortages</button>
+            </Link>
+           
 
             <div className='flex items-center justify-between'>
-                <h1 className='my-8 text-5xl font-semibold font-Philosopher text-ternary alignment-center'>Machine Parts  List</h1>
+                <h1 className='my-8 text-3xl'>Machine Part Shortages List</h1>
             </div>
             
             {loading ? (
@@ -84,10 +80,15 @@ const AcceptedMPS = () =>{
                                 </td>
                                 <td className='text-center border rounded-md border-slate-700'>
                                     <div className='flex justify-center ml-2 mr-2 gap-x-4'>
-                                        <Link to={`/Shortages/Viewshortage/${mpshortage._id}`}>
+                                        <Link to={`/mpshortages/view/${mpshortage._id}`}>
                                             <ViewButton/>
                                         </Link>
-                                       
+                                        <Link to={`/mpshortages/edit/${mpshortage._id}`}>
+                                            <EditButton/>
+                                        </Link>
+                                        <Link to={`/mpshortages/delete/${mpshortage._id}`}>
+                                            <DeleteButton />
+                                        </Link>
                                     </div>
                                 </td>
                             </tr>
@@ -101,7 +102,7 @@ const AcceptedMPS = () =>{
             )}
 
                 <StaffFooter/>
-        </div></div>
+        </div>
     );
 };
 

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import { Link } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import AcceptButton from '../../components/button2/AcceptButton';
 import CancelButton from '../../components/button2/CancelButton';
@@ -14,7 +13,6 @@ const ViewFinalProduct = () => {
   const [productRequest, setProductRequest] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
-  
 
   useEffect(() => {
     setLoading(true);
@@ -22,7 +20,6 @@ const ViewFinalProduct = () => {
       .get(`http://localhost:5555/qualityControl/productRequest/${id}`)
       .then((response) => {
         setProductRequest(response.data);
-        
         setLoading(false);
       })
       .catch((error) => {
@@ -36,7 +33,6 @@ const ViewFinalProduct = () => {
       await axios.put(`http://localhost:5555/qualityControl/productRequest/${id}/updateAcceptStatus`);
       // Update the acceptStatus in the local state
       setProductRequest(prevState => ({ ...prevState, acceptStatus: 'Accept' }));
-      useSnackbar('Request updated successfully', { variant: 'success' });
       setLoading(false);
       navigate('/qualityControl/reviewRequest/pendingRequest');
     } catch (error) {

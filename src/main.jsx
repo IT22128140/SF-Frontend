@@ -7,11 +7,7 @@ import { SnackbarProvider } from 'notistack'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <SnackbarProvider
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}>
+    <SnackbarProvider>
       <App />
     </SnackbarProvider>
   </BrowserRouter>,

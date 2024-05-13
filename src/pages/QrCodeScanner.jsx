@@ -1,77 +1,54 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
-
-import Html5QrcodePlugin from "../components/qrscanner/Html5QrcodePlugin.jsx";
-import ResultContainerPlugin from "../components/qrscanner/ResultContainerPlugin.jsx";
+import { Html5QrcodeScanner } from "html5-qrcode";
 import axios from "axios";
 
-const QrCodeScanner = () => {
-  const [decodedResults, setDecodedResults] = useState([]);
-  const [employee, setEmployee] = useState({});
 
-  const onNewScanResult = (decodedText, decodedResult) => {
-    // console.log("App [result]", decodedResult);
-    setDecodedResults((prev) => [...prev, decodedResult]);
-  };
+const QrCodeScanner = () => {
+//   const [scanResult, setScanResult] = useState(null);
+  const [empData, setEmpData] = useState([]);
 
   useEffect(() => {
-    if (decodedResults.length > 0) {
-      const lastResult = decodedResults[decodedResults.length - 1];
+    const scanner = new Html5QrcodeScanner("reader", {
+      qrbox: {
+        width: 500,
+        height: 500,
+      },
+      fps: 5,
+    });
 
-      axios
-        .get(`http://localhost:5555/employee/${lastResult.decodedText}`)
-        .then((res) => {
-          console.log(res.data);
-          setEmployee(res.data);
-          axios
-            .post("http://localhost:5555/attendance", {
-              empId: lastResult.decodedText,
-              generatedEmpId: res.data.employeeID,
-            })
-            .then((res) => {
-              console.log(res.data);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    scanner.render(success, error);
 
-      // axios
-      //   .post("http://localhost:5555/attendance", {
-      //     empId: lastResult.decodedText,
-      //     generatedEmpId: employee.employeeID,
-      //   })
-      //   .then((res) => {
-      //     console.log(res.data);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+    function success(result) {
+      scanner.clear();
+      axios.get(`http://localhost:5555/employee/${result}`).then((res) => {
+        setEmpData(res.data);
+      });
+    //   setScanResult(result);
     }
-  }, [decodedResults]);
+
+    function error(err) {
+      console.log(err);
+    }
+  }, []);
+
+  console.log(empData);
 
   return (
-    <div>
+    <div className="">
       <center>
-        <h1 className="text-4xl font-Philosopher text-ternary font-semibold my-8">
-          Scan Your QR Code Here
+        <h1 className="text-4xl my-8 font-Philosopher text-ternary font-semibold">
+          Scan your ID :{" "}
         </h1>
-      </center>
 
-      <div className="flex flex-row justify-evenly h-full w-full">
-        <div className="w-1/2 ">
-          <Html5QrcodePlugin
-            fps={1}
-            qrbox={500}
-            disableFlip={false}
-            qrCodeSuccessCallback={onNewScanResult}
-          />
-        </div>
-        <ResultContainerPlugin results={employee} />
-      </div>
+        {empData._id ? (
+          <div className="text-2xl font-BreeSerif text-black mr-10">
+            Success: {empData.firstName} {empData.lastName}
+          </div>
+        ) : (
+          <div className="h-[800px] w-[800px]" id="reader"></div>
+        )}
+      </center>
     </div>
   );
 };

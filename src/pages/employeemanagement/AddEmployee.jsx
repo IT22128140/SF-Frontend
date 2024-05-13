@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
+import BackButton from "../../components/button/BackButton.jsx";
 import Spinner from "../../components/Spinner.jsx";
 import Input from "../../components/form/Input.jsx";
 import SubmitButton from "../../components/button2/SubmitButton.jsx";
@@ -73,9 +74,10 @@ const AddEmployee = () => {
   };
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition:'top right', backgroundSize:'cover' }}>
+    <div>
       <HrNavbar cel={true} />
       <div className="p-4">
+        <BackButton />
         <center>
           <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary">
             New Employee Intergration
