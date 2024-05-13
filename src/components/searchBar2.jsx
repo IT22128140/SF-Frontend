@@ -31,4 +31,4 @@ const SearchBar = ({ data, setSearchResults }) => {
   );
 };
 
-export default SearchBar;
+export default SearchBar;
