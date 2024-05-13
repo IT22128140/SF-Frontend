@@ -37,18 +37,37 @@ function EditProfile() {
   };
 
   const handleSaveProfile = async () => {
-    try {
-      const token = sessionStorage.getItem("token");
-      const response = await axios.put(`http://localhost:5555/EditProfileEmp/${token}`, profileInfo);
-      console.log("Profile information saved:", response.data);
-    } catch (error) {
-      console.error("Error saving profile:", error);
+    if (!profileInfo.FirstName || !profileInfo.LastName || !profileInfo.emailAddress || !profileInfo.phoneNumber || !profileInfo.password || !profileInfo.employeeType) {
+        alert("Please fill in all the fields.");
+        return;
     }
-  };
+
+    if (!/\S+@\S+\.\S+/.test(profileInfo.emailAddress)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+    
+    if (!/^\d{10}$/.test(profileInfo.phoneNumber)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
+
+    if (profileInfo.password.length < 8 || !/\d/.test(profileInfo.password) || !/[!@#$%^&*]/.test(profileInfo.password)) {
+        alert("Password must be at least 8 characters long and contain at least one digit and one special character.");
+        return;
+    }
+
+    try {
+        const token = sessionStorage.getItem("token");
+        const response = await axios.put(`http://localhost:5555/EditProfileEmp/${token}`, profileInfo);
+        console.log("Profile information saved:", response.data);
+    } catch (error) {
+        console.error("Error saving profile:", error);
+    }
+};
 
   const handleDeleteProfile = async () => {
     
-  
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.delete(`http://localhost:5555/EditProfileEmp/${token}`);
