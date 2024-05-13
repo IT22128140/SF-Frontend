@@ -24,7 +24,7 @@ const QENavbar = (props) => {
         <NavbarButton active={props.rel} button={"Pending Review"} url={"/qualityControl/reviewRequest/pendingRequest"} />
         <NavbarButton active={props.fel} button={"Review Report"} url={"/qualityControl/reviewReport"} />
         <NavbarButton active={props.att} button={"Release Product"} url={"/qualityControl/releaseProduct"} />
-        <NavbarButton active={props.sal} button={"Daily Note"} url={"/qualityControl/releaseProduct"} />
+        
       </div>
     </div>
   );
