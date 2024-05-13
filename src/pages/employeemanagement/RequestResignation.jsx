@@ -4,11 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner.jsx";
+import BackButton from "../../components/button/BackButton.jsx";
 import SubmitButton from "../../components/button2/SubmitButton.jsx";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import CancelButton from "../../components/button2/CancelButton.jsx";
-import { textValidation } from "../../utils/inputValidations.js";
 
 const RequestResignation = () => {
   const [empID, setEmpID] = useState("");
@@ -27,7 +27,7 @@ const RequestResignation = () => {
       .get(`http://localhost:5555/employee/${recieved}`)
       .then((res) => {
         const data = res.data;
-        setEmpID(data.employeeID);
+        setEmpID(data._id);
         setFirstName(data.firstName);
         setLastName(data.lastName);
         setLoading(false);
@@ -61,11 +61,11 @@ const RequestResignation = () => {
   };
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div>
       <HrNavbar req={true} />
 
       <div className="p-4">
-        {/* <BackButton /> */}
+        <BackButton />
         {loading ? <Spinner /> : ""}
 
         <div className="bg-bgc border-2 border-bgc rounded-xl w-[900px] p-8 mx-auto font-BreeSerif m-4">
@@ -165,7 +165,7 @@ const RequestResignation = () => {
               <SubmitButton onClick={handleResignation} />
             </div>
             <div className="mr-10">
-              <Link to="/employees/CurrentEmployeeList">
+              <Link to="#">
                 <CancelButton />
               </Link>
             </div>

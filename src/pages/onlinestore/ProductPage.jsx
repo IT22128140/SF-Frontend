@@ -8,7 +8,6 @@ import Input from "../../components/form/Input.jsx";
 import InputNoLable from "../../components/form/InputNoLable.jsx";
 import { numberValidation } from "../../utils/inputValidations.js";
 import Footer from "../../components/footer/Footer.jsx";
-import { enqueueSnackbar } from "notistack";
 
 const ProductPage = () => {
   const [product, setProduct] = useState({});
@@ -48,14 +47,14 @@ const ProductPage = () => {
     axios
       .post("http://localhost:5555/cart/65f888fbae65af39470abd22", cart)
       .then((response) => {
+        alert("Added to cart");
         console.log(response);
         setLoading(false);
-        enqueueSnackbar("Added to cart",   { variant: "success" } );
       })
       .catch((error) => {
         console.log(error);
+        alert("Error adding to cart");
         setLoading(false);
-        enqueueSnackbar("Error adding to cart", { variant: "error" });
       });
   });
 

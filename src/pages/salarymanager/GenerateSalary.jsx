@@ -22,14 +22,8 @@ const GenerateSalary = () => {
   const [overtimeHours, setOvertimeHours] = useState(0);
   const [bonus, setBonus] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  // const [cheque1, setCheque1] = useState({cheque1: ""});
-  const [cheque1, setCheque1] = useState("");
   const [date, setDate] = useState("");
   const [notice, setNotice] = useState("");
-  const [attendanceError, setAttendanceError] = useState("");
-  const [overtimeError, setOvertimeError] = useState("");
-  const [bonusError, setBonusError] = useState("");
-  const [noticeError, setNoticeError] = useState("");
 
   const calculateTotalAmount = () => {
     const basic = parseFloat(basicSalary);
@@ -39,47 +33,18 @@ const GenerateSalary = () => {
     let totalAmountValue;
 
     if (attendance >= 27 && attendance <= 30) {
-      totalAmountValue = (basic + overtime * 200 + bonusAmount + 3000).toFixed(2);
+      totalAmountValue = (basic + overtime * 200 + bonusAmount).toFixed(2);
     } else if (attendance >= 24 && attendance < 27) {
-      const adjustedSalary = basic + overtime * 200 + bonusAmount - 5000;
-      totalAmountValue = adjustedSalary.toFixed(2);
-    } else if (attendance >= 20 && attendance < 24) {
-      const adjustedSalary = basic + overtime * 200 + bonusAmount - 7000;
-      totalAmountValue = adjustedSalary.toFixed(2);
-    } else if (attendance >= 15 && attendance < 20) {
-      const adjustedSalary = basic + overtime * 200 + bonusAmount;
+      const adjustedSalary = basic + overtime * 200 + bonusAmount + 3000;
       totalAmountValue = adjustedSalary.toFixed(2);
     } else {
-      const adjustedSalary = basic;
-      totalAmountValue = adjustedSalary.toFixed(2);
+      totalAmountValue = "Invalid attendance range";
     }
 
     setTotalAmount(totalAmountValue);
   };
 
-  const handleSaveSalary = (e) => {
-    e.preventDefault();
-    // createCheque(cheque1);
-    console.log("uploded");
-
-
-    if (attendance > 30 || attendance < 0) {
-      setAttendanceError("Attendance should be between 0 and 30");
-      return;
-    }
-    if (overtimeHours > 200 || overtimeHours < 0) {
-      setOvertimeError("Overtime hours should be between 0 and 200");
-      return;
-    }
-    if (bonus > 100000 || bonus < 0) {
-      setBonusError("Bonus should be between 0 and 100,000");
-      return;
-    }
-    if (notice.split(/\s+/).filter(Boolean).length > 50) {
-      setNoticeError("Notice text cannot exceed 50 words");
-      return;
-    }
-
+  const handleSaveSalary = () => {
     const data = {
       firstName,
       lastName,
@@ -90,7 +55,6 @@ const GenerateSalary = () => {
       attendance,
       overtime: overtimeHours,
       bonus,
-      cheque1,
       totalAmount,
       date,
       notice,
@@ -108,26 +72,6 @@ const GenerateSalary = () => {
         alert("An error happened. Please check console");
         console.log(error);
       });
-  };
-
-  // const createCheque = async(cheque1) => {
-  //   try {
-  //     await axios.post(`http://localhost:5555/salary`, cheque1);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    const fileSizeMB = file.size / (1024 * 1024); // Convert bytes to MB
-    if (fileSizeMB > 5) {
-      alert("Image size should be less than 5MB.");
-      return;
-    }
-    const base64 = await convertToBase64(file);
-    setCheque1(base64);
   };
 
   useEffect(() => {
@@ -155,11 +99,11 @@ const GenerateSalary = () => {
   }, [id]);
 
   return (
-    <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
       <HrNavbar sal={true} />
       <div className="p-4 h-screen overflow-y-auto">
         <div className="flex justify-center items-center">
-          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-3xl my-8 font-Philosopher text-ternary font-semibold">
             Generate Employee Salary
           </h1>
         </div>
@@ -214,15 +158,14 @@ const GenerateSalary = () => {
                   type="number"
                   value={attendance}
                   onChange={(e) => {
-                    setAttendanceError("");
-                    if (e.target.value <= 30 && e.target.value >= 0) {
+                    if (e.target.value <= 30) {
                       setAttendance(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {attendanceError && (
-                  <p className="text-red-500">{attendanceError}</p>
+                {attendance > 30 && (
+                  <p className="text-red-500">Attendance cannot exceed 30</p>
                 )}
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -232,15 +175,16 @@ const GenerateSalary = () => {
                   type="number"
                   value={overtimeHours}
                   onChange={(e) => {
-                    setOvertimeError("");
-                    if (e.target.value <= 200 && e.target.value >= 0) {
+                    if (e.target.value <= 200) {
                       setOvertimeHours(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {overtimeError && (
-                  <p className="text-red-500">{overtimeError}</p>
+                {overtimeHours > 200 && (
+                  <p className="text-red-500">
+                    Overtime hours cannot exceed 200
+                  </p>
                 )}
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -250,14 +194,15 @@ const GenerateSalary = () => {
                   type="number"
                   value={bonus}
                   onChange={(e) => {
-                    setBonusError("");
-                    if (e.target.value <= 100000 && e.target.value >= 0) {
+                    if (e.target.value <= 100000) {
                       setBonus(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {bonusError && <p className="text-red-500">{bonusError}</p>}
+                {bonus > 100000 && (
+                  <p className="text-red-500">Bonus cannot exceed 100,000</p>
+                )}
                 <br />
               </div>
               <br />
@@ -282,21 +227,6 @@ const GenerateSalary = () => {
               <br />
               <br />
               <label className="block text-ternary text-sm font-bold mb-3">
-                Cheque  Upload
-              </label>
-              <input
-                type ="file"
-                name="cheque1"
-                id="cheque1"
-                accept=".jpg, .jpeg, .png"
-                onChange={(e) => handleFileUpload(e)}/>
-                <label className="block text-black text-sm font-semi-bold mb-3">
-                Image size should be less than 5MB.
-              </label>
-
-              <br />
-              <br />
-              <label className="block text-ternary text-sm font-bold mb-3">
                 Date
               </label>
               <input
@@ -313,7 +243,6 @@ const GenerateSalary = () => {
               <textarea
                 value={notice}
                 onChange={(e) => {
-                  setNoticeError("");
                   const words = e.target.value.split(/\s+/).filter(Boolean);
                   if (words.length <= 50) {
                     setNotice(e.target.value);
@@ -321,7 +250,11 @@ const GenerateSalary = () => {
                 }}
                 className="border border-black border-1 p-1 block mb-2"
               />
-              {noticeError && <p className="text-red-500">{noticeError}</p>}
+              {notice.split(/\s+/).filter(Boolean).length > 50 && (
+                <p className="text-red-500">
+                  Notice text cannot exceed 50 words
+                </p>
+              )}
               <div className="flex justify-center">
                 <SubmitButton onClick={handleSaveSalary} className="mr-2">
                   Submit
@@ -336,19 +269,4 @@ const GenerateSalary = () => {
   );
 };
 
-export default GenerateSalary
-
-function convertToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-}
-
-
+export default GenerateSalary;

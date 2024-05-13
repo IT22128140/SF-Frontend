@@ -38,22 +38,20 @@ const pendingshortsge = () =>{
     return (
         <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <IsNavbar sh={true}/>
-            <Link to={'/Shortages/Accepted'}>
-             <button className='px-4 py-2 text-white transition-colors duration-300 ease-in-out rounded-md shadow-md hite bg-ternary hover:ternary font-Lavish'>
-              Accepted Shortages
-             </button>
-              </Link>
+            <Link to={'/mpshortages/accepted'}>
+            <button>Accepted Shortages</button>
+            </Link>
+           
 
-
-            <div className='flex items-center justify-center mb-9'>
-                <h1 className='my-8 text-5xl font-semibold font-Philosopher text-ternary alignment-center'>Machine Part Requests</h1>
+            <div className='flex items-center justify-between'>
+                <h1 className='my-8 text-3xl'>Machine Part Shortages List</h1>
             </div>
             
             {loading ? (
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 bg-white mb-9 font-BreeSerif'>
+                <table className='ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {mpshortages.map((mpshortage, index) => (
@@ -85,7 +83,12 @@ const pendingshortsge = () =>{
                                         <Link to={`/Shortages/Viewshortage/${mpshortage._id}`}>
                                             <ViewButton/>
                                         </Link>
-                                        
+                                        <Link to={`/mpshortages/edit/${mpshortage._id}`}>
+                                            <EditButton/>
+                                        </Link>
+                                        <Link to={`/mpshortages/delete/${mpshortage._id}`}>
+                                            <DeleteButton />
+                                        </Link>
                                     </div>
                                 </td>
                             </tr>

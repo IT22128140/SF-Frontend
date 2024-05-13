@@ -34,7 +34,7 @@ const RejectedRequestPage = () => {
   }, []);
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize:'cover' }}>
+    <div>
       <HrNavbar req={true} />
 
       <div className="p-4">
@@ -48,7 +48,7 @@ const RejectedRequestPage = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <table className="w-[95%] font-BreeSerif bg-white">
+            <table className="w-[95%]">
               <TableView headers={headers} />
               <tbody>
                 {requests.map((request, index) => (

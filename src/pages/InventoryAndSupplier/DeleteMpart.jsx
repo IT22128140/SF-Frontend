@@ -30,7 +30,7 @@ const handleDelete = () =>{
         <BackButton />
         <div className="flex items-center justify-center mb-9">
 
-        <h1 className="my-8 text-5xl font-semibold font-Philosopher text-ternary alignment-center">Delete Machine Part </h1>
+        <h1 className="my-8 text-5xl font-semibold font-philosopher text-ternary alignment-center">Delete Machine Part </h1>
 
       </div>
         {loading ? <Spinner /> : ''}

@@ -7,7 +7,6 @@ import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdError } from "react-icons/md";
-import { enqueueSnackbar } from "notistack";
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
@@ -236,7 +235,6 @@ const Checkout = () => {
       };
 
       sessionStorage.setItem("deliveryDetails", deliveryDetails);
-      sessionStorage.setItem("total", total + 500);
 
       if (!id) {
         axios
@@ -246,10 +244,11 @@ const Checkout = () => {
           )
           .then((response) => {
             console.log(response);
+            alert("Order placed successfully");
           })
           .catch((error) => {
             console.log(error);
-            enqueueSnackbar("Error creating address", { variant: "error" });
+            alert("Error placing order");
           });
       } else {
         axios
@@ -259,14 +258,15 @@ const Checkout = () => {
           )
           .then((response) => {
             console.log(response);
+            alert("Order placed successfully");
           })
           .catch((error) => {
             console.log(error);
-            enqueueSnackbar("Error updating address", { variant: "error"});
+            alert("Error placing order");
           });
       }
     } else {
-      enqueueSnackbar("Please fill all the required fields", { variant: "error" });
+      alert("Please fill in all the required fields");
     }
   }
   if (loading) {

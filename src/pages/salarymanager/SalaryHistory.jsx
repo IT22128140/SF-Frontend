@@ -100,11 +100,11 @@ const SalaryHistory = () => {
   };
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
       <HrNavbar sal={true} />
       <div className="p-4">
         <div className="flex justify-between items-center">
-          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          <h1 className="text-3xl my-8 font-Philosopher text-ternary font-semibold">
             Salary List
           </h1>
         </div>
@@ -144,7 +144,7 @@ const SalaryHistory = () => {
 
         <br />
         <br />
-        <table className="min-w-full bg-white">
+        <table className="min-w-full">
           <TableView headers={headers} />
           <tbody>
             {loading ? (

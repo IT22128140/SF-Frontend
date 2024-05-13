@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 /* Maneth */
 import Home from './pages/onlinestore/Home.jsx';
+import Login from './pages/onlinestore/Login.jsx';
 import ProductPage from './pages/onlinestore/ProductPage.jsx';
 import Cart from './pages/onlinestore/Cart.jsx';
 import Checkout from './pages/onlinestore/Checkout.jsx';
@@ -52,8 +53,8 @@ import TerminationPendingList from "./pages/employeemanagement/TerminationPendin
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
 import QrCodeScanner from "./pages/QrCodeScanner.jsx";
-import QrCodeDeparture from "./pages/QrCodeDeparture.jsx";
-import EditRequestResignation from "./pages/employeemanagement/EditRequestResignation.jsx";
+
+
 
 
 
@@ -84,8 +85,6 @@ import Pendingshortsge from './pages/InventoryAndSupplier/ViewPendingShortage.js
 import AcceptedMPS from './pages/InventoryAndSupplier/AcceptedMPS.jsx'
 import Viewshortage from './pages/InventoryAndSupplier/ViewShortage.jsx'
 import Deleteshortage from './pages/InventoryAndSupplier/Deleteshortage.jsx'
-import RMRequests from './pages/InventoryAndSupplier/RMRequests.jsx'
-import ViewRawMaterialReq from './pages/InventoryAndSupplier/ViewRawMaterialReq.jsx'
 
 
 
@@ -141,8 +140,6 @@ import ReviewActionRelease from './pages/QualityControl/ReviewActionRelease.jsx'
 import ReviewActionReject from './pages/QualityControl/ReviewActionReject.jsx';//3Reviw5/5
 import AddRejectProduct from './pages/QualityControl/AddRejectProduct.jsx';//4Rject1/3
 import RejectProduct from './pages/QualityControl/RejectProduct.jsx';//4Rject2/3
-import AddReReview from './pages/QualityControl/AddReReview.jsx';//4Rject3/3
-
 
 
 
@@ -154,6 +151,7 @@ import AddReReview from './pages/QualityControl/AddReReview.jsx';//4Rject3/3
 /* Ridmi */
 import RawmRequests from './pages/productionManager/RawmRequests.jsx';
 import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
+import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
 import RawmDistributions from './pages/productionManager/RawmDistributions.jsx';
@@ -161,16 +159,16 @@ import CreatermDistributes from './pages/productionManager/CreatermDistributes.j
 import ViewrmDistributes from './pages/productionManager/ViewrmDistributes.jsx';
 import UpdatermDistributes from './pages/productionManager/UpdatermDistributes.jsx';
 import DeletermDistributes from './pages/productionManager/DeletermDistributes.jsx';
+import RequestforInventory from './pages/productionManager/RequestforInventory.jsx';
 import EmployeePerformance from './pages/productionManager/EmployeePerformance.jsx';
 import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
 import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
 import PMHome from "./pages/productionManager/PMHome.jsx";
-import ViewPMRequests from './pages/productionManager/ViewPMRequests.jsx';
-import GarmentProductList from "./pages/productionManager/GarmentProductList.jsx";
-import AddProductList from "./pages/productionManager/AddProductList.jsx";
-import EditProductList from "./pages/productionManager/EditProductList.jsx";
+import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
+
+
 
 
 
@@ -235,6 +233,7 @@ const App = () => {
     <Routes>
       {/* Maneth */}
       <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login />} />
       <Route path="/ProductPage/:id" element={<ProductPage />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/Checkout" element={<Checkout />} />
@@ -281,8 +280,8 @@ const App = () => {
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
       <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
       <Route path="/QrCodeScanner" element={<QrCodeScanner />} />
-      <Route path="/QrCodeDeparture" element={<QrCodeDeparture />} />
-      <Route path="/resign/EditRequestResignation/:id" element={<EditRequestResignation />} />
+
+
  
 
 
@@ -307,11 +306,10 @@ const App = () => {
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
-      <Route path= "/Shortages/Accepted" element = {<AcceptedMPS/>} />
+      <Route path= "/Shortages/Accpted" element = {<AcceptedMPS/>} />
       <Route path= "/Shortages/Viewshortage/:id" element = {<Viewshortage/>} />
       <Route path= "/Shortages/delete/:id" element = {<Deleteshortage/>} />
-      <Route path= "/RMRequests" element = {<RMRequests/>} />
-      <Route path= '/rmRequests/details/:id' element = {<ViewRawMaterialReq/>} />
+
 
 
 
@@ -324,7 +322,7 @@ const App = () => {
 
       {/* Sageevan */}
       <Route path="/qualityControl" element={<QualityControl />} />
-      <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
       <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
@@ -342,7 +340,6 @@ const App = () => {
       <Route path="/qualityControl/reviewReport/view/:id" element={<ViewReviwReport />} />
       <Route path="/qualityControl/rejectProduct/addrejectProduct/:id" element={<AddRejectProduct />} />
       <Route path="/qualityControl/rejectProduct" element={<RejectProduct />} />
-      <Route path="/qualityControl/rejectProduct/rereview/:id" element={<AddReReview />} />
 
 
 
@@ -356,6 +353,7 @@ const App = () => {
       {/* Ridmi */}
       <Route path= '/RawmRequests' element = {<RawmRequests/>} />
       <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
+      <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
       <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
       <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
       <Route path= '/RawmDistributes' element= {<RawmDistributions/>}/>
@@ -363,16 +361,17 @@ const App = () => {
       <Route path= '/rmDistributes/details/:id' element = {<ViewrmDistributes/>} />
       <Route path= '/rmDistributes/edit/:id' element = {<UpdatermDistributes/>} />
       <Route path= '/rmDistributes/delete/:id' element= {<DeletermDistributes/>}/>
+      <Route path= '/RequestforInventory' element={<RequestforInventory/>}/>
       <Route path= '/EmployeePerformance' element={<EmployeePerformance/>}/>
       <Route path= '/empPerformances/create' element={<CreateEPReport/>}/>
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
       <Route path= '/PMHome' element = {<PMHome/>}/>
-      <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
-      <Route path= '/sfProduct' element={<GarmentProductList/>}/>
-      <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
-      <Route path= '/sfProduct/edit/:id' element={<EditProductList/>}/>
+
+
+
+
 
 
 

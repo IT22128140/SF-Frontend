@@ -9,7 +9,7 @@ import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
-import { rIdValidation, textValidation } from '../../utils/inputValidations';
+import { textValidation } from '../../utils/inputValidations';
 import { dateValidation } from '../../utils/inputValidations';
 import { paraValidation } from '../../utils/inputValidations';
 
@@ -46,9 +46,9 @@ const CreatermRequests = () => {
   };
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className = 'relative'>
       <PMHeader rrm = {true} />
-      <div>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Requesting Raw Materials
@@ -72,7 +72,7 @@ const CreatermRequests = () => {
             // value={RequestID}
             // onChange={(e) => setRequestID(e.target.value)}
             // validation={{ required: 'Request ID is required' }}
-            {...rIdValidation}
+            {...textValidation}
           />
           <Input
             formtype='input'
