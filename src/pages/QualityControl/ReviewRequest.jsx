@@ -59,10 +59,10 @@ const ReviewRequest = () => {
 
 
   return (
-    <div className='p-4'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
-        home={true}
-        cel={false}
+        home={false}
+        cel={true}
         rel={false}
         fel={false}
         att={false}
