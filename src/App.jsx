@@ -53,8 +53,8 @@ import TerminationPendingList from "./pages/employeemanagement/TerminationPendin
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
 import QrCodeScanner from "./pages/QrCodeScanner.jsx";
-
-
+import QrCodeDeparture from "./pages/QrCodeDeparture.jsx";
+import EditRequestResignation from "./pages/employeemanagement/EditRequestResignation.jsx";
 
 
 
@@ -272,8 +272,8 @@ const App = () => {
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
       <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
       <Route path="/QrCodeScanner" element={<QrCodeScanner />} />
-
-
+      <Route path="/QrCodeDeparture" element={<QrCodeDeparture />} />
+      <Route path="/resign/EditRequestResignation/:id" element={<EditRequestResignation />} />
  
 
 

@@ -100,7 +100,7 @@ export const nicValidation = {
     },
     pattern: {
       value: /^[0-9]{9}[vV]$/i,
-      message: "Invalid email address",
+      message: "Invalid nic",
     },
   },
 };

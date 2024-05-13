@@ -60,7 +60,7 @@ const ResignedEmployeeList = () => {
       });
   }, []);
   return (
-    <div>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize:'cover' }}>
       <HrNavbar rel={true} />
 
       <div className="p-4">
@@ -92,7 +92,7 @@ const ResignedEmployeeList = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <table className="w-[95%]">
+            <table className="w-[95%] font-BreeSerif bg-white">
               <TableView headers={headers} />
               <tbody>
                 {filteredData.map((employee, index) => (
