@@ -89,6 +89,7 @@ const UpdatermDistributes = () => {
             value={DistributeID}
             onChange={(e) => setDistributeID(e.target.value)}
             validation={{ required: 'Distribute ID is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -102,6 +103,7 @@ const UpdatermDistributes = () => {
             value={Date}
             onChange={(e) => setDate(e.target.value)}
             validation={{ required: 'Date is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -115,6 +117,7 @@ const UpdatermDistributes = () => {
             value={LineNumber}
             onChange={(e) => setLineNumber(e.target.value)}
             validation={{ required: 'Line Number is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -128,6 +131,7 @@ const UpdatermDistributes = () => {
             value={PositionNumber}
             onChange={(e) => setPositionNumber(e.target.value)}
             validation={{ required: 'Position Number is required' }}
+            readOnly
           />
           </div>
           <div className='my-2'>

@@ -90,6 +90,7 @@ const EditProductList = () => {
             value={productCode}
             onChange={(e) => setProductCode(e.target.value)}
             validation={{ required: 'Product Code is required' }}
+            readOnly
             />
           </div>
 

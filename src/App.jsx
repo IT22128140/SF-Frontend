@@ -143,7 +143,6 @@ import RejectProduct from './pages/QualityControl/RejectProduct.jsx';
 /* Ridmi */
 import RawmRequests from './pages/productionManager/RawmRequests.jsx';
 import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
-import ViewrmRequests from './pages/productionManager/ViewrmRequests.jsx';
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
 import RawmDistributions from './pages/productionManager/RawmDistributions.jsx';
@@ -151,7 +150,6 @@ import CreatermDistributes from './pages/productionManager/CreatermDistributes.j
 import ViewrmDistributes from './pages/productionManager/ViewrmDistributes.jsx';
 import UpdatermDistributes from './pages/productionManager/UpdatermDistributes.jsx';
 import DeletermDistributes from './pages/productionManager/DeletermDistributes.jsx';
-import RequestforInventory from './pages/productionManager/RequestforInventory.jsx';
 import EmployeePerformance from './pages/productionManager/EmployeePerformance.jsx';
 import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
 import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
@@ -338,7 +336,6 @@ const App = () => {
       {/* Ridmi */}
       <Route path= '/RawmRequests' element = {<RawmRequests/>} />
       <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
-      <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
       <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
       <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
       <Route path= '/RawmDistributes' element= {<RawmDistributions/>}/>
@@ -346,7 +343,6 @@ const App = () => {
       <Route path= '/rmDistributes/details/:id' element = {<ViewrmDistributes/>} />
       <Route path= '/rmDistributes/edit/:id' element = {<UpdatermDistributes/>} />
       <Route path= '/rmDistributes/delete/:id' element= {<DeletermDistributes/>}/>
-      <Route path= '/RequestforInventory' element={<RequestforInventory/>}/>
       <Route path= '/EmployeePerformance' element={<EmployeePerformance/>}/>
       <Route path= '/empPerformances/create' element={<CreateEPReport/>}/>
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
