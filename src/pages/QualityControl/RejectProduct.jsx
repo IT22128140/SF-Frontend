@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/searchBar2";
 import TableView from '../../components/table/TableView';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from "../../components/button/Button";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader.jsx';
 
 
 const RejectProduct = () => {
@@ -54,7 +53,7 @@ rejectedProducts.forEach((request) => {
       <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Rejected Product in Quality Evaluation</h1>
       
 
-      <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
+      <SearchBar placeholder={"Enter the Product code"}  />
     {loading ? (
         <Spinner />
     ) : (

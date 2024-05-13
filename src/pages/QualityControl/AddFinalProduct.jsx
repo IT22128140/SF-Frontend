@@ -6,7 +6,7 @@ import Input from '../../components/form/Input';
 import Select from '../../components/form/Select';
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader.jsx';
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import Picture1 from '../../../public/Picture1.jpg'
 import { FormProvider, useForm } from 'react-hook-form';
