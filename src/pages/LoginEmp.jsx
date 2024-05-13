@@ -4,24 +4,24 @@ import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
 
-const emailAddressPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 function Login() {
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [employeeType, setemployeeType] = useState("");
+  const [loginType, setLoginType] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     let newErrors = {};
 
-    if (!emailAddress) {
-      newErrors.emailAddress = "Email address is required";
-    } else if (!emailAddressPattern.test(emailAddress)) {
-      newErrors.emailAddress = "Please enter a valid email address";
+    if (!email) {
+      newErrors.email = "Email address is required";
+    } else if (!emailPattern.test(email)) {
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!password) {
@@ -30,8 +30,8 @@ function Login() {
       newErrors.password = "Password must be at least 6 characters long.";
     }
 
-    if (!employeeType) {
-      newErrors.employeeType = "Employee type is required";
+    if (!loginType) {
+      newErrors.loginType = "Login type is required";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -39,28 +39,20 @@ function Login() {
       return;
     }
 
-    const login = {
-      emailAddress,
-      password,
-      employeeType,
-    };
-    console.log(login);
+    setErrors({}); // Clear the errors state if there are no errors
 
-    try {
-      const result = await axios.post("http://localhost:5555/LoginEmp", login);
-
-      console.log(result);
-      if (result.data) {
-        sessionStorage.setItem("token", result.data._id);
-        navigate("/ProfileEmp");
-      } else {
-        navigate("/LoginEmp");
-        alert("Please Check Your Email, Password, and Employee Type");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-      // Handle error, maybe show a message to the user
-    }
+    axios
+      .post("http://localhost:5555/LoginEmp", { email, password, loginType })
+      .then((result) => {
+        console.log(result);
+        if (result.data === "Success") {
+          navigate("/home");
+        } else {
+          navigate("/pages/RegisEmp");
+          alert("You are not registered to this service");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -73,12 +65,10 @@ function Login() {
             className="mt-8 w-[100%] p-3 border-gray-200 rounded-md border-2"
             type="text"
             placeholder="Email Address"
-            value={emailAddress}
-            onChange={(e) => setEmailAddress(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           ></input>
-          {errors.emailAddress && (
-            <p className="text-red-500">{errors.emailAddress}</p>
-          )}
+          {errors.email && <p className="text-red-500">{errors.email}</p>}
           <input
             className="mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
             type="password"
@@ -89,18 +79,20 @@ function Login() {
           {errors.password && <p className="text-red-500">{errors.password}</p>}
           <select
             className="mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
-            value={employeeType}
-            onChange={(e) => setemployeeType(e.target.value)}
+            value={loginType}
+            onChange={(e) => setLoginType(e.target.value)}
           >
-            <option hidden>Select Employee type</option>
+            <option hidden>Select login type</option>
             <option value="HR_Manager">HR Manager</option>
             <option value="Stock_Manager">Stock Manager</option>
             <option value="Repair_Manager">Repair Manager</option>
             <option value="Process_Manager">Process Manager</option>
-            <option value="Quality_Control_Manager">Quality Control Manager</option>
+            <option value="Quality_Control_Manager">
+              Quality Control Manager
+            </option>
             <option value="Store_Manager">Store Manager</option>
           </select>
-        {errors.employeeType && <p className="text-red-500">{errors.employeeType}</p>}
+        {errors.loginType && <p className="text-red-500">{errors.loginType}</p>}
           <button className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md" onClick={handleSubmit}>
             Login
           </button>

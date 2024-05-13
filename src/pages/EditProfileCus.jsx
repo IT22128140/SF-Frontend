@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
-import CustomerNavbar from "../components/navbar/CustomerNavbar.jsx";
-import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
-  const navigate = useNavigate();
   const [profileInfo, setProfileInfo] = useState({
-    FirstName: '',
-    LastName: '',
-    emailAddress: '',
-    phoneNumber: '',
-    password: ''
+    FirstName: "",
+    LastName: "",
+    emailAddress: "",
+    phoneNumber: "",
+    password: "",
   });
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchProfileInfo = async () => {
       try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.get(`http://localhost:5555/ProfileCus/${token}`);
+        const response = await axios.get(`http://localhost:5555/EditProfileCus`);
         setProfileInfo(response.data);
       } catch (error) {
         console.error("Error fetching profile information:", error);
       }
     };
 
-    fetchProfile();
+    fetchProfileInfo();
   }, []);
 
   const handleInputChange = (e, field) => {
@@ -36,54 +32,29 @@ function EditProfile() {
   };
 
   const handleSaveProfile = async () => {
-    if (!profileInfo.FirstName || !profileInfo.LastName || !profileInfo.emailAddress || !profileInfo.phoneNumber || !profileInfo.password ) {
-        alert("Please fill in all the fields.");
-        return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(profileInfo.emailAddress)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
-    
-    if (!/^\d{10}$/.test(profileInfo.phoneNumber)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-    }
-
-    if (profileInfo.password.length < 8 || !/\d/.test(profileInfo.password) || !/[!@#$%^&*]/.test(profileInfo.password)) {
-        alert("Password must be at least 8 characters long and contain at least one digit and one special character.");
-        return;
-    }
-
     try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.put(`http://localhost:5555/EditProfileCus/${token}`, profileInfo);
-        console.log("Profile information saved:", response.data);
+      const response = await axios.put(
+        `http://localhost:5555/EditProfileCus/save`,
+        profileInfo
+      );
+      console.log("Profile information saved:", response.data);
     } catch (error) {
-        console.error("Error saving profile:", error);
+      console.error("Error saving profile:", error);
     }
-};
-
+  };
 
   const handleDeleteProfile = async () => {
-
-  
     try {
-      const token = sessionStorage.getItem("token");
-      const response = await axios.delete(`http://localhost:5555/EditProfileCus/${token}`);
+      const response = await axios.delete(
+        `http://localhost:5555/EditProfileCus/delete/${profileInfo.emailAddress}`
+      );
       console.log("Profile deleted:", response.data);
-      
-      // Navigate to RegisCus page after successful deletion
-      navigate("/RegisCus");
     } catch (error) {
       console.error("Error deleting profile:", error);
     }
   };
-
     return (
         <div className="flex flex-col justify-center items-center min-h-screen ">
-          <CustomerNavbar />
             <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
                 <input type="image" src="emp.png" alt="image" />
             </div>
@@ -126,7 +97,7 @@ function EditProfile() {
                 <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
                 onClick={handleSaveProfile} 
                 >SAVE</button>
-                <button className="bg-red text-white font-bold py-2 px-8 rounded mt-4"
+                <button className="bg-red1 text-white font-bold py-2 px-8 rounded mt-4"
                 onClick={handleDeleteProfile} 
                 >DELETE</button>
             </div>

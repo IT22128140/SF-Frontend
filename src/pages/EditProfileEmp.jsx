@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
-import CustomerNavbar from "../components/navbar/CustomerNavbar.jsx";
-import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
-  const navigate = useNavigate();
   const [profileInfo, setProfileInfo] = useState({
     FirstName: '',
     LastName: '',
     emailAddress: '',
     phoneNumber: '',
-    employeeType: '',
+    Employeetype: '',
     password: ''
   });
-
+  
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchProfileInfo = async () => {
       try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.get(`http://localhost:5555/ProfileEmp/${token}`);
+        const response = await axios.get(`http://localhost:5555/EditProfileEmp`);
         setProfileInfo(response.data);
       } catch (error) {
         console.error("Error fetching profile information:", error);
       }
     };
 
-    fetchProfile();
+    fetchProfileInfo();
   }, []);
 
   const handleInputChange = (e, field) => {
@@ -37,52 +33,29 @@ function EditProfile() {
   };
 
   const handleSaveProfile = async () => {
-    if (!profileInfo.FirstName || !profileInfo.LastName || !profileInfo.emailAddress || !profileInfo.phoneNumber || !profileInfo.password || !profileInfo.employeeType) {
-        alert("Please fill in all the fields.");
-        return;
-    }
-
-    if (!/\S+@\S+\.\S+/.test(profileInfo.emailAddress)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
-    
-    if (!/^\d{10}$/.test(profileInfo.phoneNumber)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-    }
-
-    if (profileInfo.password.length < 8 || !/\d/.test(profileInfo.password) || !/[!@#$%^&*]/.test(profileInfo.password)) {
-        alert("Password must be at least 8 characters long and contain at least one digit and one special character.");
-        return;
-    }
-
     try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.put(`http://localhost:5555/EditProfileEmp/${token}`, profileInfo);
-        console.log("Profile information saved:", response.data);
+      const response = await axios.put(
+        `http://localhost:5555/EditProfileEmp/save`,
+        profileInfo
+      );
+      console.log("Profile information saved:", response.data);
     } catch (error) {
-        console.error("Error saving profile:", error);
+      console.error("Error saving profile:", error);
     }
-};
+  };
 
   const handleDeleteProfile = async () => {
-    
     try {
-      const token = sessionStorage.getItem("token");
-      const response = await axios.delete(`http://localhost:5555/EditProfileEmp/${token}`);
+      const response = await axios.delete(
+        `http://localhost:5555/EditProfileEmp/delete${profileInfo.emailAddress}`
+      );
       console.log("Profile deleted:", response.data);
-  
-      // Navigate to RegisEmp page after successful deletion
-      navigate("/RegisEmp");
     } catch (error) {
       console.error("Error deleting profile:", error);
     }
   };
-
   return (
     <div className="flex flex-col justify-center items-center min-h-screen ">
-      <CustomerNavbar />
       <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
                 <input type="image" src="emp.png" alt="image" />
             </div>
@@ -117,7 +90,7 @@ function EditProfile() {
             <p>Employee Type</p>
           </div>
           <div className="bg-bgc p-2 mb-2 w-1/2 pr-2">
-          <select value={profileInfo.employeeType} onChange={(e) =>  handleInputChange(e, 'employeeType')} className="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <select value={profileInfo.Employeetype} onChange={(e) =>  handleInputChange(e, 'Employeetype')} className="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
           <option value="HR_Manager">HR Manager</option>
           <option value="Stock_Manager">Stock Manager</option>
           <option value="Repair_Manager">Repair Manager</option>
@@ -137,7 +110,7 @@ function EditProfile() {
               <button className="bg-black text-white font-bold py-2 px-8 rounded mt-4"
               onClick={handleSaveProfile}
               >SAVE</button>
-              <button className="bg-red text-white font-bold py-2 px-8 rounded mt-4"
+              <button className="bg-red1 text-white font-bold py-2 px-8 rounded mt-4"
               onClick={handleDeleteProfile}
               >DELETE</button>
             </div>
