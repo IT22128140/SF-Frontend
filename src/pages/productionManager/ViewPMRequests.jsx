@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
-import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 
-const ViewrmDistributes = () => {
-  const [rmdistributes, setrmDistributes] = useState([]);
+const ViewrmRequests = () => {
+  const [rmrequest, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/rmDistributes/${id}`)
+      .get(`http://localhost:5555/rmRequests/${id}`)
       .then((response) => {
-        setrmDistributes(response.data);
+        setrmRequests(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -26,49 +26,45 @@ const ViewrmDistributes = () => {
 
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <PMHeader drm = {true} />
+      <PMHeader rrm= {true}/>
       <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
-          Raw Material Distribution
+          Requested Raw Materials
         </h1>
       </center>
       {loading ? (
         <Spinner/>
       ) : (
-        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary mb-5'>
-          <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Distributions</h1>
+        <div className='flex flex-col bg-bgc rounded-xl w-[600px] p-4 mx-auto font-BreeSerif text-ternary mb-5 mt-10'>
+          <h1 className='text-3xl my-4 text-center font-semibold'>View Raw Material Requests</h1>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Distribute ID</span>
-            <span>{rmdistributes.DistributeID}</span>
+            <span className='text-xl mr-4'>Request ID</span>
+            <span>{rmrequest.RequestID}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Date</span>
-            <span>{rmdistributes.Date}</span>
+            <span className='text-xl mr-4'>Fabric Type</span>
+            <span>{rmrequest.FabricType_Colour_Amount}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Line Number</span>
-            <span>{rmdistributes.LineNumber}</span>
+            <span className='text-xl mr-4'>Button Type</span>
+            <span>{rmrequest.ButtonType_Colour_Amount}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Position Number</span>
-            <span>{rmdistributes.PositionNumber}</span>
+            <span className='text-xl mr-4'>Thread Type</span>
+            <span>{rmrequest.ThreadType_Colour_Amount}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Distributed</span>
-            <span>{rmdistributes.Distributed}</span>
-          </div>
-          <div className= 'my-4'>
-            <span className='text-xl mr-4'>Shortage</span>
-            <span>{rmdistributes.Shortage}</span>
+            <span className='text-xl mr-4'>Other Materials</span>
+            <span>{rmrequest.Other_Materials}</span>
           </div>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Create Time</span>
-            <span>{new Date(rmdistributes.createdAt).toString()}</span>
+            <span>{new Date(rmrequest.createdAt).toString()}</span>
           </div>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Last Update Time</span>
-            <span>{new Date(rmdistributes.updatedAt).toString()}</span>
+            <span>{new Date(rmrequest.updatedAt).toString()}</span>
           </div>
         </div>
       )}
@@ -79,5 +75,5 @@ const ViewrmDistributes = () => {
   )
 }
 
-export default ViewrmDistributes
+export default ViewrmRequests
 

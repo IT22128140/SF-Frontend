@@ -57,20 +57,20 @@ const UpdatermRequests = () => {
       .then(() => {
         setLoading(false);
         navigate('/RawmRequests');
-        enqueueSnackBar('Request updated successfully', { variant: 'success' });
+        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
       })
       .catch ((error) => {
         setLoading(false);
-        // alert('An error happened. Please Check console');
-        enqueueSnackBar('Error', { variant: 'error' });
+        alert('An error happened. Please Check console');
+        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
 
   return (
-    <div className = 'relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader rmr = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Requests

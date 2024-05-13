@@ -158,9 +158,10 @@ import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
 import PMHome from "./pages/productionManager/PMHome.jsx";
-import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
-
-
+import ViewPMRequests from './pages/productionManager/ViewPMRequests.jsx';
+import GarmentProductList from "./pages/productionManager/GarmentProductList.jsx";
+import AddProductList from "./pages/productionManager/AddProductList.jsx";
+import EditProductList from "./pages/productionManager/EditProductList.jsx";
 
 
 
@@ -352,10 +353,10 @@ const App = () => {
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
       <Route path= '/PMHome' element = {<PMHome/>}/>
-
-
-
-
+      <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
+      <Route path= '/sfProduct' element={<GarmentProductList/>}/>
+      <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
+      <Route path= '/sfProduct/edit/:id' element={<EditProductList/>}/>
 
 
 

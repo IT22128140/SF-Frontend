@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import SubmitButton from '../../components/button2/SubmitButton';
-import { textValidation } from '../../utils/inputValidations';
+import { DIdValidation, LnoValidation, PnoValidation, textValidation } from '../../utils/inputValidations';
 import { dateValidation } from '../../utils/inputValidations';
 import { paraValidation } from '../../utils/inputValidations';
 
@@ -44,9 +44,9 @@ const CreatermDistributes = () => {
   };
 
   return (
-    <div className = 'relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader dfl = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Distribution for Lines
@@ -69,7 +69,7 @@ const CreatermDistributes = () => {
             // value={DistributeID}
             // onChange={(e) => setDistributeID(e.target.value)}
             // validation={{ required: 'Distribute ID is required' }}
-            {...textValidation}
+            {...DIdValidation}
           />
           <Input
             formtype='input'
@@ -93,7 +93,7 @@ const CreatermDistributes = () => {
             // value={LineNumber}
             // onChange={(e) => setLineNumber(e.target.value)}
             // validation={{ required: 'Line Number is required' }}
-            {...textValidation}
+            {...LnoValidation}
           />
           <Input
             formtype='input'
@@ -105,7 +105,7 @@ const CreatermDistributes = () => {
             // value={PositionNumber}
             // onChange={(e) => setPositionNumber(e.target.value)}
             // validation={{ required: 'Position Number is required' }}
-            {...textValidation}
+            {...PnoValidation}
           />
           <Input
             formtype='textarea'
