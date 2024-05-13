@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import CustomerNavbar from "../../components/navbar/CustomerNavbar";
@@ -8,37 +8,41 @@ import Footer from "../../components/footer/Footer";
 import Spinner from "../../components/Spinner";
 
 const PaymentSucc = () => {
+  const { autoid} = useParams();
   const [paymentsucc, setPaymentSucc] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams(); // Get ID from URL parameter
 
   useEffect(() => {
-    sendemail();
+    
     setLoading(true);
     axios
       .get(`http://localhost:5555/payment/${id}`)
       .then((response) => {
         setPaymentSucc(response.data);
         setLoading(false);
+        sendEmail(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error fetching payment details:", error);
         setLoading(false);
       });
+      //sendEmail();
   }, [id]);
 
-  const sendemail = () => {
+  const sendEmail = (data) => {
     const emailPayload = {
       email: "gihanbanuka2002@gmail.com",
       subject: "Payment Successful",
       body: `This Payment is Done..!.Thank for you.
 
-_________Product Details_________
+_________Payment Details_________
 
-Product id : 
-Product Name : 
-Product Total Price : 
-Product Description :
+Payment id : ${id}
+Customer Name : ${data.fullName}
+Customer Email : ${data.emailAddress}
+Total Price : ${tot}
+
 
 ___________________________________
 Thank you..!`,
@@ -54,21 +58,69 @@ Thank you..!`,
       });
   };
 
+const tot = sessionStorage.getItem('total');
+//const deliveryDetails = JSON.parse(sessionStorage.getItem('deliveryDetails'));
+
+console.log("delivery details",tot);
+
+const alldeliveryDetails = {
+  id: id,
+  // firstName: deliveryDetails.firstName,
+  // lastName: deliveryDetails.lastName,
+  // email: deliveryDetails.email,
+  // address: deliveryDetails.address,
+  // province: deliveryDetails.province,
+  // district: deliveryDetails.district,
+  // postalCode: deliveryDetails.postalCode,
+  emailAddress: paymentsucc.emailAddress,
+  fullName: paymentsucc.fullName,
+  bankName: paymentsucc.bankName,
+  phoneNumber: paymentsucc.phoneNumber,
+  branchName: paymentsucc.branchName,
+  slip: paymentsucc.slip,
+  total: tot,
+};
+
+sessionStorage.setItem("alldeliveryDetails", JSON.stringify(alldeliveryDetails));
+
+
+const all = JSON.parse(sessionStorage.getItem('alldeliveryDetails'));
+console.log("session data is", all);
+
+
+
+
   const handlePrint = () => {
     const doc = new jsPDF();
-    doc.text("Payment Details", 10, 10);
+    const img3 = new Image();
+    const img4 = new Image();
+
+    img3.src = "/Logo1.png";
+    img4.src = "/Logo2.png";
+
+    img3.onload = function(){
+      doc.addImage(img4, "PNG", 10, 10, 30, 20);
+
+      doc.addImage(img3, "PNG", 170, 10, 30, 20);
+    
+
+    doc.text("Payment Details", 80, 40);
     doc.autoTable({
       head: [["Attribute", "Value"]],
       body: [
-        ["Total Amount", paymentsucc.totalpayment],
-        ["Email Address", paymentsucc.email],
-        ["Full Name", paymentsucc.fullname],
-        ["Bank Name", paymentsucc.bankname],
-        ["Phone Number", paymentsucc.phonenumber],
-        ["Branch", paymentsucc.branch],
+        ["Total Amount", tot],
+        ["Email Address", paymentsucc.emailAddress],
+        ["Full Name", paymentsucc.fullName],
+        ["Bank Name", paymentsucc.bankName],
+        ["Phone Number", paymentsucc.phoneNumber],
+        ["Branch", paymentsucc.branchName],
+        
+        
       ],
+      startY: 50,
     });
     doc.save("payment_details.pdf");
+  };
   };
 
   return (
@@ -89,27 +141,35 @@ Thank you..!`,
             <div className="flex flex-col absolute top-[260px] left-[320px]">
               <br />
               <div className="mb-2">
-                <span className="font-bold">Total Amount:</span>{" "}
-                {paymentsucc.totalpayment}
+                <span className="font-bold">Total Amount:</span>
+                {tot}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Email Address:</span>{" "}
+                <span className="font-bold">Email Address:</span>
                 {paymentsucc.emailAddress}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Full Name:</span>{" "}
+                <span className="font-bold">Full Name:</span>
                 {paymentsucc.fullName}
               </div>
+              <div>
+                <span className="font-bold">Slip Upload:</span>
+                <img
+                  src={paymentsucc.slip}
+                  alt="slip"
+                  style={{ width: "150px",height:"auto" }}
+                  className="border border-black border-1 p-2 block mb-2" />
+              </div>
               <div className="mb-2">
-                <span className="font-bold">Bank Name:</span>{" "}
+                <span className="font-bold">Bank Name:</span>
                 {paymentsucc.bankName}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Phone Number:</span>{" "}
+                <span className="font-bold">Phone Number:</span>
                 {paymentsucc.phoneNumber}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Branch:</span>{" "}
+                <span className="font-bold">Branch:</span>
                 {paymentsucc.branchName}
               </div>
             </div>
@@ -117,13 +177,13 @@ Thank you..!`,
             <br />
 
             <button
-              className="border border-black border-1 p-2 block mb-2 absolute top-[500px] left-[320px] bg-ternary text-white rounded-lg"
+              className="border border-black border-1 p-2 block mb-2 absolute top-[750px] left-[320px] bg-ternary text-white rounded-lg"
               onClick={handlePrint}
             >
               Print
             </button>
             <Link to="/">
-              <button className="border border-black border-1 p-2 block mb-2 absolute top-[500px] left-[470px] bg-secondary text-white rounded-lg">
+              <button className="border border-black border-1 p-2 block mb-2 absolute top-[750px] left-[470px] bg-secondary text-white rounded-lg">
                 Home
               </button>
             </Link>

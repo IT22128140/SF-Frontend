@@ -102,6 +102,7 @@ const AddRejectProduct = () => {
               name='productCode'
               placeholder='Enter product Code'
               value={productCode}
+              readOnly = {true}
               onChange={(e) => setProductCode(e.target.value)}
               validation={{ required: 'Product Code is required' }}
             />
@@ -116,6 +117,7 @@ const AddRejectProduct = () => {
               name='fabricType'
               placeholder='Enter Fabric Type'
               value={fabricType}
+              readOnly = {true}
               onChange={(e) => setFabricType(e.target.value)}
               validation={{ required: 'Fabric Type is required' }}
             />
@@ -130,6 +132,7 @@ const AddRejectProduct = () => {
               name='color'
               placeholder='Enter Color'
               value={color}
+              readOnly = {true}
               onChange={(e) => setColor(e.target.value)}
               validation={{ required: 'Color is required' }}
             />
@@ -144,6 +147,7 @@ const AddRejectProduct = () => {
               name='stitchingTypet'
               placeholder='Enter Stitching Type'
               value={stitchingType}
+              readOnly = {true}
               onChange={(e) => setStitchingType(e.target.value)}
               validation={{ required: 'Stitching Type is required' }}
             />
@@ -158,6 +162,7 @@ const AddRejectProduct = () => {
               name='quantity'
               placeholder='Enter Quantity'
               value={quantity}
+              readOnly = {true}
               onChange={(e) => setQuantity(e.target.value)}
               validation={{ required: 'Quantity is required' }}
             />
@@ -172,6 +177,7 @@ const AddRejectProduct = () => {
               name='defects'
               placeholder='Enter Defects'
               value={defects}
+              readOnly = {true}
               onChange={(e) => setDefects(e.target.value)}
               validation={{ required: 'Defects is required' }}
             />

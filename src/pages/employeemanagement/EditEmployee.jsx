@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
-import BackButton from "../../components/button/BackButton.jsx";
 import Spinner from "../../components/Spinner.jsx";
 import SubmitButton from "../../components/button2/SubmitButton.jsx";
 import CancelButton from "../../components/button2/CancelButton.jsx";
@@ -280,10 +279,10 @@ const EditEmployee = () => {
   };
 
   return (
-    <div>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize:'cover' }}>
       <HrNavbar cel={true} />
       <div className="p-4">
-        <BackButton />
+        {/* <BackButton /> */}
         <center>
           <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
             Edit Employee

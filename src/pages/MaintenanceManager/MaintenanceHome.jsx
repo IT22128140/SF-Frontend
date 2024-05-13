@@ -5,10 +5,12 @@ import MaintenanceManagerHeader from '../../components/navbar/staffheader/Mainte
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import DashboardCard from '../../components/DashboardCard';
 
+
 const MaintenanceManager = () => {
   return (
     <div className='re;lative'>
     <MaintenanceManagerHeader home = {true}/>
+    
     <div className = 'flex flex-row ml-12'>
             <DashboardCard
              topic = 'Repairs'

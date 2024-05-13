@@ -38,7 +38,7 @@ const AcceptedMPshortages = () => {
             {loading ? (
              <Spinner/>
             ):(
-                <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
+                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
                     <h1 className='text-3xl text-center my-4 font-BreeSerif'>Show Machine Part Shortage Request</h1>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Request ID</span>
@@ -46,7 +46,7 @@ const AcceptedMPshortages = () => {
                     </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Requested Date</span>
-                        <span className='font-BreeSerif'>{mpshortage.Requested}</span>
+                        <span className='font-BreeSerif'>{new Date(mpshortage.createdAt).toDateString()}</span>
                     </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Part Name</span>
@@ -73,12 +73,8 @@ const AcceptedMPshortages = () => {
                         <span className='font-BreeSerif'>{mpshortage.Status}</span>
                     </div>
                     <div className='my-4'>
-                        <span className='text-xl mr-4 text-ternary font-BreeSerif'>Created Time</span>
-                        <span className='font-BreeSerif'>{new Date(mpshortage.createdAt).toString()}</span>
-                    </div>
-                    <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Last Updated Time</span>
-                        <span className='font-BreeSerif'>{new Date(mpshortage.updatedAt).toString()}</span>
+                        <span className='font-BreeSerif'>{new Date(mpshortage.updatedAt).toDateString()}</span>
                     </div>
      
                 </div>

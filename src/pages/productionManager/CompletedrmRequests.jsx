@@ -28,9 +28,9 @@ const CompletedrmRequests = () => {
       });
   }, []);
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader rmr = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       {/* <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
@@ -64,7 +64,7 @@ const CompletedrmRequests = () => {
                 {rmrequest.RequestID}
               </td>
               <td className='border border-slate-700 rounded-md'>
-                {rmrequest.Date.split("T")[0]}
+                {new Date(rmrequest.createdAt).toDateString()}
               </td>
               <td className='border border-slate-700 rounded-md'>
                 {rmrequest.FabricType_Colour_Amount}

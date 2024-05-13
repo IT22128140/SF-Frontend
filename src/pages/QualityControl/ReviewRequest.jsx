@@ -3,7 +3,7 @@ import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
-import SearchBar from "../../components/searchBar2";
+import SearchBar from "../../components/SearchQE.jsx";
 import TableView from '../../components/table/TableView';
 import AcceptButton from "../../components/button2/AcceptButton";
 import EditButton from "../../components/button2/EditButton";
@@ -26,7 +26,7 @@ const ReviewRequest = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:5555/qualityControl/productRequest')
+      .get('http://localhost:5555/qualityControl/productRequest/requestReview')
       .then((response) => {
         setProductRequests(response.data.data);
 
@@ -59,24 +59,24 @@ const ReviewRequest = () => {
 
 
   return (
-    <div className='p-4'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
-        home={true}
-        cel={false}
+        home={false}
+        cel={true}
         rel={false}
         fel={false}
         att={false}
         sal={false}
       />
       <div className='p-4'>
-        <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Review Request For Quality Evaluation</h1>
+        <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Review Request For Quality Evaluation</h1>
         </div>
         <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
         {loading ? (
           <Spinner />
         ) : (
           <div> 
-          <table className='mx-auto font-BreeSerif mb-5 bg-white'>
+          <table className='min-w-full'>
             <TableView headers={headers} />
             <tbody>
               {productRequests && filteredRequests.map((productRequest, index) => (
@@ -144,8 +144,6 @@ const ReviewRequest = () => {
           </div>
         </div>
       )}
-      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       <NoteTakingApp />
       <StaffFooter />

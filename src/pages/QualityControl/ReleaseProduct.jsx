@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
-import SearchBar from "../../components/searchBar2";
+import SearchBar from "../../components/SearchQE";
 import TableView from '../../components/table/TableView';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import AcceptButton from "../../components/button2/AcceptButton";
 import ViewButton from '../../components/button2/ViewButton';
-import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
 
@@ -46,17 +45,16 @@ const ReleaseProduct = () => {
   const totalItemCount = releaseProducts.length;
 
     return (
-        <div className='p-4'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
         <QENavbar
-        home={false}
+        home={true}
         cel={false}
         rel={false}
         fel={false}
-        att={true}
+        att={false}
         sal={false}
       />
-          <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Release Product</h1>  
-          <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+          <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Release Product</h1>  
             
             
           <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
@@ -64,8 +62,7 @@ const ReleaseProduct = () => {
                 <Spinner />
             ) : (
 
-                <div>
-                <table className='mx-auto font-BreeSerif mb-5 bg-white'>
+                <table className='min-w-full'>
                     <TableView headers={headers} />
                     <tbody>
                         {releaseProducts && filteredRequests.map((releaseProduct, index) => (
@@ -110,18 +107,13 @@ const ReleaseProduct = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="text-center mt-4 mb-8">
-                    <p>Total Items: {totalItemCount}</p>
-                    <p>Total Items Matching "{search}": {itemCount}</p>
-                </div>
+                
 
 
-                </div> 
+                
             )}
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<StaffFooter />       
+
+                
         </div>
     );
 };

@@ -28,10 +28,11 @@ const ShowRepair = () => {
     return(
         <div className='relative'>
             <MaintenanceManagerHeader/>
+            <div className='w-full mt-6 h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             {loading ? (
              <Spinner/>
             ):(
-                <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
+                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
                     <h1 className='text-3xl text-center my-4 font-BreeSerif'>Show Repair</h1>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Repair ID</span>
@@ -43,7 +44,7 @@ const ShowRepair = () => {
                     </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Requested Date</span>
-                        <span className='font-BreeSerif'>{repair.RequestedDate}</span>
+                        <span className='font-BreeSerif'>{new Date(repair.createdAt).toDateString()}</span>
                     </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Requested Time</span>
@@ -73,19 +74,13 @@ const ShowRepair = () => {
                             ))}
                         </div>
                     </div>
-   
-
-
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-ternary font-BreeSerif'>Created Time</span>
-                        <span className='font-BreeSerif'>{new Date(repair.createdAt).toString()}</span>
-                    </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Last Updated Time</span>
-                        <span className='font-BreeSerif'>{new Date(repair.updatedAt).toString()}</span>
+                        <span className='font-BreeSerif'>{new Date(repair.updatedAt).toDateString()}</span>
                     </div>
                 </div>
             )}
+            </div>
             <StaffFooter/>
         </div>
     )

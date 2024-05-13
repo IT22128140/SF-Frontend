@@ -1,144 +1,163 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import Input from '../../components/form/Input';
-import Select from '../../components/form/Select';
+import { useSnackbar } from 'notistack';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
-import PMHeader from '../../components/navbar/PMHeader';
-import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
-import Picture1 from '../../../public/Picture1.jpg'
 import { FormProvider, useForm } from 'react-hook-form';
 
-
 const AddFinalProduct = () => {
-  const methods = useForm();
   const [productCode, setProductCode] = useState('');
   const [fabricType, setFabricType] = useState('');
   const [color, setColor] = useState('');
   const [stitchingType, setStitchingType] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const handleSaveProductRequest = async (data) => {
+
+  const [loading, setLoading ] = useState(false);
+  const navigate  = useNavigate();
+  const { enqueueSnackBar } = useSnackbar();
+  const {id} = useParams();
+
+  useEffect(() => {
     setLoading(true);
-    try {
-      await axios.post('http://localhost:5555/qualityControl/productRequest', data);
+    axios.get(`http://localhost:5555/garmentProduct/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      setProductCode(response.data.productCode);
+      setFabricType(response.data.fabricType);
+      setColor(response.data.color);
+      setStitchingType(response.data.stitchingType);
+      setQuantity(response.data.quantity);
       setLoading(false);
-      navigate('/qualityControl/reviewRequest/add');//has to change in PM Home
-    } catch (error) {
+    }).catch((error) => {
       setLoading(false);
       alert('An error happened. Please check console');
       console.log(error);
-    }
+    });
+
+  }, []);
+
+
+  const handleAddFinalProduct = () => {
+    const data = {
+      productCode,
+      fabricType,
+      color,
+      stitchingType,
+      quantity,
+
+    };
+    setLoading(true);
+    axios
+      .post('http://localhost:5555/qualityControl/productRequest', data)// Use axios.put for updating existing data
+      .then(() => {
+        setLoading(false);
+        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
+        navigate('#'); //need to change ridmis home 
+      })
+      .catch((error) => {
+        setLoading(false);
+        alert('An error happened. Please Check console');
+        // enqueueSnackBar('Error', { variant: 'error' });
+        console.log(error);
+      });
   };
 
   const handleCancel = () => {
-    navigate('/'); // Change the path as needed
+    navigate('#'); // Change the path as needed
   };
 
-  const option1 = [
-    { id: 1, value: 'Cotton', option: 'Cotton' },
-    { id: 2, value: 'Polyester', option: 'Polyester'},
-    { id: 3, value: 'Silk', option: 'Silk'},
-    { id: 4, value: 'Linen', option: 'Linen'},
-    { id: 5, value: 'Denim', option: 'Denim'},
-  ];
-
-  const option2 = [
-  { id: 1, value: 'Straight Stitch', option: 'Straight Stitch' },
-  { id: 2, value: 'Zigzag Stitch', option: 'Zigzag Stitch' },
-  { id: 3, value: 'Overlock Stitch', option: 'Overlock Stitch'},
-  { id: 4, value: 'Double Stitch', option: 'Double Stitch'},
-  { id: 5, value: 'Topstitching', option: 'Topstitching'},
-  ];
 
   return (
-    <div className='relative' style={{ backgroundImage: "/Picture1.jpg", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader />
-      <h1 className='text-4xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request Quality Evaluation For Final Product</h1>
-      {loading ? <Spinner /> : ''}
-      
-      <FormProvider {...methods}> 
-        <form onSubmit={methods.handleSubmit(handleSaveProductRequest)} className="flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
-        <Input
-            formtype='textarea'
-            label='Product Code'
-            id='productCode'
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
+
+      {loading ? <Spinner/> : ''}
+        <div
+          className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
+        >
+          <div className='my-2'>
+            <label className='text-xl mr-4'>Product Code</label>
+            <textarea
+            className='drop-shadow-md px-4 py-2 w-full h-10'
             type='text'
-            placeholder='Enter Product Code (PR0000)'
+            id='productCode'
             name='productCode'
+            placeholder='Enter ProductCode'
             value={productCode}
+            readOnly = {true}
             onChange={(e) => setProductCode(e.target.value)}
-            validation={{
-              required: 'Product Code is required',
-              pattern: {
-                  value: /^PR\d{4}$/, // Regex pattern for "PR" followed by four digits
-                  message: 'Product Code must start with PR followed by four digits',
-              }
-          }}
-          />
-          <Select
-            label='Fabric Type'
+            validation={{ required: 'Product Code is required' }}
+            />
+          </div>
+
+          <div className='my-2'>
+            <label className='text-xl mr-4'>Fabric Type</label>
+            <textarea
+            className='drop-shadow-md px-4 py-2 w-full h-10'
+            type='text'
             id='fabricType'
             name='fabricType'
-            firstOption="Select Fabric Type"
-            options={option1}
+            placeholder='Enter Fabric Type'
+            value={fabricType}
+            readOnly = {true}
+            onChange={(e) => setFabricType(e.target.value)}
             validation={{ required: 'Fabric Type is required' }}
-          />
-          <Input
-            formtype='textarea'
-            label='Color'
-            id='color'
+            />
+          </div>
+
+          <div className='my-2'>
+            <label className='text-xl mr-4'>Color</label>
+            <textarea
+            className='drop-shadow-md px-4 py-2 w-full h-10'
             type='text'
-            placeholder='Enter Color'
+            id='color'
             name='color'
+            placeholder='Enter color'
             value={color}
+            readOnly = {true}
             onChange={(e) => setColor(e.target.value)}
             validation={{ required: 'Color is required' }}
-          />
-          <Select
-            label='Stitching Type'
+            />
+          </div>
+
+          <div className='my-2'>
+            <label className='text-xl mr-4'>Stitching Type</label>
+            <textarea
+            className='drop-shadow-md px-4 py-2 w-full h-10'
+            type='text'
             id='stitchingType'
             name='stitchingType'
-            firstOption="Select stitching Type"
-            options={option2}
+            placeholder='Enter Stitching Type'
+            value={stitchingType}
+            readOnly = {true}
+            onChange={(e) => setStitchingType(e.target.value)}
             validation={{ required: 'Stitching Type is required' }}
-          />
-          <Input
-            formtype='textarea'
-            label='Quantity'
-            id='quantity'
+            />
+          </div>
+
+          <div className='my-2'>
+            <label className='text-xl mr-4'>Quantity</label>
+            <textarea
+            className='drop-shadow-md px-4 py-2 w-full h-10'
             type='text'
-            placeholder='Enter Quantity'
+            id='quantity'
             name='quantity'
+            placeholder='Enter Quantity'
             value={quantity}
+            readOnly = {true}
             onChange={(e) => setQuantity(e.target.value)}
-            validation={{
-              required: 'Quantity is required',
-              pattern: {
-                  value: /^[0-9]+$/,
-                  message: 'Quantity must be a number',
-              },
-              max: {
-                  value: 100,
-                  message: 'Maximum quantity of one set is 100',
-              }
-          }}
-          />
-          
-         
-         <div className="flex justify-end mt-4">
-            
-            <Button onClick={handleCancel} className="mr-2" style={{ backgroundColor: 'red' }}>Cancel</Button>
-            <Button type="submit">Add</Button>
-         </div>
-        </form>
-      </FormProvider>
-      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-      <StaffFooter />
+            validation={{ required: 'Quantity is required' }}
+            />
+          </div>
+
+          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddFinalProduct}>Request Quality Evaluation</button>
+        </div>
     </div>
   )
 }

@@ -5,14 +5,11 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/searchBar2";
 import TableView from '../../components/table/TableView';
-import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from "../../components/button/Button";
-import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
-import PMHeader from '../../components/navbar/PMHeader';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 
 
 const RejectProduct = () => {
@@ -49,18 +46,17 @@ rejectedProducts.forEach((request) => {
   const totalItemCount = rejectedProducts.length;
 
   return (
-    <div className='p-4'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader />
-      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Rejected Product in Quality Evaluation</h1>
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Rejected Product in Quality Evaluation</h1>
       
 
-      <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
+      
     {loading ? (
         <Spinner />
     ) : (
-        <div>
 
-        <table className='mx-auto font-BreeSerif mb-5 bg-white'>
+        <table className='min-w-full'>
             <TableView headers={headers} />
             <tbody>
                 {rejectedProducts && filteredRequests.map((rejectedProduct, index) => (
@@ -88,7 +84,7 @@ rejectedProducts.forEach((request) => {
                         </td>
                         <td className='border border-slate-700 rounded-md text-center'>
                             <div className='flex justify-center gap-x-4'>
-                            <Link to={`#`}>
+                            <Link to={`/qualityControl/rejectProduct/rereview/${rejectedProduct._id}`}>
                                 <Button className='mr-2'>
                                     Re-review
                                 </Button>
@@ -100,18 +96,13 @@ rejectedProducts.forEach((request) => {
                 ))}
             </tbody>
         </table>
-        <div className="text-center mt-4 mb-8">
-            <p>Total Items: {totalItemCount}</p>
-            <p>Total Items Matching "{search}": {itemCount}</p>
-        </div>
+        
 
 
-        </div>   
+        
     )}
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<StaffFooter />  
+
+       
     </div>
   );
 };

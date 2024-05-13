@@ -1,7 +1,4 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
-// import { Link } from "react-router-dom";
-// import { IoPersonCircleOutline } from "react-icons/io5";
 import NavbarButton from "../NavbarButton";
 import NavbarLogo from "../NavbarLogo";
 import NavbarUserProfile from "../NavbarUserProfile";

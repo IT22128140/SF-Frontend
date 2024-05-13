@@ -30,13 +30,13 @@ export default function WorkersSidebar() {
     <div className='flex mt-4 pr-4'>
         <div className=''>
       {/* Button to toggle the visibility of the sidebar */}
-      <button onClick={toggleSidebar} className=" top-0 left-0 z-10 p-2 m-2 bg-navbar text-primary rounded-md hover:bg-bgc">
+      <button onClick={toggleSidebar} className=" top-0 left-0 z-10 p-2 m-2 bg-white text-ternary rounded-md hover:bg-bgc">
         {showSidebar ? 'Close' : 'Show Workers'}
       </button>
 
       {/* Sidebar container */}
       {showSidebar && (
-        <div className="absolute top-30 left-0 z-20 h-full w-64 bg-gray-200 p-4 overflow-y: auto">
+        <div className="absolute top-30 left-0 z-20  w-64   bg-white p-4 overflow-y: auto">
           
           <h2 className="text-lg text-ternary font-semibold mb-10"> Repair Workers</h2>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
@@ -31,7 +32,7 @@ const ShowMachine = () => {
             {loading ? (
              <Spinner/>
             ):(
-                <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
+                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
                     <h1 className='text-3xl text-center my-4 font-BreeSerif'>Show Machine</h1>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Machine ID</span>
@@ -63,12 +64,20 @@ const ShowMachine = () => {
                     </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Created Time</span>
-                        <span className='font-BreeSerif'>{new Date(machine.createdAt).toString()}</span>
+                        <span className='font-BreeSerif'>{new Date(machine.createdAt).toDateString()}</span>
                     </div>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Last Updated Time</span>
-                        <span className='font-BreeSerif'>{new Date(machine.updatedAt).toString()}</span>
+                        <span className='font-BreeSerif'>{new Date(machine.updatedAt).toDateString()}</span>
                     </div>
+
+                        {machine.Category && machine.Category.toLowerCase() === "sewing machine" && (
+                            <Link to={`/maintenance/view/${machine.MachineID}`}>
+                                <button className="bg-ternary ml-52 text-white font-bold py-2 px-4 rounded mt-4">
+                                    Maintenance Tracker
+                                </button>
+                            </Link>
+                        )}
                 </div>
             )}
             <StaffFooter/>

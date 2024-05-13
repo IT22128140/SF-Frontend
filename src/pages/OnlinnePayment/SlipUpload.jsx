@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import React, { useState } from "react";
 import axios from "axios";
-import Spinner from "../../components/Spinner";
+import { useParams, useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/button2/SubmitButton";
 import CustomerNavbar from "../../components/navbar/CustomerNavbar";
 import Footer from "../../components/footer/Footer";
@@ -10,37 +9,41 @@ import RejectButton from "../../components/button2/RejectButton";
 
 const SlipUpload = () => {
   const [payment, setPayment] = useState({});
-  const [email, setEmail] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [bankName, setBankName] = useState("");
-  const [branch, setBranch] = useState("");
+  const [branchName, setBranchName] = useState("");
   const [fullName, setFullName] = useState("");
-  const [loading, setLoading] = useState(false); // Initially set to true to show loading spinner
+  const [slip , setSlip] = useState("");
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleUpload = (e) => {
     console.log(payment);
   };
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    setEmailAddress(e.target.value);
   };
+
   const handleBankNameChange = (e) => {
     setBankName(e.target.value);
   };
 
   const handleBranchChange = (e) => {
-    setBranch(e.target.value);
+    setBranchName(e.target.value);
   };
 
   const handleFullNameChange = (e) => {
     setFullName(e.target.value);
   };
+
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (phoneNumber.length !== 10) {
       alert("Phone number must be 10 digits");
@@ -50,12 +53,12 @@ const SlipUpload = () => {
       alert("Bank Name must be 30 characters or less");
       return;
     }
-    if (branch.length > 30) {
+    if (branchName.length > 30) {
       alert("Branch must be 30 characters or less");
       return;
     }
 
-    if (!email.includes("@")) {
+    if (!emailAddress.includes("@")) {
       alert("Invalid email address");
       return;
     }
@@ -64,21 +67,45 @@ const SlipUpload = () => {
       return;
     }
 
-    console.log("Form submitted successfully");
+    const data = {
+      emailAddress,
+      phoneNumber,
+      bankName,
+      branchName,
+      fullName,
+      slip,
+    };
+
+    try {
+      setLoading(true);
+      const response =await axios.post(`http://localhost:5555/payment`, data);
+      setLoading(false);
+      const id = response.data._id;
+      console.log(id);
+      navigate(`/PaymentSucc/${id}`);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+      alert("An error occurred while processing your request");
+    }
   };
 
-  useEffect(() => {
-    axios
-      .post(`http://localhost:5555/payment`)
-      .then(() => {
-        setLoading(false);
-        navigate(`/PaymentSucc/${id}`);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setLoading(false);
-      });
-  }, []);
+
+  const handlePaymentSlip = async (file) => {
+    if (!file) {
+      alert("No file selected");
+      return;
+    }
+  
+    const fileSizeMB = file.size / (1024 * 1024);
+    if (fileSizeMB > 5) {
+      alert("File size must be less than 5MB");
+      return;
+    }
+  
+    const base64 = await convertToBase64(file);
+    setSlip(base64);
+  };
 
   return (
     <div>
@@ -121,16 +148,20 @@ const SlipUpload = () => {
             Add Slip image
           </label>
           <input
-            type="file"
-            onChange={(e) => setPayment(e.target.files[0])}
-            className="appearance-none border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[300px] w-60 h-20"
-          />
+  type="file"
+  name="slip"
+  id="slip"
+  accept=".jpg,.jpeg,.png,.pdf"
+  onChange={(e) => handlePaymentSlip(e.target.files[0])}
+  className="appearance-none border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[300px] w-60 h-20"
+/>
 
           <label className="block text-ternary text-sm font-bold mb-3 absolute top-[715px] left-[300px]">
             Bank Name
           </label>
           <input
             type="text"
+            value={bankName}
             onChange={handleBankNameChange}
             placeholder="Bank Name"
             className="border border-black border-1 p-1 block mb-2 absolute top-[745px] left-[300px]"
@@ -141,6 +172,7 @@ const SlipUpload = () => {
           </label>
           <input
             type="text"
+            value={branchName}
             onChange={handleBranchChange}
             placeholder="Branch"
             className="border border-black border-1 p-1 block mb-2 absolute top-[830px] left-[300px]"
@@ -150,6 +182,7 @@ const SlipUpload = () => {
           </label>
           <input
             type="email"
+            value={emailAddress}
             onChange={handleEmailChange}
             placeholder="Email Address"
             className="border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[900px]"
@@ -160,6 +193,7 @@ const SlipUpload = () => {
           </label>
           <input
             type="text"
+            value={fullName}
             onChange={handleFullNameChange}
             placeholder="Full Name"
             className="border border-black border-1 p-1 block mb-2 absolute top-[745px] left-[900px]"
@@ -169,22 +203,21 @@ const SlipUpload = () => {
           </label>
           <input
             type="number"
+            value={phoneNumber}
             onChange={handlePhoneNumberChange}
             placeholder="Phone Number"
             className="border border-black border-1 p-1 block mb-2 absolute top-[830px] left-[900px]"
           />
           <div>
-            <Link to={`/PaymentSucc/${id}`}>
+            <Link>
               <SubmitButton
-                className=" absolute top-[1000px] left-[600px]"
                 onClick={handleSubmit}
-              >
-                Confirm
-              </SubmitButton>
+                className="absolute top-[900px] left-[600px]"
+              ></SubmitButton>
             </Link>
 
             <Link to={`/Payment`}>
-              <RejectButton className=" absolute top-[1000px] left-[800px]">
+              <RejectButton className=" absolute top-[900px] left-[800px]">
                 Back
               </RejectButton>
             </Link>
@@ -204,4 +237,17 @@ const SlipUpload = () => {
   );
 };
 
-export default SlipUpload;
+export default SlipUpload
+
+function convertToBase64(file){
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}

@@ -8,7 +8,7 @@ import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 
 
-const RequestforInventory = () => {
+const RMRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
@@ -28,17 +28,18 @@ const RequestforInventory = () => {
   }, []);
   return (
     <div className='relative'>
+      
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize:('cover')}}>
       <IsNavbar RmR= {true}/>
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
-        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary">
           Raw Material Requests
         </h1>
       </center>
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'ml-1 mr-1 font-BreeSerif mb-5 mt-5 bg-white'>
+        <table className = 'mt-5 mb-5 ml-1 mr-1 bg-white font-BreeSerif'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -83,4 +84,4 @@ const RequestforInventory = () => {
   )
 }
 
-export default RequestforInventory
+export default RMRequests;

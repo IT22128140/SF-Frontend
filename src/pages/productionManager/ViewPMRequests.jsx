@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
-import { Link } from 'react-router-dom';
-import RejectButton from '../../components/button2/RejectButton';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
-import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
-import MyModal from '../../components/MyModal';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
 
 const ViewrmRequests = () => {
   const [rmrequest, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showModal,setShowModal] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,11 +25,12 @@ const ViewrmRequests = () => {
   }, [])
 
   return (
-    <div className='relative'>
-      <IsNavbar RmR= {true}/>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <PMHeader rrm= {true}/>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
-          Raw Material Requests
+          Requested Raw Materials
         </h1>
       </center>
       {loading ? (
@@ -62,24 +59,17 @@ const ViewrmRequests = () => {
             <span>{rmrequest.Other_Materials}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Create Time</span>
-            <span>{new Date(rmrequest.createdAt).toString()}</span>
+            <span className='text-xl mr-4'>Created Date</span>
+            <span>{new Date(rmrequest.createdAt).toDateString()}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Last Update Time</span>
+            <span className='text-xl mr-4'>Last Updated Time</span>
             <span>{new Date(rmrequest.updatedAt).toString()}</span>
-          </div>
-          <div className='flex justify-center gap-x-20'>
-
-            <button onClick={() => setShowModal(true)} className='flex items-center justify-between h-fit w-fit p-1.5 bg-orange-600 text-md text-white rounded-lg shadow-md font-BreeSerif'>Accept</button>
-            {showModal && <MyModal onClose={() => setShowModal(false)}/>}
-
-            <Link to={`/rmRequests/delete/${rmrequest._id}`}>
-              <RejectButton/>
-            </Link>
           </div>
         </div>
       )}
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter/>
     </div>
   )

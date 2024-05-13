@@ -12,10 +12,13 @@ import MaintenanceManagerHeader from '../../components/navbar/staffheader/Mainte
 import { fetchRepairWorkers } from './workers';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import SearchBar from "../../components/SearchBar";
+import DeleteRepairs from "./DeleteRepairs";
 
 const RepairTable = () => {
     const [repairs, setRepairs] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [selectedRepair, setSelectedRepair] = useState(null);
     const [data2, setdata2] = useState([]);
  
     const headers = ['ID', 'Description', 'Requested Date', 'Requested Time', 'Urgency Level', 'Status' , 'Completed Date', 'Operations'];
@@ -42,22 +45,18 @@ const RepairTable = () => {
     console.log(data2);
 
     return (
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <MaintenanceManagerHeader r={true}/>
-
+            <div >
             <SearchBar data= {data2} navigate={`/repairs/view/`} placeholder={"Enter Repair ID"}/>
-
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Repairs List</h1>
-            </div>
-
-
-            
+       
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Repairs List</h1>
+    
             {loading ? (
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {repairs.map((repair, index) => (
@@ -70,7 +69,7 @@ const RepairTable = () => {
                                     {repair.RepairDescription}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.RequestedDate}
+                                {new Date(repair.createdAt).toDateString()}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {repair.RequestedTime}
@@ -85,7 +84,7 @@ const RepairTable = () => {
                                     {repair.Workers}
                                 </td> */}
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {repair.CompletedDate}
+                                    {repair.CompletedDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4 ml-2 mr-2'>
@@ -95,9 +94,12 @@ const RepairTable = () => {
                                         <Link to={`/repairs/edit/${repair._id}`}>
                                               <EditButton/>
                                         </Link>
-                                        <Link to={`/repairs/delete/${repair._id}`}>
-                                            <DeleteButton />
-                                        </Link>
+                                        <DeleteButton
+                                        onClick={() => {
+                                            setSelectedRepair(repair);
+                                            setShowDelete(true)
+                                        }}
+                                        />
                                     </div> 
                                 </td>
                             </tr>
@@ -105,10 +107,19 @@ const RepairTable = () => {
                     </tbody>
                 </table>         
             )}
+
+                {showDelete && (
+                    <DeleteRepairs
+                        id={selectedRepair._id}
+                        onClose={() => setShowDelete(false)}
+                    />
+                )}
+
                 <div className="flex h-40 mt-10 ml-5">
                 <Link to='/repairs/create'>
                     <AddButton />
                 </Link>
+                </div>
                 </div>
                 <StaffFooter/>
         </div>
