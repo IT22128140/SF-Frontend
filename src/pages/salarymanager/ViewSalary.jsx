@@ -122,9 +122,11 @@ const ViewSalary = () => {
                   <label className="block text-ternary text-sm font-bold mb-3">
                     Cheque
                   </label>
-                  <span className="border border-black border-1 p-1 block mb-2">
-                    {viewSalary.cheque}
-                  </span>
+                  <img
+                    src={viewSalary.cheque1}
+                    alt="cheque"
+                    className="border border-black border-1 p-1 block mb-2" />
+                 
                   <br />
                   <label className="block text-ternary text-sm font-bold mb-3">
                     Date

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import SubmitButton from "../../components/button2/SubmitButton";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter";
@@ -11,44 +10,43 @@ import { set } from "react-hook-form";
 const EditSalaryBalance = () => {
   const [editSalaryBalance, setEditSalaryBalance] = useState({});
   const [attendance, setAttendance] = useState(0);
-  const [overtime, setOverTime] = useState(0);
+  const [overtimeHours, setOvertimeHours] = useState(0);
   const [bonus, setBonus] = useState(0);
   const [date, setDate] = useState("");
   const [notice, setNotice] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [attendanceError, setAttendanceError] = useState("");
+  const [overtimeError, setOvertimeError] = useState("");
+  const [bonusError, setBonusError] = useState("");
+  const [cheque1,setCheque1] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
   const calculateTotalAmount = () => {
     const basic = parseFloat(editSalaryBalance.basicSalary);
-    const overtimeValue = parseFloat(overtime);
+    const overtimeValue = parseFloat(overtimeHours);
     const bonusAmount = parseFloat(bonus);
 
     let totalAmountValue;
 
     if (attendance >= 27 && attendance <= 30) {
-      totalAmountValue = (basic + overtimeValue * 200 + bonusAmount).toFixed(2);
+      totalAmountValue = (basic + overtimeValue * 200 + bonusAmount + 3000).toFixed(2);
     } else if (attendance >= 24 && attendance < 27) {
-      const adjustedSalary = basic + overtimeValue * 200 + bonusAmount + 3000;
+      const adjustedSalary = basic + overtimeValue * 200 + bonusAmount - 5000;
+      totalAmountValue = adjustedSalary.toFixed(2);
+    } else if (attendance >= 20 && attendance < 24) {
+      const adjustedSalary = basic + overtimeValue * 200 + bonusAmount - 7000;
+      totalAmountValue = adjustedSalary.toFixed(2);
+    } else if (attendance >= 15 && attendance < 20) {
+      const adjustedSalary = basic + overtimeValue * 200 + bonusAmount;
       totalAmountValue = adjustedSalary.toFixed(2);
     } else {
-      totalAmountValue = "Invalid attendance range";
+      const adjustedSalary = basic;
+      totalAmountValue = adjustedSalary.toFixed(2);
     }
 
     setTotalAmount(totalAmountValue);
-
-    // Update the total amount in the database
-    axios
-      .put(`http://localhost:5555/editsalary/${id}`, {
-        totalAmount: totalAmountValue,
-      })
-      .then((response) => {
-        console.log("Total amount updated successfully:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error updating total amount:", error);
-      });
   };
 
   useEffect(() => {
@@ -58,11 +56,12 @@ const EditSalaryBalance = () => {
       .then((response) => {
         setEditSalaryBalance(response.data);
         setAttendance(response.data.attendance);
-        setOverTime(response.data.overtime);
+        setOvertimeHours(response.data.overtime);
         setBonus(response.data.bonus);
         setTotalAmount(response.data.totalAmount);
         setDate(response.data.date);
         setNotice(response.data.notice);
+        setCheque1(response.data.cheque1);
         setLoading(false);
       })
       .catch((error) => {
@@ -71,14 +70,32 @@ const EditSalaryBalance = () => {
       });
   }, []);
 
-  const handleSalary = () => {
+  const handleSalary = (e) => {
+    e.preventDefault();
+    console.log("uploded");
+
+    // Validation for attendance, overtime, and bonus
+    if (attendance < 0 || attendance > 30) {
+      setAttendanceError("Attendance must be between 0 and 30");
+      return;
+    }
+    if (overtimeHours < 0 || overtimeHours > 300) {
+      setOvertimeError("Overtime hours must be between 0 and 200");
+      return;
+    }
+    if (bonus < 0 || bonus > 100000) {
+      setBonusError("Bonus must be between 0 and 100000");
+      return;
+    }
+
     const data = {
       attendance: attendance,
-      overtime: overtime,
+      overtime: overtimeHours,
       bonus: bonus,
       date: date,
       notice: notice,
       totalAmount: totalAmount,
+      cheque1:cheque1
     };
     setLoading(true);
 
@@ -92,7 +109,14 @@ const EditSalaryBalance = () => {
         console.error("Error:", error);
         setLoading(false);
       });
-  };
+    };
+
+      const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertBase64(file);
+        setCheque1(base64);
+      };
+  
 
   return (
     <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
@@ -143,15 +167,15 @@ const EditSalaryBalance = () => {
                   type="number"
                   value={attendance}
                   onChange={(e) => {
-                    const value = parseInt(e.target.value);
-                    if (!isNaN(value) && value <= 30) {
-                      setAttendance(value);
+                    setAttendanceError("");
+                    if (e.target.value <= 30 && e.target.value >= 0) {
+                      setAttendance(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {attendance > 30 && (
-                  <p className="text-red-500">Attendance cannot exceed 30</p>
+                {attendanceError && (
+                  <p className="text-red-500">{attendanceError}</p>
                 )}
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -159,19 +183,17 @@ const EditSalaryBalance = () => {
                 </label>
                 <input
                   type="number"
-                  value={overtime}
+                  value={overtimeHours}
                   onChange={(e) => {
-                    const value = parseInt(e.target.value);
-                    if (!isNaN(value) && value <= 250) {
-                      setOverTime(value);
+                    setOvertimeError("");
+                    if (e.target.value <= 300 && e.target.value >= 0) {
+                      setOvertimeHours(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {overtime > 250 && (
-                  <p className="text-red-500">
-                    Overtime hours cannot exceed 250
-                  </p>
+                {overtimeError && (
+                  <p className="text-red-500">{overtimeError}</p>
                 )}
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -181,16 +203,14 @@ const EditSalaryBalance = () => {
                   type="number"
                   value={bonus}
                   onChange={(e) => {
-                    const value = parseInt(e.target.value);
-                    if (!isNaN(value) && value <= 200000) {
-                      setBonus(value);
+                    setBonusError("");
+                    if (e.target.value <= 100000 && e.target.value >= 0) {
+                      setBonus(e.target.value);
                     }
                   }}
                   className="border border-black border-1 p-1 block mb-2"
                 />
-                {bonus > 200000 && (
-                  <p className="text-red-500">Bonus cannot exceed 200,000</p>
-                )}
+                {bonusError && <p className="text-red-500">{bonusError}</p>}
                 <br />
                 <div className="flex justify-center">
                   <button
@@ -209,7 +229,20 @@ const EditSalaryBalance = () => {
                 </span>
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
-                  DAte
+                  Cheque
+                </label>
+                <input
+                  type="file"
+                  name="cheque1"
+                  id="cheque1"
+                  accept=".jpg, .jpeg, .png"
+                  onChange={(e) => handleFileUpload(e)}/>
+                  <label className="block text-black text-sm font-semi-bold mb-3">
+                  Image size should be less than 5MB.
+                </label>
+                <br />
+                <label className="block text-ternary text-sm font-bold mb-3">
+                  Date
                 </label>
                 <input
                   type="Date"
@@ -232,7 +265,6 @@ const EditSalaryBalance = () => {
                   </p>
                 )}
                 <br />
-                <br /> <br /> <br />
               </div>
               <br />
               <div className="flex justify-center">
@@ -247,4 +279,17 @@ const EditSalaryBalance = () => {
   );
 };
 
-export default EditSalaryBalance;
+export default EditSalaryBalance
+
+function convertBase64(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+}

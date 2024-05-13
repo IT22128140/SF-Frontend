@@ -91,13 +91,13 @@ const SalaryTable = () => {
                     {salary.totalAmount}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.cheque1}{" "}
+                    {salary.cheque1 && <img src={salary.cheque1} alt="cheque" />} 
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.date}{" "}
+                    {salary.date}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.notice}{" "}
+                    {salary.notice}
                   </td>
 
                   <td className="border border-slate-700 rounded-md text-center">
