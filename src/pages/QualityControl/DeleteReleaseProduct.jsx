@@ -8,18 +8,18 @@ import CancelButton from '../../components/button2/CancelButton';
 import DeleteButton from '../../components/button2/DeleteButton';
 import { FormProvider, useForm } from 'react-hook-form';
 
-const DeleteFinalProduct = () => {
+const DeleteReleaseProduct = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {id} = useParams() ;
 
-  const handleDeleteProductRequest = () => {
+  const handleDeleteReleaseProduct = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:5555/qualityControl/productRequest/${id}`)
+      .delete(`http://localhost:5555/qualityControl/releaseProduct/${id}`)
       .then(() => {
         setLoading(false);
-        navigate('/qualityControl/reviewRequest')
+        navigate('/qualityControl/releaseProduct')
       }).catch((error) => {
         setLoading(false);
         alert('An error happened. Please check console');
@@ -29,7 +29,7 @@ const DeleteFinalProduct = () => {
   }; 
 
   const handleCancel = () => {
-    navigate('/qualityControl/reviewRequest'); // Change the path as needed
+    navigate('/qualityControl/releaseProduct'); // Change the path as needed
   };
 
   return (
@@ -39,7 +39,7 @@ const DeleteFinalProduct = () => {
         <h3 className='text-2xl'>Are you sure you want to delete this?</h3>
         <div className="flex justify-end mt-4">
           <CancelButton onClick={handleCancel} className="mr-2" style={{ backgroundColor: 'red' }}>Cancel</CancelButton>
-          <DeleteButton className='mr-2' onClick={handleDeleteProductRequest}>
+          <DeleteButton className='mr-2' onClick={handleDeleteReleaseProduct}>
              Delete
           </DeleteButton>
         </div>
@@ -50,4 +50,4 @@ const DeleteFinalProduct = () => {
   )
 }
 
-export default DeleteFinalProduct
+export default DeleteReleaseProduct

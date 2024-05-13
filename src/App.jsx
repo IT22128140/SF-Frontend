@@ -121,17 +121,27 @@ import SalaryTable from './pages/salarymanager/SalaryTable.jsx'
 
 
 /* Sageevan */
-import QualityControl from './pages/QualityControl/QualityControl.jsx';
-import AddFinalProduct from './pages/QualityControl/AddFinalProduct.jsx'
-import ReviewRequest from './pages/QualityControl/ReviewRequest.jsx';
-import EditFinalProduct from './pages/QualityControl/EditFinalProduct.jsx';
-import DeleteFinalProduct from './pages/QualityControl/DeleteFinalProduct.jsx';
-import PendingReview from './pages/QualityControl/PendingReview.jsx';
-import AddReleaseProduct from './pages/QualityControl/AddReleaseProduct.jsx';
-import ReleaseProduct from './pages/QualityControl/ReleaseProduct.jsx';
-import AddReview from './pages/QualityControl/AddReview.jsx';
-import ReviewReport from './pages/QualityControl/ReviewReport.jsx';
-import RejectProduct from './pages/QualityControl/RejectProduct.jsx';
+import QualityControl from './pages/QualityControl/QualityControl.jsx';//Home
+import AddFinalProduct from './pages/QualityControl/AddFinalProduct.jsx';//1reReq1/7
+import ReviewRequest from './pages/QualityControl/ReviewRequest.jsx';//1reReq2/7
+import EditFinalProduct from './pages/QualityControl/EditFinalProduct.jsx';//1reReq3/7
+import DeleteFinalProduct from './pages/QualityControl/DeleteFinalProduct.jsx';//1reReq4/7
+import ViewFinalProduct from "./pages/QualityControl/viewFinalProduct.jsx";//1reReq5/7
+import PendingReview from './pages/QualityControl/PendingReview.jsx';//1reReq6/7
+import AddReleaseProduct from './pages/QualityControl/AddReleaseProduct.jsx';//2Rel1/5
+import ReleaseProduct from "./pages/QualityControl/ReleaseProduct.jsx";//2Rel2/5
+import EditReleaseProduct from "./pages/QualityControl/EditReleaseProduct.jsx";//2Rel3/5
+import DeleteReleaseProduct from "./pages/QualityControl/DeleteReleaseProduct.jsx";//2Rel4/5
+import ViewReleaseProduct from './pages/QualityControl/viewReleaseProduct.jsx';//2Rel5/5
+import AddReview from './pages/QualityControl/AddReview.jsx';//3Reviw1/5
+import ReviewReport from './pages/QualityControl/ReviewReport.jsx';//3Reviw2/5
+import ViewReviwReport from './pages/QualityControl/viewReviewReport.jsx';//3Reviw3/5
+import ReviewActionRelease from './pages/QualityControl/ReviewActionRelease.jsx';//3Reviw4/5
+import ReviewActionReject from './pages/QualityControl/ReviewActionReject.jsx';//3Reviw5/5
+import AddRejectProduct from './pages/QualityControl/AddRejectProduct.jsx';//4Rject1/3
+import RejectProduct from './pages/QualityControl/RejectProduct.jsx';//4Rject2/3
+import AddReReview from './pages/QualityControl/AddReReview.jsx';//4Rject3/3
+
 
 
 
@@ -315,16 +325,25 @@ const App = () => {
 
       {/* Sageevan */}
       <Route path="/qualityControl" element={<QualityControl />} />
-      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
       <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/view/:id" element={<ViewFinalProduct />} />
       <Route path="/qualityControl/reviewRequest/pendingRequest" element={<PendingReview />} />
-      <Route path="/qualityControl/releaseProduct/addReleaseProduct" element={<AddReleaseProduct />} />
+      <Route path="/qualityControl/releaseProduct/addReleaseProduct/:id" element={<AddReleaseProduct />} />
       <Route path="/qualityControl/releaseProduct" element={<ReleaseProduct />} />
-      <Route path="/qualityControl/reviewRepor/addReview" element={<AddReview />} />
+      <Route path="/qualityControl/releaseProduct/edit/:id" element={<EditReleaseProduct />} />
+      <Route path="/qualityControl/releaseProduct/delete/:id" element={<DeleteReleaseProduct />} />
+      <Route path="/qualityControl/releaseProduct/view/:id" element={<ViewReleaseProduct />} />
+      <Route path="/qualityControl/reviewRepor/addReview/:id" element={<AddReview />} />
       <Route path="/qualityControl/reviewReport" element={<ReviewReport />} />
+      <Route path="/qualityControl/reviewReport/actionRelease" element={<ReviewActionRelease />} />
+      <Route path="/qualityControl/reviewReport/actionReject" element={<ReviewActionReject />} />
+      <Route path="/qualityControl/reviewReport/view/:id" element={<ViewReviwReport />} />
+      <Route path="/qualityControl/rejectProduct/addrejectProduct/:id" element={<AddRejectProduct />} />
       <Route path="/qualityControl/rejectProduct" element={<RejectProduct />} />
+      <Route path="/qualityControl/rejectProduct/rereview/:id" element={<AddReReview />} />
 
 
 
