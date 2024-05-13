@@ -11,7 +11,7 @@ function Register() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [employeeType, setemployeeType] = useState("");
+  const [EmployeeType, setEmployeeType] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -36,8 +36,8 @@ function Register() {
       case "password2":
         setPassword2(value);
         break;
-      case "employeeType":
-        setemployeeType(value);
+        case "EmployeeType":
+        setEmployeeType(select);
         break;
       default:
         break;
@@ -47,7 +47,7 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!FirstName || !LastName || !emailAddress || !phoneNumber || !password || !password2 || !employeeType) {
+    if (!FirstName || !LastName || !emailAddress || !phoneNumber || !password || !password2 || !EmployeeType) {
       setError("Please fill in all the fields.");
       return;
     }
@@ -56,16 +56,6 @@ function Register() {
       setError("Please enter a valid email address.");
       return;
     }
-    if (!/^\d{10}$/.test(phoneNumber)) {
-      setError("Please enter a valid 10-digit phone number.");
-      return;
-    }
-
-    if (password.length < 8 || !/\d/.test(password) || !/[!@#$%^&*]/.test(password)) {
-      setError("Password must be at least 8 characters long and contain at least one digit and one special character.");
-      return;
-    }
-    
     if (password !== password2) {
       setError("Passwords do not match.");
       return;
@@ -77,20 +67,17 @@ function Register() {
       emailAddress,
       phoneNumber,
       password,
-      employeeType: employeeType,
+      EmployeeType
     };
 
     console.log(newUser);
+
     axios.post("http://localhost:5555/RegisEmp", newUser)
       .then((result) => {
-        const token = result.data.token;
-        sessionStorage.setItem('token', token);
-        navigate("/LoginEmp");
+        console.log(result);
+        navigate("/pages/LoginEmp");
       })
-      .catch((err) => {
-        setError("An error occurred. Please try again later.");
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
 
 
@@ -172,8 +159,8 @@ function Register() {
           <div className="mb-4">
             <p className="text-black-600 mb-4">Employee Type</p>
             <select
-            value={employeeType}
-            onChange={(e) => setemployeeType(e.target.value)}
+            value={EmployeeType}
+            onChange={(e) => setEmployeeType(e.target.value)}
             id="EmployeeType"
             className="mt-0 w-[100%] p-3 border-gray-300 rounded-md border-2"
             >

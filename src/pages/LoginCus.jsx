@@ -4,23 +4,23 @@ import NavbarLogo from "../components/navbar/NavbarLogo";
 import Footer from "../components/footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
 
-const emailAddressPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
-const Login = () => {
-  const [emailAddress, setEmailAddress] = useState("");
+function Login() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     let newErrors = {};
 
-    if (!emailAddress) {
-      newErrors.emailAddress = "Email address is required";
-    } else if (!emailAddressPattern.test(emailAddress)) {
-      newErrors.emailAddress = "Please enter a valid email address";
+    if (!email) {
+      newErrors.email = "Email address is required";
+    } else if (!emailPattern.test(email)) {
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!password) {
@@ -34,28 +34,22 @@ const Login = () => {
       return;
     }
 
-    const login = {
-      emailAddress,
-      password,
-    }
+    setErrors({}); // Clear the errors state if there are no errors
 
-      try {
-        const result = await axios.post("http://localhost:5555/LoginCus",login);
-
+    axios
+      .post("http://localhost:5555/LoginCus", { email, password })
+      .then((result) => {
         console.log(result);
-        if (result.data) {
-          sessionStorage.setItem("token", result.data._id);
-          navigate("/ProfileCus");
+        if (result.data === "Success") {
+          navigate("/home");
         } else {
-          navigate("/LoginCus");
-          alert("Please Check Your Email and Password ");
+          navigate("/pages/RegisCus");
+          alert("You are not registered to this service");
         }
-      } catch (error) {
-        console.error("An error occurred:", error);
-        // Handle error, maybe show a message to the user
-      }
-  
-  }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="flex flex-col items-center select-none">
       <NavbarLogo />
@@ -66,33 +60,30 @@ const Login = () => {
             className="mt-8 w-[100%] p-3 border-gray-200 rounded-md border-2"
             type="text"
             placeholder="Email Address"
-            value={emailAddress}
-            onChange={(e) => setEmailAddress(e.target.value)}
-          />
-          {errors.emailAddress && <p className="text-red-500">{errors.emailAddress}</p>}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          {errors.email && <p className="text-red-500">{errors.email}</p>}
           <input
             className="mt-4 w-[100%] p-3 border-gray-200 rounded-md border-2"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
+          ></input>
           {errors.password && <p className="text-red-500">{errors.password}</p>}
-          {/* {token && <p>Token: {token}</p>} */}
-          <button type="submit" className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md">
+          <button className="mt-8 w-[100%] p-3 bg-orange-600 text-white rounded-md" onClick={handleSubmit}>
             Login
           </button>
         </form>
         <br />
-        <hr className="h-[2px] bg-gray-200 rounded-xl" />
+        <hr className="h-[2px] bg-gray-200 rounded-xl "></hr> <br />
         <br />
-        <Link className="mb-2 font-semibold text-blue-500 text-decoration-line: underline" to="/RegisCus">
-          or Register
-        </Link>
+        <Link className="mb-2 font-semibold text-blue-500 text-decoration-line: underline" to="/RegisCus">or Register</Link>
       </div>
       <Footer />
     </div>
   );
-}
+};
 
 export default Login;
