@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import Spinner from "../../components/Spinner";
-import { enqueueSnackbar } from "notistack";
 
 const DeleteAddress = ({id, onClose}) => {
   const [loading, setLoading] = useState(false);
@@ -15,12 +14,10 @@ const DeleteAddress = ({id, onClose}) => {
       .then(() => {
         setLoading(false);
         window.location.reload(true);
-        enqueueSnackbar("Address deleted", { variant: "success" });
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
-        enqueueSnackbar("Error deleting address", { variant: "error" });
       });
   };
 

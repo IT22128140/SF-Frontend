@@ -9,7 +9,7 @@ const StoreNavbar = (props) => {
       <div className="flex h-fit flex-row justify-between bg-white mt-3 pb-3 ">
         <NavbarLogo />
         <NavbarUserProfile
-          source={"emp.png"}
+          source={"../Logo1.png"}
           username={"Store manager"}
         />
       </div>

@@ -12,7 +12,7 @@ import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 
 
 const EditSuppliers =() => {
-  const [SrequestID, setSRequestID] = useState('');
+  const [SRequestID, setSRequestID] = useState('');
     const [supplierName, setsupplierName] = useState('');
     const [address, setaddress] = useState ('');
     const [contactNumber, setcontactNumber] = useState('');
@@ -27,7 +27,7 @@ const EditSuppliers =() => {
         setLoading(true);
         axios.get(`http://localhost:5555/supdetails/${id}`)
             .then((response) =>{
-              setSRequestID(response.data.SrequestID);
+              setSRequestID(response.data.SRequestID);
                 setsupplierName(response.data.supplierName);
                 setaddress(response.data.address);
                 setcontactNumber(response.data.contactNumber);
@@ -43,36 +43,8 @@ const EditSuppliers =() => {
     }, [id]);
     
     const handleEditSupplier = () => {
-
-      if (
-        !SrequestID ||
-        !supplierName ||
-        !address ||
-        !contactNumber ||
-        !email ||
-        !supplierType ||
-        !contractExpiary
-    ) {
-        alert('Please fill in all fields');
-        return;
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-    }
-
-    // Validate contact number format
-    const contactNumberRegex = /^\d{10}$/;
-    if (!contactNumberRegex.test(contactNumber)) {
-        alert('Please enter a valid 10-digit contact number');
-        return;
-    }
-    
        const data = {
-        SrequestID,
+        SRequestID,
         supplierName,
         address,
         contactNumber,
@@ -109,7 +81,7 @@ const EditSuppliers =() => {
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher '>Supplier ID</label>
                 <input
                  type='String'
-                 value={SrequestID}
+                 value={SRequestID}
                  onChange={(e) => setSRequestID(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
                 />
@@ -135,8 +107,7 @@ const EditSuppliers =() => {
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>Contact Number</label>
                 <input
-                 type='tel'
-                 pattern="[0-9]{10}"
+                 type='number'
                  value={contactNumber}
                  onChange={(e) => setcontactNumber(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
@@ -146,7 +117,7 @@ const EditSuppliers =() => {
                 <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-philosoper '>Email</label>
                 <input
-                 type='email'
+                 type='String'
                  value={email}
                  onChange={(e) => setemail(e.target.value)}
                   className='w-full px-4 py-2 border-2 border-gray-500'
