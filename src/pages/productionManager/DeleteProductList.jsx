@@ -5,13 +5,13 @@ import DeleteButton from '../../components/button2/DeleteButton';
 import CancelButton from '../../components/button2/CancelButton';
 import { MdOutlineCancel } from "react-icons/md";
 
-const DeletermRequests = ({id,onClose}) => {
+const DeleteProductList = ({id,onClose}) => {
   const [loading, setLoading] = useState(false);
 
-  const handleDeleteRawmRequest = () => {
+  const handleDeleteProductList = () => {
     setLoading(true);
     axios
-      .delete(`http://localhost:5555/rmRequests/${id}`)
+      .delete(`http://localhost:5555/garmentProduct/${id}`)
       .then(() => {
         setLoading(false);
         window.location.reload(true);
@@ -42,7 +42,7 @@ const DeletermRequests = ({id,onClose}) => {
       <div className="flex flex-col rounded-xl mx-auto text-2xl font-BreeSerif">
         <div className="flex flex-row">This action cannot be undone once you click on the Delete.</div>
         <div className="flex justify-center gap-x-40 mt-2">
-          <DeleteButton onClick={handleDeleteRawmRequest}/>
+          <DeleteButton onClick={handleDeleteProductList}/>
           <CancelButton onClick={onClose}/>
         </div>
       </div>
@@ -51,9 +51,9 @@ const DeletermRequests = ({id,onClose}) => {
   )
 }
 
-DeletermRequests.propTypes = {
+DeleteProductList.propTypes = {
   id: PropTypes.string,
   onClose: PropTypes.func,
 };
 
-export default DeletermRequests
+export default DeleteProductList
