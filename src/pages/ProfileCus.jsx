@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
+import CustomerNavbar from "../components/navbar/CustomerNavbar.jsx";
 
 const Profile =() => {
   const [profileInfo, setProfileInfo] = useState({
@@ -25,6 +26,7 @@ const Profile =() => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
+      <CustomerNavbar />
       <div className="p-2 mb-2 rounded-lg w-1/6 pr-2">
         <img src="emp.png" alt="Logo 1" />
       </div>

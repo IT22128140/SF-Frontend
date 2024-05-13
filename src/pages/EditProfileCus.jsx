@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
+import CustomerNavbar from "../components/navbar/CustomerNavbar.jsx";
 
 function EditProfile() {
   const [profileInfo, setProfileInfo] = useState({
@@ -52,6 +53,7 @@ function EditProfile() {
   };
     return (
         <div className="flex flex-col justify-center items-center min-h-screen ">
+            <CustomerNavbar />
             <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
                 <input type="image" src="emp.png" alt="image" />
             </div>
