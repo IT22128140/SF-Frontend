@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import CustomerNavbar from "../../components/navbar/CustomerNavbar";
@@ -13,7 +13,6 @@ const PaymentSucc = () => {
   const { id } = useParams(); // Get ID from URL parameter
 
   useEffect(() => {
-    sendemail();
     setLoading(true);
     axios
       .get(`http://localhost:5555/payment/${id}`)
@@ -22,12 +21,12 @@ const PaymentSucc = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error fetching payment details:", error);
         setLoading(false);
       });
   }, [id]);
 
-  const sendemail = () => {
+  const sendEmail = () => {
     const emailPayload = {
       email: "gihanbanuka2002@gmail.com",
       subject: "Payment Successful",
@@ -56,19 +55,33 @@ Thank you..!`,
 
   const handlePrint = () => {
     const doc = new jsPDF();
-    doc.text("Payment Details", 10, 10);
+    const img3 = new Image();
+    const img4 = new Image();
+
+    img3.src = "/Logo1.png";
+    img4.src = "/Logo2.png";
+
+    img3.onload = function(){
+      doc.addImage(img4, "PNG", 10, 10, 30, 20);
+
+      doc.addImage(img3, "PNG", 170, 10, 30, 20);
+    
+
+    doc.text("Payment Details", 80, 40);
     doc.autoTable({
       head: [["Attribute", "Value"]],
       body: [
         ["Total Amount", paymentsucc.totalpayment],
-        ["Email Address", paymentsucc.email],
-        ["Full Name", paymentsucc.fullname],
-        ["Bank Name", paymentsucc.bankname],
-        ["Phone Number", paymentsucc.phonenumber],
-        ["Branch", paymentsucc.branch],
+        ["Email Address", paymentsucc.emailAddress],
+        ["Full Name", paymentsucc.fullName],
+        ["Bank Name", paymentsucc.bankName],
+        ["Phone Number", paymentsucc.phoneNumber],
+        ["Branch", paymentsucc.branchName],
       ],
+      startY: 50,
     });
     doc.save("payment_details.pdf");
+  };
   };
 
   return (
@@ -89,27 +102,27 @@ Thank you..!`,
             <div className="flex flex-col absolute top-[260px] left-[320px]">
               <br />
               <div className="mb-2">
-                <span className="font-bold">Total Amount:</span>{" "}
+                <span className="font-bold">Total Amount:</span>
                 {paymentsucc.totalpayment}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Email Address:</span>{" "}
+                <span className="font-bold">Email Address:</span>
                 {paymentsucc.emailAddress}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Full Name:</span>{" "}
+                <span className="font-bold">Full Name:</span>
                 {paymentsucc.fullName}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Bank Name:</span>{" "}
+                <span className="font-bold">Bank Name:</span>
                 {paymentsucc.bankName}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Phone Number:</span>{" "}
+                <span className="font-bold">Phone Number:</span>
                 {paymentsucc.phoneNumber}
               </div>
               <div className="mb-2">
-                <span className="font-bold">Branch:</span>{" "}
+                <span className="font-bold">Branch:</span>
                 {paymentsucc.branchName}
               </div>
             </div>

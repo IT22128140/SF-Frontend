@@ -49,7 +49,7 @@ const MachinePartStock = () => {
         <Spinner />
       ) : ( 
         <div className="px-10 mx-auto"> 
-        <table className="mx-auto mb-5 font-BreeSerif ">
+        <table className="mx-auto mb-5 bg-white font-BreeSerif ">
           <TableView headers={headers} />
           <tbody>
             {machineparts.map((mpstock, index) => (

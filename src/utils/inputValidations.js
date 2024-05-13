@@ -23,7 +23,7 @@
       },
       pattern: {
         value: /^[0-9]*$/,
-        message: "Only numbers are allowed",
+        message: "Only positive numbers are allowed",
       }
     },
     

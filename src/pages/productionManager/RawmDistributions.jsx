@@ -9,10 +9,13 @@ import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import DeletermDistributes from './DeletermDistributes';
 
 const RawmDistributions = () => {
   const [rmdistributes, setrmDistributes] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showDelete,setShowDelete] = useState(false);
+  const [selectedRawmDistribution,setselectedRawmDistribution] = useState(null);
   const headers = ['Distribute ID', 'Date', 'Line Number', 'Position Number', 'Distributed', 'Shortage', 'Operations'];
 
   useEffect(() => {
@@ -29,9 +32,9 @@ const RawmDistributions = () => {
       });
   }, []);
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader drm = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Distribution
@@ -76,9 +79,12 @@ const RawmDistributions = () => {
                   <Link to={`/rmDistributes/edit/${rmdistribute._id}`}>
                     <EditButton/>
                   </Link>
-                  <Link to={`/rmDistributes/delete/${rmdistribute._id}`}>
-                    <DeleteButton/>
-                  </Link>
+                  <DeleteButton
+                    onClick = {() => {
+                      setselectedRawmDistribution(rmdistribute);
+                      setShowDelete(true);
+                    }}
+                  />
                   <Link to={`/rmRequests/create`}>
                     <AddButton/>
                   </Link>
@@ -88,6 +94,12 @@ const RawmDistributions = () => {
           ))}
         </tbody> 
       </table>
+      )}
+      {showDelete && (
+        <DeletermDistributes
+          id={selectedRawmDistribution._id}
+          onClose={ ()=> setShowDelete(false)}
+        />
       )}
       <div className="h-40 mt-10 ml-5"></div>
       </div>
