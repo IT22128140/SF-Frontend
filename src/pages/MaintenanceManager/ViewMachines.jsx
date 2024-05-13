@@ -41,18 +41,17 @@ const MachineTable = () => {
     return (
         <div className='relative'>
             <MaintenanceManagerHeader m={true}/>
-
+            <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <SearchBar data= {data1} navigate={`/machines/view/`} placeholder={"Enter Machine ID"}/>
+          
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Machines List</h1>
             
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machines List</h1>
-            </div>
             
             {loading ? (
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {machines.map((machine, index) => (
@@ -65,7 +64,7 @@ const MachineTable = () => {
                                     {machine.MachineName}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {machine.PurchasedDate}
+                                    {machine.PurchasedDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {machine.Condition}
@@ -103,6 +102,7 @@ const MachineTable = () => {
                 <Link to='/machines/create'>
                     <AddButton />
                 </Link>
+                </div>
                 </div>
                 <StaffFooter/>
         </div>

@@ -67,10 +67,11 @@ const EditRepair = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader/>
+      <div className=' relative w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
 
-       <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Edit Repair Details</h1>
 
        <div className="flex w-[80%] justify-between mb-2">
@@ -189,6 +190,7 @@ const EditRepair = () => {
           ))}
         </div>
           <SubmitButton onClick={handleEditRepair}/>
+          </div>
           </div>
           <StaffFooter/>
     </div>

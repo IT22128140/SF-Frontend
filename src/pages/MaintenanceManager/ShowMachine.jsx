@@ -31,7 +31,7 @@ const ShowMachine = () => {
             {loading ? (
              <Spinner/>
             ):(
-                <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
+                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
                     <h1 className='text-3xl text-center my-4 font-BreeSerif'>Show Machine</h1>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Machine ID</span>

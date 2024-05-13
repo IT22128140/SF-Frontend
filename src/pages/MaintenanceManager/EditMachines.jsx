@@ -65,9 +65,10 @@ const EditMachine = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       {loading ? <Spinner /> : ''}
 
-       <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Edit Machine Details</h1>
 
        <div className="flex w-[80%] justify-between mb-2">
@@ -109,7 +110,7 @@ const EditMachine = () => {
             placeholder='Enter Purchased Date'
             name='PurchasedDate'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'
-            value={PurchasedDate}
+            value={PurchasedDate.split("T")[0]}
             onChange={(e) => setPurchasedDate(e.target.value)}
             validation={{ required: 'Purchased Date is required' }}
           />
@@ -177,6 +178,7 @@ const EditMachine = () => {
         
           {/* Include other Input components here */}
           <button type="submit" className='font-BreeSerif bg-black rounded text-white text-center w-[100px] h-[35px] self-end justify-self-end' onClick={handleEditMachine}>Submit</button>
+          </div>
           </div>
           <StaffFooter/>
     </div>

@@ -8,6 +8,9 @@ import MaintenanceManagerHeader from '../../components/navbar/staffheader/Mainte
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
+import {textValidation} from '../../utils/inputValidations'
+import {paraValidation} from '../../utils/inputValidations'
+import {dateValidation} from '../../utils/inputValidations'
 
 const AddMachine = () => {
 
@@ -32,9 +35,10 @@ const AddMachine = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader am={true}/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <BackButton/>
       {loading ? <Spinner /> : ''}
-      {/* Wrap the form with FormProvider */}
+   
       <FormProvider {...methods}> 
         <form onSubmit={methods.handleSubmit(handleSaveMachine)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
         <h1 className='text-4xl  font-philosopher text-black font-semibold my-8 text-center alignment-center'>Add New Machine</h1>
@@ -45,7 +49,8 @@ const AddMachine = () => {
             type='text'
             placeholder='Enter Machine ID'
             name='MachineID'
-            validation={{ required: 'Machine ID is required' }}
+            {...textValidation}
+            // validation={{ required: 'Machine ID is required' }}
           />
 
           <Input
@@ -54,7 +59,8 @@ const AddMachine = () => {
           id='machineName'
           placeholder='Enter Machine Name'
           name='MachineName'
-          validation={{ required: 'Machine Name is required' }}
+          {...textValidation}
+          // validation={{ required: 'Machine Name is required' }}
         />
         <Input
           formtype='input'
@@ -63,7 +69,8 @@ const AddMachine = () => {
           type='date'
           placeholder='Enter Purchased Date'
           name='PurchasedDate'
-          validation={{ required: 'Purchased Date is required' }}
+          {...dateValidation}
+          // validation={{ required: 'Purchased Date is required' }}
         />
         <Input
           formtype='input'
@@ -72,7 +79,8 @@ const AddMachine = () => {
           type='text'
           placeholder='Enter Condition'
           name='Condition'
-          validation={{ required: 'Condition is required' }}
+          {...textValidation}
+          // validation={{ required: 'Condition is required' }}
         />
         <Input
           formtype='input'
@@ -81,7 +89,8 @@ const AddMachine = () => {
           type='text'
           placeholder='Enter Cost'
           name='Cost'
-          validation={{ required: 'Cost required' }}
+          {...textValidation}
+          // validation={{ required: 'Cost required' }}
         />
         <Input
           formtype='input'
@@ -90,7 +99,8 @@ const AddMachine = () => {
           type='text'
           placeholder='Enter Manufacturer'
           name='Manufacturer'
-          validation={{ required: 'Manufacturer is required' }}
+          {...textValidation}
+          // validation={{ required: 'Manufacturer is required' }}
         />
         <Input
           formtype='input'
@@ -99,12 +109,14 @@ const AddMachine = () => {
           type='text'
           placeholder='Enter Category'
           name='Category'
-          validation={{ required: 'Category is required' }}
+          {...textValidation}
+          // validation={{ required: 'Category is required' }}
         />
           <SubmitButton/>
         </form>
       </FormProvider>
-
+      <div className='h-40'></div>
+      </div>
       <StaffFooter/>
     </div>
   )
