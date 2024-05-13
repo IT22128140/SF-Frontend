@@ -77,7 +77,7 @@ const AddReleaseProduct = () => {
   ];
 
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
         home={true}
         cel={false}
@@ -105,6 +105,7 @@ const AddReleaseProduct = () => {
               name='productCode'
               placeholder='Enter product Code'
               value={productCode}
+              readOnly = {true}
               onChange={(e) => setProductCode(e.target.value)}
               validation={{ required: 'Product Code is required' }}
             />
@@ -119,6 +120,7 @@ const AddReleaseProduct = () => {
               name='fabricType'
               placeholder='Enter Fabric Type'
               value={fabricType}
+              readOnly = {true}
               onChange={(e) => setFabricType(e.target.value)}
               validation={{ required: 'Fabric Type is required' }}
             />
@@ -133,6 +135,7 @@ const AddReleaseProduct = () => {
               name='color'
               placeholder='Enter Color'
               value={color}
+              readOnly = {true}
               onChange={(e) => setColor(e.target.value)}
               validation={{ required: 'Color is required' }}
             />
@@ -147,6 +150,7 @@ const AddReleaseProduct = () => {
               name='stitchingTypet'
               placeholder='Enter Stitching Type'
               value={stitchingType}
+              readOnly = {true}
               onChange={(e) => setStitchingType(e.target.value)}
               validation={{ required: 'Stitching Type is required' }}
             />
@@ -161,6 +165,7 @@ const AddReleaseProduct = () => {
               name='quantity'
               placeholder='Enter Quantity'
               value={quantity}
+              readOnly = {true}
               onChange={(e) => setQuantity(e.target.value)}
               validation={{ required: 'Quantity is required' }}
             />
@@ -175,6 +180,7 @@ const AddReleaseProduct = () => {
               name='customerID'
               placeholder='Add Release Type'
               value={customerID}
+              readOnly = {true}
               onChange={(e) => setCustomerID(e.target.value)}
               validation={{ required: 'Add Inspection Result' }}
             >

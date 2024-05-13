@@ -9,7 +9,7 @@ import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import LWMenuBar from './LWMenuBar';
 import SubmitButton from '../../components/button2/SubmitButton';
-import { textValidation } from '../../utils/inputValidations';
+import { LnoValidation, PnoValidation, lwIdValidation, textValidation } from '../../utils/inputValidations';
 import { paraValidation } from '../../utils/inputValidations';
 import { numberValidation } from '../../utils/inputValidations';
 
@@ -46,9 +46,9 @@ const CreateEPReport = () => {
   };
 
   return (
-    <div className = 'relative'>
+    <div className = 'w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader ger = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Performance Reports
@@ -72,7 +72,7 @@ const CreateEPReport = () => {
             // value={EmployeeID}
             // onChange={(e) => setEmployeeID(e.target.value)}
             // validation={{ required: 'Employee ID is required' }}
-            {...textValidation}
+            {...lwIdValidation}
           />
           <Input
             formtype='input'
@@ -96,7 +96,7 @@ const CreateEPReport = () => {
             // value={LineNumber}
             // onChange={(e) => setLineNumber(e.target.value)}
             // validation={{ required: 'Line Number is required' }}
-            {...textValidation}
+            {...LnoValidation}
           />
           <Input
             formtype='input'
@@ -108,7 +108,7 @@ const CreateEPReport = () => {
             // value={PositionNumber}
             // onChange={(e) => setPositionNumber(e.target.value)}
             // validation={{ required: 'Position Number is required' }}
-            {...textValidation}
+            {...PnoValidation}
           />
           <Input
             formtype='input'
@@ -150,7 +150,7 @@ const CreateEPReport = () => {
           <center className="mt-3"><SubmitButton/></center>
         </form>
       </FormProvider>
-      <div className="h-40 mt-10 ml-5"></div>
+      <div className="h-80 mt-10 ml-5"></div>
       </div>
       <StaffFooter/>
     </div>

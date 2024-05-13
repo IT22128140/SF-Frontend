@@ -140,6 +140,8 @@ import ReviewActionRelease from './pages/QualityControl/ReviewActionRelease.jsx'
 import ReviewActionReject from './pages/QualityControl/ReviewActionReject.jsx';//3Reviw5/5
 import AddRejectProduct from './pages/QualityControl/AddRejectProduct.jsx';//4Rject1/3
 import RejectProduct from './pages/QualityControl/RejectProduct.jsx';//4Rject2/3
+import AddReReview from './pages/QualityControl/AddReReview.jsx';//4Rject3/3
+
 
 
 
@@ -166,9 +168,10 @@ import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
 import PMHome from "./pages/productionManager/PMHome.jsx";
-import EditMachinepart from './pages/InventoryAndSupplier/EditMpart.jsx';
-
-
+import ViewPMRequests from './pages/productionManager/ViewPMRequests.jsx';
+import GarmentProductList from "./pages/productionManager/GarmentProductList.jsx";
+import AddProductList from "./pages/productionManager/AddProductList.jsx";
+import EditProductList from "./pages/productionManager/EditProductList.jsx";
 
 
 
@@ -322,7 +325,7 @@ const App = () => {
 
       {/* Sageevan */}
       <Route path="/qualityControl" element={<QualityControl />} />
-      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
       <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
@@ -340,6 +343,7 @@ const App = () => {
       <Route path="/qualityControl/reviewReport/view/:id" element={<ViewReviwReport />} />
       <Route path="/qualityControl/rejectProduct/addrejectProduct/:id" element={<AddRejectProduct />} />
       <Route path="/qualityControl/rejectProduct" element={<RejectProduct />} />
+      <Route path="/qualityControl/rejectProduct/rereview/:id" element={<AddReReview />} />
 
 
 
@@ -368,10 +372,10 @@ const App = () => {
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
       <Route path= '/PMHome' element = {<PMHome/>}/>
-
-
-
-
+      <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
+      <Route path= '/sfProduct' element={<GarmentProductList/>}/>
+      <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
+      <Route path= '/sfProduct/edit/:id' element={<EditProductList/>}/>
 
 
 

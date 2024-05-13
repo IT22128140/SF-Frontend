@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
-import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
-import { FormProvider, useForm } from 'react-hook-form';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import SubmitButton from '../../components/button2/SubmitButton';
 
-const AddFinalProduct = () => {
+const EditProductList = () => {
   const [productCode, setProductCode] = useState('');
   const [fabricType, setFabricType] = useState('');
   const [color, setColor] = useState('');
@@ -42,7 +42,7 @@ const AddFinalProduct = () => {
   }, []);
 
 
-  const handleAddFinalProduct = () => {
+  const handleEditProductList = () => {
     const data = {
       productCode,
       fabricType,
@@ -53,34 +53,32 @@ const AddFinalProduct = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/qualityControl/productRequest', data)// Use axios.put for updating existing data
+      .put(`http://localhost:5555/garmentProduct/${id}`, data)// Use axios.put for updating existing data
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
-        navigate('#'); //need to change ridmis home 
+        navigate('/sfProduct'); // Change the path as needed
       })
-      .catch((error) => {
+      .catch ((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
-      });
+      } );  
   };
-
-  const handleCancel = () => {
-    navigate('#'); // Change the path as needed
-  };
-
 
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <PMHeader />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
-
-      {loading ? <Spinner/> : ''}
+    <PMHeader qr={true}/>
+    <div>
+    <center>
+        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+          Garment Product List
+        </h1>
+    </center>
+    {loading ? <Spinner/> : ''}
         <div
           className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
         >
+          <h1 className='text-3xl my-4 text-center'>Update Final Products</h1>
           <div className='my-2'>
             <label className='text-xl mr-4'>Product Code</label>
             <textarea
@@ -90,7 +88,6 @@ const AddFinalProduct = () => {
             name='productCode'
             placeholder='Enter ProductCode'
             value={productCode}
-            readOnly = {true}
             onChange={(e) => setProductCode(e.target.value)}
             validation={{ required: 'Product Code is required' }}
             />
@@ -105,7 +102,6 @@ const AddFinalProduct = () => {
             name='fabricType'
             placeholder='Enter Fabric Type'
             value={fabricType}
-            readOnly = {true}
             onChange={(e) => setFabricType(e.target.value)}
             validation={{ required: 'Fabric Type is required' }}
             />
@@ -120,7 +116,6 @@ const AddFinalProduct = () => {
             name='color'
             placeholder='Enter color'
             value={color}
-            readOnly = {true}
             onChange={(e) => setColor(e.target.value)}
             validation={{ required: 'Color is required' }}
             />
@@ -135,7 +130,6 @@ const AddFinalProduct = () => {
             name='stitchingType'
             placeholder='Enter Stitching Type'
             value={stitchingType}
-            readOnly = {true}
             onChange={(e) => setStitchingType(e.target.value)}
             validation={{ required: 'Stitching Type is required' }}
             />
@@ -150,16 +144,19 @@ const AddFinalProduct = () => {
             name='quantity'
             placeholder='Enter Quantity'
             value={quantity}
-            readOnly = {true}
             onChange={(e) => setQuantity(e.target.value)}
             validation={{ required: 'Quantity is required' }}
             />
           </div>
 
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddFinalProduct}>Request Quality Evaluation</button>
+          <center className="mt-3" onClick={handleEditProductList}><SubmitButton/></center>
         </div>
+    <div className="h-40 mt-10 ml-5"></div>
     </div>
+        <StaffFooter/>
+    </div>
+    
   )
 }
 
-export default AddFinalProduct;
+export default EditProductList;
