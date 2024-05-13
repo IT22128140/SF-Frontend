@@ -13,7 +13,7 @@ const HrNavbar = (props) => {
       <div className="flex h-fit flex-row justify-between bg-white mt-3 pb-3 ">
         <NavbarLogo />
         <NavbarUserProfile
-          source={"../../Logo1.png"}
+          source={"../../emp.png"}
           username={"Human resouce manager"}
         />
       </div>

@@ -10,12 +10,12 @@ const PMHeader = (props) => {
       <div className="flex h-fit flex-row justify-between bg-white mt-3 pb-3 ">
         <NavbarLogo />
         <NavbarUserProfile
-          source={"../../Logo1.png"}
+          source={"../../emp.png"}
           username={"Production manager"}
         />
       </div>
 
-      <div className="flex flex-row bg-bgc h-fit mb-5 shadow-md">
+      <div className="flex flex-row bg-bgc h-fit shadow-md">
         <NavbarButton active={props.home} button={"Home"} url={"/PMHome"} />
         <NavbarButton active={props.rrm} button={"Requesting Raw Materials"} url={"/rmRequests/create"}/>
         <NavbarButton active={props.rmr} button={"Raw Material Requests"} url={"/RawmRequests"} />
@@ -23,7 +23,7 @@ const PMHeader = (props) => {
         <NavbarButton active={props.drm} button={"Raw Material Distribution"} url={"/RawmDistributes"} />
         <NavbarButton active={props.emp} button={"Employee Performance"} url={"/EmployeePerformance"} />
         <NavbarButton active={props.ger} button={"Performance Reports"} url={"/empPerformances/create"} />
-        <NavbarButton active={props.qr} button={"Quality Review"} url={"/qualityControl/reviewRequest/add"} />
+        <NavbarButton active={props.qr} button={"Quality Review"} url={"/sfProduct"} />
       </div>
     </div>
   );

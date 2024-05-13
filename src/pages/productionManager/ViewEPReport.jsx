@@ -47,8 +47,9 @@ const ViewEPReport = () => {
   };
 
   return (
-    <div className="relative">
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader emp={true}/>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Employee Performance
@@ -101,6 +102,8 @@ const ViewEPReport = () => {
         <button onClick={downloadPDF} className="bg-black text-white font-BreeSerif py-2 px-4 rounded">
           Download PDF
         </button>
+      </div>
+      <div className="h-40 mt-10 ml-5"></div>
       </div>
       <StaffFooter />
     </div>

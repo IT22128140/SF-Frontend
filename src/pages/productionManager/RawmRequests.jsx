@@ -9,10 +9,13 @@ import EditButton from '../../components/button2/EditButton';
 import ViewButton from '../../components/button2/ViewButton';
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import DeletermRequests from './DeletermRequests';
 
 const RawmRequests = () => {
   const [rmrequests, setrmRequests] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [selectedRawmRequest, setSelectedRawmRequest] = useState(null);
   const headers = ['RequestID', 'Date', 'Fabric Type', 'Button Type', 'Thread Type', 'Other Materials', 'Status', 'Operations'];
 
   useEffect(() => {
@@ -29,8 +32,9 @@ const RawmRequests = () => {
       });
   }, []);
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader rmr = {true} />
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Requests
@@ -55,7 +59,7 @@ const RawmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'ml-1 mr-1 font-BreeSerif mb-5'>
+        <table className = 'ml-1 mr-1 font-BreeSerif bg-white'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -83,15 +87,18 @@ const RawmRequests = () => {
               </td>
               <td className='border border-slate-700 rounded-md'>
                 <div className='flex justify-center gap-x-4'>
-                  {/* <Link to={ `/rmRequests/details/${rmrequest._id}`}>
+                  <Link to={ `/rmRequests/view/${rmrequest._id}`}>
                     <ViewButton/>
-                  </Link> */}
+                  </Link>
                   <Link to={`/rmRequests/edit/${rmrequest._id}`}>
                     <EditButton/>
                   </Link>
-                  <Link to={`/rmRequests/delete/${rmrequest._id}`}>
-                    <DeleteButton/>
-                  </Link>
+                  <DeleteButton
+                    onClick={() => {
+                      setSelectedRawmRequest(rmrequest);
+                      setShowDelete(true);
+                    }}
+                  />
                 </div>
               </td>
             </tr>
@@ -99,6 +106,15 @@ const RawmRequests = () => {
         </tbody> 
       </table>
       )}
+      {showDelete && (
+        <DeletermRequests
+          id={selectedRawmRequest._id}
+          onClose={() => setShowDelete(false)}
+        />
+      )}
+
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter/>
     </div>
   )

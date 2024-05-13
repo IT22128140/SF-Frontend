@@ -6,6 +6,7 @@ import Spinner from "../../components/Spinner";
 import { provinces, districtsByProvince } from "../../utils/arrays.js";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdError } from "react-icons/md";
+import { enqueueSnackbar } from "notistack";
 
 const EditAddress = ({ adress, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -170,10 +171,12 @@ const EditAddress = ({ adress, onClose }) => {
         .then(() => {
           setLoading(false);
           window.location.reload(true);
+          enqueueSnackbar("Address updated", { variant: "success" });
         })
         .catch((error) => {
           console.log(error);
           setLoading(false);
+          enqueueSnackbar("Error updating address", { variant: "error" });
         });
     } else {
       console.log("Please fill in all the required fields");
