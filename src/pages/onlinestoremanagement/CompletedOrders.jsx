@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import ViewDeliveryDetails from "./ViewDeliveryDetails";
 import ViewBill from "./ViewBill";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter"
+import { enqueueSnackbar } from "notistack";
 
 const OngoingOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -51,6 +52,7 @@ const OngoingOrders = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enqueueSnackbar("Error fetching orders", { variant: "error" });
       });
   }, []);
 
@@ -129,7 +131,7 @@ const OngoingOrders = () => {
                   <td className="border border-slate-700 text-center">
                   <div className="flex flex-col">
                     Current :- {order.status}
-                    <select
+                    {order.status!= "Canceled" && <select
                       className="h-11 mx-3 my-2 font-BreeSerif p-2 border-gray-200 rounded-md border-2"
                       onChange={(e) => {
                         axios
@@ -138,9 +140,11 @@ const OngoingOrders = () => {
                           })
                           .then((res) => {
                             console.log(res);
+                            enqueueSnackbar("Order status updated", { variant: "success"});
                           })
                           .catch((err) => {
                             console.log(err);
+                            enqueueSnackbar("Error updating order status", { variant: "error"});
                           });
                         window.location.reload();
                       }}
@@ -150,7 +154,7 @@ const OngoingOrders = () => {
                       <option value="Processing">Processing</option>
                       <option value="Shipped">Shipped</option>
                       <option value="Delivered">Delivered</option>
-                    </select>
+                    </select>}
                     </div>
                   </td>
                 </tr>
