@@ -2,24 +2,30 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
 import CustomerNavbar from "../components/navbar/CustomerNavbar.jsx";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
+  const navigate = useNavigate();
   const [profileInfo, setProfileInfo] = useState({
-    FirstName: "",
-    LastName: "",
-    emailAddress: "",
-    phoneNumber: "",
-    password: "",
+    FirstName: '',
+    LastName: '',
+    emailAddress: '',
+    phoneNumber: '',
+    password: ''
   });
 
   useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = sessionStorage.getItem("token");
+        const response = await axios.get(`http://localhost:5555/ProfileCus/${token}`);
+        setProfileInfo(response.data);
+      } catch (error) {
+        console.error("Error fetching profile information:", error);
+      }
+    };
 
-    const token = sessionStorage.getItem("token");
-    axios.get(`http://localhost:5555/ProfileCus/${token}`).then((response) => {
-      setProfileInfo(response.data);
-    }).catch((error) => {
-      console.error("Error fetching profile information:", error);
-    });
+    fetchProfile();
   }, []);
 
   const handleInputChange = (e, field) => {
@@ -31,10 +37,8 @@ function EditProfile() {
 
   const handleSaveProfile = async () => {
     try {
-      const response = await axios.put(
-        `http://localhost:5555/EditProfileCus`,
-        profileInfo
-      );
+      const token = sessionStorage.getItem("token");
+      const response = await axios.put(`http://localhost:5555/EditProfileCus/${token}`, profileInfo);
       console.log("Profile information saved:", response.data);
     } catch (error) {
       console.error("Error saving profile:", error);
@@ -42,18 +46,23 @@ function EditProfile() {
   };
 
   const handleDeleteProfile = async () => {
+
+  
     try {
-      const response = await axios.delete(
-        `http://localhost:5555/EditProfileCus${profileInfo.emailAddress}`
-      );
+      const token = sessionStorage.getItem("token");
+      const response = await axios.delete(`http://localhost:5555/EditProfileCus/${token}`);
       console.log("Profile deleted:", response.data);
+      
+      // Navigate to RegisCus page after successful deletion
+      navigate("/RegisCus");
     } catch (error) {
       console.error("Error deleting profile:", error);
     }
   };
+
     return (
         <div className="flex flex-col justify-center items-center min-h-screen ">
-            <CustomerNavbar />
+          <CustomerNavbar />
             <div className="p-2 mb-2 rounded-lg w-1/30 pr-2">
                 <input type="image" src="emp.png" alt="image" />
             </div>

@@ -65,10 +65,10 @@ function Profile() {
         </div>
         <div className="bg-primary p-2 mb-2 w-1/2 pr-2">
           <p>Password</p>
-        </div>
-        <div className="bg-bgc p-2 mb-2  w-1/2 pr-2">
-          <p>{profileInfo.password}</p>
-        </div>
+          </div>
+          <div className="bg-bgc p-2 mb-2 w-1/2 pr-2">
+            <p>{'*'.repeat(profileInfo.password.length)}</p>
+            </div>
       </div>
     </div>
     <Link to="/EditProfileEmp">

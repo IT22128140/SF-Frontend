@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Footer from "../components/footer/Footer";
+import StoreNavbar from "../components/navbar/staffheader/StoreNavbar";
 
 const FeedbackPage = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -59,6 +60,7 @@ const FeedbackPage = () => {
 
   return (
     <div className="container mx-auto">
+      <StoreNavbar />
       <div className="mb-4">
         <input type="number" value={searchTerm} onChange={handleSearch} className="border border-gray-300 p-2 rounded-md" placeholder="Search by rating" />
       </div>
