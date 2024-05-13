@@ -75,7 +75,7 @@ const SupplieredRaws = () => {
         </div>
       )};
       <div className='flex justify-end m-8 mb-4'>
-      <Link to="AddSupplieredRaws"> 
+      <Link to="/SupplierDetails/SupplieredRaws/AddSupplieredRaws"> 
       <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
       </Link>
     

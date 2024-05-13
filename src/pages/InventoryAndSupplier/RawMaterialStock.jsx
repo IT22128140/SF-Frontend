@@ -11,6 +11,8 @@ import SearchBar2 from '../../components/SearchBar2';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import Alert from '@mui/material/Alert';
+
 
 const RawMaterialStock = () => {
   const [RMStocks, setRMStocks] = useState([]);
@@ -18,11 +20,10 @@ const RawMaterialStock = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [alertVisible, setAlertVisible] = useState(false); // New state variable for alert
   const headers = ['Raw material ID', 'Material type', 'color / design', 'initial quantity', 'restocking date', 'available quantity', 'costperunit', 'totalcost',''];
   
   const headers2 = ['Material type', 'color / design', 'initial quantity','restocking date','available quantity','costperunit','totalcost'];
-
-
 
   useEffect(() => {
     setLoading(true);
@@ -40,20 +41,25 @@ const RawMaterialStock = () => {
   }, []);
 
   const handleDelete = () => {
-    
+    // Handle delete logic
   };
 
   const handleEdit = () => {
-    
+    // Handle edit logic
   };
 
   const handleAdd = () => {
-    
+    // Handle add logic
   };
 
   const handleGenerateReport = () => {
+    if (new Date(startDate) > new Date(endDate)) {
+      setAlertVisible(true); // Show the alert if the date range is invalid
+      return;
+    }
     const filteredRMStocks = RMStocks.filter((RMstock) => {
       const RMstockDate = new Date(RMstock.restockingdate);
+      setAlertVisible(false);
       return RMstockDate >= new Date(startDate) && RMstockDate <= new Date(endDate);
     });
   
@@ -85,18 +91,28 @@ const RawMaterialStock = () => {
     });
     doc.save('Monthly_raw_material_report.pdf');
   };
-}
+    // Rest of your code for generating the report
+  };
+
   return (
-    
+    <div>
+    <IsNavbar RpS={true} /> 
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <div className='relative'> 
-        <IsNavbar RpS={true} /> 
+        
         <div className="flex items-center justify-center mb-9">
           <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center">Raw Material Stock</h1>
         </div>
         <div className="flex items-center justify-center mb-4">
           <SearchBar2 data={RMStocks} setSearchResults={setSearchResults} />
         </div>
+        {alertVisible && (
+          <div className="flex pl-12 ">
+            <Alert variant="filled" severity="error">
+              Enter Correct Date Range.
+            </Alert>
+          </div>
+        )}
         <div className="flex items-center mb-4">
           <input
             type="date"
@@ -114,6 +130,9 @@ const RawMaterialStock = () => {
           <button className='px-4 py-2 ml-2 text-white bg-orange-700 rounded-md' onClick={handleGenerateReport}>Generate Report</button>
         </div>
 
+       
+        
+
         {loading ? (
           <Spinner />
         ) : (
@@ -121,7 +140,7 @@ const RawMaterialStock = () => {
             <table className="mx-auto mb-5 bg-white font-BreeSerif ">
               <TableView headers={headers} />
               <tbody>
-                {searchResults.length > 0 ? (
+              {searchResults.length > 0 ? (
                   searchResults.map((RMstock, index) => (
                     <tr key={RMstock._id} className="h-8">
                     <td className="text-center border rounded-md border-slate-700">{RMstock.materialID}</td>
@@ -187,6 +206,7 @@ const RawMaterialStock = () => {
         </div>
       </div>
       <StaffFooter/>
+    </div>
     </div>
   );
 };

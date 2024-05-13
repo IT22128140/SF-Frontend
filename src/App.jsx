@@ -85,6 +85,8 @@ import Pendingshortsge from './pages/InventoryAndSupplier/ViewPendingShortage.js
 import AcceptedMPS from './pages/InventoryAndSupplier/AcceptedMPS.jsx'
 import Viewshortage from './pages/InventoryAndSupplier/ViewShortage.jsx'
 import Deleteshortage from './pages/InventoryAndSupplier/Deleteshortage.jsx'
+import RMRequests from './pages/InventoryAndSupplier/RMRequests.jsx'
+import ViewRawMaterialReq from './pages/InventoryAndSupplier/ViewRawMaterialReq.jsx'
 
 
 
@@ -298,10 +300,11 @@ const App = () => {
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
-      <Route path= "/Shortages/Accpted" element = {<AcceptedMPS/>} />
+      <Route path= "/Shortages/Accepted" element = {<AcceptedMPS/>} />
       <Route path= "/Shortages/Viewshortage/:id" element = {<Viewshortage/>} />
       <Route path= "/Shortages/delete/:id" element = {<Deleteshortage/>} />
-
+      <Route path= "/RMRequests" element = {<RMRequests/>} />
+      <Route path= '/rmRequests/details/:id' element = {<ViewRawMaterialReq/>} />
 
 
 
