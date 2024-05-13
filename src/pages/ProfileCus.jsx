@@ -58,10 +58,10 @@ const Profile =() => {
             <p>{profileInfo.phoneNumber}</p>
           </div>
           <div className="bg-primary p-2 mb-2 w-1/2 pr-2">
-            <p>Password</p>
+          <p>Password</p>
           </div>
           <div className="bg-bgc p-2 mb-2 w-1/2 pr-2">
-            <p>{profileInfo.password}</p>
+            <p>{'*'.repeat(profileInfo.password.length)}</p>
           </div>
         </div>
       </div>

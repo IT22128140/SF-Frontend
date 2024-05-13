@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/footer/Footer.jsx";
 import CustomerNavbar from "../components/navbar/CustomerNavbar.jsx";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
+  const navigate = useNavigate();
   const [profileInfo, setProfileInfo] = useState({
-    FirstName: "",
-    LastName: "",
-    emailAddress: "",
-    phoneNumber: "",
-    password: "",
+    FirstName: '',
+    LastName: '',
+    emailAddress: '',
+    phoneNumber: '',
+    password: ''
   });
 
   useEffect(() => {
@@ -44,10 +46,15 @@ function EditProfile() {
   };
 
   const handleDeleteProfile = async () => {
+
+  
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.delete(`http://localhost:5555/EditProfileCus/${token}`);
       console.log("Profile deleted:", response.data);
+      
+      // Navigate to RegisCus page after successful deletion
+      navigate("/RegisCus");
     } catch (error) {
       console.error("Error deleting profile:", error);
     }
