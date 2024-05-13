@@ -6,6 +6,8 @@ import CustomerNavbar from "../../components/navbar/CustomerNavbar";
 import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
 import { MdOutlineDelete } from "react-icons/md";
+import { enqueueSnackbar } from "notistack";
+
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -49,6 +51,7 @@ const Cart = () => {
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        enqueueSnackbar("Error", { variant: "error" });
       });
   };
   const handlePlus = (id) => {
@@ -62,6 +65,7 @@ const Cart = () => {
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        enqueueSnackbar("Error", { variant: "error" });
       });
   };
 
@@ -71,10 +75,12 @@ const Cart = () => {
       .put(`http://localhost:5555/cart/65f888fbae65af39470abd22/${id}`)
       .then(() => {
         setLoading(false);
+        enqueueSnackbar("Item removed", { variant: "success" });
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        enqueueSnackbar("Error", { variant: "error" });
       });
     window.location.reload(false);
   };

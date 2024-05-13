@@ -25,15 +25,15 @@ const LWMenuBar = () => {
       }, []);
 
     return (
-        <div>
+        <div className='relative'>
         <button 
           onClick={toggleSidebar}
-          className="z-10 bg-formbg text-ternary font-bold py-2 px-4 rounded"
+          className="z-10 bg-white text-ternary font-bold py-2 px-4 rounded"
         >
           {isSidebarOpen ? 'Hide LineWorkers' : 'Show LineWorkers'}
         </button>
         {isSidebarOpen && (
-          <div className="absolute z-9 mt-10 h-100px w-100px p-2 bg-formbg font-BreeSerif overflow-y-auto">
+          <div className="absolute z-9 mt-10 h-100px w-100px p-2 bg-white font-BreeSerif overflow-y-auto">
           <div className="flex flex-col justify-between p-6">
           <div>
             <h1 className="text-ternary text-xl font-semibold">Line Workers Details</h1>
