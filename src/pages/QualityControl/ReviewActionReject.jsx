@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/searchBar2";
+import SearchBar from "../../components/SearchQE.jsx";
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
