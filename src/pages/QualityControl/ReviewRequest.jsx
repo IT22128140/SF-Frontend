@@ -69,14 +69,14 @@ const ReviewRequest = () => {
         sal={false}
       />
       <div className='p-4'>
-        <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Review Request For Quality Evaluation</h1>
+        <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Review Request For Quality Evaluation</h1>
         </div>
         <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
         {loading ? (
           <Spinner />
         ) : (
           <div> 
-          <table className='mx-auto font-BreeSerif mb-5 bg-white'>
+          <table className='min-w-full'>
             <TableView headers={headers} />
             <tbody>
               {productRequests && filteredRequests.map((productRequest, index) => (
@@ -144,8 +144,6 @@ const ReviewRequest = () => {
           </div>
         </div>
       )}
-      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       <NoteTakingApp />
       <StaffFooter />

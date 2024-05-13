@@ -8,7 +8,6 @@ import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import SearchBar from "../../components/searchBar2";
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
-import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
@@ -49,24 +48,24 @@ productReviews.forEach((request) => {
   return (
     <div className='p-4'>
         <QENavbar
-        home={false}
+        home={true}
         cel={false}
         rel={false}
-        fel={true}
+        fel={false}
         att={false}
         sal={false}
       />
-      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Product Review List</h1>
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Product Review List</h1>
 
       <div className = 'flex justify-between items-center m-5 font-BreeSerif'>
         <Link to = '/qualityControl/reviewReport'>
-          <button className = 'p-2 bg-ternary m-8 text-white rounded-xl'>All Review</button>
+          <button className = 'p-2 bg-gray-200 m-8 text-ternary rounded-xl'>All Review</button>
         </Link>
         <Link to = '/qualityControl/reviewReport/actionRelease'>
-          <button className = 'p-2 bg-ternary m-8 text-white rounded-xl'>Pending Release</button>
+          <button className = 'p-2 bg-gray-200 m-8 text-ternary rounded-xl'>Pending Release</button>
         </Link>
         <Link to = '/qualityControl/reviewReport/actionReject'>
-          <button className = 'p-2 bg-ternary m-8 text-white rounded-xl'>Notify Rejects</button>
+          <button className = 'p-2 bg-gray-200 m-8 text-ternary rounded-xl'>Notify Rejects</button>
         </Link>
       </div>
 
@@ -75,7 +74,7 @@ productReviews.forEach((request) => {
         <Spinner />
     ) : (
       <div>
-        <table className='mx-auto font-BreeSerif mb-5 bg-white'>
+        <table className='min-w-full'>
             <TableView headers={headers} />
             <tbody>
                 {productReviews && filteredRequests.map((productReview, index) => (
@@ -127,10 +126,8 @@ productReviews.forEach((request) => {
 
      </div>   
     )}
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
-<StaffFooter />   
+
+       
     </div>
   );
 };
