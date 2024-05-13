@@ -10,7 +10,7 @@ import BackButton from '../../components/button/BackButton';
 import Select from '../../components/form/Select';
 
 
-const AddReleaseProduct = () => {
+const AddRejectProduct = () => {
 
   const [productCode, setProductCode] = useState('');
   const [customerID, setCustomerID] = useState('');
@@ -18,6 +18,7 @@ const AddReleaseProduct = () => {
   const [color, setColor] = useState('');
   const [stitchingType, setStitchingType] = useState('');
   const [quantity, setQuantity] = useState('');
+  const [defects, setDefects] = useState('');
  
 
   const [loading, setLoading] = useState(false);
@@ -37,6 +38,7 @@ const AddReleaseProduct = () => {
         setColor(response.data.color)
         setStitchingType(response.data.stitchingType)
         setQuantity(response.data.quantity)
+        setDefects(response.data.defects)
         setLoading(false);
       })
       .catch((error) => {
@@ -46,22 +48,22 @@ const AddReleaseProduct = () => {
       });
   }, [])
 
-  const handleSaveAddreleaseProduct = () => {
+  const handleSaveAddRejectProduct = () => {
     const data = {
       productCode,
-      customerID,
       fabricType,
       color,
       stitchingType,
       quantity,
+      defects,
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/qualityControl/releaseProduct', data)
+      .post('http://localhost:5555/qualityControl/rejectedProduct', data)
       .then(() => {
         setLoading(false);
         // enqueueSnackBar('Request updated successfully', { variant: 'success' });
-        navigate('/qualityControl/releaseProduct');
+        navigate('/qualityControl/reviewReport/actionReject');
       })
       .catch((error) => {
         setLoading(false);
@@ -71,13 +73,8 @@ const AddReleaseProduct = () => {
       });
   };
 
-  const option1 = [
-    { id: 1, value: 'Approved', option: 'Approved' },
-    { id: 2, value: 'Reject', option: 'Reject'},
-  ];
-
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='relative'>
       <QENavbar
         home={true}
         cel={false}
@@ -87,12 +84,12 @@ const AddReleaseProduct = () => {
         sal={false}
       />
       <BackButton />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Release Product</h1>
+      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Notify Reject Product</h1>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
-          className='flex flex-col bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'
-          onSubmit={methods.handleSubmit(handleSaveAddreleaseProduct)} // Using handleSubmit from useForm
+          className='flex flex-col bg-formbg rounded-xl w-[600px] p-4 mx-auto font-BreeSerif'
+          onSubmit={methods.handleSubmit(handleSaveAddRejectProduct)} // Using handleSubmit from useForm
         >
           
 
@@ -172,22 +169,18 @@ const AddReleaseProduct = () => {
           </div>
 
           <div className='my-2'>
-            <label className='text-xl mr-4'>Release Type</label>
-            <select
+            <label className='text-xl mr-4'>Defects</label>
+            <textarea
               className='drop-shadow-md px-4 py-2 w-full h-10'
-              type='select'
-              id='customerID'
-              name='customerID'
-              placeholder='Add Release Type'
-              value={customerID}
+              type='text'
+              id='defects'
+              name='defects'
+              placeholder='Enter Defects'
+              value={defects}
               readOnly = {true}
-              onChange={(e) => setCustomerID(e.target.value)}
-              validation={{ required: 'Add Inspection Result' }}
-            >
-              <option value=''>Add Release Type</option>
-              <option value='Online Store'>Online Store</option>
-              <option value='Sales Department'>Sales Department</option>
-            </select>
+              onChange={(e) => setDefects(e.target.value)}
+              validation={{ required: 'Defects is required' }}
+            />
           </div>
 
           <button className='p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
@@ -197,5 +190,5 @@ const AddReleaseProduct = () => {
   )
 }
 
-export default AddReleaseProduct;
+export default AddRejectProduct;
 

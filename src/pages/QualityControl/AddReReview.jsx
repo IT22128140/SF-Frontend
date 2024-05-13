@@ -9,7 +9,7 @@ import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
 import { FormProvider, useForm } from 'react-hook-form';
 
-const AddFinalProduct = () => {
+const AddReReview = () => {
   const [productCode, setProductCode] = useState('');
   const [fabricType, setFabricType] = useState('');
   const [color, setColor] = useState('');
@@ -24,7 +24,7 @@ const AddFinalProduct = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/garmentProduct/${id}`)
+    axios.get(`http://localhost:5555/qualityControl/rejectedProduct/${id}`)
     .then((response) => {
       console.log(response.data);
       setProductCode(response.data.productCode);
@@ -39,10 +39,10 @@ const AddFinalProduct = () => {
       console.log(error);
     });
 
-  }, []);
+  }, [id]);
 
 
-  const handleAddFinalProduct = () => {
+  const handleAddReReview = () => {
     const data = {
       productCode,
       fabricType,
@@ -90,7 +90,6 @@ const AddFinalProduct = () => {
             name='productCode'
             placeholder='Enter ProductCode'
             value={productCode}
-            readOnly = {true}
             onChange={(e) => setProductCode(e.target.value)}
             validation={{ required: 'Product Code is required' }}
             />
@@ -105,7 +104,6 @@ const AddFinalProduct = () => {
             name='fabricType'
             placeholder='Enter Fabric Type'
             value={fabricType}
-            readOnly = {true}
             onChange={(e) => setFabricType(e.target.value)}
             validation={{ required: 'Fabric Type is required' }}
             />
@@ -120,7 +118,6 @@ const AddFinalProduct = () => {
             name='color'
             placeholder='Enter color'
             value={color}
-            readOnly = {true}
             onChange={(e) => setColor(e.target.value)}
             validation={{ required: 'Color is required' }}
             />
@@ -135,7 +132,6 @@ const AddFinalProduct = () => {
             name='stitchingType'
             placeholder='Enter Stitching Type'
             value={stitchingType}
-            readOnly = {true}
             onChange={(e) => setStitchingType(e.target.value)}
             validation={{ required: 'Stitching Type is required' }}
             />
@@ -150,16 +146,15 @@ const AddFinalProduct = () => {
             name='quantity'
             placeholder='Enter Quantity'
             value={quantity}
-            readOnly = {true}
             onChange={(e) => setQuantity(e.target.value)}
             validation={{ required: 'Quantity is required' }}
             />
           </div>
 
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddFinalProduct}>Request Quality Evaluation</button>
+          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddReReview}>Request Quality Evaluation Again </button>
         </div>
     </div>
   )
 }
 
-export default AddFinalProduct;
+export default AddReReview;
