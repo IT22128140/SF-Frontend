@@ -44,7 +44,6 @@ import HrDashboard from "./pages/employeemanagement/HrDashboard.jsx";
 import CurrentEmployeeList from "./pages/employeemanagement/CurrentEmployeeList.jsx";
 import AddEmployee from "./pages/employeemanagement/AddEmployee.jsx";
 import EditEmployee from "./pages/employeemanagement/EditEmployee.jsx";
-// import DeleteEmployee from "./pages/employeemanagement/DeleteEmployee.jsx";
 import ResignedEmployeeList from "./pages/employeemanagement/ResignedEmployeeList.jsx";
 import FiredEmployeeList from "./pages/employeemanagement/FiredEmployeeList.jsx";
 import RequestResignation from "./pages/employeemanagement/RequestResignation.jsx"
@@ -52,6 +51,8 @@ import TerminationPendingList from "./pages/employeemanagement/TerminationPendin
 import RejectedRequestPage from "./pages/employeemanagement/RejectedRequestPage.jsx";
 import AttendancePage from "./pages/employeemanagement/AttendancePage.jsx";
 import QrCodeScanner from "./pages/QrCodeScanner.jsx";
+import QrCodeDeparture from "./pages/QrCodeDeparture.jsx";
+import EditRequestResignation from "./pages/employeemanagement/EditRequestResignation.jsx";
 
 
 
@@ -67,7 +68,7 @@ import AddSuppliers from './pages/InventoryAndSupplier/AddSuppliers.jsx';
 import DeleteSupplier from './pages/InventoryAndSupplier/DeleteSupplier.jsx';
 import EditSuppliers from './pages/InventoryAndSupplier/EditSuppliers.jsx';
 import SupplieredRaws from "./pages/InventoryAndSupplier/SupplieredRaws.jsx";
-import DeletesupDetails from "./pages/InventoryAndSupplier/DeleteSupplieredRaws.jsx";
+import DeleteSupplieredRaws from "./pages/InventoryAndSupplier/DeleteSupplieredRaws.jsx";
 import MachinePartStock from './pages/InventoryAndSupplier/MachinePartStock.jsx';
 import Addmachinepart from './pages/InventoryAndSupplier/AddMachinepart.jsx';
 import EditMpart from './pages/InventoryAndSupplier/EditMpart.jsx';
@@ -84,8 +85,10 @@ import Pendingshortsge from './pages/InventoryAndSupplier/ViewPendingShortage.js
 import AcceptedMPS from './pages/InventoryAndSupplier/AcceptedMPS.jsx'
 import Viewshortage from './pages/InventoryAndSupplier/ViewShortage.jsx'
 import Deleteshortage from './pages/InventoryAndSupplier/Deleteshortage.jsx'
-import ViewrmRequests from './pages/InventoryAndSupplier/ViewRawMaterialReq.jsx';
-import RequestforInventory from './pages/InventoryAndSupplier/RMRequests.jsx';
+import RMRequests from './pages/InventoryAndSupplier/RMRequests.jsx'
+import ViewRawMaterialReq from './pages/InventoryAndSupplier/ViewRawMaterialReq.jsx'
+import DeleteMPReq  from './pages/InventoryAndSupplier/DeleteMPReq';
+
 
 
 
@@ -139,6 +142,7 @@ import ReviewActionRelease from './pages/QualityControl/ReviewActionRelease.jsx'
 import ReviewActionReject from './pages/QualityControl/ReviewActionReject.jsx';//3Reviw5/5
 import AddRejectProduct from './pages/QualityControl/AddRejectProduct.jsx';//4Rject1/3
 import RejectProduct from './pages/QualityControl/RejectProduct.jsx';//4Rject2/3
+import AddReReview from './pages/QualityControl/AddReReview.jsx';//4Rject3/3
 
 
 
@@ -150,7 +154,6 @@ import RejectProduct from './pages/QualityControl/RejectProduct.jsx';//4Rject2/3
 /* Ridmi */
 import RawmRequests from './pages/productionManager/RawmRequests.jsx';
 import CreatermRequests from './pages/productionManager/CreatermRequests.jsx';
-
 import UpdatermRequests from './pages/productionManager/UpdatermRequests.jsx';
 import DeletermRequests from './pages/productionManager/DeletermRequests.jsx';
 import RawmDistributions from './pages/productionManager/RawmDistributions.jsx';
@@ -158,13 +161,16 @@ import CreatermDistributes from './pages/productionManager/CreatermDistributes.j
 import ViewrmDistributes from './pages/productionManager/ViewrmDistributes.jsx';
 import UpdatermDistributes from './pages/productionManager/UpdatermDistributes.jsx';
 import DeletermDistributes from './pages/productionManager/DeletermDistributes.jsx';
-
 import EmployeePerformance from './pages/productionManager/EmployeePerformance.jsx';
 import CreateEPReport from './pages/productionManager/CreateEPReport.jsx';
 import ViewEPReport from './pages/productionManager/ViewEPReport.jsx';
 import CompletedrmRequests from './pages/productionManager/CompletedrmRequests.jsx';
 import PendingrmRequests from './pages/productionManager/PendingrmRequests.jsx';
 import PMHome from "./pages/productionManager/PMHome.jsx";
+import ViewPMRequests from './pages/productionManager/ViewPMRequests.jsx';
+import GarmentProductList from "./pages/productionManager/GarmentProductList.jsx";
+import AddProductList from "./pages/productionManager/AddProductList.jsx";
+import EditProductList from "./pages/productionManager/EditProductList.jsx";
 
 
 
@@ -205,7 +211,9 @@ import WorkersSidebar from './pages/MaintenanceManager/WorkersSidebar.jsx';
 import MonthlyMaintenance from './pages/MaintenanceManager/MonthlyMaintenance.jsx';
 import AddMaintenance from './pages/MaintenanceManager/AddMaintenance.jsx';
 import MachineParts from './pages/MaintenanceManager/MachineParts.jsx';
-import EditMachineParts from "./pages/MaintenanceManager/EditMachineParts.jsx";
+import EditMachineParts from './pages/MaintenanceManager/EditMachineParts.jsx';
+import ViewMaintenanceTracker from './pages/MaintenanceManager/ViewMaintenanceTracker.jsx'
+import AboutUs from './components/AboutUs.jsx'
 
 
 
@@ -277,9 +285,12 @@ const App = () => {
       <Route path="/resign/RejectedRequestPage" element={<RejectedRequestPage />}/>
       <Route path="/attendance/AttendancePage" element={<AttendancePage />} />
       <Route path="/QrCodeScanner" element={<QrCodeScanner />} />
+      <Route path="/QrCodeDeparture" element={<QrCodeDeparture />} />
+      <Route path="/resign/EditRequestResignation/:id" element={<EditRequestResignation />} />
 
 
  
+
 
 
 
@@ -289,7 +300,7 @@ const App = () => {
       <Route path="/SupplierDetails/EditSuppliers/:id" element={<EditSuppliers />} />
       <Route path="/SupplierDetails/DeleteSupplier/:id" element={<DeleteSupplier />} />
       <Route path="/SupplierDetails/SupplieredRaws/:id" element={<SupplieredRaws />} />
-      <Route path="/SupplierDetails/DeletesupDetails/:id" element={<DeletesupDetails />} />
+      <Route path="/SupplierDetails/DeleteSupplieredRaws/:id" element={<DeleteSupplieredRaws />} />
       <Route path= '/MachinePartStock' element = {<MachinePartStock/>} />
       <Route path= '/MachinePartStock/AddMachinepart' element = {<Addmachinepart/>} />
       <Route path= "/MachinePartStock/EditMpart/:id" element = {<EditMpart/>} />
@@ -303,9 +314,12 @@ const App = () => {
       <Route path= "/Popup" element = {<Popup/>} />
       <Route path= "/IsHome" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
-      <Route path= "/Shortages/Accpted" element = {<AcceptedMPS/>} />
+      <Route path= "/Shortages/Accepted" element = {<AcceptedMPS/>} />
       <Route path= "/Shortages/Viewshortage/:id" element = {<Viewshortage/>} />
       <Route path= "/Shortages/delete/:id" element = {<Deleteshortage/>} />
+      <Route path= "/RMRequests" element = {<RMRequests/>} />
+      <Route path= '/RMRequests/details/:id' element = {<ViewRawMaterialReq/>} />
+      <Route path= "/RMRequests/delete/:id" element = {<DeleteMPReq/>} />
 
 
 
@@ -317,9 +331,11 @@ const App = () => {
 
 
 
-      {/* Sageevan */}
+
+
+{/* Sageevan */}
       <Route path="/qualityControl" element={<QualityControl />} />
-      <Route path="/qualityControl/reviewRequest/add" element={<AddFinalProduct />} />
+      <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
       <Route path="/qualityControl/reviewRequest/delete/:id" element={<DeleteFinalProduct />} />
@@ -337,6 +353,7 @@ const App = () => {
       <Route path="/qualityControl/reviewReport/view/:id" element={<ViewReviwReport />} />
       <Route path="/qualityControl/rejectProduct/addrejectProduct/:id" element={<AddRejectProduct />} />
       <Route path="/qualityControl/rejectProduct" element={<RejectProduct />} />
+      <Route path="/qualityControl/rejectProduct/rereview/:id" element={<AddReReview />} />
 
 
 
@@ -350,7 +367,6 @@ const App = () => {
       {/* Ridmi */}
       <Route path= '/RawmRequests' element = {<RawmRequests/>} />
       <Route path= '/rmRequests/create' element = {<CreatermRequests/>} />
-      <Route path= '/rmRequests/details/:id' element = {<ViewrmRequests/>} />
       <Route path= '/rmRequests/edit/:id' element = {<UpdatermRequests/>} />
       <Route path= '/rmRequests/delete/:id' element = {<DeletermRequests/>} />
       <Route path= '/RawmDistributes' element= {<RawmDistributions/>}/>
@@ -358,13 +374,16 @@ const App = () => {
       <Route path= '/rmDistributes/details/:id' element = {<ViewrmDistributes/>} />
       <Route path= '/rmDistributes/edit/:id' element = {<UpdatermDistributes/>} />
       <Route path= '/rmDistributes/delete/:id' element= {<DeletermDistributes/>}/>
-      <Route path= '/RequestforInventory' element={<RequestforInventory/>}/>
       <Route path= '/EmployeePerformance' element={<EmployeePerformance/>}/>
       <Route path= '/empPerformances/create' element={<CreateEPReport/>}/>
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
       <Route path= '/PMHome' element = {<PMHome/>}/>
+      <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
+      <Route path= '/sfProduct' element={<GarmentProductList/>}/>
+      <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
+      <Route path= '/sfProduct/edit/:id' element={<EditProductList/>}/>
 
 
 
@@ -410,6 +429,8 @@ const App = () => {
       <Route path='/maintenance/create' element={<AddMaintenance/>} />
       <Route path='/machineParts/view' element={<MachineParts/>} />
       <Route path='/machineParts/edit/:id' element={<EditMachineParts/>} />
+      <Route path='/maintenance/view/:MachineID' element={<ViewMaintenanceTracker/>} />
+      <Route path='/aboutUs' element={<AboutUs/>} />
 
 
 
@@ -434,8 +455,8 @@ const App = () => {
 
 
 
-      {/* Gihan */}
-      <Route path="/ChequeSubmit/:id" element={<ChequeSubmit />} />
+{/* Gihan */}
+<Route path="/ChequeSubmit/:id" element={<ChequeSubmit />} />
       <Route path="/SalaryHistory" element={<SalaryHistory />} />
       <Route path="/DeleteSalary/:id" element={<DeleteSalary />} />
       <Route path="/GenerateSalary/:id" element={<GenerateSalary />} />

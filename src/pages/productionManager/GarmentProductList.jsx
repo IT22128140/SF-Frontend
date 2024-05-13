@@ -16,8 +16,8 @@ const GarmentProductList = () => {
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [showDelete, setShowDelete] = useState(false);
 
-  const headers = ['Product Code','Fabric Type','Color', 'Stitching Type','Quantity', 'Operations'];
-  
+  const headers = ['Product Code', 'Fabric Type', 'Color', 'Stitching Type', 'Quantity', 'Operations'];
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -34,73 +34,73 @@ const GarmentProductList = () => {
 
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader qr={true} />
       <div>
-      <center>
-        <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
-          Garment Product List
-        </h1>
-      </center>
-      <div className = 'flex justify-between items-center m-5'>
-        <Link to= '/sfProduct/Add'>
-         <AddButton/>
-        </Link>
-      </div> 
+        <center>
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+            Garment Product List
+          </h1>
+        </center>
+        <div className='flex justify-between items-center m-5'>
+          <Link to='/sfProduct/Add'>
+            <AddButton />
+          </Link>
+        </div>
         {loading ? (
           <Spinner />
         ) : (
-          <div> 
-          <table className='mx-auto font-BreeSerif mb-5 bg-white'>
-            <TableView headers={headers} />
-            <tbody>
-              {productLists && productLists.map((productList, index) => (
-                <tr key={productList._id} className='h-8'>
-                  <td className='border border-slate-700 rounded-md text-center'>
-                    {productList.productCode}
-                  </td>
-                  <td className='border border-slate-700 rounded-md text-center'>
-                    {productList.fabricType}
-                  </td>
-                  <td className='border border-slate-700 rounded-md text-center'>
-                    {productList.color}
-                  </td>
-                  <td className='border border-slate-700 rounded-md text-center'>
-                    {productList.stitchingType}
-                  </td>
-                  <td className='border border-slate-700 rounded-md text-center'>
-                    {productList.quantity}
-                  </td>
-                  <td className='border border-slate-700 rounded-md text-center'>
-                    <div className='flex justify-center gap-x-4'>
-                      <Link to={`/qualityControl/reviewRequest/add/${productList._id}`}>
-                        <button className={`flex items-center justify-between w-fit h-fit p-1.5 text-md
+          <div>
+            <table className='mx-auto font-BreeSerif mb-5 bg-white'>
+              <TableView headers={headers} />
+              <tbody>
+                {productLists && productLists.map((productList, index) => (
+                  <tr key={productList._id} className='h-8'>
+                    <td className='border border-slate-700 rounded-md text-center'>
+                      {productList.productCode}
+                    </td>
+                    <td className='border border-slate-700 rounded-md text-center'>
+                      {productList.fabricType}
+                    </td>
+                    <td className='border border-slate-700 rounded-md text-center'>
+                      {productList.color}
+                    </td>
+                    <td className='border border-slate-700 rounded-md text-center'>
+                      {productList.stitchingType}
+                    </td>
+                    <td className='border border-slate-700 rounded-md text-center'>
+                      {productList.quantity}
+                    </td>
+                    <td className='border border-slate-700 rounded-md text-center'>
+                      <div className='flex justify-center gap-x-4'>
+                        <Link to={`/qualityControl/reviewRequest/add/${productList._id}`}>
+                          <button className={`flex items-center justify-between w-fit h-fit p-1.5 text-md
                          font-BreeSerif bg-red-900 text-white rounded-lg shadow-md`}>Review Request</button>
-                      </Link>
-                      <Link to={`/sfProduct/edit/${productList._id}`}>
-                        <EditButton/>
-                      </Link>
-                      <DeleteButton
-                        onClick={() => {
-                          setSelectedProductId(productList);
-                          setShowDelete(true);
-                        }}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+                        </Link>
+                        <Link to={`/sfProduct/edit/${productList._id}`}>
+                          <EditButton />
+                        </Link>
+                        <DeleteButton
+                          onClick={() => {
+                            setSelectedProductId(productList);
+                            setShowDelete(true);
+                          }}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
-        </div>
-      )}
-      {showDelete && (
-        <DeleteProductList
-          id={selectedProductId._id}
-          onClose={() => setShowDelete(false)}
-        />
-      )}
-      <div className="h-40 mt-10 ml-5"></div>
+          </div>
+        )}
+        {showDelete && (
+          <DeleteProductList
+            id={selectedProductId._id}
+            onClose={() => setShowDelete(false)}
+          />
+        )}
+        <div className="h-40 mt-10 ml-5"></div>
       </div>
       <StaffFooter />
     </div>

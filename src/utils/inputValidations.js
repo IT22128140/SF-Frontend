@@ -222,3 +222,61 @@ export const quantityValidation = {
     }
   },
 }
+
+export const RPRidValidation = {
+
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+    pattern: {
+      value: /^[R][0-9]{3}$/,
+      message: "Invalid Repair ID",
+    }
+  }
+};
+
+export const MIDValidation = {
+
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+    pattern: {
+      value: /^[M][0-9]{3}$/,
+      message: "Invalid Machine ID",
+    }
+  }
+};
+
+export const MPRSidValidation = {
+
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+    pattern: {
+      value: /^[M][P][S][R][0-9]{3}$/,
+      message: "Invalid Shortage ID",
+    }
+  }
+};
+
+export const MAINTidValidation = {
+
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+    pattern: {
+      value: /^[M][T][C][0-9]{3}$/,
+      message: "Invalid Shortage ID",
+    }
+  }
+};
+
+
