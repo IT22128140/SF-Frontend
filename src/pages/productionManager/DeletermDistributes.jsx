@@ -41,6 +41,7 @@ const DeletermDistributes = () => {
         onClick={handleDeleteDistribution}>Yes, Delete it</button> */}
         <center className="mt-3" onClick={handleDeleteDistribution}><DeleteButton/></center>
       </div>
+      <div className="h-40 mt-10 ml-5"></div>
       <StaffFooter/>
     </div>
   )

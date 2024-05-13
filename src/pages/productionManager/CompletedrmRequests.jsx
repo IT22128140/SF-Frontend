@@ -30,6 +30,7 @@ const CompletedrmRequests = () => {
   return (
     <div className='relative'>
       <PMHeader rmr = {true} />
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       {/* <div className = 'flex justify-between items-center m-5'>
         <Link to='/rmRequests/create'>
          <AddButton/>
@@ -54,7 +55,7 @@ const CompletedrmRequests = () => {
       {loading ? (
         <Spinner/>
       ) : (
-        <table className = 'ml-1 mr-1 font-BreeSerif mb-5'>
+        <table className = 'ml-1 mr-1 font-BreeSerif mb-5 bg-white'>
           <TableView headers={headers} />
           <tbody>
           {rmrequests.map((rmrequest, index) => (
@@ -98,6 +99,8 @@ const CompletedrmRequests = () => {
         </tbody> 
       </table>
       )}
+      <div className="h-40 mt-10 ml-5"></div>
+      </div>
       <StaffFooter/>
     </div>
   )

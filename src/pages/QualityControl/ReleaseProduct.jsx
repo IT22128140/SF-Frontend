@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/SearchBar";
-import TableView from '../../components/table/TableView'
+import SearchBar from "../../components/searchBar2";
+import TableView from '../../components/table/TableView';
+import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import AcceptButton from "../../components/button2/AcceptButton";
+import ViewButton from '../../components/button2/ViewButton';
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
 
@@ -15,7 +14,8 @@ import DeleteButton from "../../components/button2/DeleteButton";
 const ReleaseProduct = () => {
     const [releaseProducts, setReleaseProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const headers = ['release_ID', 'Product Code', 'Bill ID', 'Release Date', 'Reject Date', 'rejected Reason', 'Operations']
+    const [search, setSearch] = useState("");
+    const headers = ['Release ID', 'Product Code', 'Release Type', 'Fabric Type', 'Color', 'Stitching Type', 'Quantity', 'Operations']
     
     useEffect(() => {
         setLoading(true);
@@ -30,13 +30,34 @@ const ReleaseProduct = () => {
                 setLoading(false);
             });
     }, [])
+
+    const itemCountMap = {};
+    releaseProducts.forEach((request) => {
+    if (request.productCode) {
+      const productCode = request.productCode.toLowerCase();
+      itemCountMap[productCode] = (itemCountMap[productCode] || 0) + 1;
+    }
+  });
+
+  
+  const filteredRequests = releaseProducts.filter((v) => v.productCode && v.productCode.toLowerCase().includes(search.toLowerCase()));
+  const itemCount = filteredRequests.length;
+  const totalItemCount = releaseProducts.length;
+
     return (
         <div className='p-4'>
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Release Product</h1>
-            </div>
+        <QENavbar
+        home={true}
+        cel={false}
+        rel={false}
+        fel={false}
+        att={false}
+        sal={false}
+      />
+          <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Release Product</h1>  
             
-            <SearchBar placeholder={"Enter Machine ID here"} />
+            
+          <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
             {loading ? (
                 <Spinner />
             ) : (
@@ -44,11 +65,11 @@ const ReleaseProduct = () => {
                 <table className='min-w-full'>
                     <TableView headers={headers} />
                     <tbody>
-                        {releaseProducts && releaseProducts.map((releaseProduct, index) => (
+                        {releaseProducts && filteredRequests.map((releaseProduct, index) => (
                             <tr key={releaseProduct._id} className='h-8'>
                                 
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {releaseProduct.release_ID}
+                                    {releaseProduct.releaseId}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {releaseProduct.productCode}
@@ -57,26 +78,30 @@ const ReleaseProduct = () => {
                                     {releaseProduct.customerID}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {releaseProduct.releaseDate}
+                                    {releaseProduct.fabricType}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {releaseProduct.reject_Date}
+                                    {releaseProduct.color}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {releaseProduct.rejectedReason}
+                                    {releaseProduct.stitchingType}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    <div className='flex justify-center gap-x-4'>
-                                        <Link to={`/machines/details/`}>
-                                            <BsInfoCircle className='text-2xl text-green-800' />
-                                        </Link>
-                                        <Link to={`/machines/edit/`}>
-                                            <BsInfoCircle className='text-2xl text-yellow-600' />
-                                        </Link>
-                                        <Link to={`/machines/delete/`}>
-                                            <BsInfoCircle className='text-2xl text-red-800' />
-                                        </Link>
-                                    </div>
+                                    {releaseProduct.quantity}
+                                </td>
+                                
+                                <td className='border border-slate-700 rounded-md text-center'>
+                                <div className='flex justify-center gap-x-4'>
+                                    <Link to={ `/qualityControl/releaseProduct/view/${releaseProduct._id}`}>
+                                      <ViewButton/>
+                                    </Link>
+                                    <Link to={`/qualityControl/releaseProduct/edit/${releaseProduct._id}`}>
+                                      <EditButton/>
+                                    </Link>
+                                    <Link to={`/qualityControl/releaseProduct/delete/${releaseProduct._id}`}>
+                                        <DeleteButton/>
+                                    </Link>
+                                </div>
                                 </td>
                             </tr>
                         ))}
@@ -88,9 +113,7 @@ const ReleaseProduct = () => {
                 
             )}
 
-                <Link to='/machines/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
-                </Link>
+                
         </div>
     );
 };
