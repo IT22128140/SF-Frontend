@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
-import SearchBar from "../../components/SearchBar3";
+import SearchBar from "../../components/searchBar2";
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
@@ -71,7 +71,7 @@ productReviews.forEach((request) => {
 
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='p-4'>
         <QENavbar
         home={false}
         cel={false}

@@ -46,7 +46,7 @@ const ReleaseProduct = () => {
   const totalItemCount = releaseProducts.length;
 
     return (
-        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+        <div className='p-4'>
         <QENavbar
         home={false}
         cel={false}

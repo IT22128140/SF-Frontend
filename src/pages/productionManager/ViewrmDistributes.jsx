@@ -25,9 +25,9 @@ const ViewrmDistributes = () => {
   }, [])
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='relative'>
       <PMHeader drm = {true} />
-      <div>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Distribution

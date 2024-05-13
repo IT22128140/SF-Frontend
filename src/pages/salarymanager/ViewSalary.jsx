@@ -28,12 +28,12 @@ const ViewSalary = () => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
+    <div className="w-full h-full bg-scroll bg-repeat bg-bgimg">
       <div>
         <HrNavbar sal={true} />
         <div className="p-4 h-screen overflow-y-auto">
           <div className="flex justify-center items-center">
-            <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+            <h1 className="text-3xl my-8 font-Philosopher text-ternary font-semibold">
               View Salary Details
             </h1>
           </div>
@@ -122,11 +122,9 @@ const ViewSalary = () => {
                   <label className="block text-ternary text-sm font-bold mb-3">
                     Cheque
                   </label>
-                  <img
-                    src={viewSalary.cheque1}
-                    alt="cheque"
-                    className="border border-black border-1 p-1 block mb-2" />
-                 
+                  <span className="border border-black border-1 p-1 block mb-2">
+                    {viewSalary.cheque}
+                  </span>
                   <br />
                   <label className="block text-ternary text-sm font-bold mb-3">
                     Date

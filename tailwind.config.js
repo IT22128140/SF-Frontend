@@ -14,7 +14,6 @@ export default {
       backgroundImage: {
         'bgimg': "url('/wall4.webp')",
         'bgform': "url('/Wall2.png')",
-        'bgishome': "url('/ishome.jpg)",
 
       },
       colors: {

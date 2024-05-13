@@ -1,12 +1,17 @@
 import React,{ useState } from 'react'
+import Spinner from '../../components/Spinner';
 import axios from 'axios';
-import PropTypes from "prop-types";
+import  { useNavigate, useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
+import PMHeader from '../../components/navbar/staffheader/PMHeader';
+import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import DeleteButton from '../../components/button2/DeleteButton';
-import CancelButton from '../../components/button2/CancelButton';
-import { MdOutlineCancel } from "react-icons/md";
 
-const DeletermDistributes = ({id, onClose}) => {
+const DeletermDistributes = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { enqueueSnackBar } = useSnackbar();
+  const { id } = useParams();
 
   const handleDeleteDistribution = () => {
     setLoading(true);
@@ -14,46 +19,32 @@ const DeletermDistributes = ({id, onClose}) => {
       .delete(`http://localhost:5555/rmDistributes/${id}`)
       .then(() => {
         setLoading(false);
-        window.location.reload(true);
+        navigate('/RawmDistributes');
+        enqueueSnackBar('Request deleted successfully', { variant: 'success' });
       })
       .catch((error) => {
         setLoading(false);
-        alert('An error happened. Please Check console');
+        // alert('An error happened. Please Check console');
+        enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       });
   };
 
   return (
-    <div
-    className="fixed bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
-    onClick={onClose}
-    >
-    {/* <BackButton /> */}
+    <div className='relative'>
+      <PMHeader drm = {true} />
+      {loading ? <Spinner/> : ''}
+      <div className='flex flex-col items-center bg-stone-200 rounded-xl w-[600px] p-8 mx-auto font-BreeSerif mb-5'>
+        <h3 className='text-2xl'>Are You Sure You want to Delete this Distribution?</h3>
 
-    <div
-      onClick={(event) => event.stopPropagation()}
-      className="w-[900px] max-w-full h-auto bg-white rounded-xl p-4 flex flex-col relative"
-    >
-      <h1 className="text-3xl ml-4 my-4 font-Philosopher text-ternary">Are You Sure You Want To Delete This?</h1>
-      <MdOutlineCancel
-        className="absolute top-6 right-6 text-3xl text-red-600 cursor-pointer"
-        onClick={onClose}
-      />
-      <div className="flex flex-col rounded-xl mx-auto text-2xl font-BreeSerif">
-        <div className="flex flex-row">This action cannot be undone once you click on the Delete.</div>
-        <div className="flex justify-center gap-x-40 mt-2">
-          <DeleteButton onClick={handleDeleteDistribution}/>
-          <CancelButton onClick={onClose}/>
-        </div>
+        {/* <button className='p-4 bg-red-600 text-white m-8 w-full rounded-xl'
+        onClick={handleDeleteDistribution}>Yes, Delete it</button> */}
+        <center className="mt-3" onClick={handleDeleteDistribution}><DeleteButton/></center>
       </div>
-    </div>
+      <div className="h-40 mt-10 ml-5"></div>
+      <StaffFooter/>
     </div>
   )
 }
-
-DeletermDistributes.propTypes = {
-  id: PropTypes.string,
-  onClose: PropTypes.func,
-}; 
 
 export default DeletermDistributes

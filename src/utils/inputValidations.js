@@ -23,7 +23,7 @@
       },
       pattern: {
         value: /^[0-9]*$/,
-        message: "Only positive numbers are allowed",
+        message: "Only numbers are allowed",
       }
     },
     
@@ -126,99 +126,3 @@ export const dateValidation = {
     },
   },
 };
-
-export const rIdValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Required",
-    },
-    pattern: {
-      value: /^[R][0-9]{8}$/,
-      message: "Invalid Request ID",
-    }
-  },
-  
-};
-
-export const DIdValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Required",
-    },
-    pattern: {
-      value: /^[D][0-9]{8}$/,
-      message: "Invalid Distribution ID",
-    }
-  },
-  
-};
-
-export const lwIdValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Required",
-    },
-    pattern: {
-      value: /^[L][W][0-9]*$/,
-      message: "Invalid Line Worker ID",
-    }
-  },
-  
-};
-
-export const LnoValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Required",
-    },
-    pattern: {
-      value: /^[L][0-9]*$/,
-      message: "Invalid Line Number",
-    }
-  },
-  
-};
-
-export const PnoValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Required",
-    },
-    pattern: {
-      value: /^[P][0-9]*$/,
-      message: "Invalid Position Number",
-    }
-  },
-  
-};
-
-export const productCodeValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Product Code is required",
-    },
-    pattern: {
-        value: /^PR\d{4}$/, // Regex pattern for "PR" followed by four digits
-        message: "Product Code must start with PR followed by four digits",
-    }
-  },
-}
-
-export const quantityValidation = {
-  validation: {
-    required: {
-      value: true,
-      message: "Quantity is required",
-    },
-    max: {
-        value: 100,
-        message: "Maximum quantity is 100",
-    }
-  },
-}
