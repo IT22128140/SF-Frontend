@@ -24,6 +24,7 @@ const EditMPshortage = () => {
     axios.get(`http://localhost:5555/mpshortages/${id}`)
     .then((response) => {
       setRequestID(response.data.RequestID);
+      setRequested(response.data.createdAt);
       setPartID(response.data.PartID);
       setPartName(response.data.PartName);
       setDescription(response.data.Description);
@@ -65,11 +66,12 @@ const EditMPshortage = () => {
   };
 
   return (
-    <div className='relative'>
+    <div>
       <MaintenanceManagerHeader/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       {loading ? <Spinner /> : ''}
 
-       <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-8 font-BreeSerif">
        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Edit Parts Shortage Details</h1>
 
        <div className="flex w-[80%] justify-between mb-2">
@@ -81,9 +83,10 @@ const EditMPshortage = () => {
             placeholder='Enter Request ID'
             name='RequestID'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'            
-            value={RequestID}
+            value={RequestID.split("T")[0]}
             onChange={(e) => setRequestID(e.target.value)}
             validation={{ required: 'Request ID is required' }}
+            readOnly
           />
           </div>
 
@@ -96,9 +99,10 @@ const EditMPshortage = () => {
             placeholder='Enter Requested Date'
             name='Requested'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'            
-            value={Requested}
+            value={Requested.split("T")[0]}
             onChange={(e) => setRequested(e.target.value)}
             validation={{ required: 'Requested Date is required' }}
+            readOnly
           />
           </div>
 
@@ -163,7 +167,7 @@ const EditMPshortage = () => {
           </div>
 
           <div className="flex w-[80%] justify-between mb-2">
-             <label className='text-ternary'>Date Needed Brfore</label>
+             <label className='text-ternary'>Date Needed Before</label>
           </div>
           <div>   
           <input
@@ -171,7 +175,7 @@ const EditMPshortage = () => {
             placeholder='Enter the Date Needed Before'
             name='NeededBeforeDate'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'
-            value={NeededBeforeDate}
+            value={NeededBeforeDate.split("T")[0]}
             onChange={(e) => setNeededBeforeDate(e.target.value)}
             validation={{ required: 'Date is required' }}
           />
@@ -194,6 +198,7 @@ const EditMPshortage = () => {
         
           {/* Include other Input components here */}
           <button type="submit" className='font-BreeSerif bg-black rounded text-white text-center w-[100px] h-[35px] self-end justify-self-end' onClick={handleEditMPshortage}>Submit</button>
+          </div>
           </div>
           <StaffFooter/>
     </div>

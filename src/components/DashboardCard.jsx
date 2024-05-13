@@ -8,8 +8,8 @@ import { motion } from "framer-motion";
 
 const DashboardCard = (prop) => {
   return (
-    <div className="px-14 py-8">
-      <div className="border border-black rounded-xl w-fit h-fit flex flex-col items-center font-BreeSerif p-6">
+    <div className="px-14 py-8 ">
+      <div className="border border-black rounded-xl bg-white w-fit h-fit flex flex-col items-center font-BreeSerif p-6">
         <h1 className="text-3xl font-Philosopher text-ternary">{prop.topic}</h1>
 
         <div className="border border-black rounded-xl w-[63%] h-fit bg-bgc flex flex-col items-center font-BreeSerif p-4 m-8">

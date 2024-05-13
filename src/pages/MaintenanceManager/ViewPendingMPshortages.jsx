@@ -11,10 +11,13 @@ import AddButton from "../../components/button2/AddButton";
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import SearchBar from "../../components/SearchBar";
+import DeleteMPshortage from "./DeleteMPshortage";
 
 const mpShortagesTable = () => {
     const [mpshortages, setmpshortages] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [selectedShortage, setSelectedShortage] = useState(null);
     const [data3, setdata3] = useState([]);
     const headers = ['Request ID', 'Requested Date', 'Part Name', 'Description', 'Quantity', 'Condition', 'Need Before', 'Operations']
     
@@ -38,22 +41,23 @@ const mpShortagesTable = () => {
 
 
     return (
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <MaintenanceManagerHeader sh={true}/>
+            <div>
             <Link to={'/mpshortages/accepted'}>
-            <button>Accepted Shortages</button>
+            <button className={`flex items-center mt-4  justify-between w-fit h-fit p-1.5 text-md font-BreeSerif bg-red-900 text-white rounded-lg shadow-md`}>View Accepted Shortages</button>
             </Link>
             <SearchBar data= {data3} navigate={`/mpshortages/view/`} placeholder={"Enter Request ID"}/>
 
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machine Part Shortages List</h1>
-            </div>
+
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Pending Machine Part Shortages List</h1>
+
             
             {loading ? (
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {mpshortages.map((mpshortage, index) => (
@@ -63,7 +67,7 @@ const mpShortagesTable = () => {
                                     {mpshortage.RequestID}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.Requested}
+                                {new Date(mpshortage.createdAt).toDateString()}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {mpshortage.PartName}
@@ -78,7 +82,7 @@ const mpShortagesTable = () => {
                                     {mpshortage.Condition}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {mpshortage.NeededBeforeDate}
+                                    {mpshortage.NeededBeforeDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     <div className='flex justify-center gap-x-4 ml-2 mr-2'>
@@ -88,9 +92,12 @@ const mpShortagesTable = () => {
                                         <Link to={`/mpshortages/edit/${mpshortage._id}`}>
                                             <EditButton/>
                                         </Link>
-                                        <Link to={`/mpshortages/delete/${mpshortage._id}`}>
-                                            <DeleteButton />
-                                        </Link>
+                                        <DeleteButton
+                                        onClick={() => {
+                                            setSelectedShortage(mpshortage);
+                                            setShowDelete(true)
+                                        }}
+                                        />
                                     </div>
                                 </td>
                             </tr>
@@ -101,7 +108,15 @@ const mpShortagesTable = () => {
                 
             )}
 
-                
+                {showDelete && (
+                    <DeleteMPshortage
+                        id={selectedShortage._id}
+                        onClose={() => setShowDelete(false)}
+                    />
+                )}
+
+            <div className="h-40 mt-10 ml-5"></div>
+            </div>
                 <StaffFooter/>
         </div>
     );

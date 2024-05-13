@@ -26,6 +26,10 @@ const Payment = () => {
       });
   }, []); // Include id in dependency array to re-fetch data when id changes
 
+  const tot = sessionStorage.getItem('total');
+
+  console.log(tot);
+
   return (
     <div>
       <CustomerNavbar />
@@ -50,7 +54,7 @@ const Payment = () => {
               </label>
 
               <span className="border border-black border-1 p-2 block mb-2 absolute top-[330px] left-[500px] rounded-lg">
-                Rs.{}
+                Rs.{tot}
               </span>
 
               <label className="block text-ternary text-lg font-bold mb-2 absolute top-[400px] left-[500px] ">
@@ -68,7 +72,7 @@ const Payment = () => {
             </div>
 
             <div className="flex justify-center items-center absolute top-[620px] left-[500px]">
-              <Link to={``}>
+              <Link  to={`/Checkout`}>
                 <DeleteButton>Delete</DeleteButton>
               </Link>
             </div>

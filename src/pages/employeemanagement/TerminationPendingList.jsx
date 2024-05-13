@@ -10,11 +10,13 @@ import EditButton from "../../components/button2/EditButton.jsx";
 import DeleteButton from "../../components/button2/DeleteButton.jsx";
 import TableView from "../../components/table/TableView";
 import ViewTerminationRequest from "./ViewTerminationRequest.jsx";
+import DeleteRequestResignation from "./DeleteRequestResignation.jsx";
 
 const TerminationPendingList = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   const headers = [
@@ -43,7 +45,7 @@ const TerminationPendingList = () => {
   }, []);
 
   return (
-    <div>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize:'cover' }}>
       <HrNavbar req={true} />
 
       <div className="p-4">
@@ -57,7 +59,7 @@ const TerminationPendingList = () => {
           {loading ? (
             <Spinner />
           ) : (
-            <table className="w-[95%]">
+            <table className="w-[95%] font-BreeSerif bg-white">
               <TableView headers={headers} />
               <tbody>
                 {requests.map((request, index) => (
@@ -91,13 +93,13 @@ const TerminationPendingList = () => {
                             setShowRequest(true);
                           }}
                         />
-                        <Link to={""}>
+                        <Link to={`/resign/EditRequestResignation/${request._id}`}>
                           <EditButton />
                         </Link>
                         <DeleteButton
                           onClick={() => {
-                            // setSelectedEmployee(employee);
-                            // setShowDelete(true);
+                            setSelectedRequest(request);
+                            setShowDelete(true);
                           }}
                         />
                       </div>
@@ -115,6 +117,14 @@ const TerminationPendingList = () => {
           request={selectedRequest}
           onClose={() => setShowRequest(false)}
         />
+      )}
+
+      {showDelete && (
+        <DeleteRequestResignation
+          id={selectedRequest._id}
+          onClose={() => setShowDelete(false)}
+        />
+      
       )}
 
       <StaffFooter />

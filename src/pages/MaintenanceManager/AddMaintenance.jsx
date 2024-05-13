@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/form/Input';
 import { FormProvider, useForm } from 'react-hook-form';// Import FormProvider
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
-import WorkersSidebar from './WorkersSidebar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
@@ -44,18 +43,22 @@ const CreateMaintenance = () => {
     setLoading(true);
     try {
       // Extract parts array from data
-      const partsData = selectedParts.map(({ partID, partName, condition }) => ({ partID, partName, condition }));
-
+      const parts = data.Machineparts;
+  
       // Create new object without parts field
       const newData = { ...data };
       delete newData.Machineparts;
-
+  
       // Add selected parts to the data before saving
-      const dataWithParts = { ...newData, Machineparts: partsData };
-
+      const dataWithParts = { ...newData, Machineparts: selectedParts };
+  
+      // Log the data just before making the Axios POST request
+      console.log('Data sent to server:', dataWithParts);
+  
+      // Make Axios POST request
       await axios.post('http://localhost:5555/maintenance', dataWithParts);
       setLoading(false);
-      navigate('/repairs/view');
+      navigate('machines/view');
     } catch (error) {
       setLoading(false);
       alert('An error happened. Please check console');
@@ -68,11 +71,9 @@ const CreateMaintenance = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      // Add part to selectedParts
       const part = parts.find((part) => part.partID === partId);
       setSelectedParts((prevSelectedParts) => [...prevSelectedParts, part]);
     } else {
-      // Remove part from selectedParts
       setSelectedParts((prevSelectedParts) =>
         prevSelectedParts.filter((part) => part.partID !== partId)
       );
@@ -83,7 +84,6 @@ const CreateMaintenance = () => {
     <div className='relative'>
       <MaintenanceManagerHeader rr={true}/>
       <BackButton/>
-      <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
         <form onSubmit={methods.handleSubmit(handleSaveMaintenance)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
@@ -136,6 +136,24 @@ const CreateMaintenance = () => {
           name='Category'
           validation={{ required: 'Category is required' }}
         />
+
+        {/* Render checkboxes for workers */}
+        <fieldset>
+            <legend>Machine Parts</legend>
+            {parts.map((part) => (
+              <div key={part._id}>
+                <input
+                  type='checkbox'
+                  id={part.partID}
+                  name={part.partName}
+                  value={part.partID}
+                  onChange={handlePartChange}
+                />
+                <label htmlFor={part.partID}>{part.partID} - {part.partName} {part.condition}</label>
+              </div>
+            ))}
+          </fieldset>
+          
         <Input
           formtype='input'
           label='Changed Motor'
@@ -167,22 +185,7 @@ const CreateMaintenance = () => {
         />
         
 
-        {/* Render checkboxes for workers */}
-        <fieldset>
-            <legend>Machine Parts</legend>
-            {parts.map((part) => (
-              <div key={part._id}>
-                <input
-                  type='checkbox'
-                  id={part.partID}
-                  name={part.partName}
-                  value={part.partID}
-                  onChange={handlePartChange}
-                />
-                <label htmlFor={part.partID}>{part.partID} - {part.partName} {part.condition}</label>
-              </div>
-            ))}
-          </fieldset>
+        
 
           <SubmitButton/>
         </form>

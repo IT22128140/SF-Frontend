@@ -5,12 +5,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
-import BackButton from "../../components/button/BackButton.jsx";
 import Spinner from "../../components/Spinner.jsx";
 import Input from "../../components/form/Input.jsx";
 import SubmitButton from "../../components/button2/SubmitButton.jsx";
 import { idPrefix, occupations } from "../../utils/employeeIdArray.js";
-import { textValidation, emailValidation, contactValidation, nicValidation, numberValidation } from "../../utils/inputValidations.js";
+import { textValidation, emailValidation, contactValidation, nicValidation, numberValidation, dateValidation } from "../../utils/inputValidations.js";
 
 const AddEmployee = () => {
   const [loading, setLoading] = useState(false);
@@ -74,10 +73,9 @@ const AddEmployee = () => {
   };
 
   return (
-    <div>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition:'top right', backgroundSize:'cover' }}>
       <HrNavbar cel={true} />
       <div className="p-4">
-        <BackButton />
         <center>
           <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary">
             New Employee Intergration
@@ -165,7 +163,7 @@ const AddEmployee = () => {
                     formtype="input"
                     label="Age"
                     id="age"
-                    type="number"
+                    type="text"
                     placeholder="Enter Age"
                     name="age"
                     {...numberValidation}
@@ -199,7 +197,7 @@ const AddEmployee = () => {
                     formtype="input"
                     label="Basic Salary"
                     id="basicSalary"
-                    type="number"
+                    type="text"
                     placeholder="Enter Basic Salary"
                     name="basicSalary"
                     {...numberValidation}
@@ -212,6 +210,7 @@ const AddEmployee = () => {
                     type="date"
                     placeholder="Enter Admission Date"
                     name="admissionDate"
+                    {...dateValidation}
                     validation={{ required: "Admission Date is required" }}
                   />
                 </div>

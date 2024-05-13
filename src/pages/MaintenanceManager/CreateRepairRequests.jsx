@@ -9,6 +9,9 @@ import WorkersSidebar from './WorkersSidebar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
+import {textValidation} from '../../utils/inputValidations'
+import {paraValidation} from '../../utils/inputValidations'
+import {dateValidation} from '../../utils/inputValidations'
 
 const CreateRepairRequests = () => {
 
@@ -43,14 +46,14 @@ const CreateRepairRequests = () => {
   const handleSaveRepair = async (data) => {
     setLoading(true);
     try {
-      // Extract Workers array from data
-    const workers = data.Workers;
+      
+    const workers = data.Workers;// Extract Workers array from data
 
-    // Create new object without Workers field
+    // Create new object
     const newData = { ...data };
     delete newData.Workers;
       
-    // Add selected workers to the data before saving
+    // Add selected workers to the data
     const dataWithWorkers = { ...newData, Workers: selectedWorkers };
 
       await axios.post('http://localhost:5555/repairs', dataWithWorkers);
@@ -82,8 +85,9 @@ const CreateRepairRequests = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader rr={true}/>
+      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <BackButton/>
-      <WorkersSidebar/>
+      <WorkersSidebar className="h-full"/>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
         <form onSubmit={methods.handleSubmit(handleSaveRepair)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
@@ -96,7 +100,8 @@ const CreateRepairRequests = () => {
             type='text'
             placeholder='Enter Repair ID'
             name='RepairID'
-            validation={{ required: 'Repair ID is required' }}
+            {...textValidation}
+            // validation={{ required: 'Repair ID is required' }}
           />
 
           <Input
@@ -105,16 +110,8 @@ const CreateRepairRequests = () => {
           id='repairDescription'
           placeholder='Enter Repair Description'
           name='RepairDescription'
-          validation={{ required: 'Repair Description is required' }}
-        />
-        <Input
-          formtype='input'
-          label='Requested Date'
-          id='requestedDate'
-          type='date'
-          placeholder='Enter Requested Date'
-          name='RequestedDate'
-          validation={{ required: 'Requested Date is required' }}
+          {...paraValidation}
+          // validation={{ required: 'Repair Description is required' }}
         />
         <Input
           formtype='input'
@@ -123,7 +120,8 @@ const CreateRepairRequests = () => {
           type='text'
           placeholder='Enter Requested Time'
           name='RequestedTime'
-          validation={{ required: 'Requested Time is required' }}
+          {...textValidation}
+          // validation={{ required: 'Requested Time is required' }}
         />
         <Input
           formtype='input'
@@ -132,7 +130,8 @@ const CreateRepairRequests = () => {
           type='text'
           placeholder='Enter Urgency Level'
           name='UrgencyLevel'
-          validation={{ required: 'Urgency Level is required' }}
+          {...textValidation}
+          // validation={{ required: 'Urgency Level is required' }}
         />
         <Input
           formtype='input'
@@ -141,19 +140,19 @@ const CreateRepairRequests = () => {
           type='text'
           placeholder='Enter Status'
           name='Status'
-          validation={{ required: 'Status is required' }}
+          {...textValidation}
+          // validation={{ required: 'Status is required' }}
         />
         <Input
           formtype='input'
           label='Completed Date'
           id='completedDate'
-          type='text'
+          type='date'
           placeholder='Enter Completed Date'
           name='CompletedDate'
           // validation={{ required: 'Completed Date is required' }}
         />
 
-        {/* Render checkboxes for workers */}
         <fieldset>
             <legend>Add Repair Workers</legend>
             {workers.map((worker) => (
@@ -173,6 +172,8 @@ const CreateRepairRequests = () => {
           <SubmitButton/>
         </form>
       </FormProvider>
+      <div className='h-80'></div>
+      </div>
       <StaffFooter/>
     </div>
   )

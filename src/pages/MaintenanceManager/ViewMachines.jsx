@@ -11,12 +11,16 @@ import ViewButton from "../../components/button2/ViewButton";
 import AddButton from "../../components/button2/AddButton";
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import NotificationComponent from './Notifications'; 
+import DeleteMachine from "./DeleteMachine";
 
 const MachineTable = () => {
     const [machines, setMachines] = useState([]);
     const [loading, setLoading] = useState(false);
     const [data1, setdata1] = useState([]);
-    const headers = ['Machine ID', 'Machine Name', 'Purchased Date', 'Condition', 'Cost', 'Manufacture', 'Category', 'Operations']
+    const [showDelete, setShowDelete] = useState(false);
+    const [selectedMachine, setSelectedMachine] = useState(null);
+    const headers = ['Machine ID', 'Machine Name', 'Purchased Date', 'Condition', 'Cost (Rs)', 'Manufacture', 'Category', 'Operations']
     
     useEffect(() => {
         setLoading(true);
@@ -39,20 +43,20 @@ const MachineTable = () => {
       console.log(data1);
 
     return (
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <MaintenanceManagerHeader m={true}/>
-
+            <div>
+            <NotificationComponent /> 
             <SearchBar data= {data1} navigate={`/machines/view/`} placeholder={"Enter Machine ID"}/>
+          
+                <h1 className='text-6xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Machines List</h1>
             
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Machines List</h1>
-            </div>
             
             {loading ? (
                 <Spinner />
             ) : (
 
-                <table className='ml-1 mr-1 font-BreeSerif'>
+                <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
                         {machines.map((machine, index) => (
@@ -65,7 +69,7 @@ const MachineTable = () => {
                                     {machine.MachineName}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
-                                    {machine.PurchasedDate}
+                                    {machine.PurchasedDate.split("T")[0]}
                                 </td>
                                 <td className='border border-slate-700 rounded-md text-center'>
                                     {machine.Condition}
@@ -87,9 +91,12 @@ const MachineTable = () => {
                                         <Link to={`/machines/edit/${machine._id}`}>
                                             <EditButton />
                                         </Link>
-                                        <Link to={`/machines/delete/${machine._id}`}>
-                                            <DeleteButton />
-                                        </Link>
+                                        <DeleteButton
+                                        onClick={() => {
+                                            setSelectedMachine(machine);
+                                            setShowDelete(true)
+                                        }}
+                                        />
                                     </div>
                                 </td>
                             </tr>
@@ -99,10 +106,18 @@ const MachineTable = () => {
                       
             )}
 
+            {showDelete && (
+                <DeleteMachine
+                id={selectedMachine._id}
+                onClose={()=> setShowDelete(false)}
+                />
+            )}
+
                <div className="flex h-40 mt-10 ml-5">
                 <Link to='/machines/create'>
                     <AddButton />
                 </Link>
+                </div>
                 </div>
                 <StaffFooter/>
         </div>

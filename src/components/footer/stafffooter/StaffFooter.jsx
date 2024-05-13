@@ -27,7 +27,7 @@ const StaffFooter = () => {
           Reports
         </Link>
         <Link
-          to="#"
+          to="/aboutUs"
           className="text-sm text-gray-500 hover:text-gray-800 mr-6 font-BreeSerif"
         >
           About Us

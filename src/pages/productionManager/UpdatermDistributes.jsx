@@ -25,7 +25,7 @@ const UpdatermDistributes = () => {
     axios.get(`http://localhost:5555/rmDistributes/${id}`)
     .then((response) => {
       setDistributeID(response.data.DistributeID);
-      setDate(response.data.Date)
+      setDate(response.data.createdAt)
       setLineNumber(response.data.LineNumber)
       setPositionNumber(response.data.PositionNumber)
       setDistributed(response.data.Distributed)
@@ -54,20 +54,20 @@ const UpdatermDistributes = () => {
       .then(() => {
         setLoading(false);
         navigate('/RawmDistributes');
-        enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
+        // enqueueSnackBar('Distribution updated successfully', { variant: 'success' });
       })
       .catch ((error) => {
         setLoading(false);
-        // alert('An error happened. Please Check console');
-        enqueueSnackBar('Error', { variant: 'error' });
+        alert('An error happened. Please Check console');
+        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       } );  
   };
 
   return (
-    <div className = 'relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader drm = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Distribution
@@ -89,6 +89,7 @@ const UpdatermDistributes = () => {
             value={DistributeID}
             onChange={(e) => setDistributeID(e.target.value)}
             validation={{ required: 'Distribute ID is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -99,9 +100,10 @@ const UpdatermDistributes = () => {
             name='Date'
             type='text'
             placeholder='Enter Date'
-            value={Date}
+            value={Date.split("T")[0]}
             onChange={(e) => setDate(e.target.value)}
             validation={{ required: 'Date is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -115,6 +117,7 @@ const UpdatermDistributes = () => {
             value={LineNumber}
             onChange={(e) => setLineNumber(e.target.value)}
             validation={{ required: 'Line Number is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -128,6 +131,7 @@ const UpdatermDistributes = () => {
             value={PositionNumber}
             onChange={(e) => setPositionNumber(e.target.value)}
             validation={{ required: 'Position Number is required' }}
+            readOnly
           />
           </div>
           <div className='my-2'>

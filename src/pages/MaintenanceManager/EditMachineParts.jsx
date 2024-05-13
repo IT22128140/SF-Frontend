@@ -63,13 +63,14 @@ const EditMachineParts =() => {
   return (
     <div className='p-4'>
         <MaintenanceManagerHeader/>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
         {/* <BackButton /> */}
         <div className="flex items-center justify-center mb-9">
 
         <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Edit Machine Part Stock</h1>
       </div>
         {loading ? <Spinner/> : ''}
-        <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
+        <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif'>
 
             <div className='my-4'>
                 <label className='mr-4 text-xl text-gray-500 font-Philosopher'>partName</label>
@@ -128,6 +129,7 @@ const EditMachineParts =() => {
                 </div>
                 <SubmitButton onClick={handleEditmachinepart} className="mr-2">Submit</SubmitButton>
     
+            </div>
             </div>
         </div>
 

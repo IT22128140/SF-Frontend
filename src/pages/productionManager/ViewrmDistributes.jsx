@@ -25,9 +25,9 @@ const ViewrmDistributes = () => {
   }, [])
 
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader drm = {true} />
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div>
       <center>
         <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
           Raw Material Distribution
@@ -44,7 +44,7 @@ const ViewrmDistributes = () => {
           </div>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Date</span>
-            <span>{rmdistributes.Date}</span>
+            <span>{new Date(rmdistributes.createdAt).toDateString()}</span>
           </div>
           <div className= 'my-4'>
             <span className='text-xl mr-4'>Line Number</span>
@@ -63,11 +63,7 @@ const ViewrmDistributes = () => {
             <span>{rmdistributes.Shortage}</span>
           </div>
           <div className= 'my-4'>
-            <span className='text-xl mr-4'>Create Time</span>
-            <span>{new Date(rmdistributes.createdAt).toString()}</span>
-          </div>
-          <div className= 'my-4'>
-            <span className='text-xl mr-4'>Last Update Time</span>
+            <span className='text-xl mr-4'>Last Updated Time</span>
             <span>{new Date(rmdistributes.updatedAt).toString()}</span>
           </div>
         </div>

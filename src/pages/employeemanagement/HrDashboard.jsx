@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const HrDashboard = () => {
   return (
-    <div>
+    <div className="w-full h-full bg-fixed bg-no-repeat bg-bgform" style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <HrNavbar home={true} />
 
       <div className="p-4">
@@ -46,7 +46,7 @@ const HrDashboard = () => {
           /> */}
           <div>
             <div className="px-14 py-8">
-              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6">
+              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6 bg-white">
                 <h1 className="text-3xl font-Philosopher text-ternary">
                   Resignation Management
                 </h1>

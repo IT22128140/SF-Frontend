@@ -26,7 +26,7 @@ const EditRepair = () => {
     .then((response) => {
       setRepairID(response.data.RepairID);
       setRepairDescription(response.data.RepairDescription);
-      setRequestedDate(response.data.RequestedDate);
+      setRequestedDate(response.data.createdAt);
       setRequestedTime(response.data.RequestedTime);
       setUrgencyLevel(response.data.UrgencyLevel);
       setStatus(response.data.Status);
@@ -67,10 +67,11 @@ const EditRepair = () => {
   return (
     <div className='relative'>
       <MaintenanceManagerHeader/>
+      <div className=' relative w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <WorkersSidebar/>
       {loading ? <Spinner /> : ''}
 
-       <div className="bg-formBackground flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto font-BreeSerif">
+       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Edit Repair Details</h1>
 
        <div className="flex w-[80%] justify-between mb-2">
@@ -85,6 +86,7 @@ const EditRepair = () => {
             value={RepairID}
             onChange={(e) => setRepairID(e.target.value)}
             validation={{ required: 'Repair ID is required' }}
+            readOnly
           />
           </div>
 
@@ -112,9 +114,10 @@ const EditRepair = () => {
             placeholder='Enter Requested Date'
             name='RequestedDate'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'
-            value={RequestedDate}
+            value={RequestedDate.split("T")[0]}
             onChange={(e) => setRequestedDate(e.target.value)}
             validation={{ required: 'Requested Date is required' }}
+            readOnly
           />
           </div>
 
@@ -130,6 +133,7 @@ const EditRepair = () => {
             value={RequestedTime}
             // onChange={(e) => setRequestedTime(e.target.value)}
             validation={{ required: 'Requested Time is required' }}
+            readOnly
           />
           </div>
 
@@ -172,7 +176,7 @@ const EditRepair = () => {
             placeholder='Enter Completed Date'
             name='CompletedDate'
             className='h-11 w-[80%] p-2 border-gray-200 rounded-md border-2'
-            value={CompletedDate}
+            value={CompletedDate.split("T")[0]}
             onChange={(e) => setCompletedDate(e.target.value)}
             validation={{ required: 'Completed Date is required' }}
           />
@@ -189,6 +193,7 @@ const EditRepair = () => {
           ))}
         </div>
           <SubmitButton onClick={handleEditRepair}/>
+          </div>
           </div>
           <StaffFooter/>
     </div>

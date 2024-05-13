@@ -20,11 +20,11 @@ const QENavbar = (props) => {
 
       <div className="flex flex-row bg-bgc h-fit shadow-md">
         <NavbarButton active={props.home} button={"Home"} url={"/qualityControl"} />
-        <NavbarButton active={props.cel} button={"Review Requst"} url={"/qualityControl/reviewRequest"} />
-        <NavbarButton active={props.rel} button={"Pending Review"} url={"/qualityControl/reviewRequest/pendingRequest"} />
-        <NavbarButton active={props.fel} button={"Review Report"} url={"/qualityControl/reviewReport"} />
+        <NavbarButton active={props.rel} button={"Review Requst"} url={"/qualityControl/reviewRequest"} />
+        <NavbarButton active={props.fel} button={"Pending Review"} url={"/qualityControl/reviewRequest/pendingRequest"} />
+        <NavbarButton active={props.sal} button={"Review Report"} url={"/qualityControl/reviewReport"} />
         <NavbarButton active={props.att} button={"Release Product"} url={"/qualityControl/releaseProduct"} />
-        
+        <NavbarButton active={props.sal} button={"Daily Note"} url={"/qualityControl/releaseProduct"} />
       </div>
     </div>
   );

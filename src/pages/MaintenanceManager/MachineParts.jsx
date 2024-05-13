@@ -41,6 +41,7 @@ const PartsTable = () => {
         return (
           <div className="p-1">
             <MaintenanceManagerHeader />
+            <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <div className="flex items-center justify-center mb-9">
               <h1 className="my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center">Machine Part Stock</h1>
             </div>
@@ -53,7 +54,7 @@ const PartsTable = () => {
               <Spinner />
             ) : ( 
               <div className="px-10 mx-auto"> 
-              <table className="mx-auto mb-5 font-BreeSerif ">
+              <table className="bg-white mx-auto mb-5 font-BreeSerif ">
                 <TableView headers={headers} />
                 <tbody>
                   {machineparts.map((mpstock, index) => (
@@ -89,6 +90,8 @@ const PartsTable = () => {
             <Link to="Addmachinepart">
                 <AddButton onClick={handleAdd} >Add</AddButton>
               </Link>
+              </div>
+              <div className="h-40"></div>
               </div>
               <StaffFooter/>
           </div>

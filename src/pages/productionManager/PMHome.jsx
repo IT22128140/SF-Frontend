@@ -30,7 +30,7 @@ const PMHome = () => {
             <DashboardCard
              topic = 'Request Quality Evaluation'
              subtopic1 = 'Add new Requests'
-             link1 = '/qualityControl/reviewRequest/add'
+             link1 = '/sfProduct/Add'
              subtopic2 = 'Request Quality Evaluation'
              description= 'Visit this page if you want to review any requests for the quality evaluations of the final product.'
              link2 = '/qualityControl/rejectProduct'
