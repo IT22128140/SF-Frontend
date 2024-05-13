@@ -30,18 +30,17 @@ const Viewshortage = () =>{
         });
     }, [])
 
-  
     const handleAccept = () => {
         setLoading(true);
         axios
-            .put(`http://localhost:5555/mpshortages/${id}, { ...mpshortage, Status: 'Accepted' }`)
+            .put(`http://localhost:5555/mpshortages/${id}`, { ...mpshortage, Status: 'Accepted' })
             .then(() => {
                 setMPshortage({ ...mpshortage, Status: 'Accepted' });
                 setLoading(false);
-                navigate('/Shortages/Accpted');
+                navigate('/Shortages/Accepted');
             })
             .catch((error) => {
-                console.log(error);
+                console.error('Error accepting shortage:', error);
                 setLoading(false);
             });
     };
@@ -65,7 +64,7 @@ const Viewshortage = () =>{
     
 
     return(
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <IsNavbar/>
             {loading ? (
              <Spinner/>
