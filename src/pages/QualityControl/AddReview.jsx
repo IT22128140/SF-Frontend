@@ -78,7 +78,7 @@ const AddReview = () => {
   ];
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='relative'>
       <QENavbar
         home={true}
         cel={false}
@@ -87,7 +87,7 @@ const AddReview = () => {
         att={false}
         sal={false}
       />
-      
+      <BackButton />
       <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>AddReview</h1>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
@@ -106,7 +106,6 @@ const AddReview = () => {
               name='productCode'
               placeholder='Enter product Code'
               value={productCode}
-              readOnly = {true}
               onChange={(e) => setProductCode(e.target.value)}
               validation={{ required: 'Product Code is required' }}
             />
@@ -121,7 +120,6 @@ const AddReview = () => {
               name='fabricType'
               placeholder='Enter Fabric Type'
               value={fabricType}
-              readOnly = {true}
               onChange={(e) => setFabricType(e.target.value)}
               validation={{ required: 'Fabric Type is required' }}
             />
@@ -136,7 +134,6 @@ const AddReview = () => {
               name='color'
               placeholder='Enter Color'
               value={color}
-              readOnly = {true}
               onChange={(e) => setColor(e.target.value)}
               validation={{ required: 'Color is required' }}
             />
@@ -151,7 +148,6 @@ const AddReview = () => {
               name='stitchingTypet'
               placeholder='Enter Stitching Type'
               value={stitchingType}
-              readOnly = {true}
               onChange={(e) => setStitchingType(e.target.value)}
               validation={{ required: 'Stitching Type is required' }}
             />
@@ -166,7 +162,6 @@ const AddReview = () => {
               name='quantity'
               placeholder='Enter Quantity'
               value={quantity}
-              readOnly = {true}
               onChange={(e) => setQuantity(e.target.value)}
               validation={{ required: 'Quantity is required' }}
             />
@@ -190,36 +185,18 @@ const AddReview = () => {
             </select>
           </div>
 
-          {inspectionResult === 'Reject' && (
-        <div className='my-2'>
-          <label className='text-xl mr-4'>Defects</label>
-          <textarea
-            className='drop-shadow-md px-4 py-2 w-full h-10'
-            type='text'
-            id='defects'
-            name='defects'
-            placeholder='Enter Defects'
-            value={defects}
-            onChange={(e) => setDefects(e.target.value)}
-          />
-        </div>
-      )}
-
-      {/* 2nd one is not apper */}
-      {inspectionResult !== 'Reject' && defects && (
-        <div className='my-2'>
-          <label className='text-xl mr-4'>Defects</label>
-          <textarea
-            className='drop-shadow-md px-4 py-2 w-full h-10'
-            type='text'
-            id='defects'
-            name='defects'
-            placeholder='Enter Defects'
-            value={defects}
-            readOnly
-          />
-        </div>
-      )}
+          <div className='my-2'>
+            <label className='text-xl mr-4'>Defects</label>
+            <textarea
+              className='drop-shadow-md px-4 py-2 w-full h-10'
+              type='text'
+              id='defects'
+              name='defects'
+              placeholder='Enter Defects'
+              value={defects}
+              onChange={(e) => setDefects(e.target.value)}
+            />
+          </div>
           <button className='p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
         </form>
       </FormProvider>
