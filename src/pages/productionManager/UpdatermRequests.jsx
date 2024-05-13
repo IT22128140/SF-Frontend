@@ -92,6 +92,7 @@ const UpdatermRequests = () => {
             value={RequestID}
             onChange={(e) => setRequestID(e.target.value)}
             validation={{ required: 'Request ID is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
@@ -105,6 +106,7 @@ const UpdatermRequests = () => {
             value={Date}
             onChange={(e) => setDate(e.target.value)}
             validation={{ required: 'Date is required' }}
+            readOnly
             />
           </div>
           <div className='my-2'>
