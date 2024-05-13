@@ -5,7 +5,7 @@ import Html5QrcodePlugin from "../components/qrscanner/Html5QrcodePlugin.jsx";
 import ResultContainerPlugin from "../components/qrscanner/ResultContainerPlugin.jsx";
 import axios from "axios";
 
-const QrCodeScanner = () => {
+const QrCodeDeparture = () => {
   const [decodedResults, setDecodedResults] = useState([]);
   const [employee, setEmployee] = useState({});
 
@@ -23,33 +23,19 @@ const QrCodeScanner = () => {
         .then((res) => {
           console.log(res.data);
           setEmployee(res.data);
-          axios
-            .post("http://localhost:5555/attendance", {
-              empId: lastResult.decodedText,
-              generatedEmpId: res.data.employeeID,
-            })
-            .then((res) => {
-              console.log(res.data);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
         })
         .catch((err) => {
           console.log(err);
         });
 
-      // axios
-      //   .post("http://localhost:5555/attendance", {
-      //     empId: lastResult.decodedText,
-      //     generatedEmpId: employee.employeeID,
-      //   })
-      //   .then((res) => {
-      //     console.log(res.data);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      axios
+        .put(`http://localhost:5555/attendance/${lastResult.decodedText}`)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [decodedResults]);
 
@@ -76,4 +62,4 @@ const QrCodeScanner = () => {
   );
 };
 
-export default QrCodeScanner;
+export default QrCodeDeparture;

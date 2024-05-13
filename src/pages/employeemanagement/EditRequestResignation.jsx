@@ -8,9 +8,8 @@ import SubmitButton from "../../components/button2/SubmitButton.jsx";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import CancelButton from "../../components/button2/CancelButton.jsx";
-import { textValidation } from "../../utils/inputValidations.js";
 
-const RequestResignation = () => {
+const EditRequestResignation = () => {
   const [empID, setEmpID] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -27,7 +26,7 @@ const RequestResignation = () => {
       .get(`http://localhost:5555/employee/${recieved}`)
       .then((res) => {
         const data = res.data;
-        setEmpID(data.employeeID);
+        setEmpID(data._id);
         setFirstName(data.firstName);
         setLastName(data.lastName);
         setLoading(false);
@@ -71,7 +70,7 @@ const RequestResignation = () => {
         <div className="bg-bgc border-2 border-bgc rounded-xl w-[900px] p-8 mx-auto font-BreeSerif m-4">
           <center>
             <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
-              Request to terminate Employee Contract?
+              Edit Request to terminate Employee Contract
             </h1>
           </center>
           <label className="mb-2 font-BreeSerif cursor-pointer text-black">
@@ -178,4 +177,4 @@ const RequestResignation = () => {
   );
 };
 
-export default RequestResignation;
+export default EditRequestResignation

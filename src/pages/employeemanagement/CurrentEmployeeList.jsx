@@ -11,7 +11,6 @@ import ViewButton from "../../components/button2/ViewButton.jsx";
 import EditButton from "../../components/button2/EditButton.jsx";
 import DeleteButton from "../../components/button2/DeleteButton.jsx";
 import SalaryButton from "../../components/button2/SalaryButton.jsx";
-// import SearchBar from "../../components/SearchBar.jsx";
 import TableView from "../../components/table/TableView";
 import EmployeeModal from "./EmployeeModal.jsx";
 import DeleteEmployee from "./DeleteEmployee.jsx";
@@ -81,7 +80,7 @@ const CurrentEmployeeList = () => {
   // }
 
   return (
-    <div className="relative">
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition:'top right', backgroundSize:'cover' }}>
       <HrNavbar cel={true} />
 
       <div className="p-4">
@@ -91,7 +90,6 @@ const CurrentEmployeeList = () => {
           </h1>
         </center>
 
-        {/* <SearchBar data={data} navigate={``} placeholder={"Enter Employee ID Here"} /> */}
         <div className="flex justify-end mt-4 pr-4 cursor-pointer ">
           <div className="flex flex-row p-3.5">
             <div className="bg-primary text-white h-10 w-8 rounded-l-xl shadow-md">
@@ -109,7 +107,7 @@ const CurrentEmployeeList = () => {
           </div>
         </div>
 
-        <div className="border mx-[1.75%] border-black rounded-lg w-fit p-4 my-10 flex flex-row">
+        <div className="border mx-[1.75%] border-black rounded-lg w-fit p-4 my-10 flex flex-row bg-white">
           <h1 className="text-2xl font-BreeSerif text-ternary mr-10">
             Add New Employees
           </h1>
@@ -123,7 +121,7 @@ const CurrentEmployeeList = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <table className="w-[95%]">
+          <table className="w-[95%] font-BreeSerif bg-white">
             <TableView headers={headers} />
             <tbody>
               {filteredData.map((employee, index) => (
