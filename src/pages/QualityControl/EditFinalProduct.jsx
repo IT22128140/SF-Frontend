@@ -6,6 +6,7 @@ import { useSnackbar } from 'notistack';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import { FormProvider, useForm } from 'react-hook-form';
 
 const EditFinalProduct = () => {
@@ -41,29 +42,45 @@ const EditFinalProduct = () => {
   }, []);
 
 
+  const validateForm = () => {
+    if (!color) {
+      alert('Color is required');
+      return false;
+    }
+    if (!quantity) {
+      alert('Quantity is required');
+      return false;
+    }
+    if (isNaN(quantity) || parseFloat(quantity) <= 0 || parseFloat(quantity) > 100) {
+      alert('Quantity must be a number between 0 and 100');
+      return false;
+    }
+    return true;
+  };
+
   const handleEditProductRequest = () => {
+    if (!validateForm()) return;
+
     const data = {
       productCode,
       fabricType,
       color,
       stitchingType,
       quantity,
-
     };
     setLoading(true);
     axios
-      .put(`http://localhost:5555/qualityControl/productRequest/${id}`, data)// Use axios.put for updating existing data
+      .put(`http://localhost:5555/qualityControl/productRequest/${id}`, data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
+        alert('Request updated successfully');
         navigate('/qualityControl/reviewRequest');
       })
-      .catch ((error) => {
+      .catch((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
-      } );  
+      });
   };
 
   const handleCancel = () => {
@@ -72,16 +89,17 @@ const EditFinalProduct = () => {
 
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
-        home={true}
-        cel={false}
+        home={false}
+        cel={true}
         rel={false}
         fel={false}
         att={false}
         sal={false}
       />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Edit Final Product</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Edit Final Product</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
 
       {loading ? <Spinner/> : ''}
         <div
@@ -176,6 +194,9 @@ const EditFinalProduct = () => {
 
           <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleEditProductRequest}>Edit</button>
         </div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+        <StaffFooter />
     </div>
   )
 }

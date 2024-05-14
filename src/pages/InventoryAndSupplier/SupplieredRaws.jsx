@@ -9,12 +9,11 @@ import IsNavbar from '../../components/navbar/staffheader/IsNavbar';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import SearchBar2 from '../../components/SearchBar2';
 
-
 const SupplieredRaws = () => {
   const [SuppRaws, setSuppRaws] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  
+
   const headers = ['Supplier ID', 'fabricType_Colour_Quantity', 'button_Colour_Quantity', 'thread_Colour_Quantity', 'other_Materials', 'recivedDate', ''];
 
   useEffect(() => {
@@ -32,61 +31,59 @@ const SupplieredRaws = () => {
   }, []);
 
   const handleDelete = () => {
-    
+    // Handle delete logic
   };
 
   const handleAdd = () => {
-    
+    // Handle add logic
   };
 
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <IsNavbar sd = {true} />
+      <IsNavbar sd={true} />
       <div className="flex items-center justify-center mb-9">
-        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center "> Raw materials supplied</h1>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center "> Raw material supplied</h1>
       </div>
-<SearchBar2 data={SuppRaws} setSearchResults={setSearchResults} />
     
+    
+
       {loading ? (
         <Spinner />
       ) : (
-        <div className="px-10 mx-auto"> 
-        <table className="mx-auto mb-5 font-BreeSerif ">
-        
-          <TableView headers={headers} />
-          <tbody>
-            {SuppRaws.map((SuppRaw, index) => (
-              <tr key={SuppRaw._id} className="h-8">
-                <td className="text-center border rounded-md border-slate-700">{SuppRaw.supplierID}</td>
-                <td className="text-center border rounded-md border-slate-700">{SuppRaw.fabricType_Colour_Quantity}</td>
-                <td className="text-center border rounded-md border-slate-700">{SuppRaw.button_Colour_Quantity}</td>
-                <td className="text-center border rounded-md border-slate-700">{SuppRaw.thread_Colour_Quantity}</td>
-                <td className="text-center border rounded-md border-slate-700">{SuppRaw.other_Materials}</td>
-                <td className="text-center border rounded-md border-slate-700">{SuppRaw.recivedDate}</td>
-                <td className="text-center border rounded-md border-slate-700">
-                  <div className="flex justify-around">
-                   
-                    <Link to={`/SupplierDetails/DeleteSupplieredRaws/${SuppRaw._id}`}>
-                      <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="px-10 mx-auto">
+          <table className="mx-auto mb-5 font-BreeSerif ">
+            <TableView headers={headers} />
+            <tbody>
+             
+              {(searchResults.length > 0 ? searchResults : SuppRaws).map((SuppRaw, index) => (
+                <tr key={SuppRaw._id} className="h-8">
+                  <td className="text-center border rounded-md border-slate-700">{SuppRaw.supplierID}</td>
+                  <td className="text-center border rounded-md border-slate-700">{SuppRaw.fabricType_Colour_Quantity}</td>
+                  <td className="text-center border rounded-md border-slate-700">{SuppRaw.button_Colour_Quantity}</td>
+                  <td className="text-center border rounded-md border-slate-700">{SuppRaw.thread_Colour_Quantity}</td>
+                  <td className="text-center border rounded-md border-slate-700">{SuppRaw.other_Materials}</td>
+                  <td className="text-center border rounded-md border-slate-700">{SuppRaw.recivedDate.split("T")[0]}</td>
+                  <td className="text-center border rounded-md border-slate-700">
+                    <div className="flex justify-around">
+                      <Link to={`/SupplierDetails/DeleteSupplieredRaws/${SuppRaw._id}`}>
+                        <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )};
+      )}
       <div className='flex justify-end m-8 mb-4'>
-      <Link to="/SupplierDetails/SupplieredRaws/AddSupplieredRaws"> 
-      <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
-      </Link>
-    
+        <Link to="/SupplierDetails/SupplieredRaws/AddSupplieredRaws">
+          <AddButton onClick={handleAdd} className="mr-2">Add</AddButton>
+        </Link>
       </div>
-       <StaffFooter/>
-      </div> 
-  
-  ); 
+      <StaffFooter />
+    </div>
+  );
 };
 
 export default SupplieredRaws;
