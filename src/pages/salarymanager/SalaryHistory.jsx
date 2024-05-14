@@ -100,11 +100,14 @@ const SalaryHistory = () => {
   };
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div
+      className="w-full h-full bg-fixed bg-no-repeat bg-bgimg"
+      style={{ backgroundPosition: "top right", backgroundSize: "cover" }}
+    >
       <HrNavbar sal={true} />
       <div className="p-4">
-        <div className="flex justify-between items-center">
-          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
+        <div className="flex justify-center items-center">
+          <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold ">
             Salary List
           </h1>
         </div>
@@ -163,7 +166,7 @@ const SalaryHistory = () => {
                     {salary.firstName} {salary.lastName}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                   RS. {salary.totalAmount}
+                    RS. {salary.totalAmount}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     {salary.notice}
