@@ -48,7 +48,7 @@ const RMRequests = () => {
                 {rmrequest.RequestID}
               </td>
               <td className='border rounded-md border-slate-700'>
-                {rmrequest.Date}
+              {new Date(rmrequest.createdAt).toDateString()}
               </td>
               <td className='border rounded-md border-slate-700'>
                 {rmrequest.FabricType_Colour_Amount}

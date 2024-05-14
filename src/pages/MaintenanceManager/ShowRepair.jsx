@@ -26,14 +26,14 @@ const ShowRepair = () => {
     }, [id])
 
     return(
-        <div className='relative'>
+        <div className='w-full mt-6 h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <MaintenanceManagerHeader/>
-            <div className='w-full mt-6 h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+            <div >
             {loading ? (
              <Spinner/>
             ):(
-                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
-                    <h1 className='text-3xl text-center my-4 font-BreeSerif'>Show Repair</h1>
+                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mt-20 mx-auto">
+                    <h1 className='text-3xl text-center my-4 font-BreeSerif'>Repair Details</h1>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Repair ID</span>
                         <span className='font-BreeSerif'>{repair.RepairID}</span>
@@ -81,6 +81,7 @@ const ShowRepair = () => {
                 </div>
             )}
             </div>
+            <div className='h-40'></div>
             <StaffFooter/>
         </div>
     )
