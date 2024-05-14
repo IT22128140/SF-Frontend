@@ -274,7 +274,7 @@ const App = () => {
 
       {/* Sandithi */}
 
-      <Route path="/HrDashboard" element={<HrDashboard />} />
+      <Route path="/HR_Manager" element={<HrDashboard />} />
       <Route path="/employees/CurrentEmployeeList" element={<CurrentEmployeeList />}/>
       <Route path="/employees/AddEmployee" element={<AddEmployee />} />
       <Route path="/employees/EditEmployee/:id" element={<EditEmployee />} />
@@ -334,7 +334,7 @@ const App = () => {
 
 
 {/* Sageevan */}
-      <Route path="/qualityControl" element={<QualityControl />} />
+      <Route path="/Quality_Control_Manager" element={<QualityControl />} />
       <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
@@ -379,7 +379,7 @@ const App = () => {
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
-      <Route path= '/PMHome' element = {<PMHome/>}/>
+      <Route path= '/Process_Manager' element = {<PMHome/>}/>
       <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
       <Route path= '/sfProduct' element={<GarmentProductList/>}/>
       <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
