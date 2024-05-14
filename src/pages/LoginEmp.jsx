@@ -52,7 +52,7 @@ function Login() {
       console.log(result);
       if (result.data) {
         sessionStorage.setItem("token", result.data._id);
-        navigate("/ProfileEmp");
+        navigate(`/${employeeType}`);
       } else {
         navigate("/LoginEmp");
         alert("Please Check Your Email, Password, and Employee Type");

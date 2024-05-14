@@ -77,7 +77,7 @@ function Register() {
       emailAddress,
       phoneNumber,
       password,
-      employeeType: employeeType,
+      employeeType,
     };
 
     console.log(newUser);
