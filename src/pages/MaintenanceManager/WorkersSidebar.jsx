@@ -31,7 +31,7 @@ export default function WorkersSidebar() {
         <div className=''>
       {/* Button to toggle the visibility of the sidebar */}
       <button onClick={toggleSidebar} className=" top-0 left-0 z-10 p-2 m-2 bg-white text-ternary rounded-md hover:bg-bgc">
-        {showSidebar ? 'Close' : 'Show Workers'}
+        {showSidebar ? 'Close' : 'Repair Workers'}
       </button>
 
       {/* Sidebar container */}

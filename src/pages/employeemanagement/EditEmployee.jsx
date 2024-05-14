@@ -10,6 +10,7 @@ import CancelButton from "../../components/button2/CancelButton.jsx";
 import { idPrefix, occupations } from "../../utils/employeeIdArray";
 import { AnimatePresence, motion } from "framer-motion";
 import { MdError } from "react-icons/md";
+import { enqueueSnackbar } from "notistack";
 
 const EditEmployee = () => {
   const [employeeID, setEmployeeID] = useState("");
@@ -197,11 +198,12 @@ const EditEmployee = () => {
         setOccupation(data.occupation);
         setAdmissionDate(data.admissionDate);
         setCount(data.count);
-        setLoading(false);
+        setLoading(false);        
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, []);
 
@@ -266,11 +268,12 @@ const EditEmployee = () => {
         .put(`http://localhost:5555/employee/${id}`, data)
         .then(() => {
           setLoading(false);
+          enqueueSnackbar("Employee updated successfully", { variant: "success" });
           navigate("/employees/CurrentEmployeeList");
         })
         .catch((err) => {
           setLoading(false);
-          // alert("An error occured. Please check the console for more details.");
+          enqueueSnackbar("Error updating data", { variant: "error" });
           console.log(err);
         });
     } else {

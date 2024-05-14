@@ -8,6 +8,7 @@ import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import TableView from "../../components/table/TableView";
 // import SearchBar from "../../components/SearchBar.jsx";
 import { CiSearch } from "react-icons/ci";
+import { enqueueSnackbar } from "notistack";
 
 const ResignedEmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -57,6 +58,7 @@ const ResignedEmployeeList = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, []);
   return (

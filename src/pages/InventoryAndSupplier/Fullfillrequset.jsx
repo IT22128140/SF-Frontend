@@ -63,7 +63,7 @@ const Fullfillrequest = () => {
                 <td className="text-center border rounded-md border-slate-700">{request.buttonType}</td>
                 <td className="text-center border rounded-md border-slate-700">{request.threadType}</td>
                 <td className="text-center border rounded-md border-slate-700">{request.otherMaterial}</td>
-                <td className="text-center border rounded-md border-slate-700">{request.fillingDate}</td>
+                <td className="text-center border rounded-md border-slate-700">{request.fillingDate.split("T")[0]}</td>
                 <td className="text-center border rounded-md border-slate-700">
                   <div className="flex justify-around">
                     <DeleteButton onClick={() => handleDelete(request._id)}>Delete</DeleteButton>

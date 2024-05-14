@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 const EditMPshortage = () => {
     const [RequestID, setRequestID] = useState('');
@@ -66,12 +67,12 @@ const EditMPshortage = () => {
   };
 
   return (
-    <div>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader/>
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div >
       {loading ? <Spinner /> : ''}
 
-       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-8 font-BreeSerif">
+       <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
        <h1 className='text-3xl text-center my-4 font-BreeSerif'>Edit Parts Shortage Details</h1>
 
        <div className="flex w-[80%] justify-between mb-2">
@@ -196,10 +197,10 @@ const EditMPshortage = () => {
           />
           </div>
         
-          {/* Include other Input components here */}
-          <button type="submit" className='font-BreeSerif bg-black rounded text-white text-center w-[100px] h-[35px] self-end justify-self-end' onClick={handleEditMPshortage}>Submit</button>
+          <center className="mt-3" onClick={handleEditMPshortage}><SubmitButton/></center>
           </div>
           </div>
+          <div className='h-40'></div>
           <StaffFooter/>
     </div>
   )

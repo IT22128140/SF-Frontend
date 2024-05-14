@@ -8,6 +8,7 @@ import SubmitButton from "../../components/button2/SubmitButton.jsx";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import CancelButton from "../../components/button2/CancelButton.jsx";
+import { enqueueSnackbar } from "notistack";
 
 const RequestResignation = () => {
   const [empID, setEmpID] = useState("");
@@ -34,6 +35,7 @@ const RequestResignation = () => {
       .catch((err) => {
         setLoading(false);
         console.log(err);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, []);
 

@@ -12,6 +12,7 @@ import SubmitButton from '../../components/button2/SubmitButton';
 import {textValidation} from '../../utils/inputValidations'
 import {paraValidation} from '../../utils/inputValidations'
 import {dateValidation} from '../../utils/inputValidations'
+import {RPRidValidation} from '../../utils/inputValidations'
 
 const CreateRepairRequests = () => {
 
@@ -83,10 +84,10 @@ const CreateRepairRequests = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader rr={true}/>
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <BackButton/>
+      <div >
+      {/* <BackButton/> */}
       <WorkersSidebar className="h-full"/>
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
@@ -100,7 +101,7 @@ const CreateRepairRequests = () => {
             type='text'
             placeholder='Enter Repair ID'
             name='RepairID'
-            {...textValidation}
+            {...RPRidValidation}
             // validation={{ required: 'Repair ID is required' }}
           />
 
@@ -169,7 +170,7 @@ const CreateRepairRequests = () => {
             ))}
           </fieldset>
 
-          <SubmitButton/>
+          <center><SubmitButton/></center>
         </form>
       </FormProvider>
       <div className='h-80'></div>
