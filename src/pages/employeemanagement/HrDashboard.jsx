@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const HrDashboard = () => {
   return (
-    <div className="w-full h-full bg-fixed bg-no-repeat bg-bgform" style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className="w-full h-full bg-fixed bg-no-repeat bg-bghome" style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <HrNavbar home={true} />
 
       <div className="p-4">
