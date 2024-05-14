@@ -60,10 +60,12 @@ const Payment = () => {
               <label className="block text-ternary text-lg font-bold mb-2 absolute top-[400px] left-[500px] ">
                 Select your payment method
               </label>
+              <Link to={`/Orders`}>
 
               <button className="border border-black border-1 p-2 block mb-2 absolute top-[460px] left-[500px] bg-primary text-white rounded-lg">
                 Cash on delivery
               </button>
+              </Link>
               <Link to={`/slipupload`}>
                 <button className="border border-black border-1 p-2 block mb-2 absolute top-[540px] left-[500px]  bg-primary text-white rounded-lg">
                   Slip Upload
