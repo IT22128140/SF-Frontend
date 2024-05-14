@@ -9,7 +9,7 @@ import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
 import {textValidation} from '../../utils/inputValidations'
-import {paraValidation} from '../../utils/inputValidations'
+import {MIDValidation} from '../../utils/inputValidations'
 import {dateValidation} from '../../utils/inputValidations'
 
 const AddMachine = () => {
@@ -33,14 +33,14 @@ const AddMachine = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader am={true}/>
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <BackButton/>
+      <div >
+      {/* <BackButton/> */}
       {loading ? <Spinner /> : ''}
    
       <FormProvider {...methods}> 
-        <form onSubmit={methods.handleSubmit(handleSaveMachine)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
+        <form onSubmit={methods.handleSubmit(handleSaveMachine)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mt-20 mx-auto font-BreeSerif">
         <h1 className='text-4xl  font-philosopher text-black font-semibold my-8 text-center alignment-center'>Add New Machine</h1>
           <Input
             formtype='input'
@@ -49,7 +49,7 @@ const AddMachine = () => {
             type='text'
             placeholder='Enter Machine ID'
             name='MachineID'
-            {...textValidation}
+            {...MIDValidation}
             // validation={{ required: 'Machine ID is required' }}
           />
 
@@ -112,7 +112,7 @@ const AddMachine = () => {
           {...textValidation}
           // validation={{ required: 'Category is required' }}
         />
-          <SubmitButton/>
+          <center className='mt-5'><SubmitButton/></center>
         </form>
       </FormProvider>
       <div className='h-40'></div>

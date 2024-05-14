@@ -39,11 +39,11 @@ const MaintenanceManager = () => {
              link2 = 'machines/view'
             />
             <DashboardCard
-             topic = 'Generate Maintenance Report'
+             topic = 'Maintenance Report'
              subtopic1 = 'Make a new Maintenance Report'
              link1 = '/repairs/report'
              subtopic2 = 'Maintenance Management'
-             description= 'Generate a maintenance report to view the specific maintenance details and repairs for each repair worker'
+             description= 'View the specific maintenance details and repairs for each repair worker'
              link2 = '/repairs/report'
             />
         </div>

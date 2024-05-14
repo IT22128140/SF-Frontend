@@ -87,6 +87,8 @@ export default {
         //Hiranya
         'formBackground': "#d9d9d9",
         'navbar': "#dee2e6",
+        'aboutUs' : "#da6e2e",
+        'div2' : "#fceadc",
 
 
 

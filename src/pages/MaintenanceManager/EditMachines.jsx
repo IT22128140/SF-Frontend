@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
+import SubmitButton from '../../components/button2/SubmitButton';
 
 const EditMachine = () => {
     const [MachineID, setMachineID] = useState('');
@@ -63,7 +64,7 @@ const EditMachine = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className=' relative w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader/>
       <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       {loading ? <Spinner /> : ''}
@@ -179,10 +180,10 @@ const EditMachine = () => {
           />
           </div>
         
-          {/* Include other Input components here */}
-          <button type="submit" className='font-BreeSerif bg-black rounded text-white text-center w-[100px] h-[35px] self-end justify-self-end' onClick={handleEditMachine}>Submit</button>
+          <center className="mt-3" onClick={handleEditMachine}><SubmitButton/></center>
           </div>
           </div>
+          <div className='h-40'></div>
           <StaffFooter/>
     </div>
   )
