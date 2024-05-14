@@ -128,9 +128,7 @@ const EditSalaryBalance = () => {
           </h1>
         </div>
         <br />
-        <div className="w-1/3 p-4">
-          <h2 className="text-xl mb-4">Profile</h2>
-        </div>
+        
         <br />
         <br />
         {loading ? (
@@ -225,7 +223,7 @@ const EditSalaryBalance = () => {
                   Total Amount
                 </label>
                 <span className="border border-black border-1 p-1 block mb-2">
-                  {totalAmount}
+                 RS. {totalAmount}
                 </span>
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
