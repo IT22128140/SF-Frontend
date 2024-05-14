@@ -77,7 +77,7 @@ const Viewshortage = () =>{
                     </div>
                     <div className='my-4'>
                         <span className='mr-4 text-xl text-ternary font-BreeSerif'>Requested Date</span>
-                        <span className='font-BreeSerif'>{mpshortage.Requested}</span>
+                        <span className='font-BreeSerif'>{new Date(mpshortage.createdAt).toDateString()}</span>
                     </div>
                     <div className='my-4'>
                         <span className='mr-4 text-xl text-ternary font-BreeSerif'>Part Name</span>
@@ -103,13 +103,10 @@ const Viewshortage = () =>{
                         <span className='mr-4 text-xl text-ternary font-BreeSerif'>Status</span>
                         <span className='font-BreeSerif'>{mpshortage.Status}</span>
                     </div>
-                    <div className='my-4'>
-                        <span className='mr-4 text-xl text-ternary font-BreeSerif'>Created Time</span>
-                        <span className='font-BreeSerif'>{new Date(mpshortage.createdAt).toString()}</span>
-                    </div>
+                    
                     <div className='my-4'>
                         <span className='mr-4 text-xl text-ternary font-BreeSerif'>Last Updated Time</span>
-                        <span className='font-BreeSerif'>{new Date(mpshortage.updatedAt).toString()}</span>
+                        <span className='font-BreeSerif'>{new Date(mpshortage.updatedAt).toDateString()}</span>
                     </div>
                     {mpshortage.Status === 'Pending' && (
 

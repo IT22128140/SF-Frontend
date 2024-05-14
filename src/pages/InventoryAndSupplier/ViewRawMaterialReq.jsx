@@ -64,11 +64,11 @@ const ViewRawMaterialReq = () => {
           </div>
           <div className= 'my-4'>
             <span className='mr-4 text-xl'>Create Time</span>
-            <span>{new Date(rmrequest.createdAt).toString()}</span>
+            <span>{new Date(rmrequest.createdAt).toDateString()}</span>
           </div>
           <div className= 'my-4'>
             <span className='mr-4 text-xl'>Last Update Time</span>
-            <span>{new Date(rmrequest.updatedAt).toString()}</span>
+            <span>{new Date(rmrequest.updatedAt).toDateString()}</span>
           </div>
           <div className='flex justify-center gap-x-20'>
 

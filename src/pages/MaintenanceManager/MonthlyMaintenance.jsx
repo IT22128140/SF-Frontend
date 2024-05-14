@@ -93,9 +93,9 @@ const RepairDetailsInRange = () => {
 
 
   return (
-    <div>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader/>
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+      <div >
       <h2 className='text-4xl text-center font-philosopher text-ternary font-semibold my-8 alignment-center'>Search Repair Details, Machine Details Within Date Range</h2>
       <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] h-auto p-4 mx-auto font-BreeSerif mt-10 " ref={reportRef}>
       <div className='flex flex-row'>

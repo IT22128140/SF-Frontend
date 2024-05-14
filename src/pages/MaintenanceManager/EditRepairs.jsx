@@ -65,10 +65,10 @@ const EditRepair = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className=' relative w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader/>
-      <div className=' relative w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <WorkersSidebar/>
+      <div >
+      {/* <WorkersSidebar/> */}
       {loading ? <Spinner /> : ''}
 
        <div className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
@@ -181,20 +181,10 @@ const EditRepair = () => {
             validation={{ required: 'Completed Date is required' }}
           />
           </div>
-
-          <div className="flex w-[80%] justify-between mb-2">
-          <label className='text-ternary'>Assigned Repair Workers</label>
-        </div>
-        <div>
-          {Workers.map((worker) => (
-            <div key={worker.employeeID}>
-              <span className='font-BreeSerif'>{worker.employeeID} - {worker.firstName} {worker.lastName}</span>
-            </div>
-          ))}
-        </div>
-          <SubmitButton onClick={handleEditRepair}/>
+          <center className='mt-5'><SubmitButton onClick={handleEditRepair}/></center>
           </div>
           </div>
+          <div className='h-40'></div>
           <StaffFooter/>
     </div>
   )

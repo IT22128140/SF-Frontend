@@ -7,8 +7,9 @@ import ViewButton from "../../components/button2/ViewButton";
 import { CiSearch } from "react-icons/ci";
 import ViewDeliveryDetails from "./ViewDeliveryDetails";
 import ViewBill from "./ViewBill";
-import StaffFooter from "../../components/footer/stafffooter/StaffFooter"
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter";
 import { enqueueSnackbar } from "notistack";
+import ViewPayment from "../onlinestore/ViewPayment";
 
 const OngoingOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,8 @@ const OngoingOrders = () => {
   const [showDelivery, setShowDelivery] = useState(false);
   const [bill, setBill] = useState({});
   const [showBill, setShowBill] = useState(false);
+  const [showPayemnt, setShowPayment] = useState(false);
+  const [pay, setPaymentId] = useState("");
 
   const headers = [
     "Order ID",
@@ -36,13 +39,13 @@ const OngoingOrders = () => {
     const filteredData = orders.filter((opt) =>
       opt._id.toLowerCase().includes(inputValue)
     );
-    setKeyword(e.target.value); 
+    setKeyword(e.target.value);
     setFilteredData(filteredData);
   };
 
   useEffect(() => {
     const token = sessionStorage.getItem("token");
-    if(!token){
+    if (!token) {
       window.location = "/LoginEmp";
     }
     setLoading(true);
@@ -63,7 +66,10 @@ const OngoingOrders = () => {
   console.log(orders);
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition:'top right', backgroundSize:'cover' }}>
+    <div
+      className="w-full h-full bg-fixed bg-no-repeat bg-bgform"
+      style={{ backgroundPosition: "top right", backgroundSize: "cover" }}
+    >
       <StoreNavbar rel={true} />
       <h1 className="text-6xl my-8 font-semibold font-Philosopher text-center text-ternary">
         Completed Orders
@@ -110,7 +116,7 @@ const OngoingOrders = () => {
                   </td>
                   <td className="border border-slate-700 ">
                     <div className="flex justify-center gap-x-4">
-                    <ViewButton
+                      <ViewButton
                         onClick={() => {
                           setDelivery(order.deliveryDetails),
                             setShowDelivery(true);
@@ -120,7 +126,11 @@ const OngoingOrders = () => {
                   </td>
                   <td className="border border-slate-700 text-center">
                     <div className="flex justify-center gap-x-4">
-                      <ViewButton />
+                      <ViewButton
+                        onClick={() => {
+                          setPaymentId(order.paymentId), setShowPayment(true);
+                        }}
+                      />
                     </div>
                   </td>
                   <td className="border border-slate-700 text-center">
@@ -133,32 +143,38 @@ const OngoingOrders = () => {
                     </div>
                   </td>
                   <td className="border border-slate-700 text-center">
-                  <div className="flex flex-col">
-                    Current :- {order.status}
-                    {order.status!= "Canceled" && <select
-                      className="h-11 mx-3 my-2 font-BreeSerif p-2 border-gray-200 rounded-md border-2"
-                      onChange={(e) => {
-                        axios
-                          .put(`http://localhost:5555/order/${order._id}`, {
-                            status: e.target.value,
-                          })
-                          .then((res) => {
-                            console.log(res);
-                            enqueueSnackbar("Order status updated", { variant: "success"});
-                          })
-                          .catch((err) => {
-                            console.log(err);
-                            enqueueSnackbar("Error updating order status", { variant: "error"});
-                          });
-                        window.location.reload();
-                      }}
-                    >
-                      <option value="">Select status</option>
-                      <option value="Not processed">Not processed</option>
-                      <option value="Processing">Processing</option>
-                      <option value="Shipped">Shipped</option>
-                      <option value="Delivered">Delivered</option>
-                    </select>}
+                    <div className="flex flex-col">
+                      Current :- {order.status}
+                      {order.status != "Canceled" && (
+                        <select
+                          className="h-11 mx-3 my-2 font-BreeSerif p-2 border-gray-200 rounded-md border-2"
+                          onChange={(e) => {
+                            axios
+                              .put(`http://localhost:5555/order/${order._id}`, {
+                                status: e.target.value,
+                              })
+                              .then((res) => {
+                                console.log(res);
+                                enqueueSnackbar("Order status updated", {
+                                  variant: "success",
+                                });
+                              })
+                              .catch((err) => {
+                                console.log(err);
+                                enqueueSnackbar("Error updating order status", {
+                                  variant: "error",
+                                });
+                              });
+                            window.location.reload();
+                          }}
+                        >
+                          <option value="">Select status</option>
+                          <option value="Not processed">Not processed</option>
+                          <option value="Processing">Processing</option>
+                          <option value="Shipped">Shipped</option>
+                          <option value="Delivered">Delivered</option>
+                        </select>
+                      )}
                     </div>
                   </td>
                 </tr>
@@ -173,11 +189,9 @@ const OngoingOrders = () => {
           onClose={() => setShowDelivery(false)}
         />
       )}
-            {showBill && (
-        <ViewBill
-          bill={bill}
-          onClose={() => setShowBill(false)}
-        />
+      {showBill && <ViewBill bill={bill} onClose={() => setShowBill(false)} />}
+      {showPayemnt && (
+        <ViewPayment Paymentid={pay} onClose={() => setShowPayment(false)} />
       )}
       <StaffFooter></StaffFooter>
     </div>
