@@ -5,6 +5,8 @@ import Spinner from "../../components/Spinner.jsx";
 import HrNavbar from "../../components/navbar/staffheader/HrNavbar.jsx";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import TableView from "../../components/table/TableView";
+import { enqueueSnackbar } from "notistack";
+
 const RejectedRequestPage = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,6 +32,7 @@ const RejectedRequestPage = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, []);
 
