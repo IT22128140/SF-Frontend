@@ -11,6 +11,7 @@ import DeleteButton from "../../components/button2/DeleteButton.jsx";
 import TableView from "../../components/table/TableView";
 import ViewTerminationRequest from "./ViewTerminationRequest.jsx";
 import DeleteRequestResignation from "./DeleteRequestResignation.jsx";
+import { enqueueSnackbar } from "notistack";
 
 const TerminationPendingList = () => {
   const [requests, setRequests] = useState([]);
@@ -41,6 +42,7 @@ const TerminationPendingList = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, []);
 

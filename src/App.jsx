@@ -274,7 +274,7 @@ const App = () => {
 
       {/* Sandithi */}
 
-      <Route path="/HrDashboard" element={<HrDashboard />} />
+      <Route path="/HR_Manager" element={<HrDashboard />} />
       <Route path="/employees/CurrentEmployeeList" element={<CurrentEmployeeList />}/>
       <Route path="/employees/AddEmployee" element={<AddEmployee />} />
       <Route path="/employees/EditEmployee/:id" element={<EditEmployee />} />

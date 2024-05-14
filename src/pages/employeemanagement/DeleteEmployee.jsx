@@ -6,6 +6,7 @@ import Spinner from "../../components/Spinner.jsx";
 import DeleteButton from "../../components/button2/DeleteButton.jsx";
 import CancelButton from "../../components/button2/CancelButton.jsx";
 import axios from "axios";
+import { enqueueSnackbar } from "notistack";
 
 const DeleteEmployee = ({ id, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -18,11 +19,13 @@ const DeleteEmployee = ({ id, onClose }) => {
       .delete(`http://localhost:5555/employee/${id}`)
       .then(() => {
         setLoading(false);
+        enqueueSnackbar("Employee Deleted Successfully", { variant: "success" });
         window.location.reload(true);
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
+        enqueueSnackbar("Error deleting data", { variant: "error" });
       });
   };
 

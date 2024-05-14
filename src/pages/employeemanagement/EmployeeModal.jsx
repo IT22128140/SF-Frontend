@@ -45,7 +45,7 @@ const EmployeeModal = ({ employee, onClose }) => {
           className="border-2 border-gray-500 rounded-lg px-4 py-2 mt-6 ml-4 mr-4 mb-4 relative hover:shadow-xl"
         >
           <div className="flex flex-row justify-evenly">
-            <img src="/emp.png" className="w-36 m-4" alt="Employee Image" />
+            <img src={employee.employeeImg} className="w-36 m-4" alt="Employee Image" />
 
             <div className="m-4">
               <div
