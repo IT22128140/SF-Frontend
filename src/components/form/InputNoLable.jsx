@@ -2,11 +2,7 @@ import PropTypes from "prop-types";
 import { useFormContext } from "react-hook-form";
 
 const InputNoLable = (props) => {
-
-  const {
-    register,
-  } = useFormContext();
-
+  const { register } = useFormContext();
 
   return (
     <>

@@ -15,10 +15,16 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const totalRef = useRef(0);
 
+  
+  const token = sessionStorage.getItem("token");
+
   useEffect(() => {
+    if (!token) {
+      window.location = "/LoginCus";
+    }
     setLoading(true);
     axios
-      .get(`http://localhost:5555/cart/65f888fbae65af39470abd22`)
+      .get(`http://localhost:5555/cart/${token}`)
       .then((response) => {
         setCart(response.data);
         setLoading(false);
@@ -43,7 +49,7 @@ const Cart = () => {
   const handleMinus = (id) => {
     setLoading(true);
     axios
-      .put(`http://localhost:5555/cart/minus/65f888fbae65af39470abd22/${id}`)
+      .put(`http://localhost:5555/cart/minus/${token}/${id}`)
       .then(() => {
         window.location.reload(false);
         setLoading(false);
@@ -57,7 +63,7 @@ const Cart = () => {
   const handlePlus = (id) => {
     setLoading(true);
     axios
-      .put(`http://localhost:5555/cart/plus/65f888fbae65af39470abd22/${id}`)
+      .put(`http://localhost:5555/cart/plus/${token}/${id}`)
       .then(() => {
         window.location.reload(false);
         setLoading(false);
@@ -72,7 +78,7 @@ const Cart = () => {
   const handleDelete = (id) => {
     setLoading(true);
     axios
-      .put(`http://localhost:5555/cart/65f888fbae65af39470abd22/${id}`)
+      .put(`http://localhost:5555/cart/${token}/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Item removed", { variant: "success" });
@@ -140,7 +146,7 @@ const Cart = () => {
           ))}
         </div>
         {/* order summary */}
-        <div className="flex flex-col w-1/4 mr-8 bg-bgc p-5 rounded-lg shadow-md">
+        <div className="flex flex-col w-1/4 h-fit mr-8 bg-bgc p-5 rounded-lg shadow-md">
           <h1 className=" font-Philosopher text-2xl mb-5 font-bold text-secondary">
             Order Summary
           </h1>

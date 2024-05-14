@@ -238,7 +238,7 @@ const App = () => {
   return (
     <Routes>
       {/* Maneth */}
-      <Route path="/" element={<Home />} />
+      <Route path="/HomeCus" element={<Home />} />
       <Route path="/ProductPage/:id" element={<ProductPage />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/Checkout" element={<Checkout />} />

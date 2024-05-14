@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-      <Link to="/" className="flex flex-row mt-2">
+      <Link to="/HomeCus" className="flex flex-row mt-2">
           <img
             src="/Logo1.png"
             alt="logo"

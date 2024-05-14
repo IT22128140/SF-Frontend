@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 const StarRating = ({ rating, onStarClick }) => {
   const stars = [1, 2, 3, 4, 5];
   return (
@@ -20,19 +21,15 @@ const StarRating = ({ rating, onStarClick }) => {
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
+    id: '',
     name: '',
     email: '',
+    phoneNumber: '', 
     feedback: '',
     rating: 0,
-    image: null
   });
-
   const handleChange = (e) => {
-    if (e.target.name === 'image') {
-      setFormData({ ...formData, image: e.target.files[0] });
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleStarClick = (rating) => {
@@ -43,9 +40,9 @@ const FeedbackForm = () => {
     setFormData({
       name: '',
       email: '',
+      phoneNumber: '',
       feedback: '',
       rating: 0,
-      image: null
     });
   };
 
@@ -54,24 +51,32 @@ const FeedbackForm = () => {
     if (
       formData.name === '' ||
       formData.email === '' ||
+      formData.phoneNumber === '' ||
       formData.rating === 0 ||
       formData.feedback === ''
     ) {
       alert('Please fill in all fields before submitting.');
       return;
     }
-  
-    const formDataCopy = { ...formData }; // Define formDataCopy here
-  
+
+    const formDataCopy = { ...formData };
+
     try {
-      await axios.post('http://localhost:5555/feedback', formDataCopy);
+      console.log('Sending form data:', formDataCopy);
+      const response = await axios.post('http://localhost:5555/feedback', formDataCopy);
+      const feedbackId = response.data.id; // Get the ID from the response data
+      setFormData({
+        ...formData,
+        id: feedbackId, // Set the ID in the formData state
+      });
       console.log('Form data sent successfully');
       setFormData({
+        id: '',
         name: '',
         email: '',
+        phoneNumber: '',
         feedback: '',
-        rating: 0,
-        image: null
+        rating: 0, 
       });
     } catch (error) {
       console.error('Error sending form data:', error);
@@ -107,14 +112,20 @@ const FeedbackForm = () => {
           required
           className="w-full px-4 py-2 border rounded border-primary"
         />
+        <label htmlFor="phoneNumber" className="block">
+          Phone Number:
+          </label>
+          <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border rounded border-primary"/>
 
         <label className="block">Rating:</label>
         <StarRating rating={formData.rating} onStarClick={handleStarClick} />
-
-        <label htmlFor="image" className="block">
-          Upload Image:
-        </label>
-        <input type="file" id="image" name="image" onChange={handleChange} className="w-full" />
 
         <label htmlFor="feedback" className="block">
           Feedback:

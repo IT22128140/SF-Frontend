@@ -6,11 +6,15 @@ import Spinner from "../../components/Spinner";
 import Navbar from "../../components/navbar/CustomerNavbar.jsx";
 import Input from "../../components/form/Input.jsx";
 import InputNoLable from "../../components/form/InputNoLable.jsx";
-import { numberValidation } from "../../utils/inputValidations.js";
+import { validation, numberValidation } from "../../utils/inputValidations.js";
 import Footer from "../../components/footer/Footer.jsx";
 import { enqueueSnackbar } from "notistack";
 
 const ProductPage = () => {
+
+  
+  const token = sessionStorage.getItem("token");
+
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -34,6 +38,9 @@ const ProductPage = () => {
   const methods = useForm();
 
   const onSubmit = methods.handleSubmit((data) => {
+    if (!token) {
+      window.location = "/LoginCus";
+    }
     const cart = {
       _id : product._id,
       productId: product.productId,
@@ -46,7 +53,7 @@ const ProductPage = () => {
     };
     setLoading(true);
     axios
-      .post("http://localhost:5555/cart/65f888fbae65af39470abd22", cart)
+      .post(`http://localhost:5555/cart/${token}`, cart)
       .then((response) => {
         console.log(response);
         setLoading(false);
@@ -112,7 +119,7 @@ const ProductPage = () => {
                       name="size"
                       value={size}
                       className="hidden peer"
-                      {...numberValidation}
+                      {...validation}
                     />
                     <label
                       key={size.id}
@@ -143,6 +150,7 @@ const ProductPage = () => {
                           name="color"
                           value={colors}
                           className="hidden peer"
+                          {...validation}
                         />
                         <label
                           key={colors.id}
