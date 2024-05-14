@@ -33,13 +33,13 @@ const AcceptedMPshortages = () => {
 
 
     return(
-        <div className='relative'>
+        <div className='w-full mt-6 h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <MaintenanceManagerHeader/>
             {loading ? (
              <Spinner/>
             ):(
-                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mx-auto">
-                    <h1 className='text-3xl text-center my-4 font-BreeSerif'>Show Machine Part Shortage Request</h1>
+                <div className="bg-bgc flex flex-col border-2 rounded-xl w-[600px] p-4 mt-20 mx-auto">
+                    <h1 className='text-3xl text-center my-4 font-BreeSerif'>Machine Part Shortage Request Details</h1>
                     <div className='my-4'>
                         <span className='text-xl mr-4 text-ternary font-BreeSerif'>Request ID</span>
                         <span className='font-BreeSerif'>{mpshortage.RequestID}</span>
@@ -79,6 +79,7 @@ const AcceptedMPshortages = () => {
      
                 </div>
             )}
+            <div className='h-40'></div>
             <StaffFooter/>
         </div>
     )

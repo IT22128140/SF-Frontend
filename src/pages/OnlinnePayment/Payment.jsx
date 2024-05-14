@@ -26,7 +26,7 @@ const Payment = () => {
       });
   }, []); // Include id in dependency array to re-fetch data when id changes
 
-  const tot = sessionStorage.getItem('total');
+  const tot = sessionStorage.getItem("total");
 
   console.log(tot);
 
@@ -60,10 +60,11 @@ const Payment = () => {
               <label className="block text-ternary text-lg font-bold mb-2 absolute top-[400px] left-[500px] ">
                 Select your payment method
               </label>
-
-              <button className="border border-black border-1 p-2 block mb-2 absolute top-[460px] left-[500px] bg-primary text-white rounded-lg">
-                Cash on delivery
-              </button>
+              <Link to={`/Orders`}>
+                <button className="border border-black border-1 p-2 block mb-2 absolute top-[460px] left-[500px] bg-primary text-white rounded-lg">
+                  Cash on delivery
+                </button>
+              </Link>
               <Link to={`/slipupload`}>
                 <button className="border border-black border-1 p-2 block mb-2 absolute top-[540px] left-[500px]  bg-primary text-white rounded-lg">
                   Slip Upload
@@ -72,7 +73,7 @@ const Payment = () => {
             </div>
 
             <div className="flex justify-center items-center absolute top-[620px] left-[500px]">
-              <Link  to={`/Checkout`}>
+              <Link to={`/Checkout`}>
                 <DeleteButton>Delete</DeleteButton>
               </Link>
             </div>

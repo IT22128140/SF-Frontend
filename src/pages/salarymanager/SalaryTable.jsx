@@ -43,10 +43,13 @@ const SalaryTable = () => {
   }, []);
 
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div
+      className="w-full h-full bg-fixed bg-no-repeat bg-bgimg"
+      style={{ backgroundPosition: "top right", backgroundSize: "cover" }}
+    >
       <HrNavbar sal={true} />
       <div className="p-4">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center">
           <h1 className="text-6xl my-8 font-Philosopher text-ternary font-semibold">
             Salary List
           </h1>
@@ -88,10 +91,12 @@ const SalaryTable = () => {
                     {salary.bonus}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.totalAmount}
+                    RS. {salary.totalAmount}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.cheque1 && <img src={salary.cheque1} alt="cheque" />} 
+                    {salary.cheque1 && (
+                      <img src={salary.cheque1} alt="cheque" />
+                    )}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     {salary.date}

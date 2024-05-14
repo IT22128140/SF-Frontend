@@ -10,7 +10,7 @@ import BackButton from '../../components/button/BackButton';
 import SubmitButton from '../../components/button2/SubmitButton';
 import {textValidation} from '../../utils/inputValidations'
 import {paraValidation} from '../../utils/inputValidations'
-import {dateValidation} from '../../utils/inputValidations'
+import {MPRSidValidation} from '../../utils/inputValidations'
 import { numberValidation } from '../../utils/inputValidations';
 
 const RequestsMPshortage = () => {
@@ -34,14 +34,14 @@ const RequestsMPshortage = () => {
   };
 
   return (
-    <div className='relative'>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <MaintenanceManagerHeader rsh={true}/>
-      <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
-      <BackButton/>
+      <div >
+      {/* <BackButton/> */}
       {loading ? <Spinner /> : ''}
       {/* Wrap the form with FormProvider */}
       <FormProvider {...methods}> 
-        <form onSubmit={methods.handleSubmit(handleSaveMPshortage)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif">
+        <form onSubmit={methods.handleSubmit(handleSaveMPshortage)} className="bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto mt-20 font-BreeSerif">
         <h1 className='text-4xl  font-philosopher text-black font-semibold my-8 text-center alignment-center'>Request New Shortage</h1>
           <Input
             formtype='input'
@@ -50,7 +50,7 @@ const RequestsMPshortage = () => {
             type='text'
             placeholder='Enter Request ID'
             name='RequestID'
-            {...textValidation}
+            {...MPRSidValidation}
             // validation={{ required: 'Request ID is required' }}
           />
         <Input
@@ -112,7 +112,7 @@ const RequestsMPshortage = () => {
           {...textValidation}
           // validation={{ required: 'Status required' }}
         />
-          <SubmitButton/>
+          <center className='mt-5'><SubmitButton/></center>
         </form>
       </FormProvider>
       <div className='h-40'></div>

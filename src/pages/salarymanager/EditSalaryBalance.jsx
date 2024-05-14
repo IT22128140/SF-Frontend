@@ -19,7 +19,7 @@ const EditSalaryBalance = () => {
   const [attendanceError, setAttendanceError] = useState("");
   const [overtimeError, setOvertimeError] = useState("");
   const [bonusError, setBonusError] = useState("");
-  const [cheque1,setCheque1] = useState("");
+  const [cheque1, setCheque1] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -28,10 +28,15 @@ const EditSalaryBalance = () => {
     const overtimeValue = parseFloat(overtimeHours);
     const bonusAmount = parseFloat(bonus);
 
-    let totalAmountValue;
+    let totalAmountValue; //generate total amount
 
     if (attendance >= 27 && attendance <= 30) {
-      totalAmountValue = (basic + overtimeValue * 200 + bonusAmount + 3000).toFixed(2);
+      totalAmountValue = (
+        basic +
+        overtimeValue * 200 +
+        bonusAmount +
+        3000
+      ).toFixed(2);
     } else if (attendance >= 24 && attendance < 27) {
       const adjustedSalary = basic + overtimeValue * 200 + bonusAmount - 5000;
       totalAmountValue = adjustedSalary.toFixed(2);
@@ -95,7 +100,7 @@ const EditSalaryBalance = () => {
       date: date,
       notice: notice,
       totalAmount: totalAmount,
-      cheque1:cheque1
+      cheque1: cheque1,
     };
     setLoading(true);
 
@@ -109,14 +114,13 @@ const EditSalaryBalance = () => {
         console.error("Error:", error);
         setLoading(false);
       });
-    };
-
-      const handleFileUpload = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await convertBase64(file);
-        setCheque1(base64);
-      };
-  
+  };
+  //file upload
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setCheque1(base64);
+  };
 
   return (
     <div className="w-full h-full bg-scroll bg-repeat bg-bgform">
@@ -128,9 +132,7 @@ const EditSalaryBalance = () => {
           </h1>
         </div>
         <br />
-        <div className="w-1/3 p-4">
-          <h2 className="text-xl mb-4">Profile</h2>
-        </div>
+
         <br />
         <br />
         {loading ? (
@@ -225,7 +227,7 @@ const EditSalaryBalance = () => {
                   Total Amount
                 </label>
                 <span className="border border-black border-1 p-1 block mb-2">
-                  {totalAmount}
+                  RS. {totalAmount}
                 </span>
                 <br />
                 <label className="block text-ternary text-sm font-bold mb-3">
@@ -236,8 +238,9 @@ const EditSalaryBalance = () => {
                   name="cheque1"
                   id="cheque1"
                   accept=".jpg, .jpeg, .png"
-                  onChange={(e) => handleFileUpload(e)}/>
-                  <label className="block text-black text-sm font-semi-bold mb-3">
+                  onChange={(e) => handleFileUpload(e)}
+                />
+                <label className="block text-black text-sm font-semi-bold mb-3">
                   Image size should be less than 5MB.
                 </label>
                 <br />
@@ -279,7 +282,9 @@ const EditSalaryBalance = () => {
   );
 };
 
-export default EditSalaryBalance
+export default EditSalaryBalance;
+
+//base64 conversion
 
 function convertBase64(file) {
   return new Promise((resolve, reject) => {
