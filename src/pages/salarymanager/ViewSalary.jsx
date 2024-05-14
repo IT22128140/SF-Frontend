@@ -38,7 +38,7 @@ const ViewSalary = () => {
             </h1>
           </div>
           <br />
-         
+
           <br />
           <br />
           {loading ? (
@@ -107,7 +107,7 @@ const ViewSalary = () => {
                     Total Amount
                   </label>
                   <span className="border border-black border-1 p-1 block mb-2">
-                  RS.  {viewSalary.totalAmount}
+                    RS. {viewSalary.totalAmount}
                   </span>
                   <br />
                   <label className="block text-ternary text-sm font-bold mb-3">
@@ -123,8 +123,9 @@ const ViewSalary = () => {
                   <img
                     src={viewSalary.cheque1}
                     alt="cheque"
-                    className="border border-black border-1 p-1 block mb-2" />
-                 
+                    className="border border-black border-1 p-1 block mb-2"
+                  />
+
                   <br />
                   <label className="block text-ternary text-sm font-bold mb-3">
                     Date
