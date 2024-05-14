@@ -42,8 +42,8 @@ const FeedbackPage = () => {
     }
   };
 
-  const handleContact = (id, name, email, phoneNumber) => {
-    setContactData({ id, name, email, phoneNumber });
+  const handleContact = (name, email, phoneNumber) => {
+    setContactData({name, email, phoneNumber });
   };
 
   const handleDelete = async (id) => {
@@ -90,7 +90,7 @@ const FeedbackPage = () => {
           </div>
           <p>{feedback.feedback}</p>
           <div className="flex justify-between items-center">
-            <button onClick={() => handleContact(feedback.id,feedback.name, feedback.email, feedback.phoneNumber)} className="bg-green-500 text-white px-2 py-1 rounded-md">Contact {feedback.name}</button>
+            <button onClick={() => handleContact(feedback.name, feedback.email, feedback.phoneNumber)} className="bg-green-500 text-white px-2 py-1 rounded-md">Contact {feedback.name}</button>
             <button onClick={() => handleDelete(feedback.id)} className="bg-red text-white px-2 py-1 rounded-md">Delete</button>
             </div>
             </div>
@@ -100,7 +100,6 @@ const FeedbackPage = () => {
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
           <div className="bg-white p-4 rounded-md">
             <h2 className="text-2xl font-bold mb-4">Contact Details</h2>
-            <p>ID: {contactData.id}</p>
             <p>Name: {contactData.name}</p>
             <p>Email: {contactData.email}</p>
             <p>Phone Number: {contactData.phoneNumber}</p>
