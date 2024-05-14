@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import SearchBar from "../../components/SearchQE"
 import TableView from '../../components/table/TableView'
 import Button from "../../components/button/Button";
@@ -43,24 +44,24 @@ productReviews.forEach((request) => {
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
         <QENavbar
-        home={true}
+        home={false}
         cel={false}
         rel={false}
-        fel={false}
+        fel={true}
         att={false}
         sal={false}
       />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Product Review List</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Product Review List</h1>
 
       <div className = 'flex justify-between items-center m-5 font-BreeSerif'>
         <Link to = '/qualityControl/reviewReport'>
-          <button className = 'p-2 bg-gray-200 m-8 text-ternary rounded-xl'>All Review</button>
+          <button className = 'p-2 bg-ternary m-8 text-white rounded-xl'>All Review</button>
         </Link>
         <Link to = '/qualityControl/reviewReport/actionRelease'>
-          <button className = 'p-2 bg-gray-200 m-8 text-ternary rounded-xl'>Pending Release</button>
+          <button className = 'p-2 bg-ternary m-8 text-white rounded-xl'>Pending Release</button>
         </Link>
         <Link to = '/qualityControl/reviewReport/actionReject'>
-          <button className = 'p-2 bg-gray-200 m-8 text-ternary rounded-xl'>Notify Rejects</button>
+          <button className = 'p-2 bg-ternary m-8 text-white rounded-xl'>Notify Rejects</button>
         </Link>
       </div>
 
@@ -69,7 +70,7 @@ productReviews.forEach((request) => {
         <Spinner />
     ) : (
       <div>
-        <table className='min-w-full'>
+        <table className='mx-auto font-BreeSerif mb-5 bg-white'>
             <TableView headers={headers} />
             <tbody>
                 {productReviews && filteredRequests.map((productReview, index) => (
@@ -102,7 +103,7 @@ productReviews.forEach((request) => {
                         <td className='border border-slate-700 rounded-md text-center'>
                             <div className='flex justify-center gap-x-4'>
                             <Link to={`/qualityControl/releaseProduct/addReleaseProduct/${productReview._id}`}>
-                                <Button className='mr-2'>
+                                <Button className='mr-2 bg-secondary'>
                                     Release
                                 </Button>
                             </Link>
@@ -112,15 +113,16 @@ productReviews.forEach((request) => {
                 ))}
             </tbody>
         </table>
-        <div className="text-center mt-4 mb-8">
+        <div className="text-center font-bold mt-4 mb-8">
             <p>Total Items: {totalItemCount}</p>
             <p>Total Items Matching "{search}": {itemCount}</p>
         </div>
         
       </div>  
     )}
-
-       
+<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+<div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+<StaffFooter />  
     </div>
   );
 };
