@@ -6,6 +6,9 @@ import axios from "axios";
 import { enqueueSnackbar } from "notistack";
 
 const Orders = () => {
+
+  const token = sessionStorage.getItem("token");
+
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
@@ -14,6 +17,9 @@ const Orders = () => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
+    if (!token) {
+      window.location = "/LoginCus";
+    }
     const timer = setInterval(() => {
       setDate(new Date());
     }, 10000);
@@ -23,8 +29,9 @@ const Orders = () => {
   }, []);
 
   function Completed() {
+    const statuses = ["delivered", "canceled"];
     const filteredData = orders.filter((opt) =>
-      opt.status.toLowerCase().includes("delivered", "canceled")
+      statuses.some((status) => opt.status.toLowerCase().includes(status))
     );
     setCompleted("bg-bgc");
     setOngoing("");
@@ -32,8 +39,10 @@ const Orders = () => {
   }
 
   function Ongoing(data) {
+    const statuses = ["delivered", "canceled"];
     const filteredData = data.filter(
-      (opt) => !opt.status.toLowerCase().includes("delivered", "canceled")
+      (opt) =>
+        !statuses.some((status) => opt.status.toLowerCase().includes(status))
     );
     setOngoing("bg-bgc");
     setCompleted("");
@@ -42,7 +51,7 @@ const Orders = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5555/order/65f888fbae65af39470abd22")
+    fetch(`http://localhost:5555/order/${token}`)
       .then((response) => response.json())
       .then((data) => {
         setOrders(data);
@@ -140,11 +149,15 @@ const Orders = () => {
                               })
                               .then((res) => {
                                 console.log(res);
-                                enqueueSnackbar("Order Canceled", { variant: "success"});
+                                enqueueSnackbar("Order Canceled", {
+                                  variant: "success",
+                                });
                               })
                               .catch((err) => {
                                 console.log(err);
-                                enqueueSnackbar("Error canceling order", { variant: "error" });
+                                enqueueSnackbar("Error canceling order", {
+                                  variant: "error",
+                                });
                               });
                             window.location.reload();
                           }}
