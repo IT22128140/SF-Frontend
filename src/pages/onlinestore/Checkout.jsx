@@ -10,6 +10,10 @@ import { MdError } from "react-icons/md";
 import { enqueueSnackbar } from "notistack";
 
 const Checkout = () => {
+
+  
+  const token = sessionStorage.getItem("token");
+
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const totalRef = useRef(0);
@@ -141,9 +145,12 @@ const Checkout = () => {
 
   // Fetch delivery details
   useEffect(() => {
+    if (!token) {
+      window.location = "/LoginCus";
+    }
     setLoading(true);
     axios
-      .get("http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22")
+      .get(`http://localhost:5555/deliveryDetails/${token}`)
       .then((response) => {
         setDetails(response.data);
       })
@@ -155,7 +162,7 @@ const Checkout = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/cart/65f888fbae65af39470abd22`)
+      .get(`http://localhost:5555/cart/${token}`)
       .then((response) => {
         setCart(response.data);
         setLoading(false);
@@ -241,7 +248,7 @@ const Checkout = () => {
       if (!id) {
         axios
           .post(
-            "http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22",
+            `http://localhost:5555/deliveryDetails/${token}`,
             deliveryDetails
           )
           .then((response) => {
@@ -254,7 +261,7 @@ const Checkout = () => {
       } else {
         axios
           .put(
-            `http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22/${id}`,
+            `http://localhost:5555/deliveryDetails/${id}`,
             deliveryDetails
           )
           .then((response) => {
@@ -273,13 +280,13 @@ const Checkout = () => {
     return <Spinner />;
   }
   return (
-    <div className=" font-BreeSerif">
+    <div>
       <form onSubmit={handleSubmission} noValidate>
         <CustomerNavbar />
         <h1 className="text-center font-Lavish font-bold text-5xl mt-8 text-primary">
           CHECKOUT
         </h1>
-        <div className="flex flex-row w-full justify-between">
+        <div className="flex flex-row w-full justify-between font-BreeSerif">
           {/* Delivery details */}
           <div className="flex flex-col w-[30rem] mx-16">
             <h2 className="font-Philosopher text-2xl mb-5 font-bold text-secondary">
@@ -493,7 +500,7 @@ const Checkout = () => {
                   disabled={!province}
                 >
                   <option value="" defaultChecked hidden>
-                    Select your province
+                    Select your district
                   </option>
                   {province &&
                     districtsByProvince[province].map((opt) => (

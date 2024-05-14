@@ -14,7 +14,7 @@ import Catalogue from './pages/onlinestore/Catalogue.jsx';
 import Orders from "./pages/onlinestore/Orders.jsx";
 import OngoingOrders from "./pages/onlinestoremanagement/OngoingOrders.jsx";
 import CompletedOrders from "./pages/onlinestoremanagement/CompletedOrders.jsx";
-
+import StoreManagerDashboard from "./pages/onlinestoremanagement/StoreManagerDashboard.jsx";
 
 
 
@@ -238,7 +238,7 @@ const App = () => {
   return (
     <Routes>
       {/* Maneth */}
-      <Route path="/" element={<Home />} />
+      <Route path="/HomeCus" element={<Home />} />
       <Route path="/ProductPage/:id" element={<ProductPage />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/Checkout" element={<Checkout />} />
@@ -247,7 +247,7 @@ const App = () => {
       <Route path='/Orders' element={<Orders/>} />
       <Route path='/OngoingOrders' element={<OngoingOrders/>} />
       <Route path='/CompletedOrders' element={<CompletedOrders/>} />
-
+      <Route path='/Store_Manager' element={<StoreManagerDashboard/>} />
 
 
 

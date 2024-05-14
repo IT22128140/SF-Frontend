@@ -15,6 +15,16 @@
     },
   };
 
+  export const validation = {
+
+    validation: {
+      required: {
+        value: true,
+        message: "Required",
+      }
+    }
+  };
+
   export const numberValidation = {
     validation: {
       required: {
