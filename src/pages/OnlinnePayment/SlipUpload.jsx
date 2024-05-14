@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import SubmitButton from "../../components/button2/SubmitButton";
@@ -17,7 +17,35 @@ const SlipUpload = () => {
   const [slip , setSlip] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const [cart, setCart] = useState([]);
+  const [deliveryDetails, setDeliveryDetails] = useState([]);
+  // const [deliveryDetailsId, setDeliveryDetailsId] = useState("");
+  const [tot, setTot] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+   setTot ( sessionStorage.getItem('total'));
+    //  setDeliveryDetails (JSON.parse(sessionStorage.getItem('deliveryDetails')));
+    // setDeliveryDetailsId(sessionStorage.getItem('deliveryDetailsId'));
+    const deliveryDetailsId = sessionStorage.getItem('deliveryDetailsId');
+    
+    axios.get(`http://localhost:5555/deliveryDetailsPayment/${deliveryDetailsId}`).then((response) => {
+      setDeliveryDetails(response.data);
+      console.log(response.data);
+    });
+
+    axios .get(`http://localhost:5555/cart/66387934d3d8881e210fd50a`)
+    .then((response) => {
+      setCart(response.data);
+      setLoading(false);
+      console.log(response.data.items);
+    })
+    .catch((error) => {
+      console.log(error);
+      setLoading(false);
+});
+  }, []);
+
 
   const handleUpload = (e) => {
     console.log(payment);
@@ -82,6 +110,15 @@ const SlipUpload = () => {
       setLoading(false);
       const id = response.data._id;
       console.log(id);
+      const data2 = {
+        userId : "66387934d3d8881e210fd50a",
+        products:cart.items,
+        deliveryDetails:deliveryDetails,
+        total:tot,
+        paymentId:id,
+
+      };
+      const orderC = await axios.post(`http://localhost:5555/order`,data2);
       navigate(`/PaymentSucc/${id}`);
     } catch (error) {
       console.error(error);
@@ -89,6 +126,7 @@ const SlipUpload = () => {
       alert("An error occurred while processing your request");
     }
   };
+  
 
 
   const handlePaymentSlip = async (file) => {
