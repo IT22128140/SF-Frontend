@@ -312,7 +312,7 @@ const App = () => {
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
       <Route path='/SupplierDetails/SupplieredRaws/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
-      <Route path= "/IsHome" element = {<IsHome/>} />
+      <Route path= "/Stock_Manager" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
       <Route path= "/Shortages/Accepted" element = {<AcceptedMPS/>} />
       <Route path= "/Shortages/Viewshortage/:id" element = {<Viewshortage/>} />
