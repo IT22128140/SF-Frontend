@@ -22,15 +22,15 @@ const IsDashboard = () => {
             subtopic1="Add New Supplier"
             link1="/SupplierDetails/AddSuppliers"
             subtopic2="Suppliers Details"
-            description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            description="View all details of Suppliers"
             link2="/SupplierDetails"
           />
           <DashboardCard
             topic="Raw Material Stock"
             subtopic1="Add Raw Materials"
-            link1="RawMaterialStock/AddRMaterial"
+            link1="/RawMaterialStock/AddRMaterial"
             subtopic2="View Available Raw Materials"
-            description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description="View all available raw materials "
             link2="/RawMaterialStock"
           />
         </div>
@@ -41,7 +41,7 @@ const IsDashboard = () => {
             subtopic1="Add Machine parts"
             link1="/MachinePartStock/AddMachinepart"
             subtopic2="View Machine parts"
-            description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            description="View available machine parts in the stock"
             link2="/MachinePartStock"
           />
           
@@ -59,26 +59,22 @@ const IsDashboard = () => {
                     View Raw Material Requests
                   </h2>
                   <p className="pb-2 text-black text-md">
-                    lorem ipsum Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit
+                    View raw material requests from Prodction Manager.
                   </p>
 
-                  <Link to="/resign/TerminationPendingList">
+                  <Link to="/RMRequests">
                     <ViewButton />
                   </Link>
                 </div>
                 <div className="border border-black rounded-xl w-100% h-fit bg-bgc flex flex-col items-center font-BreeSerif p-2 m-8">
                   <h2 className="pb-2 text-xl text black">
-                    View FullFilled Requests
+                    View Machine Part Requests
                   </h2>
                   <p className="pb-2 text-black text-md">
-                    lorem ipsum Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit
+                    View machine part requests from Maintenance Manager
                   </p>
 
-                  <Link to="/resign/RejectedRequestPage">
+                  <Link to="/shortages/view">
                     <ViewButton />
                   </Link>
                 </div>
