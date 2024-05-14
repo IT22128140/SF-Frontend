@@ -2,13 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import TableView from '../../components/table/TableView';
 import Button from "../../components/button/Button";
-import EditButton from "../../components/button2/EditButton";
-import DeleteButton from "../../components/button2/DeleteButton";
 import PMHeader from '../../components/navbar/staffheader/PMHeader';
 
 
@@ -48,15 +44,15 @@ rejectedProducts.forEach((request) => {
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Rejected Product in Quality Evaluation</h1>
-      
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Rejected Product in Quality Evaluation</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
 
       
     {loading ? (
         <Spinner />
     ) : (
 
-        <table className='min-w-full'>
+        <table className='mx-auto font-BreeSerif mb-5 bg-white'>
             <TableView headers={headers} />
             <tbody>
                 {rejectedProducts && filteredRequests.map((rejectedProduct, index) => (
@@ -101,8 +97,10 @@ rejectedProducts.forEach((request) => {
 
         
     )}
+    <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+    <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
 
-       
+<StaffFooter />  
     </div>
   );
 };

@@ -9,16 +9,12 @@ import AcceptButton from "../../components/button2/AcceptButton";
 import EditButton from "../../components/button2/EditButton";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import DeleteButton from "../../components/button2/DeleteButton";
-import DeleteFinalProduct from "./DeleteFinalProduct";
 import NoteTakingApp from '../../components/Keep/NoteTakingApp';
 
 const ReviewRequest = () => {
   const [productRequests, setProductRequests] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState(null);
-  const [showDeleteOverlay, setShowDeleteOverlay] = useState(false);
 
   const [totalQuantity, setTotalQuantity] = useState(0);
   const headers = ['Request Id', 'Product Code','Fabric Type','Color', 'Stitching Type','Quantity', 'Accept Status', 'Operations'];
@@ -69,14 +65,15 @@ const ReviewRequest = () => {
         sal={false}
       />
       <div className='p-4'>
-        <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Review Request For Quality Evaluation</h1>
+        <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Review Request For Quality Evaluation</h1>
         </div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
         <SearchBar placeholder={"Enter the Product code"} onSearch={setSearch} />
         {loading ? (
           <Spinner />
         ) : (
           <div> 
-          <table className='min-w-full'>
+          <table className='mx-auto font-BreeSerif mb-5 bg-white'>
             <TableView headers={headers} />
             <tbody>
               {productRequests && filteredRequests.map((productRequest, index) => (
@@ -125,18 +122,18 @@ const ReviewRequest = () => {
               ))}
             </tbody>
             </table>
-          <div className="text-center mt-4 mb-8">
+          <div className="text-center font-bold mt-4 mb-8">
             <p>Total Items : {totalItemCount}</p>
             <p>Total Items Matching "{search}" : {itemCount}</p>
             <p>Total Items Quantity in QC : {totalQuantity}</p>
           </div>
-          <div className="text-center font-bold mt-4 mb-8">
+          <div className="text-center text-ternary font-bold mt-4 mb-8">
             {Object.entries(itemCountMap).map(([productCode, count]) => (
               count > 1 && <p key={productCode}>"{productCode}" Product Code is repeting</p>
             ))}
           </div>
           <div className="text-center font-bold mt-4 mb-8">
-            {totalQuantity > 250 ? (
+            {totalQuantity > 450 ? (
               <div className="text-center text-red-600 font-bold mt-4 mb-8">
               <p> QC Depertment Maximum Processing Count Is Almost Full</p>
               </div>
@@ -144,6 +141,7 @@ const ReviewRequest = () => {
           </div>
         </div>
       )}
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
       <NoteTakingApp />
       <StaffFooter />

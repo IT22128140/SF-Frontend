@@ -82,7 +82,7 @@ const NoteTakingApp: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null); // Specify the type of element
 
   return (
-    <div>
+    <div className='bg-orange-100'>
       <Box
         sx={{
           display: "flex",
