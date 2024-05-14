@@ -8,13 +8,16 @@ import { Link } from "react-router-dom";
 
 const IsDashboard = () => {
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bghome' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgwall4 bg-bghome' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <IsNavbar home={true} />
 
       <div className="p-4">
-        <h1 className="my-8 text-4xl font-semibold font-Philosopher text-ternary">
+        <center>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center ">
           Dashboard
         </h1>
+        </center>
+        
 
         <div className="flex flex-row justify-evenly">
           <DashboardCard
@@ -49,7 +52,7 @@ const IsDashboard = () => {
          
           <div>
             <div className="py-8 px-14">
-              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6">
+              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6 bg-white">
                 <h1 className="text-3xl font-Philosopher text-ternary">
                   Raw Material Requests
                 </h1>

@@ -14,6 +14,7 @@ export default {
       backgroundImage: {
         'bgimg': "url('/wall4.webp')",
         'bgform': "url('/Wall2.png')",
+        'bghome': "url('/Home.png')",
 
       },
       colors: {
@@ -75,7 +76,7 @@ export default {
 
 
         //Isuru
-        
+        'homebg':"#FFBB70",
 
 
 
