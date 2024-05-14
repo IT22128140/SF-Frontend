@@ -93,12 +93,7 @@ const ReleaseProduct = () => {
                                 
                                 <td className='border border-slate-700 rounded-md text-center'>
                                 <div className='flex justify-center gap-x-4'>
-                                    <Link to={ `/qualityControl/releaseProduct/view/${releaseProduct._id}`}>
-                                      <ViewButton/>
-                                    </Link>
-                                    <Link to={`/qualityControl/releaseProduct/edit/${releaseProduct._id}`}>
-                                      <EditButton/>
-                                    </Link>
+                                    
                                     <Link to={`/qualityControl/releaseProduct/delete/${releaseProduct._id}`}>
                                         <DeleteButton/>
                                     </Link>
