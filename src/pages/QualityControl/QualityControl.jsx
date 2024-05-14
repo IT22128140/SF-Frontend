@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
-import { Link } from "react-router-dom";
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
-import SearchBar from "../../components/SearchBar";
-import TableView from '../../components/table/TableView'
-import AcceptButton from "../../components/button2/AcceptButton";
-import EditButton from "../../components/button2/EditButton";
-import DeleteButton from "../../components/button2/DeleteButton";
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import NoteTakingApp from '../../components/Keep/NoteTakingApp';
-import CustomCard2 from "../../components/homecontainer/CustomCard2";
+import DashboardCard from '../../components/DashboardCard';
 
 const QualityControl = () => {
   const [loading, setLoading] = useState(false);
@@ -43,14 +34,6 @@ const QualityControl = () => {
   }, []);
 
   
-
-    const handleButton1Click = () => {
-        // Handle button 1 click logic
-      };
-    
-      const handleButton2Click = () => {
-        // Handle button 2 click logic
-      };
     
       return (
         <div className='relative' style={{ backgroundImage: "./Picture1.jpg", backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -62,17 +45,26 @@ const QualityControl = () => {
         att={false}
         sal={false}
       />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Welcome to the Quality Control Department</h1>
-          <CustomCard2
-            mainHeader="Main Header"
-            subHeader1="Sub Header 1"
-            subHeader2="Sub Header 2"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis nulla eu mi sagittis ullamcorper."
-            button2Label="Button 2 Label"
-            onButton1Click={handleButton1Click}
-            onButton2Click={handleButton2Click}
-            className=" "
-          />
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Welcome to the Quality Control Department</h1>
+      <div className = 'flex flex-row ml-12'>
+            <DashboardCard
+             topic = 'Product Review'
+             subtopic1 = 'Add Product Review'
+             link1 = '/qualityControl/reviewRequest/pendingRequest'
+             subtopic2 = 'View Product Reviews'
+             description= 'Visit this page if you want View Product Reviews.'
+             link2 = '/qualityControl/reviewReport'
+            />
+            <DashboardCard
+             topic = 'Product Release'
+             subtopic1 = 'Add new Release Product'
+             link1 = '/qualityControl/reviewReport/actionRelease'
+             subtopic2 = 'View Release Product'
+             description= 'Visit this page if you want to view Release Product.'
+             link2 = '/qualityControl/releaseProduct'
+            />
+        </div>
+       
 
 {loading ? (
         <Spinner />

@@ -163,7 +163,7 @@ const SalaryHistory = () => {
                     {salary.firstName} {salary.lastName}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.totalAmount}
+                   RS. {salary.totalAmount}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     {salary.notice}

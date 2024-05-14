@@ -88,7 +88,7 @@ const SalaryTable = () => {
                     {salary.bonus}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
-                    {salary.totalAmount}
+                    RS. {salary.totalAmount}
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     {salary.cheque1 && <img src={salary.cheque1} alt="cheque" />} 

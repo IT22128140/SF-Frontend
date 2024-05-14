@@ -7,6 +7,7 @@ import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import { FormProvider, useForm } from 'react-hook-form';
 
 const AddFinalProduct = () => {
@@ -53,29 +54,26 @@ const AddFinalProduct = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/qualityControl/productRequest', data)// Use axios.put for updating existing data
+      .post('http://localhost:5555/qualityControl/productRequest', data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
-        navigate('#'); //need to change ridmis home 
+        alert('Review Request updated successfully');
+        navigate('/sfProduct'); 
       })
       .catch((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       });
   };
 
-  const handleCancel = () => {
-    navigate('#'); // Change the path as needed
-  };
 
 
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
 
       {loading ? <Spinner/> : ''}
         <div
@@ -120,7 +118,6 @@ const AddFinalProduct = () => {
             name='color'
             placeholder='Enter color'
             value={color}
-            readOnly = {true}
             onChange={(e) => setColor(e.target.value)}
             validation={{ required: 'Color is required' }}
             />
@@ -150,7 +147,6 @@ const AddFinalProduct = () => {
             name='quantity'
             placeholder='Enter Quantity'
             value={quantity}
-            readOnly = {true}
             onChange={(e) => setQuantity(e.target.value)}
             validation={{ required: 'Quantity is required' }}
             />
@@ -158,6 +154,9 @@ const AddFinalProduct = () => {
 
           <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddFinalProduct}>Request Quality Evaluation</button>
         </div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+        <StaffFooter />
     </div>
   )
 }

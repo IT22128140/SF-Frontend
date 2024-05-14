@@ -163,9 +163,7 @@ const GenerateSalary = () => {
             Generate Employee Salary
           </h1>
         </div>
-        <div className="w-1/3 p-4">
-          <h2 className="text-xl mb-4">Profile</h2>
-        </div>
+       
         {loading ? (
           <Spinner />
         ) : (

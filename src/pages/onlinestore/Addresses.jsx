@@ -16,11 +16,16 @@ const Addresses = () => {
   const [id, setId] = useState(null);
   const [adress, setAdress] = useState(null);
 
+  const token = sessionStorage.getItem("token");
+
   useEffect(() => {
+    if (!token) {
+      window.location = "/LoginCus";
+    }
     setLoading(true);
 
     axios
-      .get("http://localhost:5555/deliveryDetails/65f888fbae65af39470abd22")
+      .get(`http://localhost:5555/deliveryDetails/${token}`)
       .then((response) => {
         setAddresses(response.data);
         setLoading(false);
