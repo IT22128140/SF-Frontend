@@ -7,6 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form'; // Importing useForm an
 import { useSnackbar } from 'notistack';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import BackButton from '../../components/button/BackButton';
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import Select from '../../components/form/Select';
 
 
@@ -46,7 +47,19 @@ const AddReview = () => {
       });
   }, [])
 
+  const validateForm = () => {
+    if (!inspectionResult) {
+      alert('inspectionResult is required');
+      return false;
+    }
+    
+    return true;
+  };
+
   const handleSaveAddReview = () => {
+
+    if (!validateForm()) return;
+
     const data = {
       productCode,
       fabricType,
@@ -61,13 +74,12 @@ const AddReview = () => {
       .post('http://localhost:5555/qualityControl/productReview', data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
+        alert('Request updated successfully');
         navigate('/qualityControl/reviewReport');
       })
       .catch((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       });
   };
@@ -80,15 +92,17 @@ const AddReview = () => {
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
-        home={true}
+        home={false}
         cel={false}
-        rel={false}
+        rel={true}
         fel={false}
         att={false}
         sal={false}
       />
       
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>AddReview</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>AddReview</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> 
         <form
@@ -223,6 +237,9 @@ const AddReview = () => {
           <button className='p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
         </form>
       </FormProvider>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+      <StaffFooter />
     </div>
   )
 }

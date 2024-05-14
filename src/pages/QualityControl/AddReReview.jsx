@@ -7,6 +7,7 @@ import PMHeader from '../../components/navbar/staffheader/PMHeader';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import Button from '../../components/button/Button';
 import BackButton from '../../components/button/BackButton';
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import { FormProvider, useForm } from 'react-hook-form';
 
 const AddReReview = () => {
@@ -39,10 +40,10 @@ const AddReReview = () => {
       console.log(error);
     });
 
-  }, [id]);
+  }, []);
 
 
-  const handleAddReReview = () => {
+  const handleAddFinalProduct = () => {
     const data = {
       productCode,
       fabricType,
@@ -53,29 +54,26 @@ const AddReReview = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/qualityControl/productRequest', data)// Use axios.put for updating existing data
+      .post('http://localhost:5555/qualityControl/productRequest', data)
       .then(() => {
         setLoading(false);
-        // enqueueSnackBar('Request updated successfully', { variant: 'success' });
-        navigate('#'); //need to change ridmis home 
+        alert('Review Request updated successfully');
+        navigate('/qualityControl/rejectProduct'); //need to change
       })
       .catch((error) => {
         setLoading(false);
         alert('An error happened. Please Check console');
-        // enqueueSnackBar('Error', { variant: 'error' });
         console.log(error);
       });
   };
 
-  const handleCancel = () => {
-    navigate('#'); // Change the path as needed
-  };
 
 
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <PMHeader />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Request For Quality Evaluation</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
 
       {loading ? <Spinner/> : ''}
         <div
@@ -90,6 +88,7 @@ const AddReReview = () => {
             name='productCode'
             placeholder='Enter ProductCode'
             value={productCode}
+            readOnly = {true}
             onChange={(e) => setProductCode(e.target.value)}
             validation={{ required: 'Product Code is required' }}
             />
@@ -104,6 +103,7 @@ const AddReReview = () => {
             name='fabricType'
             placeholder='Enter Fabric Type'
             value={fabricType}
+            readOnly = {true}
             onChange={(e) => setFabricType(e.target.value)}
             validation={{ required: 'Fabric Type is required' }}
             />
@@ -132,6 +132,7 @@ const AddReReview = () => {
             name='stitchingType'
             placeholder='Enter Stitching Type'
             value={stitchingType}
+            readOnly = {true}
             onChange={(e) => setStitchingType(e.target.value)}
             validation={{ required: 'Stitching Type is required' }}
             />
@@ -151,8 +152,11 @@ const AddReReview = () => {
             />
           </div>
 
-          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddReReview}>Request Quality Evaluation Again </button>
+          <button className= 'p-2 bg-black m-8 text-white rounded-xl' onClick={handleAddFinalProduct}>Request Quality Evaluation</button>
         </div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+        <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+        <StaffFooter />
     </div>
   )
 }

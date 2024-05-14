@@ -38,9 +38,7 @@ const ViewSalary = () => {
             </h1>
           </div>
           <br />
-          <div className=" text-left-10 m-2 font-semibold text-2xl">
-            Profile
-          </div>
+         
           <br />
           <br />
           {loading ? (
@@ -109,7 +107,7 @@ const ViewSalary = () => {
                     Total Amount
                   </label>
                   <span className="border border-black border-1 p-1 block mb-2">
-                    {viewSalary.totalAmount}
+                  RS.  {viewSalary.totalAmount}
                   </span>
                   <br />
                   <label className="block text-ternary text-sm font-bold mb-3">

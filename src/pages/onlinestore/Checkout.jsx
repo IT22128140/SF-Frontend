@@ -242,7 +242,7 @@ const Checkout = () => {
         postalCode: postalCode,
       };
 
-      sessionStorage.setItem("deliveryDetails", JSON.stringify(deliveryDetails));
+      // sessionStorage.setItem("deliveryDetails", JSON.stringify(deliveryDetails));
       sessionStorage.setItem("total", total + 500);
 
       if (!id) {
@@ -253,6 +253,7 @@ const Checkout = () => {
           )
           .then((response) => {
             console.log(response);
+            sessionStorage.setItem("deliveryDetailsId", response.data._id);
           })
           .catch((error) => {
             console.log(error);
@@ -265,6 +266,7 @@ const Checkout = () => {
             deliveryDetails
           )
           .then((response) => {
+            sessionStorage.setItem("deliveryDetailsId", id);
             console.log(response);
           })
           .catch((error) => {
@@ -529,7 +531,7 @@ const Checkout = () => {
               <p className=" ">{total + 500}</p>
             </div>
             <hr className="my-3 font-extrabold border-ternary border-2" />
-            <Link className="flex flex-row w-full justify-center mt-5">
+            <Link  to="/Payment" className="flex flex-row w-full justify-center mt-5">
               <button
                 onClick={handleSubmission}
                 className="bg-ternary text-bgc p-3 rounded-md font-BreeSerif shadow-lg"
