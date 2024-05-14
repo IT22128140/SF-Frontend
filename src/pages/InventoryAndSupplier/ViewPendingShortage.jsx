@@ -63,7 +63,8 @@ const pendingshortsge = () =>{
                                     {mpshortage.RequestID}
                                 </td>
                                 <td className='text-center border rounded-md border-slate-700'>
-                                    {mpshortage.Requested}
+                                {new Date(mpshortage.createdAt).toDateString()}
+
                                 </td>
                                 <td className='text-center border rounded-md border-slate-700'>
                                     {mpshortage.PartName}
@@ -78,7 +79,7 @@ const pendingshortsge = () =>{
                                     {mpshortage.Condition}
                                 </td>
                                 <td className='text-center border rounded-md border-slate-700'>
-                                    {mpshortage.NeededBeforeDate}
+                                {mpshortage.NeededBeforeDate.split("T")[0]}
                                 </td>
                                 <td className='text-center border rounded-md border-slate-700'>
                                     <div className='flex justify-center ml-2 mr-2 gap-x-4'>

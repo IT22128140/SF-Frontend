@@ -8,13 +8,16 @@ import { Link } from "react-router-dom";
 
 const IsDashboard = () => {
   return (
-    <div className='w-full h-full bg-fixed bg-no-repeat bg-bghome' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
+    <div className='w-full h-full bg-fixed bg-no-repeat bg-bgwall4 bg-bghome' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <IsNavbar home={true} />
 
       <div className="p-4">
-        <h1 className="my-8 text-4xl font-semibold font-Philosopher text-ternary">
+        <center>
+        <h1 className="my-8 text-6xl font-semibold font-Philosopher text-ternary alignment-center ">
           Dashboard
         </h1>
+        </center>
+        
 
         <div className="flex flex-row justify-evenly">
           <DashboardCard
@@ -22,15 +25,15 @@ const IsDashboard = () => {
             subtopic1="Add New Supplier"
             link1="/SupplierDetails/AddSuppliers"
             subtopic2="Suppliers Details"
-            description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            description="View all details of Suppliers"
             link2="/SupplierDetails"
           />
           <DashboardCard
             topic="Raw Material Stock"
             subtopic1="Add Raw Materials"
-            link1="RawMaterialStock/AddRMaterial"
+            link1="/RawMaterialStock/AddRMaterial"
             subtopic2="View Available Raw Materials"
-            description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description="View all available raw materials "
             link2="/RawMaterialStock"
           />
         </div>
@@ -41,7 +44,7 @@ const IsDashboard = () => {
             subtopic1="Add Machine parts"
             link1="/MachinePartStock/AddMachinepart"
             subtopic2="View Machine parts"
-            description="lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            description="View available machine parts in the stock"
             link2="/MachinePartStock"
           />
           
@@ -49,7 +52,7 @@ const IsDashboard = () => {
          
           <div>
             <div className="py-8 px-14">
-              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6">
+              <div className="border border-black rounded-xl w-[800px] h-fit  flex flex-col items-center font-BreeSerif p-6 bg-white">
                 <h1 className="text-3xl font-Philosopher text-ternary">
                   Raw Material Requests
                 </h1>
@@ -59,26 +62,22 @@ const IsDashboard = () => {
                     View Raw Material Requests
                   </h2>
                   <p className="pb-2 text-black text-md">
-                    lorem ipsum Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit
+                    View raw material requests from Prodction Manager.
                   </p>
 
-                  <Link to="/resign/TerminationPendingList">
+                  <Link to="/RMRequests">
                     <ViewButton />
                   </Link>
                 </div>
                 <div className="border border-black rounded-xl w-100% h-fit bg-bgc flex flex-col items-center font-BreeSerif p-2 m-8">
                   <h2 className="pb-2 text-xl text black">
-                    View FullFilled Requests
+                    View Machine Part Requests
                   </h2>
                   <p className="pb-2 text-black text-md">
-                    lorem ipsum Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit
+                    View machine part requests from Maintenance Manager
                   </p>
 
-                  <Link to="/resign/RejectedRequestPage">
+                  <Link to="/shortages/view">
                     <ViewButton />
                   </Link>
                 </div>
