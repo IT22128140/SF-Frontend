@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import CustomerNavbar from './navbar/CustomerNavbar';
 import Footer from './footer/Footer';
 
@@ -20,7 +20,7 @@ const AboutUs = () => {
             <center className='font-Philosopher'>To inspire confidence and individuality through innovative, high-quality fashion garments that exceed expectations in design and service.</center>
           </div>
           <div className="w-64 h-60 bg-gray-400 opacity-80 shadow-sm rounded-lg">
-            <center className='mt-4 mb-4 font-Lavish text-xl font-bold'>Our Vission</center>
+            <center className='mt-4 mb-4 font-Lavish text-xl font-bold'>Our Vision</center>
             <center className='font-Philosopher'>To be a global fashion leader, celebrated for creativity, sustainability, and fostering a diverse and inclusive community.</center>
           </div>
           <div className="w-64 h-60 bg-gray-400 opacity-80 shadow-sm rounded-lg">
