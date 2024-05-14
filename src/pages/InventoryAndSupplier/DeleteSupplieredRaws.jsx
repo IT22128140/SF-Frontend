@@ -16,7 +16,7 @@ const handleDelete = () =>{
     .delete(`http://localhost:5555/suppRM/${id}`)
     .then(() => {
         setloading(false);
-        navigate('/SupplierDetails');
+        navigate('/SupplierDetails/SupplieredRaws/:id');
     })
     .catch((error) => {
         setloading(false);

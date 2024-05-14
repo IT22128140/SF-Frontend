@@ -27,7 +27,7 @@ const MaintenanceView = () => {
     }, []);
 
     return (
-        <div className='relative'>
+        <div className='w-full h-full bg-fixed bg-no-repeat bg-bgimg' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
             <MaintenanceManagerHeader/>
             {loading ? (
              <Spinner/>

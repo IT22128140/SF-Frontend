@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams,useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import CustomerNavbar from "../../components/navbar/CustomerNavbar";
@@ -8,13 +8,12 @@ import Footer from "../../components/footer/Footer";
 import Spinner from "../../components/Spinner";
 
 const PaymentSucc = () => {
-  const { autoid} = useParams();
+  const { autoid } = useParams();
   const [paymentsucc, setPaymentSucc] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams(); // Get ID from URL parameter
 
   useEffect(() => {
-    
     setLoading(true);
     axios
       .get(`http://localhost:5555/payment/${id}`)
@@ -27,9 +26,8 @@ const PaymentSucc = () => {
         console.error("Error fetching payment details:", error);
         setLoading(false);
       });
-      //sendEmail();
   }, [id]);
-
+  //send email
   const sendEmail = (data) => {
     const emailPayload = {
       email: "gihanbanuka2002@gmail.com",
@@ -58,37 +56,14 @@ Thank you..!`,
       });
   };
 
-const tot = sessionStorage.getItem('total');
-//const deliveryDetails = JSON.parse(sessionStorage.getItem('deliveryDetails'));
+  const tot = sessionStorage.getItem("total");
 
-console.log("delivery details",tot);
+  console.log("delivery details", tot);
 
-const alldeliveryDetails = {
-  id: id,
-  // firstName: deliveryDetails.firstName,
-  // lastName: deliveryDetails.lastName,
-  // email: deliveryDetails.email,
-  // address: deliveryDetails.address,
-  // province: deliveryDetails.province,
-  // district: deliveryDetails.district,
-  // postalCode: deliveryDetails.postalCode,
-  emailAddress: paymentsucc.emailAddress,
-  fullName: paymentsucc.fullName,
-  bankName: paymentsucc.bankName,
-  phoneNumber: paymentsucc.phoneNumber,
-  branchName: paymentsucc.branchName,
-  slip: paymentsucc.slip,
-  total: tot,
-};
+  const all = JSON.parse(sessionStorage.getItem("alldeliveryDetails"));
+  console.log("session data is", all);
 
-sessionStorage.setItem("alldeliveryDetails", JSON.stringify(alldeliveryDetails));
-
-
-const all = JSON.parse(sessionStorage.getItem('alldeliveryDetails'));
-console.log("session data is", all);
-
-
-
+  //generate pdf
 
   const handlePrint = () => {
     const doc = new jsPDF();
@@ -98,29 +73,26 @@ console.log("session data is", all);
     img3.src = "/Logo1.png";
     img4.src = "/Logo2.png";
 
-    img3.onload = function(){
+    img3.onload = function () {
       doc.addImage(img4, "PNG", 10, 10, 30, 20);
 
       doc.addImage(img3, "PNG", 170, 10, 30, 20);
-    
 
-    doc.text("Payment Details", 80, 40);
-    doc.autoTable({
-      head: [["Attribute", "Value"]],
-      body: [
-        ["Total Amount", tot],
-        ["Email Address", paymentsucc.emailAddress],
-        ["Full Name", paymentsucc.fullName],
-        ["Bank Name", paymentsucc.bankName],
-        ["Phone Number", paymentsucc.phoneNumber],
-        ["Branch", paymentsucc.branchName],
-        
-        
-      ],
-      startY: 50,
-    });
-    doc.save("payment_details.pdf");
-  };
+      doc.text("Payment Details", 80, 40);
+      doc.autoTable({
+        head: [["Attribute", "Value"]],
+        body: [
+          ["Total Amount", tot],
+          ["Email Address", paymentsucc.emailAddress],
+          ["Full Name", paymentsucc.fullName],
+          ["Bank Name", paymentsucc.bankName],
+          ["Phone Number", paymentsucc.phoneNumber],
+          ["Branch", paymentsucc.branchName],
+        ],
+        startY: 50,
+      });
+      doc.save("payment_details.pdf");
+    };
   };
 
   return (
@@ -157,8 +129,9 @@ console.log("session data is", all);
                 <img
                   src={paymentsucc.slip}
                   alt="slip"
-                  style={{ width: "150px",height:"auto" }}
-                  className="border border-black border-1 p-2 block mb-2" />
+                  style={{ width: "150px", height: "auto" }}
+                  className="border border-black border-1 p-2 block mb-2"
+                />
               </div>
               <div className="mb-2">
                 <span className="font-bold">Bank Name:</span>

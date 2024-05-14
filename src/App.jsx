@@ -312,7 +312,7 @@ const App = () => {
       <Route path='/Fullfillrequset' element= {<Fullfillrequset/>} />
       <Route path='/SupplierDetails/SupplieredRaws/AddSupplieredRaws' element= {<AddSupplieredRaws/>} />
       <Route path= "/Popup" element = {<Popup/>} />
-      <Route path= "/IsHome" element = {<IsHome/>} />
+      <Route path= "/Stock_Manager" element = {<IsHome/>} />
       <Route path= "/Shortages/view" element = {<Pendingshortsge/>} />
       <Route path= "/Shortages/Accepted" element = {<AcceptedMPS/>} />
       <Route path= "/Shortages/Viewshortage/:id" element = {<Viewshortage/>} />
@@ -334,7 +334,7 @@ const App = () => {
 
 
 {/* Sageevan */}
-      <Route path="/qualityControl" element={<QualityControl />} />
+      <Route path="/Quality_Control_Manager" element={<QualityControl />} />
       <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
@@ -379,7 +379,7 @@ const App = () => {
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
-      <Route path= '/PMHome' element = {<PMHome/>}/>
+      <Route path= '/Process_Manager' element = {<PMHome/>}/>
       <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
       <Route path= '/sfProduct' element={<GarmentProductList/>}/>
       <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
@@ -407,7 +407,7 @@ const App = () => {
 
       {/* Hiranya */}
 
-      <Route path='/repairs' element={<MaintenanceHome/>} />
+      <Route path='/Repair_Manager' element={<MaintenanceHome/>} />
       <Route path='/repairs/create' element={<CreateRepairRequests/>} />
       <Route path='/repairs/view' element={<ViewRepairs/>} />
       <Route path='/repairs/edit/:id' element={<EditReapairs/>} />

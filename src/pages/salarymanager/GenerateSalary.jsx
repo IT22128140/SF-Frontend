@@ -36,10 +36,12 @@ const GenerateSalary = () => {
     const overtime = parseFloat(overtimeHours);
     const bonusAmount = parseFloat(bonus);
 
-    let totalAmountValue;
+    let totalAmountValue; //get the total amount
 
     if (attendance >= 27 && attendance <= 30) {
-      totalAmountValue = (basic + overtime * 200 + bonusAmount + 3000).toFixed(2);
+      totalAmountValue = (basic + overtime * 200 + bonusAmount + 3000).toFixed(
+        2
+      );
     } else if (attendance >= 24 && attendance < 27) {
       const adjustedSalary = basic + overtime * 200 + bonusAmount - 5000;
       totalAmountValue = adjustedSalary.toFixed(2);
@@ -61,7 +63,6 @@ const GenerateSalary = () => {
     e.preventDefault();
     // createCheque(cheque1);
     console.log("uploded");
-
 
     if (attendance > 30 || attendance < 0) {
       setAttendanceError("Attendance should be between 0 and 30");
@@ -110,15 +111,6 @@ const GenerateSalary = () => {
       });
   };
 
-  // const createCheque = async(cheque1) => {
-  //   try {
-  //     await axios.post(`http://localhost:5555/salary`, cheque1);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const fileSizeMB = file.size / (1024 * 1024); // Convert bytes to MB
@@ -163,9 +155,7 @@ const GenerateSalary = () => {
             Generate Employee Salary
           </h1>
         </div>
-        <div className="w-1/3 p-4">
-          <h2 className="text-xl mb-4">Profile</h2>
-        </div>
+
         {loading ? (
           <Spinner />
         ) : (
@@ -282,15 +272,16 @@ const GenerateSalary = () => {
               <br />
               <br />
               <label className="block text-ternary text-sm font-bold mb-3">
-                Cheque  Upload
+                Cheque Upload
               </label>
               <input
-                type ="file"
+                type="file"
                 name="cheque1"
                 id="cheque1"
                 accept=".jpg, .jpeg, .png"
-                onChange={(e) => handleFileUpload(e)}/>
-                <label className="block text-black text-sm font-semi-bold mb-3">
+                onChange={(e) => handleFileUpload(e)}
+              />
+              <label className="block text-black text-sm font-semi-bold mb-3">
                 Image size should be less than 5MB.
               </label>
 
@@ -336,8 +327,8 @@ const GenerateSalary = () => {
   );
 };
 
-export default GenerateSalary
-
+export default GenerateSalary;
+//file upload function
 function convertToBase64(file) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
@@ -350,5 +341,3 @@ function convertToBase64(file) {
     };
   });
 }
-
-

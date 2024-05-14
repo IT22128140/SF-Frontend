@@ -7,6 +7,7 @@ import { useForm, FormProvider } from 'react-hook-form'; // Importing useForm an
 import { useSnackbar } from 'notistack';
 import QENavbar from "../../components/navbar/staffheader/QENavbar";
 import BackButton from '../../components/button/BackButton';
+import StaffFooter from "../../components/footer/stafffooter/StaffFooter.jsx";
 import Select from '../../components/form/Select';
 
 
@@ -46,7 +47,19 @@ const AddReleaseProduct = () => {
       });
   }, [])
 
+  const validateForm = () => {
+    if (!customerID) {
+      alert('Release Type is required');
+      return false;
+    }
+    
+    return true;
+  };
+
   const handleSaveAddreleaseProduct = () => {
+
+    if (!validateForm()) return;
+
     const data = {
       productCode,
       customerID,
@@ -79,15 +92,17 @@ const AddReleaseProduct = () => {
   return (
     <div className='w-full h-full bg-fixed bg-no-repeat bg-bgform' style={{ backgroundPosition: 'top right', backgroundSize: 'cover' }}>
       <QENavbar
-        home={true}
+        home={false}
         cel={false}
         rel={false}
-        fel={false}
+        fel={true}
         att={false}
         sal={false}
       />
       <BackButton />
-      <h1 className='text-3xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Release Product</h1>
+      <h1 className='text-5xl my-4 font-BreeSerif' style={{ textAlign: 'center', color: 'brown' }}>Release Product</h1>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+
       {loading ? <Spinner /> : ''}
       <FormProvider {...methods}> {/* Providing methods from useForm */}
         <form
@@ -193,6 +208,9 @@ const AddReleaseProduct = () => {
           <button className='p-2 bg-black m-8 text-white rounded-xl' type='submit'>Submit</button>
         </form>
       </FormProvider>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+      <div className='flex justify-center gap-x-20' style={{ marginTop: '20px', marginBottom: '20px' }}></div>
+      <StaffFooter />
     </div>
   )
 }
