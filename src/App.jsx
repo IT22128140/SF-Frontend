@@ -407,7 +407,7 @@ const App = () => {
 
       {/* Hiranya */}
 
-      <Route path='/repairs' element={<MaintenanceHome/>} />
+      <Route path='/Repair_Manager' element={<MaintenanceHome/>} />
       <Route path='/repairs/create' element={<CreateRepairRequests/>} />
       <Route path='/repairs/view' element={<ViewRepairs/>} />
       <Route path='/repairs/edit/:id' element={<EditReapairs/>} />
