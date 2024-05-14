@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
 import { Link } from "react-router-dom";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+// import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import TableView from '../../components/table/TableView'
 import EditButton from "../../components/button2/EditButton";
 import DeleteButton from "../../components/button2/DeleteButton";
 import ViewButton from "../../components/button2/ViewButton";
 import AddButton from "../../components/button2/AddButton";
 import MaintenanceManagerHeader from '../../components/navbar/staffheader/MaintenanceManagerHeader';
-import { fetchRepairWorkers } from './workers';
+// import { fetchRepairWorkers } from './workers';
 import StaffFooter from '../../components/footer/stafffooter/StaffFooter';
 import SearchBar from "../../components/SearchBar";
 import DeleteRepairs from "./DeleteRepairs";
@@ -59,7 +60,7 @@ const RepairTable = () => {
                 <table className='bg-white ml-1 mr-1 font-BreeSerif'>
                     <TableView headers={headers} />
                     <tbody>
-                        {repairs.map((repair, index) => (
+                        {repairs.map((repair) => (
                             <tr key={repair._id} className='h-8'>
                                 
                                 <td className='border border-slate-700 rounded-md text-center'>

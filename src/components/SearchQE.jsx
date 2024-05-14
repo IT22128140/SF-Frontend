@@ -14,9 +14,9 @@ const SearchBar = ({ placeholder, onSearch }) => {
     <div className="flex justify-end mt-4 mb-4 pr-4">
       <div className="relative flex items-center">
 
-        <div className="flex items-center justify-center w-8 h-10 text-white shadow-md bg-primary rounded-l-xl">
+        <div className="flex items-center justify-center w-[80px] h-10 text-white shadow-md bg-primary rounded-l-xl">
           <IoSearch className="text-ternary mr-1" />
-
+          <span className="text-white font-BreeSerif">Search</span>
         </div>
         <input
           type="text"
@@ -26,8 +26,8 @@ const SearchBar = ({ placeholder, onSearch }) => {
           className="h-10 pl-2 border-2 shadow-md border-primary focus:outline-none rounded-r-xl"
         />
 
-        <div className="bg-primary text-white font-Philosopher p-2 flex items-center h-10 w-[70px]">
-          <span className="text-white font-BreeSerif">Search</span>
+        <div className=" text-white font-Philosopher p-2 flex items-center h-10 w-[70px]">
+          <span className="text-white font-BreeSerif"></span>
         </div>
       </div>
     </div>
