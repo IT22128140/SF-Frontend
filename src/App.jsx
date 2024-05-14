@@ -379,7 +379,7 @@ const App = () => {
       <Route path= '/empPerformances/details/:id' element={<ViewEPReport/>}/>
       <Route path= '/rmRequests/completed' element={<CompletedrmRequests/>}/>
       <Route path= '/rmRequests/pending' element={<PendingrmRequests/>}/>
-      <Route path= '/PMHome' element = {<PMHome/>}/>
+      <Route path= '/Process_Manager' element = {<PMHome/>}/>
       <Route path= '/rmRequests/view/:id' element={<ViewPMRequests/>}/>
       <Route path= '/sfProduct' element={<GarmentProductList/>}/>
       <Route path= '/sfProduct/Add' element={<AddProductList/>}/>
