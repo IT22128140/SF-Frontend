@@ -387,7 +387,7 @@ const EditAddress = ({ adress, onClose }) => {
                   disabled={!province}
                 >
                   <option value="" defaultChecked hidden>
-                    Select your province
+                    Select your district
                   </option>
                   {province &&
                     districtsByProvince[province].map((opt) => (
