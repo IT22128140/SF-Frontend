@@ -9,6 +9,7 @@ import Category from "../../components/home/Category.jsx";
 import { enqueueSnackbar } from "notistack";
 
 const Home = () => {
+  
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {

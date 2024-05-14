@@ -59,29 +59,29 @@ Thank you..!`,
   };
 
 const tot = sessionStorage.getItem('total');
-//const deliveryDetails = JSON.parse(sessionStorage.getItem('deliveryDetails'));
+// const deliveryDetails = JSON.parse(sessionStorage.getItem('deliveryDetails'));
 
 console.log("delivery details",tot);
 
-const alldeliveryDetails = {
-  id: id,
-  // firstName: deliveryDetails.firstName,
-  // lastName: deliveryDetails.lastName,
-  // email: deliveryDetails.email,
-  // address: deliveryDetails.address,
-  // province: deliveryDetails.province,
-  // district: deliveryDetails.district,
-  // postalCode: deliveryDetails.postalCode,
-  emailAddress: paymentsucc.emailAddress,
-  fullName: paymentsucc.fullName,
-  bankName: paymentsucc.bankName,
-  phoneNumber: paymentsucc.phoneNumber,
-  branchName: paymentsucc.branchName,
-  slip: paymentsucc.slip,
-  total: tot,
-};
+// const alldeliveryDetails = {
+//   id: id,
+//   firstName: deliveryDetails.firstName,
+//   lastName: deliveryDetails.lastName,
+//   email: deliveryDetails.email,
+//   address: deliveryDetails.address,
+//   province: deliveryDetails.province,
+//   district: deliveryDetails.district,
+//   postalCode: deliveryDetails.postalCode,
+//   emailAddress: paymentsucc.emailAddress,
+//   fullName: paymentsucc.fullName,
+//   bankName: paymentsucc.bankName,
+//   phoneNumber: paymentsucc.phoneNumber,
+//   branchName: paymentsucc.branchName,
+//   slip: paymentsucc.slip,
+//   total: tot,
+// };
 
-sessionStorage.setItem("alldeliveryDetails", JSON.stringify(alldeliveryDetails));
+// sessionStorage.setItem("alldeliveryDetails", JSON.stringify(alldeliveryDetails));
 
 
 const all = JSON.parse(sessionStorage.getItem('alldeliveryDetails'));
