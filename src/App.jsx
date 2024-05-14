@@ -334,7 +334,7 @@ const App = () => {
 
 
 {/* Sageevan */}
-      <Route path="/qualityControl" element={<QualityControl />} />
+      <Route path="/Quality_Control_Manager" element={<QualityControl />} />
       <Route path="/qualityControl/reviewRequest/add/:id" element={<AddFinalProduct />} />
       <Route path="/qualityControl/reviewRequest" element={<ReviewRequest />} />
       <Route path="/qualityControl/reviewRequest/edit/:id" element={<EditFinalProduct />} />
