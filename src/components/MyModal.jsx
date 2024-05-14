@@ -41,7 +41,7 @@ function MyModal({onClose}) {
             .then(() => {
                 setLoading(false);
                 alert('Submit succesfull!');
-                navigate('/RequestforInventory'); // Navigate to the RawMaterialStock page
+                navigate('/Fullfillrequset'); 
             })
             .catch((error) => {
                 setLoading(false);
@@ -55,7 +55,7 @@ function MyModal({onClose}) {
             <button onClick={onClose} className='place-self-end'><X size={50}/></button>
             <div className='p-4'>
        
-            <h1 className='my-8 text-6xl font-semibold font-philosopher text-ternary alignment-center'>Full fill the Request</h1>
+            <h1 className='my-8 text-6xl font-semibold text-black font-philosopher alignment-center'>Full fill the Request</h1>
             {loading ? <Spinner /> : ''}
             <div className='flex flex-col border-2 rounded border-sky-300-xl w-[500px] p-4 mx-auto '>
             <div className='pt-3 my-4'>

@@ -15,9 +15,27 @@ const AddSupplieredRaws = () => {
     const [other_Materials, setother_Materials] = useState('');
     const [recivedDate, setrecivedDate] = useState('');
     const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    const handleSaveSupRm = () => {
+    const validateForm = () => {
+        let errors = {};
+
+        if (!supplierID.trim()) {
+            errors.supplierID = 'Supplier ID is required';
+        }
+      
+        setErrors(errors);
+        return Object.keys(errors).length === 0; 
+    };
+
+    const handleSaveSupRm = (e) => {
+        e.preventDefault(); 
+
+        if (!validateForm()) {
+            return; 
+        }
+
         const data = {
             supplierID,
             fabricType_Colour_Quantity,
@@ -31,7 +49,7 @@ const AddSupplieredRaws = () => {
             .post('http://localhost:5555/suppRM', data)
             .then(() => {
                 setLoading(false);
-                navigate('/SupplieredRaws'); 
+                navigate('/SupplierDetails/SupplieredRaws/:id'); 
             })
             .catch((error) => {
                 setLoading(false);
@@ -49,7 +67,7 @@ const AddSupplieredRaws = () => {
             </div>
             {loading ? <Spinner /> : ''}
             <div className='bg-bgc border-2 border-bgc rounded-xl w-[600px] p-8 mx-auto font-BreeSerif '>
-                <form>
+                <form onSubmit={handleSaveSupRm}>
                     <div className='my-4'>
                         <label className='mr-4 text-xl text-gray-500 font-Philosopher'>supplierID </label>
                         <input
@@ -58,53 +76,59 @@ const AddSupplieredRaws = () => {
                             onChange={(e) => setsupplierID(e.target.value)}
                             className='w-full px-4 py-2 border-2 border-gray-500'
                         />
+                        {errors.supplierID && <span className="text-red-500">{errors.supplierID}</span>}
                     </div>
                     <div className='my-4'>
-                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>fabricType_Colour_Quantity</label>
+                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>fabricType_Colour_Quantity </label>
                         <input
                             type='String'
                             value={fabricType_Colour_Quantity}
                             onChange={(e) => setfabricType_Colour_Quantity(e.target.value)}
                             className='w-full px-4 py-2 border-2 border-gray-500'
                         />
+                        {errors.fabricType_Colour_Quantity && <span className="text-red-500">{errors.fabricType_Colour_Quantity}</span>}
                     </div>
                     <div className='my-4'>
-                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>button_Colour_Quantity</label>
+                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>button_Colour_Quantity </label>
                         <input
                             type='String'
                             value={button_Colour_Quantity}
                             onChange={(e) => setbutton_Colour_Quantity(e.target.value)}
                             className='w-full px-4 py-2 border-2 border-gray-500'
                         />
+                        {errors.button_Colour_Quantity && <span className="text-red-500">{errors.button_Colour_Quantity}</span>}
                     </div>
                     <div className='my-4'>
-                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>thread_Colour_Quantity</label>
+                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>thread_Colour_Quantity </label>
                         <input
                             type='String'
                             value={thread_Colour_Quantity}
                             onChange={(e) => setthread_Colour_Quantity(e.target.value)}
                             className='w-full px-4 py-2 border-2 border-gray-500'
                         />
+                        {errors.thread_Colour_Quantity && <span className="text-red-500">{errors.thread_Colour_Quantity}</span>}
                     </div>
                     <div className='my-4'>
-                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>other_Materials</label>
-                        <input
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>other_Materials </label>
+                    <input
                             type='String'
                             value={other_Materials}
                             onChange={(e) => setother_Materials(e.target.value)}
                             className='w-full px-4 py-2 border-2 border-gray-500'
                         />
+                        {errors.other_Materials && <span className="text-red-500">{errors.other_Materials}</span>}
                     </div>
                     <div className='my-4'>
-                        <label className='mr-4 text-xl text-gray-500 font-Philosopher'>recivedDate</label>
-                        <input
+                    <label className='mr-4 text-xl text-gray-500 font-Philosopher'>recivedDate </label>
+                    <input
                             type='Date'
                             value={recivedDate}
                             onChange={(e) => setrecivedDate(e.target.value)}
                             className='w-full px-4 py-2 border-2 border-gray-500'
                         />
+                        {errors.recivedDate && <span className="text-red-500">{errors.recivedDate}</span>}
                     </div>
-                    <SubmitButton type="submit" onClick={handleSaveSupRm} className="mr-2">Submit</SubmitButton>
+                    <SubmitButton type="submit" className="mr-2">Submit</SubmitButton>
                 </form>
             </div>
             <StaffFooter/>

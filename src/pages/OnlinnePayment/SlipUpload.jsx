@@ -9,12 +9,13 @@ import RejectButton from "../../components/button2/RejectButton";
 
 const SlipUpload = () => {
   const [payment, setPayment] = useState({});
+  const [totalpayment,setTotalPayment] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [bankName, setBankName] = useState("");
   const [branchName, setBranchName] = useState("");
   const [fullName, setFullName] = useState("");
-  const [slip , setSlip] = useState("");
+  const [slip, setSlip] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [cart, setCart] = useState([]);
@@ -24,28 +25,30 @@ const SlipUpload = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-   setTot ( sessionStorage.getItem('total'));
+    setTot(sessionStorage.getItem("total"));
     //  setDeliveryDetails (JSON.parse(sessionStorage.getItem('deliveryDetails')));
     // setDeliveryDetailsId(sessionStorage.getItem('deliveryDetailsId'));
-    const deliveryDetailsId = sessionStorage.getItem('deliveryDetailsId');
-    
-    axios.get(`http://localhost:5555/deliveryDetailsPayment/${deliveryDetailsId}`).then((response) => {
-      setDeliveryDetails(response.data);
-      console.log(response.data);
-    });
+    const deliveryDetailsId = sessionStorage.getItem("deliveryDetailsId");
 
-    axios .get(`http://localhost:5555/cart/66387934d3d8881e210fd50a`)
-    .then((response) => {
-      setCart(response.data);
-      setLoading(false);
-      console.log(response.data.items);
-    })
-    .catch((error) => {
-      console.log(error);
-      setLoading(false);
-});
+    axios
+      .get(`http://localhost:5555/deliveryDetailsPayment/${deliveryDetailsId}`)
+      .then((response) => {
+        setDeliveryDetails(response.data);
+        console.log(response.data);
+      });
+
+    axios
+      .get(`http://localhost:5555/cart/66387934d3d8881e210fd50a`)
+      .then((response) => {
+        setCart(response.data);
+        setLoading(false);
+        console.log(response.data.items);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   }, []);
-
 
   const handleUpload = (e) => {
     console.log(payment);
@@ -96,6 +99,7 @@ const SlipUpload = () => {
     }
 
     const data = {
+      totalpayment:tot,
       emailAddress,
       phoneNumber,
       bankName,
@@ -106,19 +110,19 @@ const SlipUpload = () => {
 
     try {
       setLoading(true);
-      const response =await axios.post(`http://localhost:5555/payment`, data);
+      const response = await axios.post(`http://localhost:5555/payment`, data);
       setLoading(false);
+      
       const id = response.data._id;
       console.log(id);
       const data2 = {
-        userId : "66387934d3d8881e210fd50a",
-        products:cart.items,
-        deliveryDetails:deliveryDetails,
-        total:tot,
-        paymentId:id,
-
+        userId: "66387934d3d8881e210fd50a",
+        products: cart.items,
+        deliveryDetails: deliveryDetails,
+        total: tot,
+        paymentId: id,
       };
-      const orderC = await axios.post(`http://localhost:5555/order`,data2);
+      const orderC = await axios.post(`http://localhost:5555/order`, data2);
       navigate(`/PaymentSucc/${id}`);
     } catch (error) {
       console.error(error);
@@ -126,21 +130,19 @@ const SlipUpload = () => {
       alert("An error occurred while processing your request");
     }
   };
-  
-
 
   const handlePaymentSlip = async (file) => {
     if (!file) {
       alert("No file selected");
       return;
     }
-  
+
     const fileSizeMB = file.size / (1024 * 1024);
     if (fileSizeMB > 5) {
       alert("File size must be less than 5MB");
       return;
     }
-  
+
     const base64 = await convertToBase64(file);
     setSlip(base64);
   };
@@ -186,13 +188,13 @@ const SlipUpload = () => {
             Add Slip image
           </label>
           <input
-  type="file"
-  name="slip"
-  id="slip"
-  accept=".jpg,.jpeg,.png,.pdf"
-  onChange={(e) => handlePaymentSlip(e.target.files[0])}
-  className="appearance-none border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[300px] w-60 h-20"
-/>
+            type="file"
+            name="slip"
+            id="slip"
+            accept=".jpg,.jpeg,.png,.pdf"
+            onChange={(e) => handlePaymentSlip(e.target.files[0])}
+            className="appearance-none border border-black border-1 p-1 block mb-2 absolute top-[610px] left-[300px] w-60 h-20"
+          />
 
           <label className="block text-ternary text-sm font-bold mb-3 absolute top-[715px] left-[300px]">
             Bank Name
@@ -275,9 +277,9 @@ const SlipUpload = () => {
   );
 };
 
-export default SlipUpload
+export default SlipUpload;
 
-function convertToBase64(file){
+function convertToBase64(file) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
