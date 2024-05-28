@@ -76,7 +76,7 @@ const EditEmployee = () => {
 
   function validateNic(nic) {
     let isValid = true;
-    const nicRegex = /^[0-9]{9}[vVxX]$/ || /^[0-9]{12}$/;
+    const nicRegex = /^([0-9]{9}[vVxX]|[0-9]{12})$/;
     setNicError("");
     if (!nicRegex.test(nic)) {
       setNicError("Invalid NIC number");
@@ -141,7 +141,12 @@ const EditEmployee = () => {
 
   function validateAge(age) {
     let isValid = true;
+    const ageRegex = /^[0-9]{2}$/;
     setAgeError("");
+    if (!ageRegex.test(age)) {
+      setAgeError("Age should be only positive");
+      isValid = false;
+    }
     if (age === "") {
       setAgeError("Age is required");
       isValid = false;

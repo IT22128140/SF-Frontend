@@ -172,10 +172,15 @@ const AddEmployee = () => {
     return age;
   }
 
-  function validateAge() {
+  function validateAge(age) {
     let age1 = calculateAge(dateOfBirth);
     let isValid = true;
+    const ageRegex = /^[0-9]{2}$/;
     setAgeError("");
+    if (!ageRegex.test(age)) {
+      setAgeError("Age should be only positive");
+      isValid = false;
+    }
     if (age1 === "") {
       setAgeError("Birthdate is required");
       isValid = false;
@@ -198,7 +203,12 @@ const AddEmployee = () => {
 
   function validateBasicSalary(basicSalary) {
     let isValid = true;
+    const salaryRegex = /^[0-9]{5}$/;
     setBasicSalaryError("");
+    if (!salaryRegex.test(basicSalary)) {
+      setBasicSalaryError("Basic salary should be positive numbers");
+      isValid = false;
+    }
     if (basicSalary === "") {
       setBasicSalaryError("Basic salary is required");
       isValid = false;
@@ -208,9 +218,14 @@ const AddEmployee = () => {
 
   function validateAdmissionDate(admissionDate) {
     let isValid = true;
+    const today = new Date();
+    const add = new Date(admissionDate);
     setAdmissionDateError("");
     if (admissionDate === "") {
       setAdmissionDateError("Admission date is required");
+      isValid = false;
+    } else if (add > today) {
+      setAdmissionDateError("Admission date cannot be future day");
       isValid = false;
     }
     return isValid;
