@@ -4,9 +4,9 @@ import CustomerNavbar from "../../components/navbar/CustomerNavbar";
 import Footer from "../../components/footer/Footer";
 import axios from "axios";
 import { enqueueSnackbar } from "notistack";
+import ViewPayment from "../onlinestore/ViewPayment";
 
 const Orders = () => {
-
   const token = sessionStorage.getItem("token");
 
   const [orders, setOrders] = useState([]);
@@ -15,6 +15,8 @@ const Orders = () => {
   const [ongoing, setOngoing] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [date, setDate] = useState(new Date());
+  const [showPayemnt, setShowPayment] = useState(false);
+  const [pay, setPaymentId] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -128,7 +130,12 @@ const Orders = () => {
                     <h1>{order.status}</h1>
                   </div>
                   <div className="flex flex-col justify-between">
-                    <button className="rounded-xl self-end text-white w-fit h-fit bg-primary hover:bg-secondary py-2 px-5">
+                    <button
+                      onClick={() => {
+                        setPaymentId(order.paymentId), setShowPayment(true);
+                      }}
+                      className="rounded-xl self-end text-white w-fit h-fit bg-primary hover:bg-secondary py-2 px-5"
+                    >
                       View payment info
                     </button>
                     <div className="flex flex-col items-end">
@@ -178,6 +185,9 @@ const Orders = () => {
           <div className=""></div>
         </div>
       </div>
+      {showPayemnt && (
+        <ViewPayment Paymentid={pay} onClose={() => setShowPayment(false)} />
+      )}
       <Footer />
     </div>
   );

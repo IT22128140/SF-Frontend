@@ -15,7 +15,7 @@ import TableView from "../../components/table/TableView";
 import EmployeeModal from "./EmployeeModal.jsx";
 import DeleteEmployee from "./DeleteEmployee.jsx";
 import { CiSearch } from "react-icons/ci";
-
+import { enqueueSnackbar } from "notistack";
 
 const CurrentEmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -69,6 +69,7 @@ const CurrentEmployeeList = () => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, []);
 

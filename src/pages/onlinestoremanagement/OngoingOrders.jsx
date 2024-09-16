@@ -9,6 +9,7 @@ import ViewDeliveryDetails from "./ViewDeliveryDetails";
 import ViewBill from "./ViewBill";
 import StaffFooter from "../../components/footer/stafffooter/StaffFooter";
 import { enqueueSnackbar } from "notistack";
+import ViewPayment from "../onlinestore/ViewPayment";
 
 const OngoingOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,8 @@ const OngoingOrders = () => {
   const [showDelivery, setShowDelivery] = useState(false);
   const [bill, setBill] = useState({});
   const [showBill, setShowBill] = useState(false);
+  const [showPayemnt, setShowPayment] = useState(false);
+  const [pay, setPaymentId] = useState("");
 
   const headers = [
     "Order ID",
@@ -118,7 +121,10 @@ const OngoingOrders = () => {
                   </td>
                   <td className="border border-slate-700 text-center">
                     <div className="flex justify-center gap-x-4">
-                      <ViewButton />
+                      <ViewButton
+                      onClick={()=>{setPaymentId(order.paymentId),
+                        setShowPayment(true);}
+                      } />
                     </div>
                   </td>
                   <td className="border border-slate-700 text-center">
@@ -172,6 +178,7 @@ const OngoingOrders = () => {
         />
       )}
       {showBill && <ViewBill bill={bill} onClose={() => setShowBill(false)} />}
+      {showPayemnt && (<ViewPayment Paymentid={pay} onClose={() => setShowPayment(false)} />)}
       <StaffFooter></StaffFooter>
     </div>
   );

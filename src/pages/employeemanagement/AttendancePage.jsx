@@ -12,12 +12,14 @@ import TableView from "../../components/table/TableView.jsx";
 import EmpName from "../../components/EmpName.jsx";
 import { CiSearch } from "react-icons/ci";
 import html2pdf from "html2pdf.js";
+import { enqueueSnackbar } from "notistack";
 
 const AttendancePage = () => {
   // const [employees, setEmployees] = useState([]);
   const [date, setDate] = useState("");
   const [attendanceData, setAttendanceData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [attendanceCount, setAttendanceCount] = useState(0);
   //   const navigate = useNavigate();
   const methods = useForm();
   const { handleSubmit } = methods;
@@ -31,7 +33,6 @@ const AttendancePage = () => {
     "Full Name",
     "Arrival Time",
     "Departure Time",
-    "Late",
   ];
 
   const filteredOptions = (e) => {
@@ -55,11 +56,13 @@ const AttendancePage = () => {
         setAttendanceData(res.data.data);
         setFilteredData(res.data.data);
         console.log(res.data);
+        setAttendanceCount(res.data.data.length);
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        enqueueSnackbar("Error fetching data", { variant: "error" });
       });
   }, [date]);
 
@@ -125,6 +128,13 @@ const AttendancePage = () => {
             </button>
           </div>
 
+          <div className="border mx-[1.75%] border-black rounded-lg w-fit my-8 flex flex-row bg-white">
+            <h1 className="text-2xl font-BreeSerif text-ternary m-10">
+              Date : {date} <br />
+              Total Attendance Count	: {attendanceCount}
+            </h1>
+          </div>
+
           <div className="flex justify-end mt-4 pr-4 cursor-pointer ">
             <div className="flex flex-row p-3.5">
               <div className="bg-primary text-white h-10 w-8 rounded-l-xl shadow-md">
@@ -177,9 +187,6 @@ const AttendancePage = () => {
                     </td>
                     <td className="border border-slate-700 rounded-md text-center">
                       {localDeparture}
-                    </td>
-                    <td className="border border-slate-700 rounded-md text-center">
-                      {attendanceData.late}
                     </td>
                   </tr>
                 );

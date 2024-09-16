@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import AcceptButton from "../../components/button2/AcceptButton";
 import RejectButton from "../../components/button2/RejectButton";
+import { enqueueSnackbar } from "notistack";
 
 const ViewTerminationRequest = ({ request, onClose }) => {
   const navigate = useNavigate();
@@ -30,10 +31,12 @@ const ViewTerminationRequest = ({ request, onClose }) => {
     axios
       .put(`http://localhost:5555/resign/statusUpdate/${request._id}`, data)
       .then(() => {
+        enqueueSnackbar("Request accepted successfully", { variant: "success" });
         navigate(url);
       })
       .catch((err) => {
         console.log(err);
+        enqueueSnackbar("Error updating data", { variant: "error" });
       });
 
     axios
@@ -53,10 +56,12 @@ const ViewTerminationRequest = ({ request, onClose }) => {
     axios
       .put(`http://localhost:5555/resign/statusUpdate/${request._id}`, data)
       .then(() => {
+        enqueueSnackbar("Request rejected successfully", { variant: "success" });
         navigate("/resign/RejectedRequestPage");
       })
       .catch((err) => {
         console.log(err);
+        enqueueSnackbar("Error updating data", { variant: "error" });
       });
   };
 
